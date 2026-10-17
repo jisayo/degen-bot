@@ -5,3 +5,9 @@ __pycache__/
 data/
 logs/
 .pytest_cache/
+
+# Backup files
+*.bak
+*.bak2
+*.backup
+*.pre_exit_fix

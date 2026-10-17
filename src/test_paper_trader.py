@@ -1,3 +1,4 @@
+import csv
 import tempfile
 import unittest
 from pathlib import Path
@@ -7,6 +8,29 @@ import paper_trader as pt
 
 
 class TestPaperTrader(unittest.TestCase):
+
+    def setUp(self):
+        self.temp_dir = tempfile.TemporaryDirectory()
+        self.root = Path(self.temp_dir.name)
+
+        self.patches = [
+            patch.object(pt, "DATA_DIR", self.root),
+            patch.object(pt, "TRADE_LOG", self.root / "trades.csv"),
+            patch.object(pt, "STATE_FILE", self.root / "state.json"),
+            patch.object(pt, "POSITIONS_FILE", self.root / "positions.json"),
+        ]
+
+        for item in self.patches:
+            item.start()
+
+        pt.initialise()
+
+    def tearDown(self):
+        for item in reversed(self.patches):
+            item.stop()
+        self.temp_dir.cleanup()
+
+    # Existing tests
 
     def test_profitable_trade(self):
         trade = pt.simulate_trade("TEST", 1.00, 1.10, 50)
@@ -25,25 +49,109 @@ class TestPaperTrader(unittest.TestCase):
             pt.simulate_trade("TEST", 1.00, 1.10, 1)
 
     def test_execution_updates_balance_and_log(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
+        trade = pt.execute_paper_trade("TEST", 1.00, 1.10)
 
-            with (
-                patch.object(pt, "DATA_DIR", root),
-                patch.object(pt, "TRADE_LOG", root / "trades.csv"),
-                patch.object(pt, "STATE_FILE", root / "state.json"),
-            ):
-                pt.initialise()
-                trade = pt.execute_paper_trade("TEST", 1.00, 1.10)
+        self.assertAlmostEqual(
+            pt.load_balance(), trade["balance"], places=4
+        )
 
-                self.assertAlmostEqual(
-                    pt.load_balance(), trade["balance"], places=4
-                )
+        with pt.TRADE_LOG.open() as file:
+            rows = file.readlines()
 
-                with pt.TRADE_LOG.open() as file:
-                    rows = file.readlines()
+        self.assertEqual(len(rows), 2)
 
-                self.assertEqual(len(rows), 2)  # Header + one trade
+    # New lifecycle tests
+
+    def test_open_position_is_persisted(self):
+        position = pt.open_position("TOKEN_A", 1.00)
+
+        positions = pt.load_positions()
+
+        self.assertEqual(len(positions), 1)
+        self.assertEqual(positions[0]["token"], "TOKEN_A")
+        self.assertEqual(position["entry_price"], 1.00)
+
+    def test_duplicate_open_position_is_rejected(self):
+        pt.open_position("TOKEN_A", 1.00)
+
+        with self.assertRaises(ValueError):
+            pt.open_position("TOKEN_A", 1.10)
+
+    def test_invalid_entry_price_is_rejected(self):
+        with self.assertRaises(ValueError):
+            pt.open_position("TOKEN_A", 0)
+
+        self.assertEqual(pt.load_positions(), [])
+
+    def test_close_position_updates_balance_and_log(self):
+        pt.open_position("TOKEN_A", 1.00)
+        trade = pt.close_position("TOKEN_A", 1.20)
+
+        self.assertGreater(trade["pnl"], 0)
+        self.assertAlmostEqual(
+            pt.load_balance(), trade["balance"], places=4
+        )
+        self.assertEqual(pt.load_positions(), [])
+
+        with pt.TRADE_LOG.open(newline="") as file:
+            rows = list(csv.DictReader(file))
+
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["token"], "TOKEN_A")
+
+    def test_closing_unknown_position_is_rejected(self):
+        with self.assertRaises(ValueError):
+            pt.close_position("UNKNOWN", 1.00)
+
+    def test_invalid_exit_price_is_rejected(self):
+        pt.open_position("TOKEN_A", 1.00)
+
+        with self.assertRaises(ValueError):
+            pt.close_position("TOKEN_A", float("nan"))
+
+        self.assertEqual(len(pt.load_positions()), 1)
+
+
+    def test_take_profit_closes_position(self):
+        pt.open_position("TP_TOKEN", 1.00)
+
+        closed = pt.monitor_positions({"TP_TOKEN": 1.52})
+
+        self.assertEqual(len(closed), 1)
+        self.assertEqual(closed[0]["reason"], "Take profit")
+        self.assertEqual(pt.load_positions(), [])
+
+    def test_stop_loss_closes_position(self):
+        pt.open_position("SL_TOKEN", 1.00)
+
+        closed = pt.monitor_positions({"SL_TOKEN": 0.85})
+
+        self.assertEqual(len(closed), 1)
+        self.assertEqual(closed[0]["reason"], "Stop loss")
+        self.assertEqual(pt.load_positions(), [])
+
+    def test_trailing_stop_closes_after_peak_retracement(self):
+        pt.open_position("TRAIL_TOKEN", 1.00)
+
+        pt.monitor_positions({"TRAIL_TOKEN": 1.20})
+        positions = pt.load_positions()
+        self.assertAlmostEqual(positions[0]["highest_price"], 1.20)
+
+        closed = pt.monitor_positions({"TRAIL_TOKEN": 1.00})
+
+        self.assertEqual(len(closed), 1)
+        self.assertEqual(closed[0]["reason"], "Trailing stop")
+        self.assertEqual(pt.load_positions(), [])
+
+    def test_peak_price_persists_between_checks(self):
+        pt.open_position("PEAK_TOKEN", 1.00)
+
+        pt.monitor_positions({"PEAK_TOKEN": 1.10})
+        pt.monitor_positions({"PEAK_TOKEN": 1.19})
+
+        positions = pt.load_positions()
+        self.assertAlmostEqual(positions[0]["highest_price"], 1.19)
+
 
 
 if __name__ == "__main__":

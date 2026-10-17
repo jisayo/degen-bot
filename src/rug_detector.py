@@ -30,9 +30,6 @@ def check_rug_risk(token: dict) -> dict:
         if liquidity <= 0:
             risks.append("No verified liquidity")
             score += 100
-        elif liquidity < 5000:
-            risks.append("Very low liquidity")
-            score += 35
 
     if volume is not None and volume <= 0:
         risks.append("No trading volume")

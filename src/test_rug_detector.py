@@ -58,6 +58,25 @@ class TestRugDetector(unittest.TestCase):
     @patch("rug_detector.summarise_risk", return_value={
         "risk_score": 1, "risks": []
     })
+    def test_low_liquidity_alone_does_not_block(self, *_):
+        token = {**TOKEN, "liquidity_usd": 100}
+        result = check_rug_risk(token)
+        self.assertTrue(result["trade_allowed"])
+        self.assertLess(result["risk_score"], 30)
+
+    @patch("rug_detector.get_rugcheck_report", return_value={"rugged": False})
+    @patch("rug_detector.summarise_risk", return_value={
+        "risk_score": 1, "risks": []
+    })
+    def test_negative_liquidity_blocks(self, *_):
+        token = {**TOKEN, "liquidity_usd": -1}
+        result = check_rug_risk(token)
+        self.assertFalse(result["trade_allowed"])
+
+    @patch("rug_detector.get_rugcheck_report", return_value={"rugged": False})
+    @patch("rug_detector.summarise_risk", return_value={
+        "risk_score": 1, "risks": []
+    })
     def test_zero_liquidity_blocks(self, *_):
         token = {**TOKEN, "liquidity_usd": 0}
         result = check_rug_risk(token)

@@ -1,3 +1,4 @@
+import time
 import requests
 
 from rug_detector import check_rug_risk
@@ -7,6 +8,9 @@ API_URL = "https://api.dexscreener.com/token-profiles/latest/v1"
 PAIR_URL = "https://api.dexscreener.com/token-pairs/v1/solana/{}"
 TIMEOUT = 15
 MAX_TOKENS = 10
+MIN_LIQUIDITY_TO_MC_RATIO = 0.50
+MIN_TOKEN_AGE_MINUTES = 5
+MAX_TOKEN_AGE_MINUTES = 60
 
 
 def to_float(value):
@@ -23,6 +27,19 @@ def to_int(value):
         return max(number, 0)
     except (TypeError, ValueError):
         return 0
+
+
+def get_token_age_minutes(pair, now_ms=None):
+    created_at = pair.get("pairCreatedAt")
+    try:
+        created_at = float(created_at)
+        if created_at <= 0:
+            return None
+        current_ms = now_ms if now_ms is not None else time.time() * 1000
+        age = (current_ms - created_at) / 60000
+        return age if age >= 0 else None
+    except (TypeError, ValueError):
+        return None
 
 
 def scan_tokens():
@@ -86,17 +103,31 @@ def scan_tokens():
                     ),
                 )
 
+                age_minutes = get_token_age_minutes(pair)
+                if age_minutes is None:
+                    print(f"{address}: Missing/invalid pair creation time; skipped.")
+                    continue
+                if not MIN_TOKEN_AGE_MINUTES <= age_minutes <= MAX_TOKEN_AGE_MINUTES:
+                    print(f"{address}: Age {age_minutes:.1f} minutes outside 5–60 minute window; skipped.")
+                    continue
+
                 txns = pair.get("txns") or {}
                 h24 = txns.get("h24") or {}
                 liquidity = to_float(
                     (pair.get("liquidity") or {}).get("usd")
                 )
                 price = to_float(pair.get("priceUsd"))
+                market_cap = to_float(pair.get("marketCap"))
+                liquidity_mc_ratio = (
+                    liquidity / market_cap if market_cap > 0 else None
+                )
 
                 market_data = {
                     "address": address,
                     "price_usd": price,
                     "liquidity_usd": liquidity,
+                    "market_cap_usd": market_cap,
+                    "liquidity_mc_ratio": liquidity_mc_ratio,
                     "volume_24h": to_float(
                         (pair.get("volume") or {}).get("h24")
                     ),
@@ -118,12 +149,16 @@ def scan_tokens():
                     and risk.get("trade_allowed") is True
                     and opportunity.get("eligible_for_paper_trading") is True
                     and liquidity > 0
+                    and liquidity_mc_ratio is not None
+                    and liquidity_mc_ratio >= MIN_LIQUIDITY_TO_MC_RATIO
                 )
 
                 results.append({
                     "address": address,
                     "price_usd": price,
                     "liquidity_usd": liquidity,
+                    "market_cap_usd": market_cap,
+                    "liquidity_mc_ratio": liquidity_mc_ratio,
                     "pair_url": pair.get("url", "N/A"),
                     "risk": risk,
                     "opportunity": opportunity,
@@ -156,6 +191,9 @@ def scan_tokens():
         print(f"\nToken: {item['address']}")
         print(f"Price: ${item['price_usd']:.12g}")
         print(f"Liquidity: ${item['liquidity_usd']:,.2f}")
+        print(f"Market cap: ${item.get('market_cap_usd', 0):,.2f}")
+        ratio = item.get("liquidity_mc_ratio")
+        print(f"Liquidity/MC: {ratio:.1%}" if ratio is not None else "Liquidity/MC: unavailable")
         print(
             f"Risk: {risk.get('risk_level', 'UNKNOWN')} "
             f"({risk.get('risk_score', 'N/A')}/100)"
