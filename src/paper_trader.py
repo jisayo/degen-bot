@@ -179,7 +179,7 @@ def open_position(token, entry_price):
         "token": token,
         "entry_price": float(entry_price),
         "actual_entry_price": actual_entry,
-        "highest_price": float(entry_price),
+        "highest_price": actual_entry,
         "quantity": quantity,
         "trade_size": trade_size,
         "entry_fee": entry_fee,
