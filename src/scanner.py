@@ -6,39 +6,57 @@ from opportunity_scorer import score_opportunity
 
 API_URL = "https://api.dexscreener.com/token-profiles/latest/v1"
 PAIR_URL = "https://api.dexscreener.com/token-pairs/v1/solana/{}"
+
 TIMEOUT = 15
 MAX_TOKENS = 10
+
 MIN_LIQUIDITY_TO_MC_RATIO = 0.50
-MIN_TOKEN_AGE_MINUTES = 5
-MAX_TOKEN_AGE_MINUTES = 60
+MIN_TOKEN_AGE_MINUTES = 1
+MAX_TOKEN_AGE_MINUTES = 5
 
 
 def to_float(value):
+    """Convert a value to a finite, non-negative float."""
     try:
         number = float(value)
-        return number if number >= 0 else 0.0
-    except (TypeError, ValueError):
+        if number < 0 or number != number or number == float("inf"):
+            return 0.0
+        if number == float("-inf"):
+            return 0.0
+        return number
+    except (TypeError, ValueError, OverflowError):
         return 0.0
 
 
 def to_int(value):
+    """Convert a value to a non-negative integer."""
     try:
-        number = int(value)
-        return max(number, 0)
-    except (TypeError, ValueError):
+        number = float(value)
+        if number < 0 or not number.is_integer():
+            return 0
+        return int(number)
+    except (TypeError, ValueError, OverflowError):
         return 0
 
 
 def get_token_age_minutes(pair, now_ms=None):
+    """Return the pair's age in minutes, or None if invalid."""
     created_at = pair.get("pairCreatedAt")
+
     try:
         created_at = float(created_at)
+
         if created_at <= 0:
             return None
-        current_ms = now_ms if now_ms is not None else time.time() * 1000
+
+        current_ms = (
+            now_ms if now_ms is not None else time.time() * 1000
+        )
         age = (current_ms - created_at) / 60000
+
         return age if age >= 0 else None
-    except (TypeError, ValueError):
+
+    except (TypeError, ValueError, OverflowError):
         return None
 
 
@@ -71,6 +89,7 @@ def scan_tokens():
 
             if address in seen:
                 continue
+
             seen.add(address)
 
             try:
@@ -86,7 +105,8 @@ def scan_tokens():
                     continue
 
                 valid_pairs = [
-                    pair for pair in pairs
+                    pair
+                    for pair in pairs
                     if isinstance(pair, dict)
                     and pair.get("chainId") == "solana"
                 ]
@@ -104,20 +124,51 @@ def scan_tokens():
                 )
 
                 age_minutes = get_token_age_minutes(pair)
+
                 if age_minutes is None:
-                    print(f"{address}: Missing/invalid pair creation time; skipped.")
-                    continue
-                if not MIN_TOKEN_AGE_MINUTES <= age_minutes <= MAX_TOKEN_AGE_MINUTES:
-                    print(f"{address}: Age {age_minutes:.1f} minutes outside 5–60 minute window; skipped.")
+                    print(
+                        f"{address}: Missing or invalid creation time; skipped."
+                    )
                     continue
 
-                txns = pair.get("txns") or {}
-                h24 = txns.get("h24") or {}
+                if not (
+                    MIN_TOKEN_AGE_MINUTES
+                    <= age_minutes
+                    <= MAX_TOKEN_AGE_MINUTES
+                ):
+                    print(
+                        f"{address}: Age {age_minutes:.1f} minutes "
+                        "outside the 1–5 minute window; skipped."
+                    )
+                    continue
+
+                price = to_float(pair.get("priceUsd"))
                 liquidity = to_float(
                     (pair.get("liquidity") or {}).get("usd")
                 )
-                price = to_float(pair.get("priceUsd"))
                 market_cap = to_float(pair.get("marketCap"))
+
+                if price <= 0:
+                    print(f"{address}: Missing or invalid price; skipped.")
+                    continue
+
+                # Use one-hour activity for newly launched tokens.
+                # Never silently substitute 24-hour totals.
+                volume_data = pair.get("volume") or {}
+                transactions = pair.get("txns") or {}
+                h1 = transactions.get("h1")
+                volume_h1 = volume_data.get("h1")
+
+                if not isinstance(h1, dict) or volume_h1 is None:
+                    print(
+                        f"{address}: Missing one-hour activity data; skipped."
+                    )
+                    continue
+
+                buys_h1 = to_int(h1.get("buys"))
+                sells_h1 = to_int(h1.get("sells"))
+                volume_1h = to_float(volume_h1)
+
                 liquidity_mc_ratio = (
                     liquidity / market_cap if market_cap > 0 else None
                 )
@@ -127,27 +178,23 @@ def scan_tokens():
                     "price_usd": price,
                     "liquidity_usd": liquidity,
                     "market_cap_usd": market_cap,
-                    "liquidity_mc_ratio": liquidity_mc_ratio,
-                    "volume_24h": to_float(
-                        (pair.get("volume") or {}).get("h24")
-                    ),
-                    "buys_24h": to_int(h24.get("buys")),
-                    "sells_24h": to_int(h24.get("sells")),
-                }
 
-                # Never evaluate a token for paper trading without a price.
-                if price <= 0:
-                    print(f"{address}: Missing/invalid price; skipped.")
-                    continue
+                    # The scorer currently uses these field names,
+                    # but their values here represent the 1-hour window.
+                    "volume_24h": volume_1h,
+                    "buys_24h": buys_h1,
+                    "sells_24h": sells_h1,
+                }
 
                 risk = check_rug_risk(market_data)
                 opportunity = score_opportunity(market_data)
 
-                # Both gates must pass. Scores do not guarantee safety.
                 paper_eligible = (
                     risk.get("risk_level") == "LOW"
                     and risk.get("trade_allowed") is True
-                    and opportunity.get("eligible_for_paper_trading") is True
+                    and opportunity.get(
+                        "eligible_for_paper_trading"
+                    ) is True
                     and liquidity > 0
                     and liquidity_mc_ratio is not None
                     and liquidity_mc_ratio >= MIN_LIQUIDITY_TO_MC_RATIO
@@ -159,6 +206,10 @@ def scan_tokens():
                     "liquidity_usd": liquidity,
                     "market_cap_usd": market_cap,
                     "liquidity_mc_ratio": liquidity_mc_ratio,
+                    "volume_1h": volume_1h,
+                    "buys_1h": buys_h1,
+                    "sells_1h": sells_h1,
+                    "token_age_minutes": age_minutes,
                     "pair_url": pair.get("url", "N/A"),
                     "risk": risk,
                     "opportunity": opportunity,
@@ -189,16 +240,27 @@ def scan_tokens():
         opportunity = item["opportunity"]
 
         print(f"\nToken: {item['address']}")
+        print(f"Age: {item['token_age_minutes']:.1f} minutes")
         print(f"Price: ${item['price_usd']:.12g}")
         print(f"Liquidity: ${item['liquidity_usd']:,.2f}")
-        print(f"Market cap: ${item.get('market_cap_usd', 0):,.2f}")
-        ratio = item.get("liquidity_mc_ratio")
-        print(f"Liquidity/MC: {ratio:.1%}" if ratio is not None else "Liquidity/MC: unavailable")
+        print(f"Market cap: ${item['market_cap_usd']:,.2f}")
+
+        ratio = item["liquidity_mc_ratio"]
+        if ratio is not None:
+            print(f"Liquidity/MC: {ratio:.1%}")
+        else:
+            print("Liquidity/MC: unavailable")
+
+        print(f"Volume (1h): ${item['volume_1h']:,.2f}")
+        print(f"Buys (1h): {item['buys_1h']}")
+        print(f"Sells (1h): {item['sells_1h']}")
+
         print(
             f"Risk: {risk.get('risk_level', 'UNKNOWN')} "
             f"({risk.get('risk_score', 'N/A')}/100)"
         )
         print(f"Risk reasons: {risk.get('risks', [])}")
+
         print(
             f"Opportunity score: "
             f"{opportunity.get('opportunity_score', 0)}/100"

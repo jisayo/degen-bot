@@ -112,13 +112,52 @@ class TestPaperTrader(unittest.TestCase):
         self.assertEqual(len(pt.load_positions()), 1)
 
 
-    def test_take_profit_closes_position(self):
+    def test_first_take_profit_sells_half_and_keeps_position_open(self):
         pt.open_position("TP_TOKEN", 1.00)
 
         closed = pt.monitor_positions({"TP_TOKEN": 1.52})
 
         self.assertEqual(len(closed), 1)
-        self.assertEqual(closed[0]["reason"], "Take profit")
+        self.assertEqual(closed[0]["reason"], "Take profit 1 (+50%)")
+        positions = pt.load_positions()
+        self.assertEqual(len(positions), 1)
+        self.assertTrue(positions[0]["first_take_profit_done"])
+        self.assertAlmostEqual(
+            positions[0]["quantity"],
+            positions[0]["original_quantity"] * 0.5,
+        )
+
+    def test_second_target_sells_quarter_and_activates_trailing_stop(self):
+        pt.open_position("TP2_TOKEN", 1.00)
+
+        closed = pt.monitor_positions({"TP2_TOKEN": 2.10})
+
+        self.assertEqual(len(closed), 2)
+        self.assertEqual(
+            [trade["reason"] for trade in closed],
+            ["Take profit 1 (+50%)", "Take profit 2 (+100%)"],
+        )
+        positions = pt.load_positions()
+        self.assertEqual(len(positions), 1)
+        self.assertTrue(positions[0]["second_take_profit_done"])
+        self.assertTrue(positions[0]["trailing_stop_active"])
+        self.assertAlmostEqual(
+            positions[0]["quantity"],
+            positions[0]["original_quantity"] * 0.25,
+        )
+
+    def test_trailing_stop_closes_final_quarter_after_second_target(self):
+        pt.open_position("TRAIL_TOKEN", 1.00)
+        pt.monitor_positions({"TRAIL_TOKEN": 1.52})
+        pt.monitor_positions({"TRAIL_TOKEN": 2.10})
+
+        positions = pt.load_positions()
+        self.assertTrue(positions[0]["trailing_stop_active"])
+
+        closed = pt.monitor_positions({"TRAIL_TOKEN": 1.70})
+
+        self.assertEqual(len(closed), 1)
+        self.assertEqual(closed[0]["reason"], "Trailing stop")
         self.assertEqual(pt.load_positions(), [])
 
     def test_stop_loss_closes_position(self):
@@ -130,7 +169,7 @@ class TestPaperTrader(unittest.TestCase):
         self.assertEqual(closed[0]["reason"], "Stop loss")
         self.assertEqual(pt.load_positions(), [])
 
-    def test_trailing_stop_closes_after_peak_retracement(self):
+    def test_trailing_stop_is_not_active_before_second_target(self):
         pt.open_position("TRAIL_TOKEN", 1.00)
 
         pt.monitor_positions({"TRAIL_TOKEN": 1.20})
@@ -139,9 +178,8 @@ class TestPaperTrader(unittest.TestCase):
 
         closed = pt.monitor_positions({"TRAIL_TOKEN": 1.00})
 
-        self.assertEqual(len(closed), 1)
-        self.assertEqual(closed[0]["reason"], "Trailing stop")
-        self.assertEqual(pt.load_positions(), [])
+        self.assertEqual(closed, [])
+        self.assertEqual(len(pt.load_positions()), 1)
 
     def test_peak_price_persists_between_checks(self):
         pt.open_position("PEAK_TOKEN", 1.00)

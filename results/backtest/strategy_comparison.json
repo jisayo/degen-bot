@@ -1,0 +1,79 @@
+[
+  {
+    "take_profit_pct": 20,
+    "trailing_stop_pct": 10,
+    "pool": "12jc1DzJpzbCDaKuM4brAKh9jcFry2TLG1FfGsL4ftCG",
+    "trades": 89,
+    "win_rate_pct": 28.09,
+    "net_pnl": -22.9462,
+    "final_balance": 27.0538,
+    "max_drawdown_pct": 45.89,
+    "error": ""
+  },
+  {
+    "take_profit_pct": 30,
+    "trailing_stop_pct": 10,
+    "pool": "12jc1DzJpzbCDaKuM4brAKh9jcFry2TLG1FfGsL4ftCG",
+    "trades": 84,
+    "win_rate_pct": 28.57,
+    "net_pnl": -20.503,
+    "final_balance": 29.497,
+    "max_drawdown_pct": 41.01,
+    "error": ""
+  },
+  {
+    "take_profit_pct": 30,
+    "trailing_stop_pct": 15,
+    "pool": "12jc1DzJpzbCDaKuM4brAKh9jcFry2TLG1FfGsL4ftCG",
+    "trades": 52,
+    "win_rate_pct": 26.92,
+    "net_pnl": -14.8657,
+    "final_balance": 35.1343,
+    "max_drawdown_pct": 31.48,
+    "error": ""
+  },
+  {
+    "take_profit_pct": 50,
+    "trailing_stop_pct": 10,
+    "pool": "12jc1DzJpzbCDaKuM4brAKh9jcFry2TLG1FfGsL4ftCG",
+    "trades": 80,
+    "win_rate_pct": 27.5,
+    "net_pnl": -19.9205,
+    "final_balance": 30.0795,
+    "max_drawdown_pct": 39.84,
+    "error": ""
+  },
+  {
+    "take_profit_pct": 50,
+    "trailing_stop_pct": 15,
+    "pool": "12jc1DzJpzbCDaKuM4brAKh9jcFry2TLG1FfGsL4ftCG",
+    "trades": 46,
+    "win_rate_pct": 30.43,
+    "net_pnl": -13.4542,
+    "final_balance": 36.5458,
+    "max_drawdown_pct": 30.35,
+    "error": ""
+  },
+  {
+    "take_profit_pct": 75,
+    "trailing_stop_pct": 15,
+    "pool": "12jc1DzJpzbCDaKuM4brAKh9jcFry2TLG1FfGsL4ftCG",
+    "trades": 45,
+    "win_rate_pct": 31.11,
+    "net_pnl": -11.9218,
+    "final_balance": 38.0782,
+    "max_drawdown_pct": 30.03,
+    "error": ""
+  },
+  {
+    "take_profit_pct": 100,
+    "trailing_stop_pct": 20,
+    "pool": "12jc1DzJpzbCDaKuM4brAKh9jcFry2TLG1FfGsL4ftCG",
+    "trades": 33,
+    "win_rate_pct": 27.27,
+    "net_pnl": -11.2609,
+    "final_balance": 38.7391,
+    "max_drawdown_pct": 32.34,
+    "error": ""
+  }
+]

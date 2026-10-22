@@ -1,5 +1,10 @@
 import math
 
+MIN_OPPORTUNITY_SCORE = 50
+MIN_LIQUIDITY_MC_RATIO = 0.50
+MIN_TRADES = 20
+MAX_VOLUME_LIQUIDITY_RATIO = 10.0
+
 
 def _to_number(value):
     """Return a valid non-negative finite number, or None."""
@@ -18,6 +23,7 @@ def _to_number(value):
 
 
 def score_opportunity(token: dict) -> dict:
+    """Score a token and determine whether it qualifies for paper trading."""
     if not isinstance(token, dict):
         return {
             "opportunity_score": 0,
@@ -95,6 +101,19 @@ def score_opportunity(token: dict) -> dict:
                 "Very high volume; investigate wash trading"
             )
 
+    # Extreme reported volume relative to liquidity can indicate wash
+    # trading or unreliable data. Hard-block it rather than merely warning.
+    volume_liquidity_ratio = volume / liquidity if liquidity > 0 else None
+    extreme_volume_ratio = (
+        volume_liquidity_ratio is not None
+        and volume_liquidity_ratio > MAX_VOLUME_LIQUIDITY_RATIO
+    )
+    if extreme_volume_ratio:
+        reasons.append(
+            "Volume/liquidity ratio exceeds "
+            f"{MAX_VOLUME_LIQUIDITY_RATIO:g}x; blocked for review"
+        )
+
     # Trading activity
     trades = buys + sells
 
@@ -117,20 +136,39 @@ def score_opportunity(token: dict) -> dict:
                 "Extreme buy imbalance; investigate"
             )
 
+    # Liquidity compared with market capitalisation
     liquidity_mc_ratio = (
         liquidity / market_cap if market_cap > 0 else None
     )
-    eligible = (
-        liquidity > 0
-        and liquidity_mc_ratio is not None
-        and liquidity_mc_ratio >= 0.50
-        and volume > 0
-        and trades >= 20
-    )
+
     if market_cap <= 0:
         reasons.append("Missing or invalid market cap")
-    elif liquidity_mc_ratio < 0.50:
+    elif liquidity_mc_ratio < MIN_LIQUIDITY_MC_RATIO:
         reasons.append("Liquidity below 50% of market cap")
+
+    # Paper-trading entry requirements
+    eligible = (
+        score >= MIN_OPPORTUNITY_SCORE
+        and liquidity > 0
+        and liquidity_mc_ratio is not None
+        and liquidity_mc_ratio >= MIN_LIQUIDITY_MC_RATIO
+        and volume > 0
+        and trades >= MIN_TRADES
+        and not extreme_volume_ratio
+    )
+
+    if score < MIN_OPPORTUNITY_SCORE:
+        reasons.append(
+            f"Opportunity score below minimum of {MIN_OPPORTUNITY_SCORE}"
+        )
+
+    if trades < MIN_TRADES:
+        reasons.append(
+            f"Insufficient trading activity: fewer than {MIN_TRADES} trades"
+        )
+
+    if volume <= 0:
+        reasons.append("No trading volume")
 
     return {
         "opportunity_score": min(score, 100),

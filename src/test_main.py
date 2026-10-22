@@ -72,7 +72,7 @@ class TestMainPaperEntries(unittest.TestCase):
     @patch("main.scan_tokens")
     @patch("main.fetch_position_prices")
     @patch("main.monitor_positions")
-    def test_never_exceeds_three_positions(
+    def test_never_exceeds_one_position(
         self, mock_monitor, mock_prices, mock_scan,
         mock_positions, mock_open
     ):
@@ -88,7 +88,7 @@ class TestMainPaperEntries(unittest.TestCase):
 
         main.run_cycle()
 
-        self.assertEqual(mock_open.call_count, 3)
+        self.assertEqual(mock_open.call_count, 1)
 
 
 if __name__ == "__main__":

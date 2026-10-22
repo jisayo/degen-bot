@@ -19,7 +19,7 @@ def to_float(value):
         return 0.0
 TIMEOUT = 15
 SCAN_INTERVAL = 60
-MAX_OPEN_POSITIONS = 3
+MAX_OPEN_POSITIONS = 1
 
 
 def fetch_position_prices(positions):

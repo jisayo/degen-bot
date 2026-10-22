@@ -1,0 +1,987 @@
+{
+  "period_utc": {
+    "start": "2026-10-10T00:00:00+00:00",
+    "end_exclusive": "2026-10-18T00:00:00+00:00"
+  },
+  "source": "GeckoTerminal new_pools endpoint",
+  "coverage_warning": "This is a limited paginated discovery sample, not a complete historical token universe. Current pagination may not expose all pools created in the requested period.",
+  "pool_count": 97,
+  "errors": [
+    {
+      "page": 9,
+      "error": "429 Client Error: Too Many Requests for url: https://api.geckoterminal.com/api/v2/networks/solana/new_pools?page=9"
+    }
+  ],
+  "pools": [
+    {
+      "pool_address": "HbS3b7aKi6opss6xRBXEueVww5yvLynBB2f7hcBcDaQR",
+      "name": "jaune / SOL",
+      "created_at": "2026-10-17T15:52:29Z",
+      "reserve_usd": "2504.2944",
+      "market_cap_usd": null,
+      "fdv_usd": "2941.874333",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:32.495013+00:00"
+    },
+    {
+      "pool_address": "X3iLAU81F3GX2d5VtR5msyHaLDbKEjMU9fYwPtvNB7L",
+      "name": "17/10 / SOL",
+      "created_at": "2026-10-17T15:52:32Z",
+      "reserve_usd": "2488.0126",
+      "market_cap_usd": null,
+      "fdv_usd": "3137.153701",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:32.495003+00:00"
+    },
+    {
+      "pool_address": "5TKtHaXGS5jKJrj26GBM5sw2mAZQK13WFnninAY1oenx",
+      "name": "HARBOR / SOL",
+      "created_at": "2026-10-17T15:52:34Z",
+      "reserve_usd": "2815.7604",
+      "market_cap_usd": null,
+      "fdv_usd": "3259.176287",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:32.494993+00:00"
+    },
+    {
+      "pool_address": "98Rq9Q5FK1RTFbJM3H9wL3LmvvZVqy2Tz8iBmtpWpbZs",
+      "name": "Fai / SOL",
+      "created_at": "2026-10-17T15:52:35Z",
+      "reserve_usd": "132.0092",
+      "market_cap_usd": null,
+      "fdv_usd": "253.1376666",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:32.494962+00:00"
+    },
+    {
+      "pool_address": "HsUBwVyJ8oKVZquUbKEFVWfDKaLPqmE7X4Bn8D1bgvxb",
+      "name": "BAVEUX / SOL",
+      "created_at": "2026-10-17T15:52:35Z",
+      "reserve_usd": "2303.0006",
+      "market_cap_usd": null,
+      "fdv_usd": "2903.813516",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:32.494972+00:00"
+    },
+    {
+      "pool_address": "DxWgk3MBfwfZcRZGefevtZepdk3ZMLiuHPkwZGdkXEUf",
+      "name": "RHD / SOL",
+      "created_at": "2026-10-17T15:52:35Z",
+      "reserve_usd": "2781.8929",
+      "market_cap_usd": null,
+      "fdv_usd": "7046.204604",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:32.494982+00:00"
+    },
+    {
+      "pool_address": "47JG4BTxy7ByQjXk5nTbywU1Ggdk8ygefqdi7SNpzZxu",
+      "name": "USBD / USDT",
+      "created_at": "2026-10-17T15:52:37Z",
+      "reserve_usd": "99452130.4675",
+      "market_cap_usd": null,
+      "fdv_usd": "99635535.2",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:32.494952+00:00"
+    },
+    {
+      "pool_address": "AiPTW3Fxn4KtBnyAKokKRELVXseC1LuchyeLkHijg2Qw",
+      "name": "Pumpanion / SOL",
+      "created_at": "2026-10-17T15:52:38Z",
+      "reserve_usd": "2297.4232",
+      "market_cap_usd": null,
+      "fdv_usd": "2897.239807",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:32.494941+00:00"
+    },
+    {
+      "pool_address": "C5QpkRbAN2gLxW6xxayYNsEzchjZHSUpLDxNexpaaWVy",
+      "name": "INVEST / SOL",
+      "created_at": "2026-10-17T15:52:39Z",
+      "reserve_usd": "2408.8573",
+      "market_cap_usd": null,
+      "fdv_usd": "3040.183445",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:32.494892+00:00"
+    },
+    {
+      "pool_address": "5yCmvDCW7RDyf8LJyudQVKS3RcBo2qUVfyRQx5zrkCsW",
+      "name": "layback / SOL",
+      "created_at": "2026-10-17T15:52:39Z",
+      "reserve_usd": "286.7944",
+      "market_cap_usd": null,
+      "fdv_usd": "673.4200822",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:32.494907+00:00"
+    },
+    {
+      "pool_address": "EyHHGPVmgbhPz1BQokoYa8ejrVrMuVT1pg2gMpZqPTn",
+      "name": "lptp / SOL",
+      "created_at": "2026-10-17T15:52:39Z",
+      "reserve_usd": "641.4911",
+      "market_cap_usd": null,
+      "fdv_usd": "1614.4730004",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:32.494918+00:00"
+    },
+    {
+      "pool_address": "5Qn3BAv83VKdycV4zdsLtpST9Uh1LcKy14pwUJvf6TXw",
+      "name": "BAVEUX / SOL",
+      "created_at": "2026-10-17T15:52:39Z",
+      "reserve_usd": "2370.8175",
+      "market_cap_usd": null,
+      "fdv_usd": "2989.80474",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:32.494930+00:00"
+    },
+    {
+      "pool_address": "GefY7LD2P6DLajR83tSmVwhmjuaCCpt9m5w8UaYLCkD3",
+      "name": "Invest / SOL",
+      "created_at": "2026-10-17T15:52:40Z",
+      "reserve_usd": "2335.9132",
+      "market_cap_usd": null,
+      "fdv_usd": "3017.825822",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:32.494881+00:00"
+    },
+    {
+      "pool_address": "AmgqPRceExSLALgGmQrxr723a2NjdWMAMhsMs4vWVrop",
+      "name": "Gilet / SOL",
+      "created_at": "2026-10-17T15:52:42Z",
+      "reserve_usd": "2521.128",
+      "market_cap_usd": null,
+      "fdv_usd": "3188.439298",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:32.494859+00:00"
+    },
+    {
+      "pool_address": "EjQKPb3YtzifsNUR3svAWyEnwHG6Y8284QgpCEh5wchk",
+      "name": "BAVEUX / SOL",
+      "created_at": "2026-10-17T15:52:42Z",
+      "reserve_usd": "2369.2352",
+      "market_cap_usd": null,
+      "fdv_usd": "2989.80474",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:32.494870+00:00"
+    },
+    {
+      "pool_address": "3pRauiuzTbeS6V75papFnB8tmqMzdMLBWaeegrddenLc",
+      "name": "BIKER / SOL",
+      "created_at": "2026-10-17T15:52:44Z",
+      "reserve_usd": "2322.0604",
+      "market_cap_usd": null,
+      "fdv_usd": "2928.435459",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:32.494847+00:00"
+    },
+    {
+      "pool_address": "AbeXFyRhA8XvwxgZnYiNj96uJPj5kp8afQd6pqoUSmjs",
+      "name": "BAVEUX / SOL",
+      "created_at": "2026-10-17T15:52:45Z",
+      "reserve_usd": "2371.21623823991",
+      "market_cap_usd": null,
+      "fdv_usd": "2989.807386",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:32.494835+00:00"
+    },
+    {
+      "pool_address": "8PrdCXtiA2sJSkBR4GDtLApJMKkqPZe4pFSe3XV1ng6i",
+      "name": "CATACLYSM / SOL",
+      "created_at": "2026-10-17T15:52:48Z",
+      "reserve_usd": "2377.1824",
+      "market_cap_usd": null,
+      "fdv_usd": "3509.228954",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:32.494807+00:00"
+    },
+    {
+      "pool_address": "E85F7XfC3d8a6Z2foZsUmoXEbMhgt85LZEdANpR4h2Lx",
+      "name": "Cumulus / SOL",
+      "created_at": "2026-10-17T15:52:48Z",
+      "reserve_usd": "2293.8945",
+      "market_cap_usd": null,
+      "fdv_usd": "2894.987439",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:32.494822+00:00"
+    },
+    {
+      "pool_address": "JAE5u39cuYTzMVgr5HQTvzZJ7Fk8JsEWDceEx5V87Kj7",
+      "name": "SPCX / SOL",
+      "created_at": "2026-10-17T15:52:50Z",
+      "reserve_usd": "2118.2827",
+      "market_cap_usd": null,
+      "fdv_usd": "6221.054838",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:24.940613+00:00"
+    },
+    {
+      "pool_address": "4izCz9gP4RyRgk1s324AgBeB5tunnuWTfbu9s9zQ9SaK",
+      "name": "VEILO / SOL",
+      "created_at": "2026-10-17T15:52:50Z",
+      "reserve_usd": "2349.1239",
+      "market_cap_usd": null,
+      "fdv_usd": "2961.537083",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:32.494751+00:00"
+    },
+    {
+      "pool_address": "DoaiwS4wbWbKQnd9J4JfuMqrEZM2kos1rEkW8gLgpq7x",
+      "name": "jaune / SOL",
+      "created_at": "2026-10-17T15:52:53Z",
+      "reserve_usd": "2293.8945",
+      "market_cap_usd": null,
+      "fdv_usd": "2895.462944",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:24.940606+00:00"
+    },
+    {
+      "pool_address": "GA3nfKWkNsiV35MHgd8nPCQphtnkdjBQtRRKdJnzW8MG",
+      "name": "let / SOL",
+      "created_at": "2026-10-17T15:52:54Z",
+      "reserve_usd": "1008.7065",
+      "market_cap_usd": null,
+      "fdv_usd": "2601.043162",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:24.940598+00:00"
+    },
+    {
+      "pool_address": "5vmKQMhHycxqvZDMBDh5Ad2h1DcTLWECRh9kFPty9DYz",
+      "name": "BAVEUX / SOL",
+      "created_at": "2026-10-17T15:52:55Z",
+      "reserve_usd": "2295.7559",
+      "market_cap_usd": null,
+      "fdv_usd": "2897.803165",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:24.940590+00:00"
+    },
+    {
+      "pool_address": "8cLgrN4qLVLHYMNiuurq5osrJZbVLSBzFXS4FEXVs9yU",
+      "name": "YandexAi / SOL",
+      "created_at": "2026-10-17T15:52:56Z",
+      "reserve_usd": "38872.7759",
+      "market_cap_usd": null,
+      "fdv_usd": "20245.7718202458",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:24.940582+00:00"
+    },
+    {
+      "pool_address": "3docbCyWGL5SpikohzN3J7fogb3jzvXJpN9BcomCu3TD",
+      "name": "Avengers / SOL",
+      "created_at": "2026-10-17T15:52:57Z",
+      "reserve_usd": "2477.6974",
+      "market_cap_usd": null,
+      "fdv_usd": "3117.526535",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:24.940573+00:00"
+    },
+    {
+      "pool_address": "GtLUD9Zj3frTAdSyQwTs68KrQNNeCArR6KAg5BDrmB2q",
+      "name": "BAVEUX / SOL",
+      "created_at": "2026-10-17T15:52:58Z",
+      "reserve_usd": "2295.5389",
+      "market_cap_usd": null,
+      "fdv_usd": "2897.156466",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:24.940565+00:00"
+    },
+    {
+      "pool_address": "FZrD1sR9WD3aW3VgnJAHxcp9NpdM13QzWRBcTU72SK2p",
+      "name": "Pumpanion / SOL",
+      "created_at": "2026-10-17T15:52:59Z",
+      "reserve_usd": "2294.3445",
+      "market_cap_usd": null,
+      "fdv_usd": "2891.393395",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:24.940537+00:00"
+    },
+    {
+      "pool_address": "6Fp6hx3dr2fceEjqtshWhsm8CH88eU3NcoHfjoRhgydP",
+      "name": "SFOX / SOL",
+      "created_at": "2026-10-17T15:52:59Z",
+      "reserve_usd": "2300.76018607946",
+      "market_cap_usd": null,
+      "fdv_usd": "5801.942216",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:24.940546+00:00"
+    },
+    {
+      "pool_address": "9sgXrwjJ2XuurKvoKRJg2qo63MmYpuz4d9C2C78TnjhJ",
+      "name": "Peptoshi$ / SOL",
+      "created_at": "2026-10-17T15:52:59Z",
+      "reserve_usd": "2549.7288",
+      "market_cap_usd": null,
+      "fdv_usd": "7529.664788",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:24.940556+00:00"
+    },
+    {
+      "pool_address": "33HWXnXezQPSjuWKucLfECRiNjjAqUjMD4gohwbUeyPT",
+      "name": "jaune / SOL",
+      "created_at": "2026-10-17T15:53:00Z",
+      "reserve_usd": "2294.4787",
+      "market_cap_usd": null,
+      "fdv_usd": "2894.98707",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:24.940482+00:00"
+    },
+    {
+      "pool_address": "GpQRYoaArAE7qA2q9UzkLDofiwPgZ39Fsp3yQGSbC8Lk",
+      "name": "anone / USDC",
+      "created_at": "2026-10-17T15:53:00Z",
+      "reserve_usd": "88.1761",
+      "market_cap_usd": null,
+      "fdv_usd": "176.99247608",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:24.940524+00:00"
+    },
+    {
+      "pool_address": "J8m8DgzeakGKU3zSb4wFxnQnPfYHnVMCNNhLPsfYcVP5",
+      "name": "jaune / SOL",
+      "created_at": "2026-10-17T15:53:02Z",
+      "reserve_usd": "0.0",
+      "market_cap_usd": null,
+      "fdv_usd": "0.004501179893",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:10.226415+00:00"
+    },
+    {
+      "pool_address": "FZaB4xST89NSiQwWoRRuQvjn62m1GtxKjGVD5Cx8GFsi",
+      "name": "jaune / SOL",
+      "created_at": "2026-10-17T15:53:02Z",
+      "reserve_usd": "0.0103",
+      "market_cap_usd": null,
+      "fdv_usd": "355974.8494",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:10.226423+00:00"
+    },
+    {
+      "pool_address": "8R5uP5jP8KoGnX1aYwdJEfH6u4czXjcHDixT9tDgLyoL",
+      "name": "Gilet / SOL",
+      "created_at": "2026-10-17T15:53:06Z",
+      "reserve_usd": "3537.9684",
+      "market_cap_usd": null,
+      "fdv_usd": "4389.064205",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:10.226389+00:00"
+    },
+    {
+      "pool_address": "CsBUZPuQgC2p8tREbuCY358fC1kANMYiVFxgpSzXdxkj",
+      "name": "lptp / SOL",
+      "created_at": "2026-10-17T15:53:06Z",
+      "reserve_usd": "5061.96641502155",
+      "market_cap_usd": null,
+      "fdv_usd": "11940.088434",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:10.226397+00:00"
+    },
+    {
+      "pool_address": "EuLxvPC2fQdZq5BfXBLRQCdWQA7FBH1MQ38dvkFgBc94",
+      "name": "* / SOL",
+      "created_at": "2026-10-17T15:53:06Z",
+      "reserve_usd": "2411.6196",
+      "market_cap_usd": null,
+      "fdv_usd": "3051.211411",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:10.226406+00:00"
+    },
+    {
+      "pool_address": "EnSfD3dG6MYdbqMnbBVi518SGKDS2bzBSdho69RVu5zB",
+      "name": "Horde / SOL",
+      "created_at": "2026-10-17T15:53:09Z",
+      "reserve_usd": "2319.6731",
+      "market_cap_usd": null,
+      "fdv_usd": "2923.066537",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:10.226378+00:00"
+    },
+    {
+      "pool_address": "C7QNL3xsc5p9C1jyecQALoYShrc3zy8Jx7bmicSsBLL6",
+      "name": "STFORGE / STONK",
+      "created_at": "2026-10-17T15:53:10Z",
+      "reserve_usd": "3859.9143",
+      "market_cap_usd": null,
+      "fdv_usd": "3944.865586",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:10.226368+00:00"
+    },
+    {
+      "pool_address": "6nXuGfh5913HUuSrF4FCGwu7U9NFCw33NSjrbKoiygAF",
+      "name": "PolarBear / SOL",
+      "created_at": "2026-10-17T15:53:13Z",
+      "reserve_usd": "2709.7963",
+      "market_cap_usd": null,
+      "fdv_usd": "2980.211513",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:17.494784+00:00"
+    },
+    {
+      "pool_address": "DNgdbaE6ncWCYYU71UQH4hwNqJ5MJhDY6vswc4p3zyjA",
+      "name": "Invest / SOL",
+      "created_at": "2026-10-17T15:53:13Z",
+      "reserve_usd": "2556.9765",
+      "market_cap_usd": null,
+      "fdv_usd": "3237.807528",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:10.226287+00:00"
+    },
+    {
+      "pool_address": "BuNBrw4cS427nHvGxm4suj1KZh95EL4PDNMbUEiCp4pL",
+      "name": "INVEST / SOL",
+      "created_at": "2026-10-17T15:53:13Z",
+      "reserve_usd": "2521.9715",
+      "market_cap_usd": null,
+      "fdv_usd": "3188.768302",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:10.226344+00:00"
+    },
+    {
+      "pool_address": "HhenHA2LpjwoKHtBosoXsEQeT2umgUZjNktNM4R4RstE",
+      "name": "apein / SOL",
+      "created_at": "2026-10-17T15:53:13Z",
+      "reserve_usd": "2430.6583",
+      "market_cap_usd": null,
+      "fdv_usd": "3070.589911",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:10.226357+00:00"
+    },
+    {
+      "pool_address": "A4wmJsMesRQFYjcm9fjNvjC8Twcnv99PRekD9ViuvW4b",
+      "name": "Gilet / SOL",
+      "created_at": "2026-10-17T15:53:14Z",
+      "reserve_usd": "2401.8585",
+      "market_cap_usd": null,
+      "fdv_usd": "3032.662552",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:17.494767+00:00"
+    },
+    {
+      "pool_address": "FyfU36uHvfwK5JBnZp7WX59dXwox5CVbCZQ3GnfGdMck",
+      "name": "DT / SOL",
+      "created_at": "2026-10-17T15:53:14Z",
+      "reserve_usd": "0.0",
+      "market_cap_usd": null,
+      "fdv_usd": "0.004704999951",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:17.494776+00:00"
+    },
+    {
+      "pool_address": "351KnMRqmCH7c47ohNh1Tm7hY3aUp1WTYs8Xf7F51fcW",
+      "name": "Durkio / SOL",
+      "created_at": "2026-10-17T15:53:15Z",
+      "reserve_usd": "551.3385",
+      "market_cap_usd": null,
+      "fdv_usd": "2332.927212",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:17.494759+00:00"
+    },
+    {
+      "pool_address": "CbbYRnNkDMofbNgQYFb26q8iuWQmUmz5urBBFmRNDGWn",
+      "name": "AE / SOL",
+      "created_at": "2026-10-17T15:53:17Z",
+      "reserve_usd": "430.5982",
+      "market_cap_usd": null,
+      "fdv_usd": "448.4161265",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:17.494627+00:00"
+    },
+    {
+      "pool_address": "C7uZmJLu3iFGMsbHELw7KnJrjhQZn7KPY6MUiJGQ4MXt",
+      "name": "TLOADSTER / SOL",
+      "created_at": "2026-10-17T15:53:17Z",
+      "reserve_usd": "2638.5973",
+      "market_cap_usd": null,
+      "fdv_usd": "3302.358739",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:17.494738+00:00"
+    },
+    {
+      "pool_address": "EasBbkEs5FnBzRJYwzHMBaG9yWR7W9YdSzdcADWFRBbe",
+      "name": "Squeeze / SOL",
+      "created_at": "2026-10-17T15:53:17Z",
+      "reserve_usd": "2310.36581480946",
+      "market_cap_usd": null,
+      "fdv_usd": "2913.082606",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:17.494751+00:00"
+    },
+    {
+      "pool_address": "6BA7tZuxZpiyAQvee9DNoknzHupPefp3SqPkuqGUy8bR",
+      "name": "jaune / SOL",
+      "created_at": "2026-10-17T15:53:18Z",
+      "reserve_usd": "17926.8186",
+      "market_cap_usd": null,
+      "fdv_usd": "40185.71269",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:17.494618+00:00"
+    },
+    {
+      "pool_address": "DSNwSc6SSBEDrTEw2fFMakETSjEEBMN9ejpLC1X1UaZo",
+      "name": "layback / SOL",
+      "created_at": "2026-10-17T15:53:19Z",
+      "reserve_usd": "1492.1469",
+      "market_cap_usd": null,
+      "fdv_usd": "3103.379778",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:17.494610+00:00"
+    },
+    {
+      "pool_address": "36tM5KXkvTiQDyUGF2Mci3fHWr9hJr8E6kzgeCgocA2e",
+      "name": "DT / SOL",
+      "created_at": "2026-10-17T15:53:21Z",
+      "reserve_usd": "0.0103",
+      "market_cap_usd": null,
+      "fdv_usd": "235979.2741",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:17.494601+00:00"
+    },
+    {
+      "pool_address": "DNnH37T6LsuXgMDs6sHG1PhfHJ8eqy2wMRa8jVrmtF5h",
+      "name": "jaune / SOL",
+      "created_at": "2026-10-17T15:53:23Z",
+      "reserve_usd": "2455.1919",
+      "market_cap_usd": null,
+      "fdv_usd": "3038.479787",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:17.494585+00:00"
+    },
+    {
+      "pool_address": "6zqBL3Y2YfqNhT7aasLZVDDcEd3ygfGpUajNUuMqqiT4",
+      "name": "lptp / SOL",
+      "created_at": "2026-10-17T15:53:23Z",
+      "reserve_usd": "800.972",
+      "market_cap_usd": null,
+      "fdv_usd": "2016.20064",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:17.494593+00:00"
+    },
+    {
+      "pool_address": "5BM79FSnV241vj4aDHCJiHAfNtdqcJvikq26Dyixis7A",
+      "name": "DT / SOL",
+      "created_at": "2026-10-17T15:53:24Z",
+      "reserve_usd": "17820.3004",
+      "market_cap_usd": null,
+      "fdv_usd": "41813.82823",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:17.494577+00:00"
+    },
+    {
+      "pool_address": "AxpDCFS4rLQ6NbkPRcUdA5brgmUAmJWibYgdekS1o6AM",
+      "name": "MACARON / SOL",
+      "created_at": "2026-10-17T15:53:25Z",
+      "reserve_usd": "2312.2736",
+      "market_cap_usd": null,
+      "fdv_usd": "2918.532407",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:17.494553+00:00"
+    },
+    {
+      "pool_address": "FaYPVjTqGvQE2FYeE9ckyRALiP6VY4dMTEsRrrhmRTBe",
+      "name": "SPCX / SOL",
+      "created_at": "2026-10-17T15:53:25Z",
+      "reserve_usd": "1274.1114",
+      "market_cap_usd": null,
+      "fdv_usd": "2603.962312",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:17.494561+00:00"
+    },
+    {
+      "pool_address": "Drtq41qRBhKyzuWRrzqsmXUMShCM8f74xqKv1MeL24qU",
+      "name": "PW / SOL",
+      "created_at": "2026-10-17T15:53:25Z",
+      "reserve_usd": "369.9775",
+      "market_cap_usd": null,
+      "fdv_usd": "711.864385",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:17.494569+00:00"
+    },
+    {
+      "pool_address": "9Yr8tMuWaHuk71mMQVn4sjpr55wjWm5H6RurM1BNJySy",
+      "name": "Yellow / SOL",
+      "created_at": "2026-10-17T15:53:28Z",
+      "reserve_usd": "2298.2576",
+      "market_cap_usd": null,
+      "fdv_usd": "2898.28896",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:17.494544+00:00"
+    },
+    {
+      "pool_address": "DT7HH1VwfvwFM925QfU4EKwL5FaUFtbb72sS7FRAxzG9",
+      "name": "Jackat / SOL",
+      "created_at": "2026-10-17T15:53:30Z",
+      "reserve_usd": "6283.4055",
+      "market_cap_usd": null,
+      "fdv_usd": "11572.18544",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:17.494534+00:00"
+    },
+    {
+      "pool_address": "55Dg4TVRGSkZWqNgRbyHsVT2daE7oJrYT4qUkZcTzmZJ",
+      "name": "Gilet / SOL",
+      "created_at": "2026-10-17T15:53:31Z",
+      "reserve_usd": "2768.4452",
+      "market_cap_usd": null,
+      "fdv_usd": "3911.921851",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:17.494521+00:00"
+    },
+    {
+      "pool_address": "AhWYwGiCNJyJGNAR15nchdtwiXizgjTVHi7Y15p9DNGo",
+      "name": "17/10 / SOL",
+      "created_at": "2026-10-17T15:53:34Z",
+      "reserve_usd": "2377.3262",
+      "market_cap_usd": null,
+      "fdv_usd": "2995.719419",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:54.456047+00:00"
+    },
+    {
+      "pool_address": "7d1DHkPgh1BZKqNm8o25bh7vJwquh6SjEP3kS4Xask7y",
+      "name": "TOAD / SOL",
+      "created_at": "2026-10-17T15:53:34Z",
+      "reserve_usd": "1646.3856",
+      "market_cap_usd": null,
+      "fdv_usd": "3494.847572",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:54.456056+00:00"
+    },
+    {
+      "pool_address": "GVgaYPFdRpRbiTu6sD6RVFdUPoHuUjcFBMRyPVGEVfGL",
+      "name": "CYBERCAT / CyberAxe",
+      "created_at": "2026-10-17T15:53:34Z",
+      "reserve_usd": "1834.08023967745",
+      "market_cap_usd": null,
+      "fdv_usd": "2328.323781",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:56:17.494476+00:00"
+    },
+    {
+      "pool_address": "6Km5Qqix6YWeDgGypbA8HUbfRyfPcYnqiKS8NcEtZpRT",
+      "name": "INVEST / SOL",
+      "created_at": "2026-10-17T15:53:35Z",
+      "reserve_usd": "2447.4005",
+      "market_cap_usd": null,
+      "fdv_usd": "3084.520874",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:54.456038+00:00"
+    },
+    {
+      "pool_address": "UQdXhirqfmHQqbKDLaZiWSjqxT7LMJoGAzpsEc1vrRg",
+      "name": "Gilet Jaune / SOL",
+      "created_at": "2026-10-17T15:53:38Z",
+      "reserve_usd": "2412.6984",
+      "market_cap_usd": null,
+      "fdv_usd": "3047.037456",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:54.456019+00:00"
+    },
+    {
+      "pool_address": "H6K8WPGoCwGeCC3GnPbGF73bq6ZQikrH9hXWLmvcCQDL",
+      "name": "Jackat / SOL",
+      "created_at": "2026-10-17T15:53:38Z",
+      "reserve_usd": "2309.4017",
+      "market_cap_usd": null,
+      "fdv_usd": "4332.52218",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:54.456028+00:00"
+    },
+    {
+      "pool_address": "F4EMgmjmRpEmqyqZ1pJ1TRze3H4dWNGWiZcTNVnsXknt",
+      "name": "$LSTPCK / SOL",
+      "created_at": "2026-10-17T15:53:43Z",
+      "reserve_usd": "953.4226",
+      "market_cap_usd": null,
+      "fdv_usd": "2406.418818",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:54.456010+00:00"
+    },
+    {
+      "pool_address": "J2uTUqAtQTBvvZZh9xg6BuyR3obKDVD9zHpSfgDNBGUp",
+      "name": "SPCX / SOL",
+      "created_at": "2026-10-17T15:53:46Z",
+      "reserve_usd": "3008.3263",
+      "market_cap_usd": null,
+      "fdv_usd": "7676.912978",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:54.456001+00:00"
+    },
+    {
+      "pool_address": "FgBetyNxmfu28qgqfDEcvW1hbCybwsc7gpejXPjDpRmn",
+      "name": "LgJ / USDC",
+      "created_at": "2026-10-17T15:53:48Z",
+      "reserve_usd": "3174.01326972601",
+      "market_cap_usd": null,
+      "fdv_usd": "4001.907928",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:54.455992+00:00"
+    },
+    {
+      "pool_address": "2Wr799gkttFGe991ETFo4ba1eev1kcPmPLn1Ef5aD3UH",
+      "name": "UNDO / SOL",
+      "created_at": "2026-10-17T15:53:49Z",
+      "reserve_usd": "3959.3896",
+      "market_cap_usd": null,
+      "fdv_usd": "5587.992614",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:54.455984+00:00"
+    },
+    {
+      "pool_address": "F5VbDhsXbpTyLy1ThRtK2ze5kYzFB6KX12DarCTRUoX9",
+      "name": "GiletsJaunes / SOL",
+      "created_at": "2026-10-17T15:53:52Z",
+      "reserve_usd": "2438.3304",
+      "market_cap_usd": null,
+      "fdv_usd": "3069.927746",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:54.455976+00:00"
+    },
+    {
+      "pool_address": "EvqE5V6SJDTbHydhh32mCv7FAByvkZuTZfU9yqgwSm5e",
+      "name": "BUKZ / SOL",
+      "created_at": "2026-10-17T15:53:54Z",
+      "reserve_usd": "3406.2929",
+      "market_cap_usd": null,
+      "fdv_usd": "4546.719588",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:54.455967+00:00"
+    },
+    {
+      "pool_address": "DsykPiDRqxAhYYHB8RuHw95eU4d1gRtQPcRoM4sXnA1k",
+      "name": "Invest / SOL",
+      "created_at": "2026-10-17T15:53:57Z",
+      "reserve_usd": "13681.5438",
+      "market_cap_usd": null,
+      "fdv_usd": "30026.58828",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:54.455956+00:00"
+    },
+    {
+      "pool_address": "2p2RDt7pTH5PAheAWiQKLezoqtri5QLxhiQ9w9QSxki7",
+      "name": "10/17 / SOL",
+      "created_at": "2026-10-17T15:53:59Z",
+      "reserve_usd": "2368.8915",
+      "market_cap_usd": null,
+      "fdv_usd": "2985.695361",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:54.455947+00:00"
+    },
+    {
+      "pool_address": "5VmUdhbfFZfo4p64oDvQqLz2gTshVpSstU8UmD5veWwp",
+      "name": "Vengeurs / SOL",
+      "created_at": "2026-10-17T15:54:00Z",
+      "reserve_usd": "2893.012",
+      "market_cap_usd": null,
+      "fdv_usd": "2890.135047",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:54.455933+00:00"
+    },
+    {
+      "pool_address": "5eJdRZDjS9AEvKDxH1nYn2CdHRcdV7k73Az3DuCKt7Pu",
+      "name": "LUNAR / SOL",
+      "created_at": "2026-10-17T15:54:02Z",
+      "reserve_usd": "1607.2225",
+      "market_cap_usd": null,
+      "fdv_usd": "9938.772082",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:54.455885+00:00"
+    },
+    {
+      "pool_address": "jXFbYxaXFpJGQpY3C2XKtE53G3CDDu3MkJgTaaGmcyR",
+      "name": "layback / SOL",
+      "created_at": "2026-10-17T15:54:08Z",
+      "reserve_usd": "349.7611",
+      "market_cap_usd": null,
+      "fdv_usd": "870.8034618",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:47.196333+00:00"
+    },
+    {
+      "pool_address": "GnkGBm2rUc17dTytPDkA9xy5PvE7eEDqYeKiVRuPduRz",
+      "name": "$DADOGE / SOL",
+      "created_at": "2026-10-17T15:54:08Z",
+      "reserve_usd": "2364.35652927278",
+      "market_cap_usd": null,
+      "fdv_usd": "2363.580483",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:47.196337+00:00"
+    },
+    {
+      "pool_address": "Hpw2UhW1tgos5zhtykKXzDSHbSwy3B7aXyjpY1Mke8MF",
+      "name": "Avengers / SOL",
+      "created_at": "2026-10-17T15:54:10Z",
+      "reserve_usd": "19638.8553",
+      "market_cap_usd": null,
+      "fdv_usd": "11711.8411017118",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:47.196326+00:00"
+    },
+    {
+      "pool_address": "D9jk5AMAZXZRsg5pEFyMYjPZMzYwcr1hWr6jPB2rfVZW",
+      "name": "NEX Ai / SOL",
+      "created_at": "2026-10-17T15:54:10Z",
+      "reserve_usd": "42101.3872",
+      "market_cap_usd": null,
+      "fdv_usd": "21677.19743",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:47.196329+00:00"
+    },
+    {
+      "pool_address": "816Y8JP1bNxzgE95JvX658hcKUVykNdrcKQvfku7NeDt",
+      "name": "17/10 / SOL",
+      "created_at": "2026-10-17T15:54:12Z",
+      "reserve_usd": "2294.7256",
+      "market_cap_usd": null,
+      "fdv_usd": "2894.806796",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:47.196317+00:00"
+    },
+    {
+      "pool_address": "4k8FcuoMGxJeTqECM198CERfPaYy4ratAsvg3MVA1app",
+      "name": "Certbot / SOL",
+      "created_at": "2026-10-17T15:54:12Z",
+      "reserve_usd": "112364.2884",
+      "market_cap_usd": null,
+      "fdv_usd": "59874.482616",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:47.196321+00:00"
+    },
+    {
+      "pool_address": "HtrWKnEw2PHhvVdgD5Fqk2ucs4AeNjtwc8HBeKP1jys9",
+      "name": "Invest / SOL",
+      "created_at": "2026-10-17T15:54:14Z",
+      "reserve_usd": "3164.3131",
+      "market_cap_usd": null,
+      "fdv_usd": "2945.901299",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:47.196314+00:00"
+    },
+    {
+      "pool_address": "2UjQxSikxGbWjxXvhqN8YoFS4Zzwh7BxtFLBMJvpLPVE",
+      "name": "FOMOCAT / USDC",
+      "created_at": "2026-10-17T15:54:15Z",
+      "reserve_usd": "1025.7055",
+      "market_cap_usd": null,
+      "fdv_usd": "940.6145886",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:47.196310+00:00"
+    },
+    {
+      "pool_address": "DoKfzxYBQ9XNX4KFyhqfsDDyJidacW4v5rNdKs6yswFz",
+      "name": "GILET / SOL",
+      "created_at": "2026-10-17T15:54:17Z",
+      "reserve_usd": "2437.1197",
+      "market_cap_usd": null,
+      "fdv_usd": "2893.891914",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:47.196307+00:00"
+    },
+    {
+      "pool_address": "4HH5TU4ccQkVdh9VoMoyLXw4CqdbpvXKwijAc97HTN5y",
+      "name": "PAPER / SOL",
+      "created_at": "2026-10-17T15:54:19Z",
+      "reserve_usd": "2521.5136",
+      "market_cap_usd": null,
+      "fdv_usd": "3190.035401",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:47.196303+00:00"
+    },
+    {
+      "pool_address": "HPtpTjjU5QmmTppQQTCYEPdGtDdxP7LbmGkYBB3tbkTa",
+      "name": "SGP / SOL",
+      "created_at": "2026-10-17T15:54:20Z",
+      "reserve_usd": "262.5621",
+      "market_cap_usd": null,
+      "fdv_usd": "526.1098066",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:47.196295+00:00"
+    },
+    {
+      "pool_address": "2rCuvewp93tGJkcbakbWHuJtboz5LevXndZ8pKm69ET5",
+      "name": "Gilet Jaune / SOL",
+      "created_at": "2026-10-17T15:54:20Z",
+      "reserve_usd": "2292.3324",
+      "market_cap_usd": null,
+      "fdv_usd": "2893.244706",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:47.196299+00:00"
+    },
+    {
+      "pool_address": "8ZQFq4JaBsVcCrNswiLShJ7JfpfXc5FkFGivLQL5JVV5",
+      "name": "RATE / SOL",
+      "created_at": "2026-10-17T15:54:22Z",
+      "reserve_usd": "2369.1497",
+      "market_cap_usd": null,
+      "fdv_usd": "2986.565222",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:47.196291+00:00"
+    },
+    {
+      "pool_address": "3C8fuJKboTDJ49QeZdoF8Sf9n2KG53KtZny8htMeMd1V",
+      "name": "SAVPIR / SOL",
+      "created_at": "2026-10-17T15:54:24Z",
+      "reserve_usd": "966.6756",
+      "market_cap_usd": null,
+      "fdv_usd": "2430.217544",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:47.196287+00:00"
+    },
+    {
+      "pool_address": "5z3UUByBCjtq74QfpV61WBcmUpRoYRk8svgrvLFaUEaR",
+      "name": "AGENTFLINT / SOL",
+      "created_at": "2026-10-17T15:54:26Z",
+      "reserve_usd": "3966.1564",
+      "market_cap_usd": null,
+      "fdv_usd": "5603.816065",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:47.196278+00:00"
+    },
+    {
+      "pool_address": "AtvaoVG9TktoapbqJ6rYeNT7f2sHcmNNc8tmChMbK2ED",
+      "name": "MACARON / SOL",
+      "created_at": "2026-10-17T15:54:26Z",
+      "reserve_usd": "2369.8016",
+      "market_cap_usd": null,
+      "fdv_usd": "2985.824804",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:47.196282+00:00"
+    },
+    {
+      "pool_address": "G8Hgx3SQb6Z2FHk9MkXhEpxrnrmUWr51byVgVKNFd1pQ",
+      "name": "Peptoshi$ / SOL",
+      "created_at": "2026-10-17T15:54:28Z",
+      "reserve_usd": "2213.9206",
+      "market_cap_usd": null,
+      "fdv_usd": "6285.56664",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:47.196273+00:00"
+    },
+    {
+      "pool_address": "6NKtUDdXT9dsLNU1DEHxjfaW4pVkGt3A1vMyyLDJs8Vb",
+      "name": "Gilet / SOL",
+      "created_at": "2026-10-17T15:54:29Z",
+      "reserve_usd": "5157.4759",
+      "market_cap_usd": null,
+      "fdv_usd": "10103.78057",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:47.196268+00:00"
+    },
+    {
+      "pool_address": "2M6ZZCpeJMHCrpwvHtBKFu9rzkSQqXYXw4nYg3RaZjpt",
+      "name": "layback / SOL",
+      "created_at": "2026-10-17T15:54:31Z",
+      "reserve_usd": "1688.4322",
+      "market_cap_usd": null,
+      "fdv_usd": "4454.372152",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:47.196261+00:00"
+    },
+    {
+      "pool_address": "m3hr2cnBb8CYQmnyCn1twyKYUo1fVMeQP6RHsnWzCCM",
+      "name": "Gilet / SOL",
+      "created_at": "2026-10-17T15:54:33Z",
+      "reserve_usd": "0.0",
+      "market_cap_usd": null,
+      "fdv_usd": "0.00469763999",
+      "source": "GeckoTerminal new_pools",
+      "collected_at": "2026-10-17T15:55:47.196238+00:00"
+    }
+  ]
+}
