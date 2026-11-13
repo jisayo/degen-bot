@@ -17,9 +17,9 @@ def check_rug_risk(token: dict) -> dict:
             return None
 
     liquidity = number(token.get("liquidity_usd"))
-    volume = number(token.get("volume_24h"))
-    buys = number(token.get("buys_24h"))
-    sells = number(token.get("sells_24h"))
+    volume = number(token.get("volume_1h"))
+    buys = number(token.get("buys_1h"))
+    sells = number(token.get("sells_1h"))
 
     if any(v is None for v in (liquidity, volume, buys, sells)):
         risks.append("Missing or invalid market data")

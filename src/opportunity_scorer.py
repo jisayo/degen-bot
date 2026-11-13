@@ -34,9 +34,9 @@ def score_opportunity(token: dict) -> dict:
     fields = (
         "liquidity_usd",
         "market_cap_usd",
-        "volume_24h",
-        "buys_24h",
-        "sells_24h",
+        "volume_1h",
+        "buys_1h",
+        "sells_1h",
     )
 
     values = {
@@ -60,9 +60,9 @@ def score_opportunity(token: dict) -> dict:
 
     liquidity = values["liquidity_usd"]
     market_cap = values["market_cap_usd"]
-    volume = values["volume_24h"]
-    buys = values["buys_24h"]
-    sells = values["sells_24h"]
+    volume = values["volume_1h"]
+    buys = values["buys_1h"]
+    sells = values["sells_1h"]
 
     # Trade counts must be whole numbers.
     if not buys.is_integer() or not sells.is_integer():

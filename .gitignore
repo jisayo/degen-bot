@@ -11,3 +11,4 @@ logs/
 *.bak2
 *.backup
 *.pre_exit_fix
+results/launch_data/

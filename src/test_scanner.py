@@ -229,9 +229,9 @@ class TestScanner(unittest.TestCase):
 
         market_data = mock_risk.call_args.args[0]
 
-        self.assertEqual(market_data["volume_24h"], 3000)
-        self.assertEqual(market_data["buys_24h"], 12)
-        self.assertEqual(market_data["sells_24h"], 8)
+        self.assertEqual(market_data["volume_1h"], 3000)
+        self.assertEqual(market_data["buys_1h"], 12)
+        self.assertEqual(market_data["sells_1h"], 8)
 
     @patch("scanner.requests.get")
     def test_invalid_profiles_response_returns_empty(self, mock_get):

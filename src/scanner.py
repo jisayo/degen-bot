@@ -181,9 +181,9 @@ def scan_tokens():
 
                     # The scorer currently uses these field names,
                     # but their values here represent the 1-hour window.
-                    "volume_24h": volume_1h,
-                    "buys_24h": buys_h1,
-                    "sells_24h": sells_h1,
+                    "volume_1h": volume_1h,
+                    "buys_1h": buys_h1,
+                    "sells_1h": sells_h1,
                 }
 
                 risk = check_rug_risk(market_data)

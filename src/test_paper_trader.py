@@ -192,5 +192,32 @@ class TestPaperTrader(unittest.TestCase):
 
 
 
+    def test_partial_exit_accounts_for_fees_and_balance(self):
+        position = pt.open_position("ACCOUNTING_TOKEN", 1.00)
+        starting_balance = pt.load_balance()
+
+        closed = pt.monitor_positions({"ACCOUNTING_TOKEN": 1.52})
+
+        self.assertEqual(len(closed), 1)
+        trade = closed[0]
+        quantity_sold = position["original_quantity"] * 0.5
+        proceeds = quantity_sold * 1.52 * (1 - pt.SLIPPAGE_RATE)
+        expected_fees = (
+            position["entry_fee"] * 0.5
+            + proceeds * pt.FEE_RATE
+        )
+        expected_pnl = (
+            proceeds - position["trade_size"] * 0.5 - expected_fees
+        )
+
+        self.assertAlmostEqual(trade["pnl"], round(expected_pnl, 4), places=4)
+        self.assertAlmostEqual(
+            pt.load_balance(),
+            round(starting_balance + expected_pnl, 4),
+            places=4,
+        )
+        self.assertEqual(len(pt.load_positions()), 1)
+
+
 if __name__ == "__main__":
     unittest.main()

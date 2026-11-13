@@ -1,3 +1,4 @@
+from pathlib import Path
 """Paper-only historical backtest with staged profit taking."""
 
 from backtest_engine import (
@@ -182,3 +183,36 @@ def run_staged_backtest(path):
         "net_pnl": round(balance - STARTING_BALANCE, 4),
         "trade_details": trades,
     }
+
+
+def main():
+    import json
+
+    candle_dir = Path("results/historical_data/candles")
+    output_dir = Path("results/backtest")
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    reports = []
+    for candle_path in sorted(candle_dir.glob("*.json")):
+        print(f"Testing staged strategy: {candle_path.stem}...")
+        try:
+            reports.append(run_staged_backtest(candle_path))
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            reports.append({"pool": candle_path.stem, "error": str(error)})
+
+    report_path = output_dir / "staged_backtest_7d.json"
+    report_path.write_text(json.dumps(reports, indent=2))
+    print(f"\\nSaved report: {report_path}")
+
+    for report in reports:
+        print(
+            f"{report.get('pool', 'unknown')}: "
+            f"trades={report.get('trades', 0)}, "
+            f"net P/L=${report.get('net_pnl', 0)}, "
+            f"final=${report.get('final_balance', 0)}, "
+            f"win rate={report.get('win_rate_pct', 0)}%"
+        )
+
+
+if __name__ == "__main__":
+    main()

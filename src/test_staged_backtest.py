@@ -67,5 +67,19 @@ class TestStagedBacktest(unittest.TestCase):
         self.assertAlmostEqual(exits[0][2], 1.0)
 
 
+    def test_gap_below_stop_exits_at_candle_open(self):
+        candles = [
+            self.entry,
+            [1, 0.80, 1.60, 0.75, 1.20, 100],
+        ]
+
+        exits = calculate_staged_exits(candles, 0, 1.00)
+
+        self.assertEqual(len(exits), 1)
+        self.assertEqual(exits[0][3], "GAP_STOP")
+        self.assertAlmostEqual(exits[0][1], 0.80)
+        self.assertAlmostEqual(exits[0][2], 1.0)
+
+
 if __name__ == "__main__":
     unittest.main()

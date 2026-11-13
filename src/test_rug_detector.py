@@ -7,9 +7,9 @@ from rug_detector import check_rug_risk
 TOKEN = {
     "address": "So11111111111111111111111111111111111111112",
     "liquidity_usd": 20000,
-    "volume_24h": 50000,
-    "buys_24h": 100,
-    "sells_24h": 80,
+    "volume_1h": 50000,
+    "buys_1h": 100,
+    "sells_1h": 80,
 }
 
 
@@ -88,7 +88,7 @@ class TestRugDetector(unittest.TestCase):
     })
     def test_missing_market_data_blocks(self, *_):
         token = {**TOKEN}
-        del token["volume_24h"]
+        del token["volume_1h"]
         result = check_rug_risk(token)
         self.assertFalse(result["trade_allowed"])
 

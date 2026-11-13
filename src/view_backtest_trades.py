@@ -38,4 +38,4 @@ for key in (
     "starting_balance", "final_balance", "net_pnl",
     "max_drawdown_pct",
 ):
-    print(f"{key}: {data.get(key)}")cd ~/degen-bot && code src/test_strategy_settings.py
+    print(f"{key}: {data.get(key)}")

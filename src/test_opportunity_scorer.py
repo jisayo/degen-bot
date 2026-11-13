@@ -8,9 +8,9 @@ class TestOpportunityScorer(unittest.TestCase):
         token = {
             "liquidity_usd": 25000,
             "market_cap_usd": 37500,
-            "volume_24h": 80000,
-            "buys_24h": 160,
-            "sells_24h": 80,
+            "volume_1h": 80000,
+            "buys_1h": 160,
+            "sells_1h": 80,
         }
         result = score_opportunity(token)
 
@@ -21,9 +21,9 @@ class TestOpportunityScorer(unittest.TestCase):
         token = {
             "liquidity_usd": 0,
             "market_cap_usd": 1,
-            "volume_24h": 10000,
-            "buys_24h": 50,
-            "sells_24h": 30,
+            "volume_1h": 10000,
+            "buys_1h": 50,
+            "sells_1h": 30,
         }
         result = score_opportunity(token)
         self.assertFalse(result["eligible_for_paper_trading"])
@@ -32,9 +32,9 @@ class TestOpportunityScorer(unittest.TestCase):
         token = {
             "liquidity_usd": 10000,
             "market_cap_usd": 15000,
-            "volume_24h": 0,
-            "buys_24h": 50,
-            "sells_24h": 30,
+            "volume_1h": 0,
+            "buys_1h": 50,
+            "sells_1h": 30,
         }
         result = score_opportunity(token)
         self.assertFalse(result["eligible_for_paper_trading"])
@@ -43,9 +43,9 @@ class TestOpportunityScorer(unittest.TestCase):
         token = {
             "liquidity_usd": 10000,
             "market_cap_usd": 15000,
-            "volume_24h": 20000,
-            "buys_24h": 5,
-            "sells_24h": 5,
+            "volume_1h": 20000,
+            "buys_1h": 5,
+            "sells_1h": 5,
         }
         result = score_opportunity(token)
         self.assertFalse(result["eligible_for_paper_trading"])
@@ -54,9 +54,9 @@ class TestOpportunityScorer(unittest.TestCase):
         token = {
             "liquidity_usd": 100000,
             "market_cap_usd": 150000,
-            "volume_24h": 500000,
-            "buys_24h": 1000,
-            "sells_24h": 500,
+            "volume_1h": 500000,
+            "buys_1h": 1000,
+            "sells_1h": 500,
         }
         result = score_opportunity(token)
         self.assertLessEqual(result["opportunity_score"], 100)
@@ -64,9 +64,9 @@ class TestOpportunityScorer(unittest.TestCase):
     def test_invalid_strings_are_handled(self):
         token = {
             "liquidity_usd": "invalid",
-            "volume_24h": "unknown",
-            "buys_24h": "bad",
-            "sells_24h": None,
+            "volume_1h": "unknown",
+            "buys_1h": "bad",
+            "sells_1h": None,
         }
         result = score_opportunity(token)
         self.assertEqual(result["opportunity_score"], 0)
@@ -75,9 +75,9 @@ class TestOpportunityScorer(unittest.TestCase):
     def test_nan_values_are_handled(self):
         token = {
             "liquidity_usd": float("nan"),
-            "volume_24h": 10000,
-            "buys_24h": 50,
-            "sells_24h": 30,
+            "volume_1h": 10000,
+            "buys_1h": 50,
+            "sells_1h": 30,
         }
         result = score_opportunity(token)
         self.assertEqual(result["opportunity_score"], 0)
@@ -86,9 +86,9 @@ class TestOpportunityScorer(unittest.TestCase):
     def test_infinite_values_are_handled(self):
         token = {
             "liquidity_usd": float("inf"),
-            "volume_24h": 10000,
-            "buys_24h": 50,
-            "sells_24h": 30,
+            "volume_1h": 10000,
+            "buys_1h": 50,
+            "sells_1h": 30,
         }
         result = score_opportunity(token)
         self.assertEqual(result["opportunity_score"], 0)
@@ -98,9 +98,9 @@ class TestOpportunityScorer(unittest.TestCase):
         token = {
             "liquidity_usd": -10000,
             "market_cap_usd": 1,
-            "volume_24h": 10000,
-            "buys_24h": -50,
-            "sells_24h": 30,
+            "volume_1h": 10000,
+            "buys_1h": -50,
+            "sells_1h": 30,
         }
         result = score_opportunity(token)
         self.assertFalse(result["eligible_for_paper_trading"])
@@ -109,9 +109,9 @@ class TestOpportunityScorer(unittest.TestCase):
         token = {
             "liquidity_usd": 100,
             "market_cap_usd": 200,
-            "volume_24h": 500,
-            "buys_24h": 15,
-            "sells_24h": 10,
+            "volume_1h": 500,
+            "buys_1h": 15,
+            "sells_1h": 10,
         }
         result = score_opportunity(token)
 
@@ -126,9 +126,9 @@ class TestOpportunityScorer(unittest.TestCase):
         token = {
             "liquidity_usd": 9647.02,
             "market_cap_usd": 15805,
-            "volume_24h": 233162.93,
-            "buys_24h": 3203,
-            "sells_24h": 2442,
+            "volume_1h": 233162.93,
+            "buys_1h": 3203,
+            "sells_1h": 2442,
         }
         result = score_opportunity(token)
         self.assertFalse(result["eligible_for_paper_trading"])
@@ -140,9 +140,9 @@ class TestOpportunityScorer(unittest.TestCase):
         token = {
             "liquidity_usd": 100,
             "market_cap_usd": 0,
-            "volume_24h": 500,
-            "buys_24h": 15,
-            "sells_24h": 10,
+            "volume_1h": 500,
+            "buys_1h": 15,
+            "sells_1h": 10,
         }
         result = score_opportunity(token)
         self.assertFalse(result["eligible_for_paper_trading"])
@@ -152,9 +152,9 @@ class TestOpportunityScorer(unittest.TestCase):
         token = {
             "liquidity_usd": 25000,
             "market_cap_usd": 50000,
-            "volume_24h": 50000,
-            "buys_24h": 40,
-            "sells_24h": 20,
+            "volume_1h": 50000,
+            "buys_1h": 40,
+            "sells_1h": 20,
         }
         result = score_opportunity(token)
 
