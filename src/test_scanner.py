@@ -93,15 +93,15 @@ class TestScanner(unittest.TestCase):
     @patch("scanner.check_rug_risk")
     @patch("scanner.score_opportunity")
     @patch("scanner.requests.get")
-    def test_ratio_below_50_percent_is_rejected(
+    def test_ratio_below_15_percent_is_rejected(
         self, mock_get, mock_score, mock_risk
     ):
         mock_get.side_effect = [
-            Mock(json=Mock(return_value=[make_profile("RATIO_49")])),
+            Mock(json=Mock(return_value=[make_profile("RATIO_14")])),
             Mock(json=Mock(return_value=[
                 make_pair(
-                    address="RATIO_49",
-                    liquidity=4900,
+                    address="RATIO_14",
+                    liquidity=1400,
                     market_cap=10000,
                 )
             ])),
@@ -112,21 +112,21 @@ class TestScanner(unittest.TestCase):
         results = scan_tokens()
 
         self.assertEqual(len(results), 1)
-        self.assertAlmostEqual(results[0]["liquidity_mc_ratio"], 0.49)
+        self.assertAlmostEqual(results[0]["liquidity_mc_ratio"], 0.14)
         self.assertFalse(results[0]["paper_eligible"])
 
     @patch("scanner.check_rug_risk")
     @patch("scanner.score_opportunity")
     @patch("scanner.requests.get")
-    def test_ratio_exactly_50_percent_is_accepted(
+    def test_ratio_exactly_15_percent_is_accepted(
         self, mock_get, mock_score, mock_risk
     ):
         mock_get.side_effect = [
-            Mock(json=Mock(return_value=[make_profile("RATIO_50")])),
+            Mock(json=Mock(return_value=[make_profile("RATIO_15")])),
             Mock(json=Mock(return_value=[
                 make_pair(
-                    address="RATIO_50",
-                    liquidity=5000,
+                    address="RATIO_15",
+                    liquidity=1500,
                     market_cap=10000,
                 )
             ])),
@@ -137,7 +137,7 @@ class TestScanner(unittest.TestCase):
         results = scan_tokens()
 
         self.assertEqual(len(results), 1)
-        self.assertAlmostEqual(results[0]["liquidity_mc_ratio"], 0.50)
+        self.assertAlmostEqual(results[0]["liquidity_mc_ratio"], 0.15)
         self.assertTrue(results[0]["paper_eligible"])
 
     @patch("scanner.check_rug_risk")

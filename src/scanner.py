@@ -11,9 +11,9 @@ TIMEOUT = 15
 MAX_TOKENS = 10
 
 MIN_LIQUIDITY_USD = 1000.0
-MIN_LIQUIDITY_TO_MC_RATIO = 0.50
+MIN_LIQUIDITY_TO_MC_RATIO = 0.15
 MIN_TOKEN_AGE_MINUTES = 1
-MAX_TOKEN_AGE_MINUTES = 5
+MAX_TOKEN_AGE_MINUTES = 120
 
 
 def to_float(value):
@@ -201,8 +201,14 @@ def scan_tokens():
                     and liquidity_mc_ratio >= MIN_LIQUIDITY_TO_MC_RATIO
                 )
 
+                base_token = pair.get("baseToken", {}) if isinstance(pair.get("baseToken"), dict) else {}
+                token_symbol = base_token.get("symbol", "UNKNOWN")
+                token_name = base_token.get("name", "Unknown")
+
                 results.append({
                     "address": address,
+                    "symbol": token_symbol,
+                    "name": token_name,
                     "price_usd": price,
                     "liquidity_usd": liquidity,
                     "market_cap_usd": market_cap,

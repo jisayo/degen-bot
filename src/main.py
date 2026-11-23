@@ -8,6 +8,11 @@ from paper_trader import (
     open_position,
 )
 from solana_trailing_strategy import SolanaTrailingStopStrategy
+from telegram_notifier import (
+    notify_opportunity_found,
+    notify_position_opened,
+    notify_position_closed,
+)
 
 PAIR_URL = "https://api.dexscreener.com/token-pairs/v1/solana/{}"
 
@@ -98,6 +103,19 @@ def run_cycle():
     if positions:
         prices = fetch_position_prices(positions)
         closed = monitor_positions(prices)
+        for exit_item in closed:
+            paper_trade = exit_item.get("paper_trade") or {}
+            trade_data = {
+                "token": exit_item.get("token_mint", paper_trade.get("token", "")),
+                "symbol": exit_item.get("symbol", paper_trade.get("symbol", "")),
+                "reason": exit_item.get("reason", paper_trade.get("reason", "EXIT")),
+                "entry_price": paper_trade.get("entry_price", 0.0),
+                "exit_price": exit_item.get("current_price_usd", paper_trade.get("exit_price", 0.0)),
+                "pnl": paper_trade.get("pnl", 0.0),
+                "peak_gain_pct": exit_item.get("peak_gain_pct"),
+                "balance": paper_trade.get("balance"),
+            }
+            notify_position_closed(trade_data)
         print(f"Positions closed this cycle: {len(closed)}")
     else:
         print("No open paper positions.")
@@ -117,6 +135,8 @@ def run_cycle():
         if not isinstance(item, dict) or item.get("paper_eligible") is not True:
             continue
 
+        notify_opportunity_found(item)
+
         token = item.get("address")
         price = item.get("price_usd")
 
@@ -124,10 +144,19 @@ def run_cycle():
             continue
 
         try:
-            open_position(token, price)
+            pos = open_position(token, price)
             open_tokens.add(token)
             opened += 1
             slots -= 1
+            notify_position_opened(
+                token=token,
+                symbol=item.get("symbol", "MEME"),
+                entry_price=price,
+                trade_size_usd=pos.get("trade_size", 0.0) if isinstance(pos, dict) else 0.0,
+                market_cap=item.get("market_cap_usd", 0.0),
+                liquidity=item.get("liquidity_usd", 0.0),
+                pair_url=item.get("pair_url", ""),
+            )
         except (ValueError, TypeError) as error:
             print(f"Paper entry skipped for {token}: {error}")
 

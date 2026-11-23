@@ -2,7 +2,7 @@ import math
 
 MIN_OPPORTUNITY_SCORE = 50
 MIN_LIQUIDITY_USD = 1000.0
-MIN_LIQUIDITY_MC_RATIO = 0.50
+MIN_LIQUIDITY_MC_RATIO = 0.15
 MIN_TRADES = 20
 MAX_VOLUME_LIQUIDITY_RATIO = 10.0
 MIN_BUY_RATIO = 0.60  # Minimum 60:40 buy-to-sell ratio (60% buys)
@@ -147,7 +147,7 @@ def score_opportunity(token: dict) -> dict:
     if market_cap <= 0:
         reasons.append("Missing or invalid market cap")
     elif liquidity_mc_ratio < MIN_LIQUIDITY_MC_RATIO:
-        reasons.append("Liquidity below 50% of market cap")
+        reasons.append(f"Liquidity below {int(MIN_LIQUIDITY_MC_RATIO * 100)}% of market cap")
 
     # Paper-trading entry requirements
     eligible = (
