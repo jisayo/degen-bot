@@ -7,6 +7,7 @@ Type=simple
 User=ubuntu
 WorkingDirectory=/home/ubuntu/degen-bot
 Environment="PYTHONPATH=/home/ubuntu/degen-bot/src"
+Environment="PYTHONUNBUFFERED=1"
 ExecStart=/home/ubuntu/degen-bot/.venv/bin/python src/main.py
 Restart=always
 RestartSec=5

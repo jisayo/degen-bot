@@ -17,12 +17,13 @@ echo "Current user: ${USER_NAME}"
 
 # 1. Update OS packages and install core build tools
 echo "--> Updating system packages..."
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y python3 python3-pip python3-venv git curl nginx build-essential
+sudo DEBIAN_FRONTEND=noninteractive apt-get update
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3 python3-pip python3-venv git curl nginx build-essential
 
 # 2. Add 2GB Swapfile if physical RAM is <= 1.5GB (Prevents OOM on t3.micro)
 TOTAL_RAM_MB=$(free -m | awk '/^Mem:/{print $2}')
-if [ "${TOTAL_RAM_MB}" -le 1500 ] && [ ! -f /swapfile ]; then
+SWAP_TOTAL_MB=$(free -m | awk '/^Swap:/{print $2}')
+if [ "${TOTAL_RAM_MB}" -le 1500 ] && [ "${SWAP_TOTAL_MB}" -lt 1000 ] && [ ! -f /swapfile ]; then
     echo "--> Detected ${TOTAL_RAM_MB}MB RAM on t3.micro. Configuring 2GB virtual swap..."
     sudo fallocate -l 2G /swapfile || sudo dd if=/dev/zero of=/swapfile bs=1M count=2048
     sudo chmod 600 /swapfile
@@ -30,13 +31,15 @@ if [ "${TOTAL_RAM_MB}" -le 1500 ] && [ ! -f /swapfile ]; then
     sudo swapon /swapfile
     echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
     echo "--> 2GB swap active."
+else
+    echo "--> Swap already configured (${SWAP_TOTAL_MB}MB)."
 fi
 
 # 3. Install Node.js 20 LTS if not present
 if ! command -v node >/dev/null 2>&1; then
     echo "--> Installing Node.js 20 LTS..."
     curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-    sudo apt install -y nodejs
+    sudo DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs
 else
     echo "--> Node.js $(node -v) already installed."
 fi
