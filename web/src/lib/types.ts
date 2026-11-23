@@ -9,6 +9,9 @@ export interface BotStatus {
   openPositionsCount: number;
   maxOpenPositions: number;
   lastScanTime?: string;
+  testStartedAt?: string | null;
+  testEndsAt?: string | null;
+  daysRemaining?: number | null;
 }
 
 export interface Position {

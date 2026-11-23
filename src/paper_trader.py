@@ -78,8 +78,18 @@ def save_balance(balance):
         raise ValueError("Balance must be finite and non-negative.")
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
+    state = {}
+    if STATE_FILE.exists():
+        try:
+            with STATE_FILE.open() as file:
+                state = json.load(file)
+        except Exception:
+            state = {}
+    state["balance"] = round(balance, 4)
+    if "initial_balance" not in state:
+        state["initial_balance"] = round(balance, 4)
     temporary = STATE_FILE.with_suffix(".tmp")
-    temporary.write_text(json.dumps({"balance": round(balance, 4)}))
+    temporary.write_text(json.dumps(state, indent=2))
     temporary.replace(STATE_FILE)
 
 
