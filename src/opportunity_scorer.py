@@ -1,9 +1,11 @@
 import math
 
 MIN_OPPORTUNITY_SCORE = 50
+MIN_LIQUIDITY_USD = 1000.0
 MIN_LIQUIDITY_MC_RATIO = 0.50
 MIN_TRADES = 20
 MAX_VOLUME_LIQUIDITY_RATIO = 10.0
+MIN_BUY_RATIO = 0.60  # Minimum 60:40 buy-to-sell ratio (60% buys)
 
 
 def _to_number(value):
@@ -125,12 +127,13 @@ def score_opportunity(token: dict) -> dict:
         reasons.append("Moderate trading activity")
 
     # Buy/sell balance
+    buy_ratio = None
     if trades > 0:
         buy_ratio = buys / trades
 
-        if 0.55 <= buy_ratio <= 0.75:
+        if 0.60 <= buy_ratio <= 0.75:
             score += 15
-            reasons.append("Positive buying pressure")
+            reasons.append("Positive buying pressure (>= 60:40)")
         elif buy_ratio > 0.90:
             reasons.append(
                 "Extreme buy imbalance; investigate"
@@ -149,13 +152,25 @@ def score_opportunity(token: dict) -> dict:
     # Paper-trading entry requirements
     eligible = (
         score >= MIN_OPPORTUNITY_SCORE
-        and liquidity > 0
+        and liquidity >= MIN_LIQUIDITY_USD
         and liquidity_mc_ratio is not None
         and liquidity_mc_ratio >= MIN_LIQUIDITY_MC_RATIO
         and volume > 0
         and trades >= MIN_TRADES
         and not extreme_volume_ratio
+        and buy_ratio is not None
+        and buy_ratio >= MIN_BUY_RATIO
     )
+
+    if buy_ratio is not None and buy_ratio < MIN_BUY_RATIO:
+        reasons.append(
+            f"Buy/sell ratio ({buy_ratio*100:.1f}%) below minimum 60:40 requirement ({MIN_BUY_RATIO*100:.0f}%)"
+        )
+
+    if liquidity < MIN_LIQUIDITY_USD:
+        reasons.append(
+            f"Liquidity (${liquidity:,.2f}) below minimum of ${MIN_LIQUIDITY_USD:,.2f}"
+        )
 
     if score < MIN_OPPORTUNITY_SCORE:
         reasons.append(

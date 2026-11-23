@@ -104,7 +104,6 @@ Create a `.env` file in the repository root.
 
 ```env
 HELIUS_API_KEY=your_helius_api_key
-DEXPAPRIKA_API_KEY=your_dexpaprika_api_key
 COINGECKO_DEMO_API_KEY=your_coingecko_demo_api_key
 ```
 
@@ -113,7 +112,6 @@ Only the scripts that use a particular provider require that provider's key:
 | Provider | Purpose |
 |---|---|
 | Helius | Solana on-chain launch event listener |
-| DexPaprika | Historical pool and candle collection |
 | CoinGecko | Historical OHLCV collection |
 | DexScreener | Token profiles, pair information, and price data |
 | RugCheck | Token risk reports |
@@ -267,13 +265,10 @@ WebSocket connectivity depends on network stability and provider availability.
 
 ### Historical November pool collection
 
-Set `DEXPAPRIKA_API_KEY`, then run:
 
 ```bash
-python3 src/download_november_pools.py
 ```
 
-This collector is configured for its November 2026 historical window and divides collection into three-hour batches.
 
 ### CoinGecko authentication and sample collection
 

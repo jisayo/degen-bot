@@ -1,0 +1,134 @@
+pool,entry_time,reason,category
+Gp9ZKciaHn5f5Vr29q3NAxkpkWCUXJPeZMBUTEyiGBzp,1793492100,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+6SgPs53LKBU4ym7c5L65FwiahYQCxAyk3j1J8X7ZoBdk,1793493000,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+3CENmmHTWVDvsTjpmqUWNyyXRiTa6dNAYroqDeNFhpFE,1793496600,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+BzomHwB33RGwuyWdm8sQFi3ZDNaUWnpmHRaiQaLQNZiA,1793497500,Pre-trade filter: Bearish launch candle (close $0.000035 <= open $0.000041),pre_trade_filter
+4EDJmBBgRfe7k47McYcSoLmtgJfxTyZnXPrBi95GrF1X,1793498400,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+4NRGnzzzy92Goz49BX1qqdXBUyLnEPDy2S2Td9QsBgyN,1793502000,Pre-trade filter: Bearish launch candle (close $0.000647 <= open $0.000707),pre_trade_filter
+8E3ni97SRm9QeWYWxHD7g336JKMLEckWXnFjGX3vZiWb,1793503800,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+34u9MSymSNMyzbD7KkAk1xcHZEd9tnczaXwmRbTsSSmf,1793505600,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+CBfKYNjkjDzW1rBQj7qm3pHeMXQKtvaizxF9Bvw7qab7,1793506500,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+31annR4WCFb137BAbHwhd4ZY63dvWCk9Yq5Jfee58Zif,1793507400,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+8RU7cPTwGR5UimB5FniJkgmawGknzRBKcijsXuWrP7Co,1793525400,Pre-trade filter: RugCheck score 67 exceeds threshold (35.0),pre_trade_filter
+D4zN7p8RkQ8sdv8QAebhNK1tmAhatFz5Xe3h8iuxC6iU,1793528100,Pre-trade filter: RugCheck score 52 exceeds threshold (35.0),pre_trade_filter
+J24Gw7DqmAYxQq93m85uAtTntYenEkpShhcoxNPhpFrR,1793528100,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+CSfqENpjeBh1oJKSWryc8nLFxYXLxYrgaPTf8GKXdR5s,1793543400,Max open positions reached (3),wallet_constraint
+ELKfdNpt77MCkP25QNe2RWatdgKs6eQ1s6CCsy56GnhL,1793543400,Max open positions reached (3),wallet_constraint
+74dQTPP5wF2d2e6cGY7anVdGBnjv7ug71XhzTTGVAXJW,1793545200,Max open positions reached (3),wallet_constraint
+EXvdjB61eHr8pzpka3kXxyo3iW7LVVdvK2PPnzfzh2Q,1793546100,Max open positions reached (3),wallet_constraint
+Gd72NAkJ9Eau9CcDVehMDXTzKCLd7gzH5ouN3XvXdTuD,1793549700,Max open positions reached (3),wallet_constraint
+5EqdM7FBGypHBZAm8duPxioAeJ2BTG1SvDrrPKc3fyj3,1793551500,Pre-trade filter: Bearish launch candle (close $0.002285 <= open $0.002457),pre_trade_filter
+418SZdubR5aMHJaGr88yda1QGeJw7pMAw5evXAra7epo,1793555100,Pre-trade filter: RugCheck score 56 exceeds threshold (35.0),pre_trade_filter
+5PMZkU7VN4xRM7ikmAXvdGkM8tNwnkebdbzGRHzAyubP,1793556900,Pre-trade filter: RugCheck score 45 exceeds threshold (35.0),pre_trade_filter
+FkrquuXKw6TCTEkouFp95hjBpUzwrpG4RkiAVgThZz42,1793556900,"Pre-trade filter: Bar 0 volume $68.37 below minimum $1,000.00",pre_trade_filter
+2xaqj16kC9vT8JuCD4FKaqduvtDgrcAcEHn4Mz3E7Bwq,1793565000,"Pre-trade filter: Bar 0 volume $372.95 below minimum $1,000.00",pre_trade_filter
+4jNosyXHBnRLz7dUst6RMBED7F9T77UGXpXeWk3yKCy4,1793565000,Pre-trade filter: Bearish launch candle (close $0.000118 <= open $0.000143),pre_trade_filter
+6bGPsPZzCg5DwFxHxDHFUaVJ1EkT1xrNpajKHgLTMHNm,1793565000,Pre-trade filter: Bearish launch candle (close $0.000025 <= open $0.000038),pre_trade_filter
+B15nKKRQG4Mmgg1WBTWjXjEnJfQZp2NDtjx3r4DNouqL,1793565000,Pre-trade filter: Bearish launch candle (close $0.000026 <= open $0.000038),pre_trade_filter
+J1y8kug8C3RChxTos8RA85iMDSrRZHx4kZGP3f4xU5YS,1793565900,Max open positions reached (3),wallet_constraint
+4yH1qg3kQzvddsnG9kftjP1HB1ouJMiCTfpvkDiN6eMY,1793569500,Pre-trade filter: Bearish launch candle (close $0.002870 <= open $0.002870),pre_trade_filter
+HcGPz2eXV8SFcMVQ9fJPBd71bRLJVzUtd2avvv86GwbK,1793572200,Max open positions reached (3),wallet_constraint
+G5KxPoKiLGtSfZTLiXyAk1o6HByEf4a2zC4ug7Kc5sU8,1793575800,Pre-trade filter: Bearish launch candle (close $0.000026 <= open $0.000038),pre_trade_filter
+E6RfkJwDBJRyPe4xWNDYu4QyYH1nYwzhxZunUfeifyLX,1793578500,Max open positions reached (3),wallet_constraint
+HLafyHXrz75f4LALxqUw12vMJHqRQCLAkXmcqJTiCnSe,1793579400,Max open positions reached (3),wallet_constraint
+68Ka3RZUo82FPA3MRRKUH2dF8hospwd98Gn1aGfTfnFo,1793582100,Max open positions reached (3),wallet_constraint
+2HSDj1k6zkwwZvdGiZikLRBAqsj6SZZX4e9ha15knvSh,1793583900,Max open positions reached (3),wallet_constraint
+7PpUyh3b5f61zc6JCFJaftwthkwNE1JGWhPdDANLH8Eo,1793586600,Max open positions reached (3),wallet_constraint
+2zzpysvEArktgics6j8eLrwfq4271LczacCAeukb6XRm,1793590200,Max open positions reached (3),wallet_constraint
+DhahvSeXkdWUNzhuJ7VeTZ6EDP4pvQMKAhWMK7YMPXtf,1793590200,Max open positions reached (3),wallet_constraint
+B9kecYVZxSVvy56uSSxfiyt6GD7A4w7WEPkB9tNYq7sZ,1793592000,Pre-trade filter: Bearish launch candle (close $0.000031 <= open $0.000039),pre_trade_filter
+CKHfZSsyoFfxn6tNxdk4BKvBE9NXH4nncC2kK8NzkRaz,1793592900,Max open positions reached (3),wallet_constraint
+3Zuod2ARDnnuZAyux8CtZWCNbw9LYAEk1XBhCqd7XeK1,1793597400,Max open positions reached (3),wallet_constraint
+CZ5bkCYu7cajLGFGigwQFD5ZpkwGcCQDgNdvSfTPYMK1,1793600100,Pre-trade filter: RugCheck score 64 exceeds threshold (35.0),pre_trade_filter
+2UhQgTAZSQJ5ktmD6EYGGVSjJudFaCL3FHN7UKwZRCNy,1793603700,Max open positions reached (3),wallet_constraint
+FCvbYgWDrwSL8NEY1MLp3xawPcuzQk6cjHEBsrgNJqBG,1793607300,Max open positions reached (3),wallet_constraint
+AQNHqiKaDUVVy5XvZnpHYaobkDC2LX776v3eMCXAtmQG,1793609100,Max open positions reached (3),wallet_constraint
+2dpea2e3cLD9RZWxMPpSvcWVwixu1yj5ES2PrV8XG3Kb,1793610900,Max open positions reached (3),wallet_constraint
+7fLb5yHNNVjtcCqCy78Skf1HP9rqwjDLUQ4bNL8QueGV,1793612700,Max open positions reached (3),wallet_constraint
+6EbQSBTaWcfha1L4L7dQEgWDoCpH2gW6MLgFru3vbbng,1793613600,Pre-trade filter: RugCheck score 45 exceeds threshold (35.0),pre_trade_filter
+8Fhdxhmh2WJq4tqaM6f1WyZgKMyT3EB8hznCqD5swphu,1793619000,Max open positions reached (3),wallet_constraint
+2FPU2G4geNB6H439texTqWdYuX2GTU4nUwdWiNRxViJf,1793619900,Max open positions reached (3),wallet_constraint
+HPeXruE5Msv7paz5WPViwScLeSYWgZr8vhDakuiEp5ku,1793619900,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+fMKswmDKwstG3jm6V5PKeXE5LkcW3ny84QrhDCKtc7A,1793619900,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+7V99XKTDarrUR5nXvGekTtuhm5wFzHhBehhJp1hcfkdE,1793620800,Max open positions reached (3),wallet_constraint
+ETTUbzdvpgVrudLKUeMzs8XNpPbF71Wd2KYAhiqzMHtD,1793620800,"Pre-trade filter: Bar 0 volume $335.64 below minimum $1,000.00",pre_trade_filter
+7UabmBk9ybzC5z864Qp94XNRyDZtM6wiTEbkBTmZG2hq,1793624400,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+7WWtGTJr5X3FvkVxsFxLHa3gPXkbNQ9ysqFjXVxBUGsL,1793624400,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+AeiAsEHfzmdiyEecygcUDFkBUHQAEaDwJuNYsCH8JeEA,1793627100,Pre-trade filter: Bearish launch candle (close $0.000036 <= open $0.000044),pre_trade_filter
+J6eGsWYyapkEgU4EcKz23bqqyJ1C9mgC4Ty7NXiRiz1j,1793633400,Max open positions reached (3),wallet_constraint
+GfxLazsYEmc6VSepjLiYZywhcntjBvpjSRfzvzZr1nJc,1793635200,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+7VnmERCiVEGaai2tgmv1YZmTb1vFtYwjVsc9dQ5XNbi8,1793637000,Pre-trade filter: RugCheck score 67 exceeds threshold (35.0),pre_trade_filter
+3TkcsEeNuvKtNW5vyu5Zby38SY3wYx3WCQrhrxenAvk6,1793637900,Max open positions reached (3),wallet_constraint
+BhBd7e12jzVobtqg1SFKCgz82Lyh8MBmgSZGGWky7wkY,1793637900,Pre-trade filter: Bearish launch candle (close $0.000038 <= open $0.000039),pre_trade_filter
+CKuwAXUbnxmeCNurN5VvyC7kLz42JnQtyh2nyFJ8Kv1X,1793640600,Max open positions reached (3),wallet_constraint
+FHs2rSarxtAYDQ7ZeFnxaSfZnKgjJV337rPkXgSEqtq4,1793643300,Max open positions reached (3),wallet_constraint
+yNHRvhs3iS9bns66BxadJ1RcDy4pSyusVx8akmPKsJK,1793645100,Pre-trade filter: Bearish launch candle (close $0.000024 <= open $0.000038),pre_trade_filter
+28VHD9TLfeVKz6mxchTTgGsFH3K8PpWTzjnxayLij7v1,1793646000,Max open positions reached (3),wallet_constraint
+7Jyz7YkQvvrHcjrmKhzs1Z6fUP16PKPcwonVDNkqrert,1793646000,Max open positions reached (3),wallet_constraint
+4WutFjFujupWJm5UUidXouMgUPauXG4sAEjVaYqjrMBW,1793648700,Pre-trade filter: Bearish launch candle (close $0.000126 <= open $0.000133),pre_trade_filter
+6nmQyaSAVyCNVGsvGxqH3ZGRBHLroLASQCSUebJ8y97j,1793650500,Max open positions reached (3),wallet_constraint
+ishEsmyWEtrSksuaFP9xC16zy1w3ujV3idWACsNyriC,1793651400,Pre-trade filter: Bearish launch candle (close $0.000145 <= open $0.000152),pre_trade_filter
+3Uq381E8SfUit1AG5zXMQC9VmjJJJDMzenPm26DkvLeK,1793653200,Pre-trade filter: RugCheck score 52 exceeds threshold (35.0),pre_trade_filter
+BrfTVo6QXzYVZyFfy59mdn6pVKRdk6x9bdYHey9HY6k,1793657700,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+93SWCkriktwRMTHP9ggLT7SqJ5Lo3MBJZHiRCYDVyJGK,1793664000,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+BjmqS73FiPFh1ChzNvvN36oBKN2UbMV6cvLCvWSYsafx,1793664000,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+ChWfQVLokiVaK6xVZcRuFjgqbWVFsrnTejbNVPcjoRs,1793666700,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+DH8qk6757izqBDn354JxdrVgFACKEC2iT7fHJynqyh6f,1793667600,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+3VyUqtiHUZudLBgNctUawYtvpsv2Qs7yCe3ePyzQEcRu,1793670300,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+Dmz6gRu3SuhkXA4TcmuBTD5mX3fj6M9xSCkk7XrUiYcf,1793670300,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+D5ogM8ySLvAkipgSAsUqXTvmdmY6c2PzEA1DgcudFsEF,1793673000,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+HmcVp73ePenjn2JDHQBws6sYN56aBCmPuGDGouqzNUok,1793673000,Max open positions reached (3),wallet_constraint
+EaSNuMuAptBfbfTpr1J7F19tSWHE9gMCFDnNBjYDgd5M,1793674800,Max open positions reached (3),wallet_constraint
+3S7j9GjAfo7kkqP1eBYHzXXDFcTqt8CLguvwnG9Doduh,1793675700,Max open positions reached (3),wallet_constraint
+8fUi9Vka6JMJrW7kgSTAYau7ZVG9aVHaCLKPsmV3G3cH,1793676600,Pre-trade filter: RugCheck score 37 exceeds threshold (35.0),pre_trade_filter
+4nHkyPps3LeyJYMc9j3sC13pPVnWHBbiWyKbztVeCL62,1793677500,Max open positions reached (3),wallet_constraint
+DxrA9BF8Y8XZeY9Wu9QCwf7W8ef6xnVNUHb6atDW9rZ7,1793677500,Pre-trade filter: RugCheck score 53 exceeds threshold (35.0),pre_trade_filter
+6C1wQsDRTBdmaWTp2sR9nb4QVjwodHQveFiDk3kcVaZb,1793679300,Max open positions reached (3),wallet_constraint
+C2fMvT28S4WUQdpUbHWG7Txfb62pjNrhSb3V9bVv1RVZ,1793680200,Max open positions reached (3),wallet_constraint
+FqVhbysCvxKvTP3C9YXdy63K7AQcVXis7HibJDn8F88r,1793681100,Max open positions reached (3),wallet_constraint
+EwzmNVgYh8yoB3sChwy9xXGTpSctR1A6y8SzwfcAEP3x,1793682900,Max open positions reached (3),wallet_constraint
+Ahm67oTNe7b5enVDgckP7wULgt5of3XZXxgy2HprRYF5,1793683800,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+6USsjkXpEneqTH9eG63VWFz3oP7MvUArSWA5tFDnqdAo,1793687400,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+47Md7XRXAZYPKG6EAasyWUywbe7bRs5VKiHk1RCxoFzP,1793689200,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+5RqVcDrWgk5EAHKLqVjLPRMUS4gHYYPx4KfFTWnCLdMd,1793690100,Max open positions reached (3),wallet_constraint
+H4uMXAizXqda7TCrQAh9CjPydKeaCdEqZwGZkSPKVRsK,1793694600,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+D5Kuz7bmfJV82DRD9Z2wRyXjj9vXqFaz5X2bffeZxnoV,1793696400,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+E6LgzbMXjGh9SFcZ79JMmAMGnryvVzguE4k1JafDZfAp,1793700900,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+8862uMTP8p9CNoeDK1p6u8e1CNGtAJhzQi2FnvNvzVrq,1793704500,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+F6KbJYYxzdT27XZD3mznj9PCqUG5kojHQFZzQFE13rPp,1793704500,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+Dq9JgfQkFe9fX2vPM5tPbtWdB9HnYGoqFkfUKdHgM9U4,1793708100,Pre-trade filter: Bearish launch candle (close $0.000036 <= open $0.000039),pre_trade_filter
+HKAZEGyomwYTv7ZEBMoVcz64GadQZsy4AxeiWLfK9hUU,1793709000,Pre-trade filter: RugCheck score 50 exceeds threshold (35.0),pre_trade_filter
+A9okb2BzFqJTcDA8PNXVTK49kbpPky2Nsdc623FXMMDD,1793709900,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+2nqsm38cZVvbg3NKmQFpkZ5GYvnovgmbhwkF9ZLLkqn8,1793711700,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+92Fe4AXwh2hbqMA7V1t9ijm4KeHQVfVy35ixAD6MVJ44,1793712600,Max open positions reached (3),wallet_constraint
+2Yx74Z677vrMWJn4QNm9AQThbxQi1DSXRYSiFk4RSMmA,1793713500,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+JAsNf69VCnQWcM5Msh9eJqhx4hJBBVep7UBH6isN6gBD,1793713500,Max open positions reached (3),wallet_constraint
+G8we6pD1uBveWBHvtyML4X399VW7Pvus4P6iLybYFv9K,1793715300,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+g2DMiPuBKEQRwrZ3N2zUpMWKBoPtyovvGfDERRprjPe,1793717100,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+2NmpZnr5rNeTuAccCLdnr17r72MjGUy5G5T9RokvhBkL,1793718000,Pre-trade filter: RugCheck score 64 exceeds threshold (35.0),pre_trade_filter
+5UvHktrLmnHG9ioQfVR2SdW98x9djHJCKCBsuE2tGtG1,1793718000,Pre-trade filter: RugCheck score 57 exceeds threshold (35.0),pre_trade_filter
+Gz15vwSPY9KFYNkrMPkoKp2h9yygVBovoXJsGwSJcvFk,1793718000,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+EtR5gPMdFNeAddDo3zkKEwJyJwB5BhLp7dq72PTKWgQQ,1793720700,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+G7rqBQRsLXJrLvA1dTw5jdYHxtzD8C498quhfHUmYqMr,1793720700,Pre-trade filter: Bearish launch candle (close $0.000037 <= open $0.000043),pre_trade_filter
+EPFW3pRFt9UvCSm5uzeeit9dkPUZ4qBBrL8XyXPqj52Y,1793723400,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+68Pp3xCcwHXg5QijgjcyUwsV764TtbEvLM23Ck85e85A,1793724300,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+9VjkGqSgKcPG3rYgMAt9GrC6EotvdMmUCD4oeArJVogd,1793724300,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+5orMHC7da3xGQBvLzLyCuY9w5Eta1mafA2dzQ3sTXGXn,1793725200,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+C8mh98vzCLHbQob4Gf8cV4ib1HtXzvngRYufnghmdCpF,1793727900,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+4KHfHnqxV4BRGvwoRtuFj2P8P6JesY65sWecVpxfHdpn,1793728800,Pre-trade filter: Bearish launch candle (close $0.000133 <= open $0.000152),pre_trade_filter
+HJALy31R5f75J9zDeAeRwnmkhb3cMAWsZYtVTXxro7A9,1793728800,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+3C17g4yfbeat6aUbcjBu8U9g7oPfRvMvUC4KPNfRxDCf,1793729700,Max open positions reached (3),wallet_constraint
+9XjYRAbn8vXeYhuRgGGcnsZkNL1c3G2gsgVGakXdHZEM,1793729700,Max open positions reached (3),wallet_constraint
+32yHEqPDEyqJ18rR33zSrEcbHi1FgBKc4dU9WcquXDfr,1793730600,Pre-trade filter: Bearish launch candle (close $0.000036 <= open $0.000048),pre_trade_filter
+EK5D8jj4qu1ZoeHKweAikUrjTB4jKq8UawWKjmtmTxJm,1793736900,Pre-trade filter: RugCheck score 68 exceeds threshold (35.0),pre_trade_filter
+GF1rpvLKMHHy59co8RGczFJ7Qk7DadW88gXUDFrR5mwD,1793740500,Pre-trade filter: RugCheck score 67 exceeds threshold (35.0),pre_trade_filter
+12Y1mRKWEWEwoYqhSwybEsJzM8gAGnig1XqGQLC5uW3V,1793741400,Pre-trade filter: Bearish launch candle (close $0.000019 <= open $0.000039),pre_trade_filter
+7RD5YALHcMLUFKJ8FRePGd6ei11F15uXZF1rc7mPKeCv,1793742300,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+12LQmZeUTxPNFqMHMV9mJ5cXLoCmTvoq6gfChCQFpdmK,1793743200,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+3uijTWAzhQKnqZ59Wwgay7sccFWAk5reEibKg2ZRAGZ9,1793743200,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+42FY9AtqZMmthAK25K7SP8VQ5D6SCoAfJZgZe2XrzH4k,1793743200,Pre-trade filter: RugCheck score 67 exceeds threshold (35.0),pre_trade_filter
+9rEF8wvkp54DYkxZ41D5rGJCbqGqc7W5KiPTsbF8t5gd,1793744100,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+DdYnRoKNkFY2E7b5KfEvcszFarofSUdseZ1k9xR6TBap,1793745900,Pre-trade filter: RugCheck score 81 exceeds threshold (35.0),pre_trade_filter
+Aao7sTxo6k1PRHu4BYszNhn61d7LPZHqMyVzCmZQ1PMM,1793746800,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+2MGpW7A6hbXHan5cLp14iCPG5YE7JAmjtGAA1BBGd7sB,1793747700,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter
+9PFpZbvSUNNJ2wowdByFq5wH2Yxi4DzTjiABQHU5vsjK,1793748600,Pre-trade filter: RugCheck lookup failed or unverified,pre_trade_filter

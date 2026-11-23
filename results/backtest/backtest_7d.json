@@ -21,7 +21,7 @@
         "exit_fee": 0.08823677865652638,
         "net_pnl": -1.3645589130038889,
         "balance": 48.63544108699611,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791597600,
@@ -33,7 +33,7 @@
         "exit_fee": 0.09491573807085343,
         "net_pnl": -0.42770103055872477,
         "balance": 48.20774005643739,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791615600,
@@ -45,7 +45,7 @@
         "exit_fee": 0.08113362651498413,
         "net_pnl": -1.7057344664169238,
         "balance": 46.50200559002047,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "STOP_LOSS"
       },
       {
         "entry_time": 1791618300,
@@ -57,7 +57,7 @@
         "exit_fee": 0.07970207876456836,
         "net_pnl": -1.5028993314918675,
         "balance": 44.9991062585286,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791621000,
@@ -69,7 +69,7 @@
         "exit_fee": 0.08188669724398479,
         "net_pnl": -0.983036437068284,
         "balance": 44.01606982146031,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791623700,
@@ -81,7 +81,7 @@
         "exit_fee": 0.0740790455095177,
         "net_pnl": -1.5574205984927303,
         "balance": 42.45864922296758,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "STOP_LOSS"
       },
       {
         "entry_time": 1791625500,
@@ -93,7 +93,7 @@
         "exit_fee": 0.08341983261702339,
         "net_pnl": -0.31808371395413604,
         "balance": 42.14056550901344,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791630000,
@@ -117,7 +117,7 @@
         "exit_fee": 0.08919689027816295,
         "net_pnl": -0.46529773652907397,
         "balance": 45.55346401627887,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791637200,
@@ -129,7 +129,7 @@
         "exit_fee": 0.09730044631352015,
         "net_pnl": 0.4309444537501626,
         "balance": 45.98440847002904,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791648000,
@@ -141,7 +141,7 @@
         "exit_fee": 0.08711333699880931,
         "net_pnl": -0.6646301480637444,
         "balance": 45.319778321965295,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791659700,
@@ -153,7 +153,7 @@
         "exit_fee": 0.08595444151806451,
         "net_pnl": -0.6451055107486042,
         "balance": 44.67467281121669,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791663300,
@@ -165,7 +165,7 @@
         "exit_fee": 0.09252325369446027,
         "net_pnl": 0.13551820788579466,
         "balance": 44.81019101910248,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791671400,
@@ -177,7 +177,7 @@
         "exit_fee": 0.11098579578978235,
         "net_pnl": 1.9359351973297514,
         "balance": 46.74612621643223,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791684900,
@@ -189,7 +189,7 @@
         "exit_fee": 0.08088868667310108,
         "net_pnl": -1.434737515082304,
         "balance": 45.31138870134993,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791699300,
@@ -201,7 +201,7 @@
         "exit_fee": 0.11107758224925542,
         "net_pnl": 1.843780125003601,
         "balance": 47.15516882635353,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791718200,
@@ -213,7 +213,7 @@
         "exit_fee": 0.11215696230190675,
         "net_pnl": 1.5781951649653545,
         "balance": 48.73336399131889,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791736200,
@@ -225,7 +225,7 @@
         "exit_fee": 0.10988836884966309,
         "net_pnl": 1.0348089898702295,
         "balance": 49.76817298118912,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791782100,
@@ -237,7 +237,7 @@
         "exit_fee": 0.08499530105399294,
         "net_pnl": -1.638636137854901,
         "balance": 48.129536843334215,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791788400,
@@ -249,7 +249,7 @@
         "exit_fee": 0.09212243992754324,
         "net_pnl": -0.602044889526732,
         "balance": 47.527491953807484,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791810900,
@@ -261,7 +261,7 @@
         "exit_fee": 0.08027476139561392,
         "net_pnl": -1.653351996503334,
         "balance": 45.87413995730415,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791819900,
@@ -273,7 +273,7 @@
         "exit_fee": 0.08679264900150015,
         "net_pnl": -0.6741040202269241,
         "balance": 45.200035937077224,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791827100,
@@ -285,7 +285,7 @@
         "exit_fee": 0.08713217952544232,
         "net_pnl": -0.5043214862708105,
         "balance": 44.69571445080641,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791836100,
@@ -297,7 +297,7 @@
         "exit_fee": 0.08114416422745314,
         "net_pnl": -0.9952620605450352,
         "balance": 43.700452390261376,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791842400,
@@ -309,7 +309,7 @@
         "exit_fee": 0.0796895091803535,
         "net_pnl": -0.9382299739778013,
         "balance": 42.76222241628358,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791846000,
@@ -321,7 +321,7 @@
         "exit_fee": 0.09735722323573001,
         "net_pnl": 1.0003961722479873,
         "balance": 43.762618588531566,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791863100,
@@ -333,7 +333,7 @@
         "exit_fee": 0.10769420646181105,
         "net_pnl": 1.821677484835917,
         "balance": 45.58429607336748,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791900000,
@@ -345,7 +345,7 @@
         "exit_fee": 0.07817635073742724,
         "net_pnl": -1.4685690838149346,
         "balance": 44.11572698955255,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791912600,
@@ -357,7 +357,7 @@
         "exit_fee": 0.07424676852341694,
         "net_pnl": -1.5609467680713383,
         "balance": 42.55478022148121,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "STOP_LOSS"
       },
       {
         "entry_time": 1791928800,
@@ -369,7 +369,7 @@
         "exit_fee": 0.07293593206032029,
         "net_pnl": -1.3754083307674958,
         "balance": 41.17937189071371,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791935100,
@@ -381,7 +381,7 @@
         "exit_fee": 0.08744255919996588,
         "net_pnl": 0.33858023887245203,
         "balance": 41.51795212958616,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791966600,
@@ -393,7 +393,7 @@
         "exit_fee": 0.08552270218599968,
         "net_pnl": 0.08012118623756263,
         "balance": 41.598073315823726,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791981900,
@@ -405,7 +405,7 @@
         "exit_fee": 0.07362937948770051,
         "net_pnl": -1.1135022405140433,
         "balance": 40.48457107530968,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1791992700,
@@ -429,7 +429,7 @@
         "exit_fee": 0.07440604623275644,
         "net_pnl": -1.5642953855339403,
         "balance": 42.64607076583649,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "STOP_LOSS"
       },
       {
         "entry_time": 1792020600,
@@ -441,7 +441,7 @@
         "exit_fee": 0.08928281381050578,
         "net_pnl": 0.2244922725411002,
         "balance": 42.87056303837759,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1792033200,
@@ -453,7 +453,7 @@
         "exit_fee": 0.08381118719486122,
         "net_pnl": -0.3625462014610136,
         "balance": 42.508016836916575,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1792062000,
@@ -465,7 +465,7 @@
         "exit_fee": 0.07912898369920375,
         "net_pnl": -0.7528500148359784,
         "balance": 41.7551668220806,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1792095300,
@@ -477,7 +477,7 @@
         "exit_fee": 0.07169099974783437,
         "net_pnl": -1.3371347230246788,
         "balance": 40.41803209905592,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1792102500,
@@ -489,7 +489,7 @@
         "exit_fee": 0.09912999885610246,
         "net_pnl": 1.6494274027448468,
         "balance": 42.06745950180077,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1792124100,
@@ -501,7 +501,7 @@
         "exit_fee": 0.0768028898523242,
         "net_pnl": -0.8941407239836606,
         "balance": 41.17331877781711,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1792140300,
@@ -513,7 +513,7 @@
         "exit_fee": 0.0692946955030662,
         "net_pnl": -1.4568355383155034,
         "balance": 39.716483239501606,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "STOP_LOSS"
       },
       {
         "entry_time": 1792147500,
@@ -525,7 +525,7 @@
         "exit_fee": 0.0712787154323452,
         "net_pnl": -0.966136786577151,
         "balance": 38.750346452924454,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1792158300,
@@ -537,7 +537,7 @@
         "exit_fee": 0.07124761052831176,
         "net_pnl": -0.7740565411878765,
         "balance": 37.97628991173658,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1792162800,
@@ -549,7 +549,7 @@
         "exit_fee": 0.06530573379448738,
         "net_pnl": -1.2059429165165385,
         "balance": 36.77034699522004,
-        "exit_reason": "STOP_OR_TRAILING"
+        "exit_reason": "TRAILING_STOP"
       },
       {
         "entry_time": 1792173600,

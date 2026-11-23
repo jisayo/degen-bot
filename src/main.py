@@ -5,9 +5,9 @@ from scanner import scan_tokens
 from paper_trader import (
     initialise,
     load_positions,
-    monitor_positions,
     open_position,
 )
+from solana_trailing_strategy import SolanaTrailingStopStrategy
 
 PAIR_URL = "https://api.dexscreener.com/token-pairs/v1/solana/{}"
 
@@ -19,7 +19,24 @@ def to_float(value):
         return 0.0
 TIMEOUT = 15
 SCAN_INTERVAL = 60
-MAX_OPEN_POSITIONS = 1
+MAX_OPEN_POSITIONS = 3
+
+trailing_strategy = SolanaTrailingStopStrategy(max_positions=MAX_OPEN_POSITIONS)
+
+
+def monitor_positions(prices):
+    """
+    Monitors active positions using the Solana Trailing Stop Strategy:
+    - Tracks post-activation peaks (ignoring historical ATH).
+    - Locks stop trigger at 15% below post-activation peak.
+    - Ignores pullbacks < 15%.
+    - Executes automated sell via Jito-protected private bundle on >= 15% drop.
+    """
+    positions = load_positions()
+    if not positions or not prices:
+        return []
+    exits = trailing_strategy.evaluate_and_update_positions(positions, prices)
+    return trailing_strategy.execute_exits(exits)
 
 
 def fetch_position_prices(positions):

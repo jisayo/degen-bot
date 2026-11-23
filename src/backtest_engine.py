@@ -79,7 +79,12 @@ def calculate_exit(candles, entry_index, entry_price):
 
         # Account for gaps at the candle open.
         if open_ <= active_stop:
-            return timestamp, open_, "GAP_STOP"
+            reason = (
+                "GAP_TRAILING_STOP"
+                if trailing_stop > stop_loss
+                else "GAP_STOP_LOSS"
+            )
+            return timestamp, open_, reason
 
         if open_ >= take_profit:
             return timestamp, take_profit, "TAKE_PROFIT"
@@ -89,7 +94,12 @@ def calculate_exit(candles, entry_index, entry_price):
 
         # If both are touched, assume the stop came first.
         if stop_hit:
-            return timestamp, active_stop, "STOP_OR_TRAILING"
+            reason = (
+                "TRAILING_STOP"
+                if trailing_stop > stop_loss
+                else "STOP_LOSS"
+            )
+            return timestamp, active_stop, reason
 
         if target_hit:
             return timestamp, take_profit, "TAKE_PROFIT"

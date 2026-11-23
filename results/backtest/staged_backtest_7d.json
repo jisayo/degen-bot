@@ -1,0 +1,391 @@
+[
+  {
+    "pool": "12jc1DzJpzbCDaKuM4brAKh9jcFry2TLG1FfGsL4ftCG",
+    "candles": 672,
+    "trades": 17,
+    "wins": 4,
+    "losses": 13,
+    "win_rate_pct": 23.53,
+    "starting_balance": 50.0,
+    "final_balance": 45.6557,
+    "net_pnl": -4.3443,
+    "trade_details": [
+      {
+        "entry_time": 1791590400,
+        "exit_time": 1791596700,
+        "entry_price": 0.001474735719027795,
+        "allocation": 10.0,
+        "entry_fee": 0.1,
+        "exit_fee": 0.08414999999999997,
+        "gross_proceeds": 8.414999999999997,
+        "net_pnl": -1.7691500000000027,
+        "balance": 48.23085,
+        "exit_reason": "STOP_LOSS",
+        "partial_exits": [
+          {
+            "timestamp": 1791596700,
+            "price": 0.0012409901075618893,
+            "original_quantity_fraction": 1.0,
+            "reason": "STOP_LOSS"
+          }
+        ]
+      },
+      {
+        "entry_time": 1791597600,
+        "exit_time": 1791617400,
+        "entry_price": 0.0012777920425068564,
+        "allocation": 9.64617,
+        "entry_fee": 0.0964617,
+        "exit_fee": 0.08117252054999999,
+        "gross_proceeds": 8.117252054999998,
+        "net_pnl": -1.7065521655500018,
+        "balance": 46.524297834449996,
+        "exit_reason": "STOP_LOSS",
+        "partial_exits": [
+          {
+            "timestamp": 1791617400,
+            "price": 0.0010752620037695194,
+            "original_quantity_fraction": 1.0,
+            "reason": "STOP_LOSS"
+          }
+        ]
+      },
+      {
+        "entry_time": 1791618300,
+        "exit_time": 1791620100,
+        "entry_price": 0.0011188749080730752,
+        "allocation": 9.30485956689,
+        "entry_fee": 0.0930485956689,
+        "exit_fee": 0.07830039325537935,
+        "gross_proceeds": 7.8300393255379355,
+        "net_pnl": -1.6461692302763442,
+        "balance": 44.878128604173654,
+        "exit_reason": "STOP_LOSS",
+        "partial_exits": [
+          {
+            "timestamp": 1791620100,
+            "price": 0.0009415332351434928,
+            "original_quantity_fraction": 1.0,
+            "reason": "STOP_LOSS"
+          }
+        ]
+      },
+      {
+        "entry_time": 1791621000,
+        "exit_time": 1791623700,
+        "entry_price": 0.0009460099252532185,
+        "allocation": 8.975625720834731,
+        "entry_fee": 0.08975625720834732,
+        "exit_fee": 0.07552989044082427,
+        "gross_proceeds": 7.552989044082427,
+        "net_pnl": -1.5879228244014763,
+        "balance": 43.29020577977218,
+        "exit_reason": "STOP_LOSS",
+        "partial_exits": [
+          {
+            "timestamp": 1791623700,
+            "price": 0.0007960673521005833,
+            "original_quantity_fraction": 1.0,
+            "reason": "STOP_LOSS"
+          }
+        ]
+      },
+      {
+        "entry_time": 1791624600,
+        "exit_time": 1791629100,
+        "entry_price": 0.0005114032753568612,
+        "allocation": 8.658041155954436,
+        "entry_fee": 0.08658041155954437,
+        "exit_fee": 0.07285741632735658,
+        "gross_proceeds": 7.285741632735658,
+        "net_pnl": -1.5317373511056784,
+        "balance": 41.758468428666504,
+        "exit_reason": "STOP_LOSS",
+        "partial_exits": [
+          {
+            "timestamp": 1791629100,
+            "price": 0.00043034585621279874,
+            "original_quantity_fraction": 1.0,
+            "reason": "STOP_LOSS"
+          }
+        ]
+      },
+      {
+        "entry_time": 1791630000,
+        "exit_time": 1791636300,
+        "entry_price": 0.0004536183196748581,
+        "allocation": 8.3516936857333,
+        "entry_fee": 0.08351693685733301,
+        "exit_fee": 0.14415384450234967,
+        "gross_proceeds": 14.415384450234967,
+        "net_pnl": 5.836019983141983,
+        "balance": 47.594488411808484,
+        "exit_reason": "TAKE_PROFIT_1+TAKE_PROFIT_2+STOP_OR_TRAILING",
+        "partial_exits": [
+          {
+            "timestamp": 1791632700,
+            "price": 0.0006736232047171644,
+            "original_quantity_fraction": 0.5,
+            "reason": "TAKE_PROFIT_1"
+          },
+          {
+            "timestamp": 1791633600,
+            "price": 0.0008981642729562191,
+            "original_quantity_fraction": 0.25,
+            "reason": "TAKE_PROFIT_2"
+          },
+          {
+            "timestamp": 1791636300,
+            "price": 0.0008864486591238508,
+            "original_quantity_fraction": 0.25,
+            "reason": "STOP_OR_TRAILING"
+          }
+        ]
+      },
+      {
+        "entry_time": 1791637200,
+        "exit_time": 1791647100,
+        "entry_price": 0.0007274315838484882,
+        "allocation": 9.518897682361697,
+        "entry_fee": 0.09518897682361697,
+        "exit_fee": 0.08010152399707368,
+        "gross_proceeds": 8.010152399707367,
+        "net_pnl": -1.6840357834750201,
+        "balance": 45.910452628333466,
+        "exit_reason": "STOP_LOSS",
+        "partial_exits": [
+          {
+            "timestamp": 1791647100,
+            "price": 0.0006121336778085027,
+            "original_quantity_fraction": 1.0,
+            "reason": "STOP_LOSS"
+          }
+        ]
+      },
+      {
+        "entry_time": 1791648000,
+        "exit_time": 1791664200,
+        "entry_price": 0.0006854652699007834,
+        "allocation": 9.182090525666693,
+        "entry_fee": 0.09182090525666693,
+        "exit_fee": 0.07726729177348522,
+        "gross_proceeds": 7.726729177348521,
+        "net_pnl": -1.6244495453483236,
+        "balance": 44.28600308298514,
+        "exit_reason": "STOP_LOSS",
+        "partial_exits": [
+          {
+            "timestamp": 1791664200,
+            "price": 0.0005768190246215092,
+            "original_quantity_fraction": 1.0,
+            "reason": "STOP_LOSS"
+          }
+        ]
+      },
+      {
+        "entry_time": 1791665100,
+        "exit_time": 1791735300,
+        "entry_price": 0.0006361994004312954,
+        "allocation": 8.857200616597028,
+        "entry_fee": 0.08857200616597029,
+        "exit_fee": 0.14973558541476087,
+        "gross_proceeds": 14.973558541476084,
+        "net_pnl": 5.878050333298325,
+        "balance": 50.164053416283465,
+        "exit_reason": "TAKE_PROFIT_1+TAKE_PROFIT_2+STOP_OR_TRAILING",
+        "partial_exits": [
+          {
+            "timestamp": 1791681300,
+            "price": 0.0009447561096404736,
+            "original_quantity_fraction": 0.5,
+            "reason": "TAKE_PROFIT_1"
+          },
+          {
+            "timestamp": 1791731700,
+            "price": 0.0012596748128539648,
+            "original_quantity_fraction": 0.25,
+            "reason": "TAKE_PROFIT_2"
+          },
+          {
+            "timestamp": 1791735300,
+            "price": 0.0011529257363438398,
+            "original_quantity_fraction": 0.25,
+            "reason": "STOP_OR_TRAILING"
+          }
+        ]
+      },
+      {
+        "entry_time": 1791736200,
+        "exit_time": 1791816300,
+        "entry_price": 0.0011819515986076555,
+        "allocation": 10.032810683256693,
+        "entry_fee": 0.10032810683256693,
+        "exit_fee": 0.08442610189960506,
+        "gross_proceeds": 8.442610189960506,
+        "net_pnl": -1.7749547020283594,
+        "balance": 48.389098714255105,
+        "exit_reason": "STOP_LOSS",
+        "partial_exits": [
+          {
+            "timestamp": 1791816300,
+            "price": 0.000994612270228342,
+            "original_quantity_fraction": 1.0,
+            "reason": "STOP_LOSS"
+          }
+        ]
+      },
+      {
+        "entry_time": 1791817200,
+        "exit_time": 1791819900,
+        "entry_price": 0.0010609843996320565,
+        "allocation": 9.677819742851021,
+        "entry_fee": 0.09677819742851021,
+        "exit_fee": 0.08143885313609134,
+        "gross_proceeds": 8.143885313609134,
+        "net_pnl": -1.7121514798064883,
+        "balance": 46.67694723444862,
+        "exit_reason": "STOP_LOSS",
+        "partial_exits": [
+          {
+            "timestamp": 1791819900,
+            "price": 0.0008928183722903755,
+            "original_quantity_fraction": 1.0,
+            "reason": "STOP_LOSS"
+          }
+        ]
+      },
+      {
+        "entry_time": 1791820800,
+        "exit_time": 1791845100,
+        "entry_price": 0.0009141145043114297,
+        "allocation": 9.335389446889724,
+        "entry_fee": 0.09335389446889725,
+        "exit_fee": 0.07855730219557704,
+        "gross_proceeds": 7.855730219557703,
+        "net_pnl": -1.6515704239964957,
+        "balance": 45.02537681045212,
+        "exit_reason": "STOP_LOSS",
+        "partial_exits": [
+          {
+            "timestamp": 1791845100,
+            "price": 0.000769227355378068,
+            "original_quantity_fraction": 1.0,
+            "reason": "STOP_LOSS"
+          }
+        ]
+      },
+      {
+        "entry_time": 1791846000,
+        "exit_time": 1792123200,
+        "entry_price": 0.0007523374873658603,
+        "allocation": 9.005075362090425,
+        "entry_fee": 0.09005075362090426,
+        "exit_fee": 0.14981897721798337,
+        "gross_proceeds": 14.981897721798335,
+        "net_pnl": 5.736952628869022,
+        "balance": 50.76232943932114,
+        "exit_reason": "TAKE_PROFIT_1+TAKE_PROFIT_2+STOP_OR_TRAILING",
+        "partial_exits": [
+          {
+            "timestamp": 1791891900,
+            "price": 0.0011172211687383025,
+            "original_quantity_fraction": 0.5,
+            "reason": "TAKE_PROFIT_1"
+          },
+          {
+            "timestamp": 1792122300,
+            "price": 0.0014896282249844033,
+            "original_quantity_fraction": 0.25,
+            "reason": "TAKE_PROFIT_2"
+          },
+          {
+            "timestamp": 1792123200,
+            "price": 0.0012826363599221624,
+            "original_quantity_fraction": 0.25,
+            "reason": "STOP_OR_TRAILING"
+          }
+        ]
+      },
+      {
+        "entry_time": 1792124100,
+        "exit_time": 1792143900,
+        "entry_price": 0.0013326677093820722,
+        "allocation": 10.15246588786423,
+        "entry_fee": 0.1015246588786423,
+        "exit_fee": 0.08543300044637749,
+        "gross_proceeds": 8.543300044637748,
+        "net_pnl": -1.7961235025515012,
+        "balance": 48.96620593676964,
+        "exit_reason": "STOP_LOSS",
+        "partial_exits": [
+          {
+            "timestamp": 1792143900,
+            "price": 0.0011214398774450137,
+            "original_quantity_fraction": 1.0,
+            "reason": "STOP_LOSS"
+          }
+        ]
+      },
+      {
+        "entry_time": 1792144800,
+        "exit_time": 1792157400,
+        "entry_price": 0.0011386344719031885,
+        "allocation": 9.793241187353928,
+        "entry_fee": 0.09793241187353928,
+        "exit_fee": 0.08241012459158331,
+        "gross_proceeds": 8.24101245915833,
+        "net_pnl": -1.73257126466072,
+        "balance": 47.23363467210892,
+        "exit_reason": "STOP_LOSS",
+        "partial_exits": [
+          {
+            "timestamp": 1792157400,
+            "price": 0.0009581609081065331,
+            "original_quantity_fraction": 1.0,
+            "reason": "STOP_LOSS"
+          }
+        ]
+      },
+      {
+        "entry_time": 1792158300,
+        "exit_time": 1792171800,
+        "entry_price": 0.0009557786080276185,
+        "allocation": 9.446726934421784,
+        "entry_fee": 0.09446726934421784,
+        "exit_fee": 0.07949420715315932,
+        "gross_proceeds": 7.949420715315932,
+        "net_pnl": -1.6712676956032297,
+        "balance": 45.56236697650569,
+        "exit_reason": "STOP_LOSS",
+        "partial_exits": [
+          {
+            "timestamp": 1792171800,
+            "price": 0.000804287698655241,
+            "original_quantity_fraction": 1.0,
+            "reason": "STOP_LOSS"
+          }
+        ]
+      },
+      {
+        "entry_time": 1792172700,
+        "exit_time": 1792194300,
+        "entry_price": 0.0007977438792986848,
+        "allocation": 9.112473395301139,
+        "entry_fee": 0.09112473395301139,
+        "exit_fee": 0.09390876227743951,
+        "gross_proceeds": 9.39087622774395,
+        "net_pnl": 0.09336933621236047,
+        "balance": 45.655736312718055,
+        "exit_reason": "END_OF_DATA",
+        "partial_exits": [
+          {
+            "timestamp": 1792194300,
+            "price": 0.0008221164229458566,
+            "original_quantity_fraction": 1.0,
+            "reason": "END_OF_DATA"
+          }
+        ]
+      }
+    ]
+  }
+]

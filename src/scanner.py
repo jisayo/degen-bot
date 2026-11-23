@@ -10,6 +10,7 @@ PAIR_URL = "https://api.dexscreener.com/token-pairs/v1/solana/{}"
 TIMEOUT = 15
 MAX_TOKENS = 10
 
+MIN_LIQUIDITY_USD = 1000.0
 MIN_LIQUIDITY_TO_MC_RATIO = 0.50
 MIN_TOKEN_AGE_MINUTES = 1
 MAX_TOKEN_AGE_MINUTES = 5
@@ -195,7 +196,7 @@ def scan_tokens():
                     and opportunity.get(
                         "eligible_for_paper_trading"
                     ) is True
-                    and liquidity > 0
+                    and liquidity >= MIN_LIQUIDITY_USD
                     and liquidity_mc_ratio is not None
                     and liquidity_mc_ratio >= MIN_LIQUIDITY_TO_MC_RATIO
                 )

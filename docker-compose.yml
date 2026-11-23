@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile.bot
+    restart: always
+    volumes:
+      - ./data:/app/data
+      - ./results:/app/results
+    environment:
+      - PYTHONPATH=/app/src
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/data
+      - ./results:/results
+    depends_on:
+      - bot

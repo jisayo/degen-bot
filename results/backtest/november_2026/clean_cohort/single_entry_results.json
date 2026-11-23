@@ -1,0 +1,1283 @@
+{
+  "aggregate": {
+    "mode": "single_50_dollar_wallet",
+    "strategy": "Solana Trailing Stop-Loss (15% Post-Activation Ratchet, Jito-Protected Exit)",
+    "trailing_stop_pct": 15.0,
+    "slippage_tolerance_pct": 15.0,
+    "exit_slippage_realized_pct": 1.0,
+    "mev_protection": "Jito-Protected Private Bundle",
+    "max_concurrent_positions": 3,
+    "trade_size_pct": 10.0,
+    "starting_balance": 50.0,
+    "final_balance": 76.2752,
+    "total_net_pnl": 26.2752,
+    "return_pct": 52.55,
+    "max_drawdown_pct": 17.1,
+    "pools_found": 162,
+    "trades_executed": 29,
+    "trades_skipped": 133,
+    "trades_skipped_by_filter": 89,
+    "trades_skipped_by_wallet_limit": 44,
+    "pre_trade_filters_enabled": true,
+    "filters_config": {
+      "min_liquidity_usd": 1000.0,
+      "max_rugcheck_score": 35.0,
+      "min_bar0_volume_usd": 1000.0,
+      "require_green_bar0": true,
+      "allow_rugcheck_error": false
+    },
+    "wins": 12,
+    "losses": 17,
+    "win_rate_pct": 41.38,
+    "mean_trade_pnl": 0.906,
+    "median_trade_pnl": -0.7674,
+    "exit_reasons": {
+      "STOP_LOSS": 16,
+      "TRAILING_TAKE_PROFIT": 5,
+      "END_OF_DATA": 7,
+      "TRAILING_STOP": 1
+    },
+    "skip_reasons": {
+      "Pre-trade filter": 89,
+      "Max open positions reached (3)": 44
+    }
+  },
+  "trades": [
+    {
+      "pool": "2UkAzRu6rYDYvL23JhKZssS4Gsvkivczotzqq9kyUc3h",
+      "entry_time": 1793495700,
+      "exit_time": 1793496600,
+      "entry_price": 9.261668808404496e-05,
+      "exit_price": 7.793694302272383e-05,
+      "allocation": 4.495,
+      "entry_fee": 0.044950000000000004,
+      "exit_fee": 0.037825424999999996,
+      "net_pnl": -0.7952,
+      "wallet_cash": 44.1548,
+      "exit_reason": "STOP_LOSS",
+      "post_activation_peak": 9.261668808404496e-05,
+      "peak_gain_pct": 0.0
+    },
+    {
+      "pool": "6qfkD7d8RaFVAn1FC76M5MtqAr3kHrHpxPwMQvL6Ndxt",
+      "entry_time": 1793504700,
+      "exit_time": 1793505600,
+      "entry_price": 6.487001478397273e-05,
+      "exit_price": 5.458811744071305e-05,
+      "allocation": 4.4155,
+      "entry_fee": 0.044155,
+      "exit_fee": 0.037156432499999996,
+      "net_pnl": -0.7812,
+      "wallet_cash": 43.3736,
+      "exit_reason": "STOP_LOSS",
+      "post_activation_peak": 6.487001478397273e-05,
+      "peak_gain_pct": 0.0
+    },
+    {
+      "pool": "8yDJL2EHeNuLTqZUs1WBHdqM2TW1JcdiwaZttokq7pq8",
+      "entry_time": 1793538000,
+      "exit_time": 1793538900,
+      "entry_price": 0.00019591994325069009,
+      "exit_price": 0.0001648666322454557,
+      "allocation": 4.3374,
+      "entry_fee": 0.043373999999999996,
+      "exit_fee": 0.036499221,
+      "net_pnl": -0.7674,
+      "wallet_cash": 42.6062,
+      "exit_reason": "STOP_LOSS",
+      "post_activation_peak": 0.00019591994325069009,
+      "peak_gain_pct": 0.0
+    },
+    {
+      "pool": "9P2imdRwkxwtgg5vq9Do7N3UsLyaTHAFiCLHzjYd6M8N",
+      "entry_time": 1793538900,
+      "exit_time": 1793539800,
+      "entry_price": 4.333093273756814e-05,
+      "exit_price": 3.6462979898663585e-05,
+      "allocation": 4.2606,
+      "entry_fee": 0.042606000000000005,
+      "exit_fee": 0.035852949,
+      "net_pnl": -0.7538,
+      "wallet_cash": 41.8525,
+      "exit_reason": "STOP_LOSS",
+      "post_activation_peak": 4.333093273756814e-05,
+      "peak_gain_pct": 0.0
+    },
+    {
+      "pool": "DLMqEHLDG2WTUJsiPnrhm9rVmkmTfmqckwKGZA53ds6V",
+      "entry_time": 1793494800,
+      "exit_time": 1793551500,
+      "entry_price": 0.19964520945789793,
+      "exit_price": 0.7008081661718872,
+      "allocation": 5.0,
+      "entry_fee": 0.05,
+      "exit_fee": 0.17551339400399607,
+      "net_pnl": 12.3258,
+      "wallet_cash": 51.2011,
+      "exit_reason": "TRAILING_TAKE_PROFIT",
+      "post_activation_peak": 0.8328082782791292,
+      "peak_gain_pct": 317.14
+    },
+    {
+      "pool": "BvHgRLsqU22k6KLwfoVzWqY2aLUHVKLgK2TftgF7ix4Q",
+      "entry_time": 1793559600,
+      "exit_time": 1793560500,
+      "entry_price": 1.1357177629506776e-05,
+      "exit_price": 9.557064975229951e-06,
+      "allocation": 5.1201,
+      "entry_fee": 0.051200999999999997,
+      "exit_fee": 0.043085641499999994,
+      "net_pnl": -0.9058,
+      "wallet_cash": 50.2953,
+      "exit_reason": "STOP_LOSS",
+      "post_activation_peak": 1.1357177629506776e-05,
+      "peak_gain_pct": 0.0
+    },
+    {
+      "pool": "38ezJSo4zA3j69zoJjjJ7jSpxy1yqGgMFJwir8bXCa8f",
+      "entry_time": 1793565900,
+      "exit_time": 1793566800,
+      "entry_price": 8.848820885526926e-05,
+      "exit_price": 7.446282775170907e-05,
+      "allocation": 5.0295,
+      "entry_fee": 0.050295,
+      "exit_fee": 0.0423232425,
+      "net_pnl": -0.8898,
+      "wallet_cash": 49.4055,
+      "exit_reason": "STOP_LOSS",
+      "post_activation_peak": 8.848820885526926e-05,
+      "peak_gain_pct": 0.0
+    },
+    {
+      "pool": "3UydvHKHxDm77yPPDsKsvd73Kt8uQ48N4PNjuWN42HDJ",
+      "entry_time": 1793566800,
+      "exit_time": 1793569500,
+      "entry_price": 0.07257592480225086,
+      "exit_price": 0.13794534958192003,
+      "allocation": 4.9406,
+      "entry_fee": 0.049406,
+      "exit_fee": 0.09390618114773194,
+      "net_pnl": 4.3067,
+      "wallet_cash": 53.7122,
+      "exit_reason": "TRAILING_TAKE_PROFIT",
+      "post_activation_peak": 0.1639279258252169,
+      "peak_gain_pct": 125.87
+    },
+    {
+      "pool": "FkCmPdj3ioqPJbCMF66WQFL6uuF6cRFGLv6DdL8NjFRS",
+      "entry_time": 1793540700,
+      "exit_time": 1793626200,
+      "entry_price": 0.13941730208846972,
+      "exit_price": 0.17406362512845655,
+      "allocation": 4.1852,
+      "entry_fee": 0.041852,
+      "exit_fee": 0.05225255925733948,
+      "net_pnl": 0.946,
+      "wallet_cash": 53.4603,
+      "exit_reason": "END_OF_DATA",
+      "post_activation_peak": 0.17598116805985217,
+      "peak_gain_pct": 26.23
+    },
+    {
+      "pool": "DG6d7DYCxX4ynjYeLLsTHcFV6dDfAh73smd5WAesBjLb",
+      "entry_time": 1793541600,
+      "exit_time": 1793627100,
+      "entry_price": 0.034675704501160955,
+      "exit_price": 0.04826404610219783,
+      "allocation": 3.7625,
+      "entry_fee": 0.037625000000000006,
+      "exit_fee": 0.0523690797553773,
+      "net_pnl": 1.3844,
+      "wallet_cash": 58.6449,
+      "exit_reason": "END_OF_DATA",
+      "post_activation_peak": 0.04899656161854096,
+      "peak_gain_pct": 41.3
+    },
+    {
+      "pool": "HpyMxw5BZvks2LPhUzLjXwemyrPU7uU3vFqQ3o5ABZdJ",
+      "entry_time": 1793628900,
+      "exit_time": 1793630700,
+      "entry_price": 0.00015642229696178424,
+      "exit_price": 0.00023238626356704783,
+      "allocation": 5.2722,
+      "entry_fee": 0.052722,
+      "exit_fee": 0.07832558929098943,
+      "net_pnl": 2.4293,
+      "wallet_cash": 55.151,
+      "exit_reason": "TRAILING_TAKE_PROFIT",
+      "post_activation_peak": 0.00027615717595608777,
+      "peak_gain_pct": 76.55
+    },
+    {
+      "pool": "J7Uxr75SmPVim5ACPRCZ5fF6NM82o4Wm1SfVWsHwrLPP",
+      "entry_time": 1793631600,
+      "exit_time": 1793632500,
+      "entry_price": 5.343144328840665e-05,
+      "exit_price": 4.49625595271942e-05,
+      "allocation": 5.5151,
+      "entry_fee": 0.055151000000000006,
+      "exit_fee": 0.0464095665,
+      "net_pnl": -0.9757,
+      "wallet_cash": 54.1753,
+      "exit_reason": "STOP_LOSS",
+      "post_activation_peak": 5.343144328840665e-05,
+      "peak_gain_pct": 0.0
+    },
+    {
+      "pool": "Hc4R8zmxKkPvDrsAcUH1YxaSVHmykUd85CkavcTB2GJo",
+      "entry_time": 1793632500,
+      "exit_time": 1793634300,
+      "entry_price": 0.00015989535324361658,
+      "exit_price": 0.0004477028446150402,
+      "allocation": 5.4175,
+      "entry_fee": 0.05417500000000001,
+      "exit_fee": 0.15168859579093552,
+      "net_pnl": 9.5455,
+      "wallet_cash": 63.7208,
+      "exit_reason": "TRAILING_TAKE_PROFIT",
+      "post_activation_peak": 0.0005320295242008796,
+      "peak_gain_pct": 232.74
+    },
+    {
+      "pool": "Fby8NV8FRJZnZriiHUdVANBadTLJfBNT9MVkkN61FoLY",
+      "entry_time": 1793637000,
+      "exit_time": 1793638800,
+      "entry_price": 4.260636363555817e-05,
+      "exit_price": 5.2637069961580614e-05,
+      "allocation": 6.3721,
+      "entry_fee": 0.063721,
+      "exit_fee": 0.07872267071913747,
+      "net_pnl": 1.3577,
+      "wallet_cash": 65.0785,
+      "exit_reason": "TRAILING_TAKE_PROFIT",
+      "post_activation_peak": 6.255147945523543e-05,
+      "peak_gain_pct": 46.81
+    },
+    {
+      "pool": "DfCRXVe7MejYf8r6DR91kLHvEAoYvE6LaCgfP8airKXV",
+      "entry_time": 1793572200,
+      "exit_time": 1793657700,
+      "entry_price": 0.01289393264336488,
+      "exit_price": 0.01635955325098449,
+      "allocation": 5.3712,
+      "entry_fee": 0.053712,
+      "exit_fee": 0.06814866716936462,
+      "net_pnl": 1.3218,
+      "wallet_cash": 65.2523,
+      "exit_reason": "END_OF_DATA",
+      "post_activation_peak": 0.016683457374524438,
+      "peak_gain_pct": 29.39
+    },
+    {
+      "pool": "EkHWcjpNiu8N368E9f4Hkzab3nVdAAg6BLWtVmZGL2t8",
+      "entry_time": 1793659500,
+      "exit_time": 1793660400,
+      "entry_price": 0.00022542365761296868,
+      "exit_price": 0.00018969400788131316,
+      "allocation": 6.5252,
+      "entry_fee": 0.065252,
+      "exit_fee": 0.054909558000000004,
+      "net_pnl": -1.1544,
+      "wallet_cash": 64.0979,
+      "exit_reason": "STOP_LOSS",
+      "post_activation_peak": 0.00022542365761296868,
+      "peak_gain_pct": 0.0
+    },
+    {
+      "pool": "DP2CQC5djxP72CJe8qywdq5NFMipyv2ZvchFU7vveBdJ",
+      "entry_time": 1793628900,
+      "exit_time": 1793714400,
+      "entry_price": 0.0005998419552965597,
+      "exit_price": 0.0009317127684345366,
+      "allocation": 5.8645,
+      "entry_fee": 0.058644999999999996,
+      "exit_fee": 0.09109115296516634,
+      "net_pnl": 3.0949,
+      "wallet_cash": 66.642,
+      "exit_reason": "END_OF_DATA",
+      "post_activation_peak": 0.000941124008519734,
+      "peak_gain_pct": 56.9
+    },
+    {
+      "pool": "Bv8FW9m6dT51sDASBEpPPmvHhJ4cffDG5RKayfoAnTzt",
+      "entry_time": 1793718000,
+      "exit_time": 1793718900,
+      "entry_price": 0.0002598822774352034,
+      "exit_price": 0.00021869093646172366,
+      "allocation": 6.6642,
+      "entry_fee": 0.066642,
+      "exit_fee": 0.05607924300000001,
+      "net_pnl": -1.179,
+      "wallet_cash": 65.463,
+      "exit_reason": "STOP_LOSS",
+      "post_activation_peak": 0.0002598822774352034,
+      "peak_gain_pct": 0.0
+    },
+    {
+      "pool": "5wbSsuPUkgy2tTBMr9knVCmWQt78ziZtGb8GkDcGso3H",
+      "entry_time": 1793719800,
+      "exit_time": 1793720700,
+      "entry_price": 8.6752383734733e-05,
+      "exit_price": 7.300213091277781e-05,
+      "allocation": 6.5463,
+      "entry_fee": 0.065463,
+      "exit_fee": 0.0550871145,
+      "net_pnl": -1.1581,
+      "wallet_cash": 64.3049,
+      "exit_reason": "STOP_LOSS",
+      "post_activation_peak": 8.6752383734733e-05,
+      "peak_gain_pct": 0.0
+    },
+    {
+      "pool": "HHfxdvtWPbmX2LEwmpS6JVjuf5sD5QL6sjy8rn7psSqZ",
+      "entry_time": 1793639700,
+      "exit_time": 1793725200,
+      "entry_price": 0.012788051631344366,
+      "exit_price": 0.015169648669631369,
+      "allocation": 6.5079,
+      "entry_fee": 0.065079,
+      "exit_fee": 0.07719906004689443,
+      "net_pnl": 1.0697,
+      "wallet_cash": 65.4528,
+      "exit_reason": "END_OF_DATA",
+      "post_activation_peak": 0.015330451737354636,
+      "peak_gain_pct": 19.88
+    },
+    {
+      "pool": "CqvMZmWDvEufa5rzkubidyR4zMDqDPoLjAtsW6wGsPMu",
+      "entry_time": 1793726100,
+      "exit_time": 1793727000,
+      "entry_price": 7.98849400730567e-05,
+      "exit_price": 6.722317707147721e-05,
+      "allocation": 6.5453,
+      "entry_fee": 0.065453,
+      "exit_fee": 0.0550786995,
+      "net_pnl": -1.158,
+      "wallet_cash": 64.2948,
+      "exit_reason": "STOP_LOSS",
+      "post_activation_peak": 7.98849400730567e-05,
+      "peak_gain_pct": 0.0
+    },
+    {
+      "pool": "BWkCv9J2EMTMpag3r5W18Zd7YxHqyb4qaTnPyqFKXpGk",
+      "entry_time": 1793727900,
+      "exit_time": 1793728800,
+      "entry_price": 2.2004957008327776e-05,
+      "exit_price": 1.8517171322507825e-05,
+      "allocation": 6.4295,
+      "entry_fee": 0.064295,
+      "exit_fee": 0.05410424250000001,
+      "net_pnl": -1.1375,
+      "wallet_cash": 63.1573,
+      "exit_reason": "STOP_LOSS",
+      "post_activation_peak": 2.2004957008327776e-05,
+      "peak_gain_pct": 0.0
+    },
+    {
+      "pool": "4kM4wu8NA28qqay9GnMuNknzXVfefqPYH3cZySE1JLwv",
+      "entry_time": 1793728800,
+      "exit_time": 1793730600,
+      "entry_price": 0.00033505362586226943,
+      "exit_price": 0.000325100595093862,
+      "allocation": 6.3157,
+      "entry_fee": 0.06315699999999999,
+      "exit_fee": 0.06128087177538347,
+      "net_pnl": -0.3121,
+      "wallet_cash": 62.8453,
+      "exit_reason": "TRAILING_STOP",
+      "post_activation_peak": 0.0003863346346926464,
+      "peak_gain_pct": 15.31
+    },
+    {
+      "pool": "FuEywnbx7JQSzxMxrMrQoxWkJETJAx5bp446qx3SoXM",
+      "entry_time": 1793731500,
+      "exit_time": 1793732400,
+      "entry_price": 0.0012349671243259844,
+      "exit_price": 0.0010392248351203158,
+      "allocation": 6.2845,
+      "entry_fee": 0.06284500000000001,
+      "exit_fee": 0.0528840675,
+      "net_pnl": -1.1118,
+      "wallet_cash": 61.7335,
+      "exit_reason": "STOP_LOSS",
+      "post_activation_peak": 0.0012349671243259844,
+      "peak_gain_pct": 0.0
+    },
+    {
+      "pool": "54m3ACZLA7hK76HsbgRhYySVecaabP7T4J75uXe2ESNe",
+      "entry_time": 1793733300,
+      "exit_time": 1793734200,
+      "entry_price": 0.00012416455131417596,
+      "exit_price": 0.00010448446993087907,
+      "allocation": 6.1733,
+      "entry_fee": 0.061733,
+      "exit_fee": 0.05194831949999999,
+      "net_pnl": -1.0921,
+      "wallet_cash": 60.6413,
+      "exit_reason": "STOP_LOSS",
+      "post_activation_peak": 0.00012416455131417596,
+      "peak_gain_pct": 0.0
+    },
+    {
+      "pool": "3xQjSWoqAnVxC64U6izKSGStGJEF71U2WYn5z7BboqAD",
+      "entry_time": 1793736900,
+      "exit_time": 1793737800,
+      "entry_price": 0.0005365139229939466,
+      "exit_price": 0.0004514764661994061,
+      "allocation": 6.0641,
+      "entry_fee": 0.060641,
+      "exit_fee": 0.0510294015,
+      "net_pnl": -1.0728,
+      "wallet_cash": 59.5685,
+      "exit_reason": "STOP_LOSS",
+      "post_activation_peak": 0.0005365139229939466,
+      "peak_gain_pct": 0.0
+    },
+    {
+      "pool": "8qiK6aTHXrPGTkQcqkqWnbN83LY6bwyxso261C8pX2f4",
+      "entry_time": 1793737800,
+      "exit_time": 1793738700,
+      "entry_price": 3.863648282241286e-05,
+      "exit_price": 3.251260029506042e-05,
+      "allocation": 5.9568,
+      "entry_fee": 0.059568,
+      "exit_fee": 0.050126472,
+      "net_pnl": -1.0538,
+      "wallet_cash": 58.5146,
+      "exit_reason": "STOP_LOSS",
+      "post_activation_peak": 3.863648282241286e-05,
+      "peak_gain_pct": 0.0
+    },
+    {
+      "pool": "2CdTUDz6BZSn99JSofW5q5m8PV8MFqTaYQMTU62tshkk",
+      "entry_time": 1793673000,
+      "exit_time": 1793758500,
+      "entry_price": 0.0013187410982235233,
+      "exit_price": 0.0013878686840207211,
+      "allocation": 6.4098,
+      "entry_fee": 0.064098,
+      "exit_fee": 0.06745797717853619,
+      "net_pnl": 0.2044,
+      "wallet_cash": 65.193,
+      "exit_reason": "END_OF_DATA",
+      "post_activation_peak": 0.0014178251926249275,
+      "peak_gain_pct": 7.51
+    },
+    {
+      "pool": "8GU4SLWheGiDqdLiYWXhzqzE8fgG4netxMNtzghWdEE4",
+      "entry_time": 1793724300,
+      "exit_time": 1793809800,
+      "entry_price": 0.2644345330305765,
+      "exit_price": 0.4603260646633792,
+      "allocation": 6.4305,
+      "entry_fee": 0.064305,
+      "exit_fee": 0.11194176210243999,
+      "net_pnl": 4.5874,
+      "wallet_cash": 76.2752,
+      "exit_reason": "END_OF_DATA",
+      "post_activation_peak": 0.4675974599183241,
+      "peak_gain_pct": 76.83
+    }
+  ],
+  "skipped_trades": [
+    {
+      "pool": "Gp9ZKciaHn5f5Vr29q3NAxkpkWCUXJPeZMBUTEyiGBzp",
+      "entry_time": 1793492100,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "6SgPs53LKBU4ym7c5L65FwiahYQCxAyk3j1J8X7ZoBdk",
+      "entry_time": 1793493000,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "3CENmmHTWVDvsTjpmqUWNyyXRiTa6dNAYroqDeNFhpFE",
+      "entry_time": 1793496600,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "BzomHwB33RGwuyWdm8sQFi3ZDNaUWnpmHRaiQaLQNZiA",
+      "entry_time": 1793497500,
+      "reason": "Pre-trade filter: Bearish launch candle (close $0.000035 <= open $0.000041)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "4EDJmBBgRfe7k47McYcSoLmtgJfxTyZnXPrBi95GrF1X",
+      "entry_time": 1793498400,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "4NRGnzzzy92Goz49BX1qqdXBUyLnEPDy2S2Td9QsBgyN",
+      "entry_time": 1793502000,
+      "reason": "Pre-trade filter: Bearish launch candle (close $0.000647 <= open $0.000707)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "8E3ni97SRm9QeWYWxHD7g336JKMLEckWXnFjGX3vZiWb",
+      "entry_time": 1793503800,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "34u9MSymSNMyzbD7KkAk1xcHZEd9tnczaXwmRbTsSSmf",
+      "entry_time": 1793505600,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "CBfKYNjkjDzW1rBQj7qm3pHeMXQKtvaizxF9Bvw7qab7",
+      "entry_time": 1793506500,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "31annR4WCFb137BAbHwhd4ZY63dvWCk9Yq5Jfee58Zif",
+      "entry_time": 1793507400,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "8RU7cPTwGR5UimB5FniJkgmawGknzRBKcijsXuWrP7Co",
+      "entry_time": 1793525400,
+      "reason": "Pre-trade filter: RugCheck score 67 exceeds threshold (35.0)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "D4zN7p8RkQ8sdv8QAebhNK1tmAhatFz5Xe3h8iuxC6iU",
+      "entry_time": 1793528100,
+      "reason": "Pre-trade filter: RugCheck score 52 exceeds threshold (35.0)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "J24Gw7DqmAYxQq93m85uAtTntYenEkpShhcoxNPhpFrR",
+      "entry_time": 1793528100,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "CSfqENpjeBh1oJKSWryc8nLFxYXLxYrgaPTf8GKXdR5s",
+      "entry_time": 1793543400,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "ELKfdNpt77MCkP25QNe2RWatdgKs6eQ1s6CCsy56GnhL",
+      "entry_time": 1793543400,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "74dQTPP5wF2d2e6cGY7anVdGBnjv7ug71XhzTTGVAXJW",
+      "entry_time": 1793545200,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "EXvdjB61eHr8pzpka3kXxyo3iW7LVVdvK2PPnzfzh2Q",
+      "entry_time": 1793546100,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "Gd72NAkJ9Eau9CcDVehMDXTzKCLd7gzH5ouN3XvXdTuD",
+      "entry_time": 1793549700,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "5EqdM7FBGypHBZAm8duPxioAeJ2BTG1SvDrrPKc3fyj3",
+      "entry_time": 1793551500,
+      "reason": "Pre-trade filter: Bearish launch candle (close $0.002285 <= open $0.002457)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "418SZdubR5aMHJaGr88yda1QGeJw7pMAw5evXAra7epo",
+      "entry_time": 1793555100,
+      "reason": "Pre-trade filter: RugCheck score 56 exceeds threshold (35.0)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "5PMZkU7VN4xRM7ikmAXvdGkM8tNwnkebdbzGRHzAyubP",
+      "entry_time": 1793556900,
+      "reason": "Pre-trade filter: RugCheck score 45 exceeds threshold (35.0)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "FkrquuXKw6TCTEkouFp95hjBpUzwrpG4RkiAVgThZz42",
+      "entry_time": 1793556900,
+      "reason": "Pre-trade filter: Bar 0 volume $68.37 below minimum $1,000.00",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "2xaqj16kC9vT8JuCD4FKaqduvtDgrcAcEHn4Mz3E7Bwq",
+      "entry_time": 1793565000,
+      "reason": "Pre-trade filter: Bar 0 volume $372.95 below minimum $1,000.00",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "4jNosyXHBnRLz7dUst6RMBED7F9T77UGXpXeWk3yKCy4",
+      "entry_time": 1793565000,
+      "reason": "Pre-trade filter: Bearish launch candle (close $0.000118 <= open $0.000143)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "6bGPsPZzCg5DwFxHxDHFUaVJ1EkT1xrNpajKHgLTMHNm",
+      "entry_time": 1793565000,
+      "reason": "Pre-trade filter: Bearish launch candle (close $0.000025 <= open $0.000038)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "B15nKKRQG4Mmgg1WBTWjXjEnJfQZp2NDtjx3r4DNouqL",
+      "entry_time": 1793565000,
+      "reason": "Pre-trade filter: Bearish launch candle (close $0.000026 <= open $0.000038)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "J1y8kug8C3RChxTos8RA85iMDSrRZHx4kZGP3f4xU5YS",
+      "entry_time": 1793565900,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "4yH1qg3kQzvddsnG9kftjP1HB1ouJMiCTfpvkDiN6eMY",
+      "entry_time": 1793569500,
+      "reason": "Pre-trade filter: Bearish launch candle (close $0.002870 <= open $0.002870)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "HcGPz2eXV8SFcMVQ9fJPBd71bRLJVzUtd2avvv86GwbK",
+      "entry_time": 1793572200,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "G5KxPoKiLGtSfZTLiXyAk1o6HByEf4a2zC4ug7Kc5sU8",
+      "entry_time": 1793575800,
+      "reason": "Pre-trade filter: Bearish launch candle (close $0.000026 <= open $0.000038)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "E6RfkJwDBJRyPe4xWNDYu4QyYH1nYwzhxZunUfeifyLX",
+      "entry_time": 1793578500,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "HLafyHXrz75f4LALxqUw12vMJHqRQCLAkXmcqJTiCnSe",
+      "entry_time": 1793579400,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "68Ka3RZUo82FPA3MRRKUH2dF8hospwd98Gn1aGfTfnFo",
+      "entry_time": 1793582100,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "2HSDj1k6zkwwZvdGiZikLRBAqsj6SZZX4e9ha15knvSh",
+      "entry_time": 1793583900,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "7PpUyh3b5f61zc6JCFJaftwthkwNE1JGWhPdDANLH8Eo",
+      "entry_time": 1793586600,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "2zzpysvEArktgics6j8eLrwfq4271LczacCAeukb6XRm",
+      "entry_time": 1793590200,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "DhahvSeXkdWUNzhuJ7VeTZ6EDP4pvQMKAhWMK7YMPXtf",
+      "entry_time": 1793590200,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "B9kecYVZxSVvy56uSSxfiyt6GD7A4w7WEPkB9tNYq7sZ",
+      "entry_time": 1793592000,
+      "reason": "Pre-trade filter: Bearish launch candle (close $0.000031 <= open $0.000039)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "CKHfZSsyoFfxn6tNxdk4BKvBE9NXH4nncC2kK8NzkRaz",
+      "entry_time": 1793592900,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "3Zuod2ARDnnuZAyux8CtZWCNbw9LYAEk1XBhCqd7XeK1",
+      "entry_time": 1793597400,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "CZ5bkCYu7cajLGFGigwQFD5ZpkwGcCQDgNdvSfTPYMK1",
+      "entry_time": 1793600100,
+      "reason": "Pre-trade filter: RugCheck score 64 exceeds threshold (35.0)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "2UhQgTAZSQJ5ktmD6EYGGVSjJudFaCL3FHN7UKwZRCNy",
+      "entry_time": 1793603700,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "FCvbYgWDrwSL8NEY1MLp3xawPcuzQk6cjHEBsrgNJqBG",
+      "entry_time": 1793607300,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "AQNHqiKaDUVVy5XvZnpHYaobkDC2LX776v3eMCXAtmQG",
+      "entry_time": 1793609100,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "2dpea2e3cLD9RZWxMPpSvcWVwixu1yj5ES2PrV8XG3Kb",
+      "entry_time": 1793610900,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "7fLb5yHNNVjtcCqCy78Skf1HP9rqwjDLUQ4bNL8QueGV",
+      "entry_time": 1793612700,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "6EbQSBTaWcfha1L4L7dQEgWDoCpH2gW6MLgFru3vbbng",
+      "entry_time": 1793613600,
+      "reason": "Pre-trade filter: RugCheck score 45 exceeds threshold (35.0)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "8Fhdxhmh2WJq4tqaM6f1WyZgKMyT3EB8hznCqD5swphu",
+      "entry_time": 1793619000,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "2FPU2G4geNB6H439texTqWdYuX2GTU4nUwdWiNRxViJf",
+      "entry_time": 1793619900,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "HPeXruE5Msv7paz5WPViwScLeSYWgZr8vhDakuiEp5ku",
+      "entry_time": 1793619900,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "fMKswmDKwstG3jm6V5PKeXE5LkcW3ny84QrhDCKtc7A",
+      "entry_time": 1793619900,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "7V99XKTDarrUR5nXvGekTtuhm5wFzHhBehhJp1hcfkdE",
+      "entry_time": 1793620800,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "ETTUbzdvpgVrudLKUeMzs8XNpPbF71Wd2KYAhiqzMHtD",
+      "entry_time": 1793620800,
+      "reason": "Pre-trade filter: Bar 0 volume $335.64 below minimum $1,000.00",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "7UabmBk9ybzC5z864Qp94XNRyDZtM6wiTEbkBTmZG2hq",
+      "entry_time": 1793624400,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "7WWtGTJr5X3FvkVxsFxLHa3gPXkbNQ9ysqFjXVxBUGsL",
+      "entry_time": 1793624400,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "AeiAsEHfzmdiyEecygcUDFkBUHQAEaDwJuNYsCH8JeEA",
+      "entry_time": 1793627100,
+      "reason": "Pre-trade filter: Bearish launch candle (close $0.000036 <= open $0.000044)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "J6eGsWYyapkEgU4EcKz23bqqyJ1C9mgC4Ty7NXiRiz1j",
+      "entry_time": 1793633400,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "GfxLazsYEmc6VSepjLiYZywhcntjBvpjSRfzvzZr1nJc",
+      "entry_time": 1793635200,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "7VnmERCiVEGaai2tgmv1YZmTb1vFtYwjVsc9dQ5XNbi8",
+      "entry_time": 1793637000,
+      "reason": "Pre-trade filter: RugCheck score 67 exceeds threshold (35.0)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "3TkcsEeNuvKtNW5vyu5Zby38SY3wYx3WCQrhrxenAvk6",
+      "entry_time": 1793637900,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "BhBd7e12jzVobtqg1SFKCgz82Lyh8MBmgSZGGWky7wkY",
+      "entry_time": 1793637900,
+      "reason": "Pre-trade filter: Bearish launch candle (close $0.000038 <= open $0.000039)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "CKuwAXUbnxmeCNurN5VvyC7kLz42JnQtyh2nyFJ8Kv1X",
+      "entry_time": 1793640600,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "FHs2rSarxtAYDQ7ZeFnxaSfZnKgjJV337rPkXgSEqtq4",
+      "entry_time": 1793643300,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "yNHRvhs3iS9bns66BxadJ1RcDy4pSyusVx8akmPKsJK",
+      "entry_time": 1793645100,
+      "reason": "Pre-trade filter: Bearish launch candle (close $0.000024 <= open $0.000038)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "28VHD9TLfeVKz6mxchTTgGsFH3K8PpWTzjnxayLij7v1",
+      "entry_time": 1793646000,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "7Jyz7YkQvvrHcjrmKhzs1Z6fUP16PKPcwonVDNkqrert",
+      "entry_time": 1793646000,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "4WutFjFujupWJm5UUidXouMgUPauXG4sAEjVaYqjrMBW",
+      "entry_time": 1793648700,
+      "reason": "Pre-trade filter: Bearish launch candle (close $0.000126 <= open $0.000133)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "6nmQyaSAVyCNVGsvGxqH3ZGRBHLroLASQCSUebJ8y97j",
+      "entry_time": 1793650500,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "ishEsmyWEtrSksuaFP9xC16zy1w3ujV3idWACsNyriC",
+      "entry_time": 1793651400,
+      "reason": "Pre-trade filter: Bearish launch candle (close $0.000145 <= open $0.000152)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "3Uq381E8SfUit1AG5zXMQC9VmjJJJDMzenPm26DkvLeK",
+      "entry_time": 1793653200,
+      "reason": "Pre-trade filter: RugCheck score 52 exceeds threshold (35.0)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "BrfTVo6QXzYVZyFfy59mdn6pVKRdk6x9bdYHey9HY6k",
+      "entry_time": 1793657700,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "93SWCkriktwRMTHP9ggLT7SqJ5Lo3MBJZHiRCYDVyJGK",
+      "entry_time": 1793664000,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "BjmqS73FiPFh1ChzNvvN36oBKN2UbMV6cvLCvWSYsafx",
+      "entry_time": 1793664000,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "ChWfQVLokiVaK6xVZcRuFjgqbWVFsrnTejbNVPcjoRs",
+      "entry_time": 1793666700,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "DH8qk6757izqBDn354JxdrVgFACKEC2iT7fHJynqyh6f",
+      "entry_time": 1793667600,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "3VyUqtiHUZudLBgNctUawYtvpsv2Qs7yCe3ePyzQEcRu",
+      "entry_time": 1793670300,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "Dmz6gRu3SuhkXA4TcmuBTD5mX3fj6M9xSCkk7XrUiYcf",
+      "entry_time": 1793670300,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "D5ogM8ySLvAkipgSAsUqXTvmdmY6c2PzEA1DgcudFsEF",
+      "entry_time": 1793673000,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "HmcVp73ePenjn2JDHQBws6sYN56aBCmPuGDGouqzNUok",
+      "entry_time": 1793673000,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "EaSNuMuAptBfbfTpr1J7F19tSWHE9gMCFDnNBjYDgd5M",
+      "entry_time": 1793674800,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "3S7j9GjAfo7kkqP1eBYHzXXDFcTqt8CLguvwnG9Doduh",
+      "entry_time": 1793675700,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "8fUi9Vka6JMJrW7kgSTAYau7ZVG9aVHaCLKPsmV3G3cH",
+      "entry_time": 1793676600,
+      "reason": "Pre-trade filter: RugCheck score 37 exceeds threshold (35.0)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "4nHkyPps3LeyJYMc9j3sC13pPVnWHBbiWyKbztVeCL62",
+      "entry_time": 1793677500,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "DxrA9BF8Y8XZeY9Wu9QCwf7W8ef6xnVNUHb6atDW9rZ7",
+      "entry_time": 1793677500,
+      "reason": "Pre-trade filter: RugCheck score 53 exceeds threshold (35.0)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "6C1wQsDRTBdmaWTp2sR9nb4QVjwodHQveFiDk3kcVaZb",
+      "entry_time": 1793679300,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "C2fMvT28S4WUQdpUbHWG7Txfb62pjNrhSb3V9bVv1RVZ",
+      "entry_time": 1793680200,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "FqVhbysCvxKvTP3C9YXdy63K7AQcVXis7HibJDn8F88r",
+      "entry_time": 1793681100,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "EwzmNVgYh8yoB3sChwy9xXGTpSctR1A6y8SzwfcAEP3x",
+      "entry_time": 1793682900,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "Ahm67oTNe7b5enVDgckP7wULgt5of3XZXxgy2HprRYF5",
+      "entry_time": 1793683800,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "6USsjkXpEneqTH9eG63VWFz3oP7MvUArSWA5tFDnqdAo",
+      "entry_time": 1793687400,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "47Md7XRXAZYPKG6EAasyWUywbe7bRs5VKiHk1RCxoFzP",
+      "entry_time": 1793689200,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "5RqVcDrWgk5EAHKLqVjLPRMUS4gHYYPx4KfFTWnCLdMd",
+      "entry_time": 1793690100,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "H4uMXAizXqda7TCrQAh9CjPydKeaCdEqZwGZkSPKVRsK",
+      "entry_time": 1793694600,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "D5Kuz7bmfJV82DRD9Z2wRyXjj9vXqFaz5X2bffeZxnoV",
+      "entry_time": 1793696400,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "E6LgzbMXjGh9SFcZ79JMmAMGnryvVzguE4k1JafDZfAp",
+      "entry_time": 1793700900,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "8862uMTP8p9CNoeDK1p6u8e1CNGtAJhzQi2FnvNvzVrq",
+      "entry_time": 1793704500,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "F6KbJYYxzdT27XZD3mznj9PCqUG5kojHQFZzQFE13rPp",
+      "entry_time": 1793704500,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "Dq9JgfQkFe9fX2vPM5tPbtWdB9HnYGoqFkfUKdHgM9U4",
+      "entry_time": 1793708100,
+      "reason": "Pre-trade filter: Bearish launch candle (close $0.000036 <= open $0.000039)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "HKAZEGyomwYTv7ZEBMoVcz64GadQZsy4AxeiWLfK9hUU",
+      "entry_time": 1793709000,
+      "reason": "Pre-trade filter: RugCheck score 50 exceeds threshold (35.0)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "A9okb2BzFqJTcDA8PNXVTK49kbpPky2Nsdc623FXMMDD",
+      "entry_time": 1793709900,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "2nqsm38cZVvbg3NKmQFpkZ5GYvnovgmbhwkF9ZLLkqn8",
+      "entry_time": 1793711700,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "92Fe4AXwh2hbqMA7V1t9ijm4KeHQVfVy35ixAD6MVJ44",
+      "entry_time": 1793712600,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "2Yx74Z677vrMWJn4QNm9AQThbxQi1DSXRYSiFk4RSMmA",
+      "entry_time": 1793713500,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "JAsNf69VCnQWcM5Msh9eJqhx4hJBBVep7UBH6isN6gBD",
+      "entry_time": 1793713500,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "G8we6pD1uBveWBHvtyML4X399VW7Pvus4P6iLybYFv9K",
+      "entry_time": 1793715300,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "g2DMiPuBKEQRwrZ3N2zUpMWKBoPtyovvGfDERRprjPe",
+      "entry_time": 1793717100,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "2NmpZnr5rNeTuAccCLdnr17r72MjGUy5G5T9RokvhBkL",
+      "entry_time": 1793718000,
+      "reason": "Pre-trade filter: RugCheck score 64 exceeds threshold (35.0)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "5UvHktrLmnHG9ioQfVR2SdW98x9djHJCKCBsuE2tGtG1",
+      "entry_time": 1793718000,
+      "reason": "Pre-trade filter: RugCheck score 57 exceeds threshold (35.0)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "Gz15vwSPY9KFYNkrMPkoKp2h9yygVBovoXJsGwSJcvFk",
+      "entry_time": 1793718000,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "EtR5gPMdFNeAddDo3zkKEwJyJwB5BhLp7dq72PTKWgQQ",
+      "entry_time": 1793720700,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "G7rqBQRsLXJrLvA1dTw5jdYHxtzD8C498quhfHUmYqMr",
+      "entry_time": 1793720700,
+      "reason": "Pre-trade filter: Bearish launch candle (close $0.000037 <= open $0.000043)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "EPFW3pRFt9UvCSm5uzeeit9dkPUZ4qBBrL8XyXPqj52Y",
+      "entry_time": 1793723400,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "68Pp3xCcwHXg5QijgjcyUwsV764TtbEvLM23Ck85e85A",
+      "entry_time": 1793724300,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "9VjkGqSgKcPG3rYgMAt9GrC6EotvdMmUCD4oeArJVogd",
+      "entry_time": 1793724300,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "5orMHC7da3xGQBvLzLyCuY9w5Eta1mafA2dzQ3sTXGXn",
+      "entry_time": 1793725200,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "C8mh98vzCLHbQob4Gf8cV4ib1HtXzvngRYufnghmdCpF",
+      "entry_time": 1793727900,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "4KHfHnqxV4BRGvwoRtuFj2P8P6JesY65sWecVpxfHdpn",
+      "entry_time": 1793728800,
+      "reason": "Pre-trade filter: Bearish launch candle (close $0.000133 <= open $0.000152)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "HJALy31R5f75J9zDeAeRwnmkhb3cMAWsZYtVTXxro7A9",
+      "entry_time": 1793728800,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "3C17g4yfbeat6aUbcjBu8U9g7oPfRvMvUC4KPNfRxDCf",
+      "entry_time": 1793729700,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "9XjYRAbn8vXeYhuRgGGcnsZkNL1c3G2gsgVGakXdHZEM",
+      "entry_time": 1793729700,
+      "reason": "Max open positions reached (3)",
+      "category": "wallet_constraint"
+    },
+    {
+      "pool": "32yHEqPDEyqJ18rR33zSrEcbHi1FgBKc4dU9WcquXDfr",
+      "entry_time": 1793730600,
+      "reason": "Pre-trade filter: Bearish launch candle (close $0.000036 <= open $0.000048)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "EK5D8jj4qu1ZoeHKweAikUrjTB4jKq8UawWKjmtmTxJm",
+      "entry_time": 1793736900,
+      "reason": "Pre-trade filter: RugCheck score 68 exceeds threshold (35.0)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "GF1rpvLKMHHy59co8RGczFJ7Qk7DadW88gXUDFrR5mwD",
+      "entry_time": 1793740500,
+      "reason": "Pre-trade filter: RugCheck score 67 exceeds threshold (35.0)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "12Y1mRKWEWEwoYqhSwybEsJzM8gAGnig1XqGQLC5uW3V",
+      "entry_time": 1793741400,
+      "reason": "Pre-trade filter: Bearish launch candle (close $0.000019 <= open $0.000039)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "7RD5YALHcMLUFKJ8FRePGd6ei11F15uXZF1rc7mPKeCv",
+      "entry_time": 1793742300,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "12LQmZeUTxPNFqMHMV9mJ5cXLoCmTvoq6gfChCQFpdmK",
+      "entry_time": 1793743200,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "3uijTWAzhQKnqZ59Wwgay7sccFWAk5reEibKg2ZRAGZ9",
+      "entry_time": 1793743200,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "42FY9AtqZMmthAK25K7SP8VQ5D6SCoAfJZgZe2XrzH4k",
+      "entry_time": 1793743200,
+      "reason": "Pre-trade filter: RugCheck score 67 exceeds threshold (35.0)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "9rEF8wvkp54DYkxZ41D5rGJCbqGqc7W5KiPTsbF8t5gd",
+      "entry_time": 1793744100,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "DdYnRoKNkFY2E7b5KfEvcszFarofSUdseZ1k9xR6TBap",
+      "entry_time": 1793745900,
+      "reason": "Pre-trade filter: RugCheck score 81 exceeds threshold (35.0)",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "Aao7sTxo6k1PRHu4BYszNhn61d7LPZHqMyVzCmZQ1PMM",
+      "entry_time": 1793746800,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "2MGpW7A6hbXHan5cLp14iCPG5YE7JAmjtGAA1BBGd7sB",
+      "entry_time": 1793747700,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    },
+    {
+      "pool": "9PFpZbvSUNNJ2wowdByFq5wH2Yxi4DzTjiABQHU5vsjK",
+      "entry_time": 1793748600,
+      "reason": "Pre-trade filter: RugCheck lookup failed or unverified",
+      "category": "pre_trade_filter"
+    }
+  ],
+  "errors": []
+}

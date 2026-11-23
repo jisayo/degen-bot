@@ -7,7 +7,9 @@ logs/
 .pytest_cache/
 
 # Backup files
-*.bak
+*.bak*
+*.orig
+.vscode/
 *.bak2
 *.backup
 *.pre_exit_fix

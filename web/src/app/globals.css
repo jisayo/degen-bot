@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+:root {
+  --background: #080711;
+  --foreground: #f3f0ff;
+  --card-bg: #100e23;
+  --card-border: #231f4b;
+  --purple-glow: rgba(168, 85, 247, 0.15);
+  --accent-purple: #a855f7;
+  --accent-purple-light: #c084fc;
+  --accent-green: #22c55e;
+  --accent-red: #f43f5e;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Custom terminal scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0916;
+}
+::-webkit-scrollbar-thumb {
+  background: #231f4b;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3b3378;
+}
+
+.terminal-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5), 0 0 15px -3px var(--purple-glow);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px -3px rgba(168, 85, 247, 0.35);
+}
+
+.glow-green {
+  box-shadow: 0 0 15px -3px rgba(34, 197, 94, 0.3);
+}
+
+.glow-red {
+  box-shadow: 0 0 15px -3px rgba(244, 63, 94, 0.3);
+}

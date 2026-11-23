@@ -72,7 +72,7 @@ class TestMainPaperEntries(unittest.TestCase):
     @patch("main.scan_tokens")
     @patch("main.fetch_position_prices")
     @patch("main.monitor_positions")
-    def test_never_exceeds_one_position(
+    def test_never_exceeds_max_open_positions(
         self, mock_monitor, mock_prices, mock_scan,
         mock_positions, mock_open
     ):
@@ -88,7 +88,24 @@ class TestMainPaperEntries(unittest.TestCase):
 
         main.run_cycle()
 
-        self.assertEqual(mock_open.call_count, 1)
+        self.assertEqual(mock_open.call_count, 3)
+
+    @patch.object(main.trailing_strategy, "execute_exits")
+    @patch.object(main.trailing_strategy, "evaluate_and_update_positions")
+    @patch("main.load_positions")
+    def test_monitor_positions_delegates_to_trailing_strategy(
+        self, mock_load, mock_eval, mock_exec
+    ):
+        positions = [{"token": "SOL_TOKEN", "actual_entry_price": 1.0, "quantity": 100}]
+        mock_load.return_value = positions
+        mock_eval.return_value = [{"token": "SOL_TOKEN", "reason": "Trailing stop"}]
+        mock_exec.return_value = [{"success": True}]
+
+        res = main.monitor_positions({"SOL_TOKEN": 0.84})
+
+        mock_eval.assert_called_once_with(positions, {"SOL_TOKEN": 0.84})
+        mock_exec.assert_called_once_with([{"token": "SOL_TOKEN", "reason": "Trailing stop"}])
+        self.assertEqual(len(res), 1)
 
 
 if __name__ == "__main__":

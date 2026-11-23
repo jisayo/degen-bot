@@ -1,0 +1,4236 @@
+{
+  "aggregate": {
+    "pools_found": 162,
+    "pools_tested": 162,
+    "pool_errors": 0,
+    "total_trades": 162,
+    "wins": 89,
+    "losses": 73,
+    "aggregate_win_rate_pct": 54.94,
+    "total_net_pnl": 186.4539,
+    "mean_pool_net_pnl": 1.1509,
+    "median_pool_net_pnl": 0.6029,
+    "profitable_pools": 89,
+    "losing_pools": 73,
+    "exit_reasons": {
+      "STOP_OR_TRAILING": 77,
+      "END_OF_DATA": 30,
+      "TAKE_PROFIT": 53,
+      "GAP_STOP": 2
+    }
+  },
+  "pool_results": [
+    {
+      "pool": "12LQmZeUTxPNFqMHMV9mJ5cXLoCmTvoq6gfChCQFpdmK",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 8.59,
+      "trade_details": [
+        {
+          "entry_time": 1793743200,
+          "exit_time": 1793744100,
+          "entry_price": 0.0019275168312280486,
+          "exit_price": 0.001622005413478403,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "12Y1mRKWEWEwoYqhSwybEsJzM8gAGnig1XqGQLC5uW3V",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 15.2,
+      "trade_details": [
+        {
+          "entry_time": 1793741400,
+          "exit_time": 1793742300,
+          "entry_price": 1.8815302215942845e-05,
+          "exit_price": 1.5833076814715903e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "28VHD9TLfeVKz6mxchTTgGsFH3K8PpWTzjnxayLij7v1",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 25.0,
+      "trade_details": [
+        {
+          "entry_time": 1793646000,
+          "exit_time": 1793646900,
+          "entry_price": 0.00014054304269752921,
+          "exit_price": 0.00011826697042997082,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "2CdTUDz6BZSn99JSofW5q5m8PV8MFqTaYQMTU62tshkk",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 50.319,
+      "net_pnl": 0.319,
+      "max_drawdown_pct": 0.65,
+      "trade_details": [
+        {
+          "entry_time": 1793673000,
+          "exit_time": 1793758500,
+          "entry_price": 0.0013187410982235233,
+          "exit_price": 0.0013878686840207211,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.10524193762447531,
+          "net_pnl": 0.31895182482305595,
+          "balance": 50.31895182482305,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "2FPU2G4geNB6H439texTqWdYuX2GTU4nUwdWiNRxViJf",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.73,
+      "trade_details": [
+        {
+          "entry_time": 1793619900,
+          "exit_time": 1793691000,
+          "entry_price": 0.07525608958050478,
+          "exit_price": 0.1117552930270496,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "2HSDj1k6zkwwZvdGiZikLRBAqsj6SZZX4e9ha15knvSh",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2309,
+      "net_pnl": -1.7691,
+      "max_drawdown_pct": 4.21,
+      "trade_details": [
+        {
+          "entry_time": 1793583900,
+          "exit_time": 1793584800,
+          "entry_price": 6.08456946339392e-05,
+          "exit_price": 5.120165203445984e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08415000000000002,
+          "net_pnl": -1.7691499999999991,
+          "balance": 48.230850000000004,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "2MGpW7A6hbXHan5cLp14iCPG5YE7JAmjtGAA1BBGd7sB",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.6,
+      "trade_details": [
+        {
+          "entry_time": 1793747700,
+          "exit_time": 1793820600,
+          "entry_price": 0.0013147722148008237,
+          "exit_price": 0.0019524367389792232,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.14850000000000002,
+          "net_pnl": 4.6015000000000015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "2NmpZnr5rNeTuAccCLdnr17r72MjGUy5G5T9RokvhBkL",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 51.8142,
+      "net_pnl": 1.8142,
+      "max_drawdown_pct": 19.29,
+      "trade_details": [
+        {
+          "entry_time": 1793718000,
+          "exit_time": 1793787300,
+          "entry_price": 0.00038958734602416364,
+          "exit_price": 0.00046885216584964057,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.12034584044743606,
+          "net_pnl": 1.8142382042961689,
+          "balance": 51.81423820429617,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "2UhQgTAZSQJ5ktmD6EYGGVSjJudFaCL3FHN7UKwZRCNy",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2451,
+      "net_pnl": -1.7549,
+      "max_drawdown_pct": 4.09,
+      "trade_details": [
+        {
+          "entry_time": 1793603700,
+          "exit_time": 1793605500,
+          "entry_price": 4.8845063600811274e-05,
+          "exit_price": 4.117322712054768e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08429352750369605,
+          "net_pnl": -1.7549407771340917,
+          "balance": 48.245059222865905,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "2UkAzRu6rYDYvL23JhKZssS4Gsvkivczotzqq9kyUc3h",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 3.57,
+      "trade_details": [
+        {
+          "entry_time": 1793495700,
+          "exit_time": 1793496600,
+          "entry_price": 9.261668808404496e-05,
+          "exit_price": 7.793694302272383e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "2Yx74Z677vrMWJn4QNm9AQThbxQi1DSXRYSiFk4RSMmA",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 3.25,
+      "trade_details": [
+        {
+          "entry_time": 1793713500,
+          "exit_time": 1793714400,
+          "entry_price": 0.000339175534217989,
+          "exit_price": 0.0005036756683137137,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "2dpea2e3cLD9RZWxMPpSvcWVwixu1yj5ES2PrV8XG3Kb",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2309,
+      "net_pnl": -1.7691,
+      "max_drawdown_pct": 22.27,
+      "trade_details": [
+        {
+          "entry_time": 1793610900,
+          "exit_time": 1793611800,
+          "entry_price": 8.048378813362207e-06,
+          "exit_price": 6.772710771444297e-06,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08415000000000002,
+          "net_pnl": -1.7691499999999991,
+          "balance": 48.230850000000004,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "2nqsm38cZVvbg3NKmQFpkZ5GYvnovgmbhwkF9ZLLkqn8",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 6.3,
+      "trade_details": [
+        {
+          "entry_time": 1793711700,
+          "exit_time": 1793712600,
+          "entry_price": 5.524069065528947e-05,
+          "exit_price": 4.648504118642608e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "2xaqj16kC9vT8JuCD4FKaqduvtDgrcAcEHn4Mz3E7Bwq",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 94.06,
+      "trade_details": [
+        {
+          "entry_time": 1793565000,
+          "exit_time": 1793565900,
+          "entry_price": 2.2646289544842298e-06,
+          "exit_price": 3.362973997409081e-06,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "2zzpysvEArktgics6j8eLrwfq4271LczacCAeukb6XRm",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 4.32,
+      "trade_details": [
+        {
+          "entry_time": 1793590200,
+          "exit_time": 1793591100,
+          "entry_price": 4.0721725902592144e-05,
+          "exit_price": 3.4267332347031286e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "31annR4WCFb137BAbHwhd4ZY63dvWCk9Yq5Jfee58Zif",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 3.65,
+      "trade_details": [
+        {
+          "entry_time": 1793507400,
+          "exit_time": 1793509200,
+          "entry_price": 0.00044345138239345797,
+          "exit_price": 0.00037316433828409485,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "32yHEqPDEyqJ18rR33zSrEcbHi1FgBKc4dU9WcquXDfr",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2309,
+      "net_pnl": -1.7691,
+      "max_drawdown_pct": 32.14,
+      "trade_details": [
+        {
+          "entry_time": 1793730600,
+          "exit_time": 1793731500,
+          "entry_price": 3.603328963356716e-05,
+          "exit_price": 3.0322013226646766e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08415000000000002,
+          "net_pnl": -1.7691499999999991,
+          "balance": 48.230850000000004,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "34u9MSymSNMyzbD7KkAk1xcHZEd9tnczaXwmRbTsSSmf",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 51.1535,
+      "net_pnl": 1.1535,
+      "max_drawdown_pct": 3.54,
+      "trade_details": [
+        {
+          "entry_time": 1793505600,
+          "exit_time": 1793510100,
+          "entry_price": 0.0008434496626432492,
+          "exit_price": 0.0009587620762686045,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.11367152288187335,
+          "net_pnl": 1.1534807653054608,
+          "balance": 51.15348076530546,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "38ezJSo4zA3j69zoJjjJ7jSpxy1yqGgMFJwir8bXCa8f",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 10.91,
+      "trade_details": [
+        {
+          "entry_time": 1793565900,
+          "exit_time": 1793566800,
+          "entry_price": 8.848820885526926e-05,
+          "exit_price": 7.446282775170907e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "3C17g4yfbeat6aUbcjBu8U9g7oPfRvMvUC4KPNfRxDCf",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 3.56,
+      "trade_details": [
+        {
+          "entry_time": 1793729700,
+          "exit_time": 1793731500,
+          "entry_price": 2.8420717960403764e-06,
+          "exit_price": 4.220476617119959e-06,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "3CENmmHTWVDvsTjpmqUWNyyXRiTa6dNAYroqDeNFhpFE",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 51.2206,
+      "net_pnl": 1.2206,
+      "max_drawdown_pct": 0.45,
+      "trade_details": [
+        {
+          "entry_time": 1793496600,
+          "exit_time": 1793582100,
+          "entry_price": 0.35698754339573036,
+          "exit_price": 0.40821348775444627,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.11434950471140966,
+          "net_pnl": 1.2206009664295554,
+          "balance": 51.22060096642956,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "3S7j9GjAfo7kkqP1eBYHzXXDFcTqt8CLguvwnG9Doduh",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 1.21,
+      "trade_details": [
+        {
+          "entry_time": 1793675700,
+          "exit_time": 1793682000,
+          "entry_price": 0.13624028014265172,
+          "exit_price": 0.2023168160118378,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.601499999999998,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "3TkcsEeNuvKtNW5vyu5Zby38SY3wYx3WCQrhrxenAvk6",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2309,
+      "net_pnl": -1.7691,
+      "max_drawdown_pct": 5.2,
+      "trade_details": [
+        {
+          "entry_time": 1793637900,
+          "exit_time": 1793638800,
+          "entry_price": 4.043167184194321e-05,
+          "exit_price": 3.4023251854995215e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08415000000000002,
+          "net_pnl": -1.7691499999999991,
+          "balance": 48.230850000000004,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "3Uq381E8SfUit1AG5zXMQC9VmjJJJDMzenPm26DkvLeK",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 50.5828,
+      "net_pnl": 0.5828,
+      "max_drawdown_pct": 1.39,
+      "trade_details": [
+        {
+          "entry_time": 1793653200,
+          "exit_time": 1793655900,
+          "entry_price": 0.07098695815077123,
+          "exit_price": 0.07659961402950832,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.10790660147293,
+          "net_pnl": 0.58275354582007,
+          "balance": 50.58275354582007,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "3UydvHKHxDm77yPPDsKsvd73Kt8uQ48N4PNjuWN42HDJ",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 3.05,
+      "trade_details": [
+        {
+          "entry_time": 1793566800,
+          "exit_time": 1793567700,
+          "entry_price": 0.07257592480225086,
+          "exit_price": 0.10777524833134253,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "3VyUqtiHUZudLBgNctUawYtvpsv2Qs7yCe3ePyzQEcRu",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 50.0828,
+      "net_pnl": 0.0828,
+      "max_drawdown_pct": 1.19,
+      "trade_details": [
+        {
+          "entry_time": 1793670300,
+          "exit_time": 1793755800,
+          "entry_price": 1156.2224946182616,
+          "exit_price": 1189.2492250187213,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.10285643382257181,
+          "net_pnl": 0.08278694843460907,
+          "balance": 50.08278694843461,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "3Zuod2ARDnnuZAyux8CtZWCNbw9LYAEk1XBhCqd7XeK1",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 4.28,
+      "trade_details": [
+        {
+          "entry_time": 1793597400,
+          "exit_time": 1793598300,
+          "entry_price": 9.265413304976451e-05,
+          "exit_price": 7.796845296137683e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "3uijTWAzhQKnqZ59Wwgay7sccFWAk5reEibKg2ZRAGZ9",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 9.6,
+      "trade_details": [
+        {
+          "entry_time": 1793743200,
+          "exit_time": 1793744100,
+          "entry_price": 0.0019279641873188146,
+          "exit_price": 0.0016223818636287824,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "3xQjSWoqAnVxC64U6izKSGStGJEF71U2WYn5z7BboqAD",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2309,
+      "net_pnl": -1.7691,
+      "max_drawdown_pct": 4.58,
+      "trade_details": [
+        {
+          "entry_time": 1793736900,
+          "exit_time": 1793737800,
+          "entry_price": 0.0005365139229939466,
+          "exit_price": 0.0004514764661994061,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08415000000000002,
+          "net_pnl": -1.7691499999999991,
+          "balance": 48.230850000000004,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "418SZdubR5aMHJaGr88yda1QGeJw7pMAw5evXAra7epo",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 49.1115,
+      "net_pnl": -0.8885,
+      "max_drawdown_pct": 1.78,
+      "trade_details": [
+        {
+          "entry_time": 1793555100,
+          "exit_time": 1793640600,
+          "entry_price": 1.6345975401990882,
+          "exit_price": 1.5209207352483214,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.09304557836683632,
+          "net_pnl": -0.8884877416832047,
+          "balance": 49.11151225831679,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "42FY9AtqZMmthAK25K7SP8VQ5D6SCoAfJZgZe2XrzH4k",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 1.36,
+      "trade_details": [
+        {
+          "entry_time": 1793743200,
+          "exit_time": 1793745000,
+          "entry_price": 7.168066195834148e-06,
+          "exit_price": 1.064457830081371e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.601499999999998,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "47Md7XRXAZYPKG6EAasyWUywbe7bRs5VKiHk1RCxoFzP",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 52.8753,
+      "net_pnl": 2.8753,
+      "max_drawdown_pct": 0.5,
+      "trade_details": [
+        {
+          "entry_time": 1793689200,
+          "exit_time": 1793774700,
+          "entry_price": 0.13349165982855882,
+          "exit_price": 0.1749593720441812,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.13106389737671903,
+          "net_pnl": 2.8753258402951833,
+          "balance": 52.87532584029518,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "4EDJmBBgRfe7k47McYcSoLmtgJfxTyZnXPrBi95GrF1X",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 51.3786,
+      "net_pnl": 1.3786,
+      "max_drawdown_pct": 0.79,
+      "trade_details": [
+        {
+          "entry_time": 1793498400,
+          "exit_time": 1793583900,
+          "entry_price": 0.0005314274900034075,
+          "exit_price": 0.0006161640787107404,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.11594508946211825,
+          "net_pnl": 1.3785638567497063,
+          "balance": 51.37856385674971,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "4KHfHnqxV4BRGvwoRtuFj2P8P6JesY65sWecVpxfHdpn",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 25.15,
+      "trade_details": [
+        {
+          "entry_time": 1793728800,
+          "exit_time": 1793729700,
+          "entry_price": 0.00013406086736832796,
+          "exit_price": 0.00011281221989044798,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "4NRGnzzzy92Goz49BX1qqdXBUyLnEPDy2S2Td9QsBgyN",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 3.78,
+      "trade_details": [
+        {
+          "entry_time": 1793502000,
+          "exit_time": 1793502900,
+          "entry_price": 0.0006539411390696741,
+          "exit_price": 0.0005502914685271307,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "4WutFjFujupWJm5UUidXouMgUPauXG4sAEjVaYqjrMBW",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 20.77,
+      "trade_details": [
+        {
+          "entry_time": 1793648700,
+          "exit_time": 1793649600,
+          "entry_price": 0.0001274368443024894,
+          "exit_price": 0.00010723810448054481,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "4jNosyXHBnRLz7dUst6RMBED7F9T77UGXpXeWk3yKCy4",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 49.5107,
+      "net_pnl": -0.4893,
+      "max_drawdown_pct": 3.85,
+      "trade_details": [
+        {
+          "entry_time": 1793565000,
+          "exit_time": 1793567700,
+          "entry_price": 0.00011872855725738521,
+          "exit_price": 0.00011525895017371365,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.0970776979323096,
+          "net_pnl": -0.48930790470135055,
+          "balance": 49.51069209529865,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "4kM4wu8NA28qqay9GnMuNknzXVfefqPYH3cZySE1JLwv",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 49.5059,
+      "net_pnl": -0.4941,
+      "max_drawdown_pct": 4.7,
+      "trade_details": [
+        {
+          "entry_time": 1793728800,
+          "exit_time": 1793730600,
+          "entry_price": 0.00033505362586226943,
+          "exit_price": 0.000325100595093862,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.09702942156116262,
+          "net_pnl": -0.49408726544490117,
+          "balance": 49.505912734555096,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "4nHkyPps3LeyJYMc9j3sC13pPVnWHBbiWyKbztVeCL62",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 51.7525,
+      "net_pnl": 1.7525,
+      "max_drawdown_pct": 0.6,
+      "trade_details": [
+        {
+          "entry_time": 1793677500,
+          "exit_time": 1793763000,
+          "entry_price": 0.013610382105302766,
+          "exit_price": 0.01629467720981776,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.11972240811276828,
+          "net_pnl": 1.7525184031640597,
+          "balance": 51.75251840316406,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "4yH1qg3kQzvddsnG9kftjP1HB1ouJMiCTfpvkDiN6eMY",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 49.1717,
+      "net_pnl": -0.8283,
+      "max_drawdown_pct": 5.68,
+      "trade_details": [
+        {
+          "entry_time": 1793569500,
+          "exit_time": 1793573100,
+          "entry_price": 0.002898398838609757,
+          "exit_price": 0.0027144675928843114,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.09365403948982846,
+          "net_pnl": -0.8282500905069817,
+          "balance": 49.171749909493016,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "54m3ACZLA7hK76HsbgRhYySVecaabP7T4J75uXe2ESNe",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 8.71,
+      "trade_details": [
+        {
+          "entry_time": 1793733300,
+          "exit_time": 1793734200,
+          "entry_price": 0.00012416455131417596,
+          "exit_price": 0.00010448446993087907,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "5EqdM7FBGypHBZAm8duPxioAeJ2BTG1SvDrrPKc3fyj3",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.8611,
+      "net_pnl": -1.1389,
+      "max_drawdown_pct": 2.31,
+      "trade_details": [
+        {
+          "entry_time": 1793551500,
+          "exit_time": 1793553300,
+          "entry_price": 0.0023073515714884655,
+          "exit_price": 0.0020885216106843536,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.09051596802549923,
+          "net_pnl": -1.138919165475576,
+          "balance": 48.86108083452442,
+          "exit_reason": "GAP_STOP"
+        }
+      ]
+    },
+    {
+      "pool": "5PMZkU7VN4xRM7ikmAXvdGkM8tNwnkebdbzGRHzAyubP",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 3.54,
+      "trade_details": [
+        {
+          "entry_time": 1793556900,
+          "exit_time": 1793557800,
+          "entry_price": 1.5080529554295032e-05,
+          "exit_price": 1.2690265619939267e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "5RqVcDrWgk5EAHKLqVjLPRMUS4gHYYPx4KfFTWnCLdMd",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 52.2282,
+      "net_pnl": 2.2282,
+      "max_drawdown_pct": 0.48,
+      "trade_details": [
+        {
+          "entry_time": 1793690100,
+          "exit_time": 1793775600,
+          "entry_price": 0.0321113320886504,
+          "exit_price": 0.039987497063802224,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.12452768061258855,
+          "net_pnl": 2.228240380646266,
+          "balance": 52.22824038064627,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "5UvHktrLmnHG9ioQfVR2SdW98x9djHJCKCBsuE2tGtG1",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 49.1088,
+      "net_pnl": -0.8912,
+      "max_drawdown_pct": 2.89,
+      "trade_details": [
+        {
+          "entry_time": 1793718000,
+          "exit_time": 1793733300,
+          "entry_price": 0.0003100887075464962,
+          "exit_price": 0.0002884383413854601,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.0930180088361361,
+          "net_pnl": -0.8912171252225253,
+          "balance": 49.108782874777475,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "5orMHC7da3xGQBvLzLyCuY9w5Eta1mafA2dzQ3sTXGXn",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.6,
+      "trade_details": [
+        {
+          "entry_time": 1793725200,
+          "exit_time": 1793737800,
+          "entry_price": 0.37666107873940147,
+          "exit_price": 0.5593417019280111,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.601499999999998,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "5wbSsuPUkgy2tTBMr9knVCmWQt78ziZtGb8GkDcGso3H",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2309,
+      "net_pnl": -1.7691,
+      "max_drawdown_pct": 11.09,
+      "trade_details": [
+        {
+          "entry_time": 1793719800,
+          "exit_time": 1793720700,
+          "entry_price": 8.6752383734733e-05,
+          "exit_price": 7.300213091277781e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08415000000000002,
+          "net_pnl": -1.7691499999999991,
+          "balance": 48.230850000000004,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "68Ka3RZUo82FPA3MRRKUH2dF8hospwd98Gn1aGfTfnFo",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 7.06,
+      "trade_details": [
+        {
+          "entry_time": 1793582100,
+          "exit_time": 1793583000,
+          "entry_price": 0.00018178207017455856,
+          "exit_price": 0.00015296961205189103,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "68Pp3xCcwHXg5QijgjcyUwsV764TtbEvLM23Ck85e85A",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 49.471,
+      "net_pnl": -0.529,
+      "max_drawdown_pct": 3.07,
+      "trade_details": [
+        {
+          "entry_time": 1793724300,
+          "exit_time": 1793727000,
+          "entry_price": 7.524260560965556e-05,
+          "exit_price": 7.274182867519208e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.09667638179964548,
+          "net_pnl": -0.5290382018350971,
+          "balance": 49.4709617981649,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "6C1wQsDRTBdmaWTp2sR9nb4QVjwodHQveFiDk3kcVaZb",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 51.5753,
+      "net_pnl": 1.5753,
+      "max_drawdown_pct": 0.55,
+      "trade_details": [
+        {
+          "entry_time": 1793679300,
+          "exit_time": 1793764800,
+          "entry_price": 0.023787858520530395,
+          "exit_price": 0.028053633511521726,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.11793257256557879,
+          "net_pnl": 1.5753246839923005,
+          "balance": 51.5753246839923,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "6EbQSBTaWcfha1L4L7dQEgWDoCpH2gW6MLgFru3vbbng",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 3.77,
+      "trade_details": [
+        {
+          "entry_time": 1793613600,
+          "exit_time": 1793614500,
+          "entry_price": 4.09646660886436e-05,
+          "exit_price": 3.447176651359359e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "6SgPs53LKBU4ym7c5L65FwiahYQCxAyk3j1J8X7ZoBdk",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 51.5991,
+      "net_pnl": 1.5991,
+      "max_drawdown_pct": 0.63,
+      "trade_details": [
+        {
+          "entry_time": 1793493000,
+          "exit_time": 1793578500,
+          "entry_price": 0.003156569143502371,
+          "exit_price": 0.0037302037115456194,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.11817272304090168,
+          "net_pnl": 1.5990995810492654,
+          "balance": 51.599099581049266,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "6USsjkXpEneqTH9eG63VWFz3oP7MvUArSWA5tFDnqdAo",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 49.9265,
+      "net_pnl": -0.0735,
+      "max_drawdown_pct": 0.52,
+      "trade_details": [
+        {
+          "entry_time": 1793687400,
+          "exit_time": 1793772900,
+          "entry_price": 617.9334444579108,
+          "exit_price": 625.8304123404081,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1012779641486188,
+          "net_pnl": -0.07348154928673882,
+          "balance": 49.92651845071326,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "6bGPsPZzCg5DwFxHxDHFUaVJ1EkT1xrNpajKHgLTMHNm",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2309,
+      "net_pnl": -1.7691,
+      "max_drawdown_pct": 19.66,
+      "trade_details": [
+        {
+          "entry_time": 1793565000,
+          "exit_time": 1793565900,
+          "entry_price": 2.552797319587075e-05,
+          "exit_price": 2.148178944432524e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08415000000000002,
+          "net_pnl": -1.7691499999999991,
+          "balance": 48.230850000000004,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "6nmQyaSAVyCNVGsvGxqH3ZGRBHLroLASQCSUebJ8y97j",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.57,
+      "trade_details": [
+        {
+          "entry_time": 1793650500,
+          "exit_time": 1793715300,
+          "entry_price": 0.5334524832191888,
+          "exit_price": 0.7921769375804955,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.14850000000000002,
+          "net_pnl": 4.6015000000000015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "6qfkD7d8RaFVAn1FC76M5MtqAr3kHrHpxPwMQvL6Ndxt",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 5.0,
+      "trade_details": [
+        {
+          "entry_time": 1793504700,
+          "exit_time": 1793505600,
+          "entry_price": 6.487001478397273e-05,
+          "exit_price": 5.458811744071305e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "74dQTPP5wF2d2e6cGY7anVdGBnjv7ug71XhzTTGVAXJW",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 50.8274,
+      "net_pnl": 0.8274,
+      "max_drawdown_pct": 24.4,
+      "trade_details": [
+        {
+          "entry_time": 1793545200,
+          "exit_time": 1793604600,
+          "entry_price": 0.26024377679771726,
+          "exit_price": 0.28725131186894964,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.11037778324752212,
+          "net_pnl": 0.82740054150469,
+          "balance": 50.82740054150469,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "7Jyz7YkQvvrHcjrmKhzs1Z6fUP16PKPcwonVDNkqrert",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 24.45,
+      "trade_details": [
+        {
+          "entry_time": 1793646000,
+          "exit_time": 1793646900,
+          "entry_price": 0.00014132850550033633,
+          "exit_price": 0.00011892793737853303,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "7PpUyh3b5f61zc6JCFJaftwthkwNE1JGWhPdDANLH8Eo",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2309,
+      "net_pnl": -1.7691,
+      "max_drawdown_pct": 4.24,
+      "trade_details": [
+        {
+          "entry_time": 1793586600,
+          "exit_time": 1793587500,
+          "entry_price": 6.714063715091349e-05,
+          "exit_price": 5.6498846162493704e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08415000000000002,
+          "net_pnl": -1.7691499999999991,
+          "balance": 48.230850000000004,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "7RD5YALHcMLUFKJ8FRePGd6ei11F15uXZF1rc7mPKeCv",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 72.21,
+      "trade_details": [
+        {
+          "entry_time": 1793742300,
+          "exit_time": 1793743200,
+          "entry_price": 0.00012183531112774389,
+          "exit_price": 0.00018092543702469968,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.14850000000000002,
+          "net_pnl": 4.6015000000000015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "7UabmBk9ybzC5z864Qp94XNRyDZtM6wiTEbkBTmZG2hq",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 3.54,
+      "trade_details": [
+        {
+          "entry_time": 1793624400,
+          "exit_time": 1793625300,
+          "entry_price": 0.0006705434543356223,
+          "exit_price": 0.0005642623168234262,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "7V99XKTDarrUR5nXvGekTtuhm5wFzHhBehhJp1hcfkdE",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.41,
+      "trade_details": [
+        {
+          "entry_time": 1793620800,
+          "exit_time": 1793673900,
+          "entry_price": 0.00025536353444844203,
+          "exit_price": 0.0003792148486559364,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "7VnmERCiVEGaai2tgmv1YZmTb1vFtYwjVsc9dQ5XNbi8",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 3.74,
+      "trade_details": [
+        {
+          "entry_time": 1793637000,
+          "exit_time": 1793640600,
+          "entry_price": 8.334725536212947e-06,
+          "exit_price": 1.2377067421276226e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "7WWtGTJr5X3FvkVxsFxLHa3gPXkbNQ9ysqFjXVxBUGsL",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2309,
+      "net_pnl": -1.7691,
+      "max_drawdown_pct": 3.54,
+      "trade_details": [
+        {
+          "entry_time": 1793624400,
+          "exit_time": 1793625300,
+          "entry_price": 0.000680971409479851,
+          "exit_price": 0.0005730374410772947,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08415000000000002,
+          "net_pnl": -1.7691499999999991,
+          "balance": 48.230850000000004,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "7fLb5yHNNVjtcCqCy78Skf1HP9rqwjDLUQ4bNL8QueGV",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 6.37,
+      "trade_details": [
+        {
+          "entry_time": 1793612700,
+          "exit_time": 1793613600,
+          "entry_price": 0.0012985168583902681,
+          "exit_price": 0.0010927019363354104,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999997,
+          "net_pnl": -1.7691500000000027,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "8862uMTP8p9CNoeDK1p6u8e1CNGtAJhzQi2FnvNvzVrq",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 53.3314,
+      "net_pnl": 3.3314,
+      "max_drawdown_pct": 0.51,
+      "trade_details": [
+        {
+          "entry_time": 1793704500,
+          "exit_time": 1793790000,
+          "entry_price": 3.0214122363199882,
+          "exit_price": 4.099174583075961,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.135670814257,
+          "net_pnl": 3.3314106114429993,
+          "balance": 53.331410611443,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "8E3ni97SRm9QeWYWxHD7g336JKMLEckWXnFjGX3vZiWb",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.37,
+      "trade_details": [
+        {
+          "entry_time": 1793503800,
+          "exit_time": 1793578500,
+          "entry_price": 0.008835936069345093,
+          "exit_price": 0.013121365062977463,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "8Fhdxhmh2WJq4tqaM6f1WyZgKMyT3EB8hznCqD5swphu",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 4.2,
+      "trade_details": [
+        {
+          "entry_time": 1793619000,
+          "exit_time": 1793637900,
+          "entry_price": 2.567991366699317,
+          "exit_price": 3.813467179548485,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.601499999999998,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "8GU4SLWheGiDqdLiYWXhzqzE8fgG4netxMNtzghWdEE4",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.53,
+      "trade_details": [
+        {
+          "entry_time": 1793724300,
+          "exit_time": 1793765700,
+          "entry_price": 0.2644345330305765,
+          "exit_price": 0.3926852815504061,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.14850000000000002,
+          "net_pnl": 4.6015000000000015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "8RU7cPTwGR5UimB5FniJkgmawGknzRBKcijsXuWrP7Co",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 2.04,
+      "trade_details": [
+        {
+          "entry_time": 1793525400,
+          "exit_time": 1793530800,
+          "entry_price": 0.00034715956847288914,
+          "exit_price": 0.0005155319591822404,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.14850000000000005,
+          "net_pnl": 4.601500000000003,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "8fUi9Vka6JMJrW7kgSTAYau7ZVG9aVHaCLKPsmV3G3cH",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 50.1023,
+      "net_pnl": 0.1023,
+      "max_drawdown_pct": 1.33,
+      "trade_details": [
+        {
+          "entry_time": 1793676600,
+          "exit_time": 1793762100,
+          "entry_price": 0.005051375618405949,
+          "exit_price": 0.005205632541931092,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.10305376070160115,
+          "net_pnl": 0.10232230945851377,
+          "balance": 50.102322309458515,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "8qiK6aTHXrPGTkQcqkqWnbN83LY6bwyxso261C8pX2f4",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 4.19,
+      "trade_details": [
+        {
+          "entry_time": 1793737800,
+          "exit_time": 1793738700,
+          "entry_price": 3.863648282241286e-05,
+          "exit_price": 3.251260029506042e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "8yDJL2EHeNuLTqZUs1WBHdqM2TW1JcdiwaZttokq7pq8",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 9.87,
+      "trade_details": [
+        {
+          "entry_time": 1793538000,
+          "exit_time": 1793538900,
+          "entry_price": 0.00019591994325069009,
+          "exit_price": 0.0001648666322454557,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "92Fe4AXwh2hbqMA7V1t9ijm4KeHQVfVy35ixAD6MVJ44",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.89,
+      "trade_details": [
+        {
+          "entry_time": 1793712600,
+          "exit_time": 1793769300,
+          "entry_price": 0.1603339973273771,
+          "exit_price": 0.238095986031155,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "93SWCkriktwRMTHP9ggLT7SqJ5Lo3MBJZHiRCYDVyJGK",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2309,
+      "net_pnl": -1.7691,
+      "max_drawdown_pct": 39.15,
+      "trade_details": [
+        {
+          "entry_time": 1793664000,
+          "exit_time": 1793664900,
+          "entry_price": 5.348432641776263e-05,
+          "exit_price": 4.5007060680547255e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08415000000000002,
+          "net_pnl": -1.7691499999999991,
+          "balance": 48.230850000000004,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "9P2imdRwkxwtgg5vq9Do7N3UsLyaTHAFiCLHzjYd6M8N",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 6.97,
+      "trade_details": [
+        {
+          "entry_time": 1793538900,
+          "exit_time": 1793539800,
+          "entry_price": 4.333093273756814e-05,
+          "exit_price": 3.6462979898663585e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "9PFpZbvSUNNJ2wowdByFq5wH2Yxi4DzTjiABQHU5vsjK",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 51.9084,
+      "net_pnl": 1.9084,
+      "max_drawdown_pct": 0.63,
+      "trade_details": [
+        {
+          "entry_time": 1793748600,
+          "exit_time": 1793834100,
+          "entry_price": 0.006235663519908183,
+          "exit_price": 0.007563695266519338,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.12129736061561433,
+          "net_pnl": 1.9084387009458184,
+          "balance": 51.908438700945815,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "9VjkGqSgKcPG3rYgMAt9GrC6EotvdMmUCD4oeArJVogd",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 49.7951,
+      "net_pnl": -0.2049,
+      "max_drawdown_pct": 1.27,
+      "trade_details": [
+        {
+          "entry_time": 1793724300,
+          "exit_time": 1793809800,
+          "entry_price": 631.6180495662011,
+          "exit_price": 631.3023709809901,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.09995002065165368,
+          "net_pnl": -0.20494795548628597,
+          "balance": 49.79505204451372,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "9XjYRAbn8vXeYhuRgGGcnsZkNL1c3G2gsgVGakXdHZEM",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 51.2483,
+      "net_pnl": 1.2483,
+      "max_drawdown_pct": 0.55,
+      "trade_details": [
+        {
+          "entry_time": 1793729700,
+          "exit_time": 1793815200,
+          "entry_price": 0.13731095336029261,
+          "exit_price": 0.15739916575354865,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.11462972319516727,
+          "net_pnl": 1.2483425963215593,
+          "balance": 51.24834259632156,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "9rEF8wvkp54DYkxZ41D5rGJCbqGqc7W5KiPTsbF8t5gd",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 51.0484,
+      "net_pnl": 1.0484,
+      "max_drawdown_pct": 4.07,
+      "trade_details": [
+        {
+          "entry_time": 1793744100,
+          "exit_time": 1793745900,
+          "entry_price": 0.0024947527661458484,
+          "exit_price": 0.002809341253261277,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.11261000654591666,
+          "net_pnl": 1.0483906480457488,
+          "balance": 51.048390648045746,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "A9okb2BzFqJTcDA8PNXVTK49kbpPky2Nsdc623FXMMDD",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 1.58,
+      "trade_details": [
+        {
+          "entry_time": 1793709900,
+          "exit_time": 1793781900,
+          "entry_price": 0.13688208404128002,
+          "exit_price": 0.20326989480130084,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "AQNHqiKaDUVVy5XvZnpHYaobkDC2LX776v3eMCXAtmQG",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2309,
+      "net_pnl": -1.7691,
+      "max_drawdown_pct": 23.55,
+      "trade_details": [
+        {
+          "entry_time": 1793609100,
+          "exit_time": 1793610000,
+          "entry_price": 3.948330819091651e-05,
+          "exit_price": 3.322520384265624e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08415000000000002,
+          "net_pnl": -1.7691499999999991,
+          "balance": 48.230850000000004,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "Aao7sTxo6k1PRHu4BYszNhn61d7LPZHqMyVzCmZQ1PMM",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 49.4611,
+      "net_pnl": -0.5389,
+      "max_drawdown_pct": 2.93,
+      "trade_details": [
+        {
+          "entry_time": 1793746800,
+          "exit_time": 1793749500,
+          "entry_price": 3.762352067690156e-05,
+          "exit_price": 3.633571419643698e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.0965771239445563,
+          "net_pnl": -0.5388647294889272,
+          "balance": 49.46113527051107,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "AeiAsEHfzmdiyEecygcUDFkBUHQAEaDwJuNYsCH8JeEA",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 1.02,
+      "trade_details": [
+        {
+          "entry_time": 1793627100,
+          "exit_time": 1793628000,
+          "entry_price": 3.592379263948475e-05,
+          "exit_price": 5.334683206963486e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.14850000000000002,
+          "net_pnl": 4.6015000000000015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "Ahm67oTNe7b5enVDgckP7wULgt5of3XZXxgy2HprRYF5",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.91,
+      "trade_details": [
+        {
+          "entry_time": 1793683800,
+          "exit_time": 1793699100,
+          "entry_price": 0.18956652294672224,
+          "exit_price": 0.2815062865758825,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.601499999999998,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "B15nKKRQG4Mmgg1WBTWjXjEnJfQZp2NDtjx3r4DNouqL",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 16.44,
+      "trade_details": [
+        {
+          "entry_time": 1793565000,
+          "exit_time": 1793565900,
+          "entry_price": 2.6271158483151004e-05,
+          "exit_price": 2.2107179863571567e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "B9kecYVZxSVvy56uSSxfiyt6GD7A4w7WEPkB9tNYq7sZ",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 18.09,
+      "trade_details": [
+        {
+          "entry_time": 1793592000,
+          "exit_time": 1793592900,
+          "entry_price": 3.091848649702851e-05,
+          "exit_price": 4.591395244808734e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.601499999999998,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "BWkCv9J2EMTMpag3r5W18Zd7YxHqyb4qaTnPyqFKXpGk",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2309,
+      "net_pnl": -1.7691,
+      "max_drawdown_pct": 8.64,
+      "trade_details": [
+        {
+          "entry_time": 1793727900,
+          "exit_time": 1793728800,
+          "entry_price": 2.2004957008327776e-05,
+          "exit_price": 1.8517171322507825e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08415000000000002,
+          "net_pnl": -1.7691499999999991,
+          "balance": 48.230850000000004,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "BhBd7e12jzVobtqg1SFKCgz82Lyh8MBmgSZGGWky7wkY",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.0,
+      "trade_details": [
+        {
+          "entry_time": 1793637900,
+          "exit_time": 1793638800,
+          "entry_price": 3.82317700118248e-05,
+          "exit_price": 5.6774178467559824e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.14850000000000002,
+          "net_pnl": 4.6015000000000015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "BjmqS73FiPFh1ChzNvvN36oBKN2UbMV6cvLCvWSYsafx",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 3.54,
+      "trade_details": [
+        {
+          "entry_time": 1793664000,
+          "exit_time": 1793664900,
+          "entry_price": 6.0487970853477925e-05,
+          "exit_price": 5.090062747320167e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "BrfTVo6QXzYVZyFfy59mdn6pVKRdk6x9bdYHey9HY6k",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 52.997,
+      "net_pnl": 2.997,
+      "max_drawdown_pct": 0.58,
+      "trade_details": [
+        {
+          "entry_time": 1793657700,
+          "exit_time": 1793743200,
+          "entry_price": 0.08647361099417178,
+          "exit_price": 0.1143986046238894,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.13229308144839672,
+          "net_pnl": 2.9970150633912738,
+          "balance": 52.997015063391274,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "Bv8FW9m6dT51sDASBEpPPmvHhJ4cffDG5RKayfoAnTzt",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 3.54,
+      "trade_details": [
+        {
+          "entry_time": 1793718000,
+          "exit_time": 1793718900,
+          "entry_price": 0.0002598822774352034,
+          "exit_price": 0.00021869093646172366,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "BvHgRLsqU22k6KLwfoVzWqY2aLUHVKLgK2TftgF7ix4Q",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 9.1,
+      "trade_details": [
+        {
+          "entry_time": 1793559600,
+          "exit_time": 1793560500,
+          "entry_price": 1.1357177629506776e-05,
+          "exit_price": 9.557064975229951e-06,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "BzomHwB33RGwuyWdm8sQFi3ZDNaUWnpmHRaiQaLQNZiA",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 18.07,
+      "trade_details": [
+        {
+          "entry_time": 1793497500,
+          "exit_time": 1793498400,
+          "entry_price": 3.504651752449142e-05,
+          "exit_price": 2.9491644496859526e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "C2fMvT28S4WUQdpUbHWG7Txfb62pjNrhSb3V9bVv1RVZ",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 50.9542,
+      "net_pnl": 0.9542,
+      "max_drawdown_pct": 0.51,
+      "trade_details": [
+        {
+          "entry_time": 1793680200,
+          "exit_time": 1793765700,
+          "entry_price": 0.025538939860192043,
+          "exit_price": 0.02851651252173396,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1116589516943227,
+          "net_pnl": 0.9542362177379471,
+          "balance": 50.95423621773795,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "C8mh98vzCLHbQob4Gf8cV4ib1HtXzvngRYufnghmdCpF",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 1.29,
+      "trade_details": [
+        {
+          "entry_time": 1793727900,
+          "exit_time": 1793805300,
+          "entry_price": 0.26641547017101097,
+          "exit_price": 0.3956269732039513,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "CBfKYNjkjDzW1rBQj7qm3pHeMXQKtvaizxF9Bvw7qab7",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 4.54,
+      "trade_details": [
+        {
+          "entry_time": 1793506500,
+          "exit_time": 1793508300,
+          "entry_price": 0.21884039115333645,
+          "exit_price": 0.32497798086270463,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.14850000000000002,
+          "net_pnl": 4.6015000000000015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "CKHfZSsyoFfxn6tNxdk4BKvBE9NXH4nncC2kK8NzkRaz",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 52.7193,
+      "net_pnl": 2.7193,
+      "max_drawdown_pct": 0.49,
+      "trade_details": [
+        {
+          "entry_time": 1793592900,
+          "exit_time": 1793678400,
+          "entry_price": 0.140380735999747,
+          "exit_price": 0.1817756450196135,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.12948759936686835,
+          "net_pnl": 2.719272337319967,
+          "balance": 52.719272337319964,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "CKuwAXUbnxmeCNurN5VvyC7kLz42JnQtyh2nyFJ8Kv1X",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2309,
+      "net_pnl": -1.7691,
+      "max_drawdown_pct": 7.25,
+      "trade_details": [
+        {
+          "entry_time": 1793640600,
+          "exit_time": 1793641500,
+          "entry_price": 4.99203583465252e-05,
+          "exit_price": 4.2007981548600956e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08415000000000002,
+          "net_pnl": -1.7691499999999991,
+          "balance": 48.230850000000004,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "CSfqENpjeBh1oJKSWryc8nLFxYXLxYrgaPTf8GKXdR5s",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 1.04,
+      "trade_details": [
+        {
+          "entry_time": 1793543400,
+          "exit_time": 1793550600,
+          "entry_price": 0.5832579716239671,
+          "exit_price": 0.8661380878615911,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.601499999999998,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "CZ5bkCYu7cajLGFGigwQFD5ZpkwGcCQDgNdvSfTPYMK1",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 8.27,
+      "trade_details": [
+        {
+          "entry_time": 1793600100,
+          "exit_time": 1793601000,
+          "entry_price": 0.002045487554631742,
+          "exit_price": 0.0017212777772226107,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "ChWfQVLokiVaK6xVZcRuFjgqbWVFsrnTejbNVPcjoRs",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.93,
+      "trade_details": [
+        {
+          "entry_time": 1793666700,
+          "exit_time": 1793679300,
+          "entry_price": 4.3285961576122006e-06,
+          "exit_price": 6.427965294054118e-06,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.601499999999998,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "CqvMZmWDvEufa5rzkubidyR4zMDqDPoLjAtsW6wGsPMu",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2309,
+      "net_pnl": -1.7691,
+      "max_drawdown_pct": 24.66,
+      "trade_details": [
+        {
+          "entry_time": 1793726100,
+          "exit_time": 1793727000,
+          "entry_price": 7.98849400730567e-05,
+          "exit_price": 6.722317707147721e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08415000000000002,
+          "net_pnl": -1.7691499999999991,
+          "balance": 48.230850000000004,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "D4zN7p8RkQ8sdv8QAebhNK1tmAhatFz5Xe3h8iuxC6iU",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 50.4601,
+      "net_pnl": 0.4601,
+      "max_drawdown_pct": 3.14,
+      "trade_details": [
+        {
+          "entry_time": 1793528100,
+          "exit_time": 1793562300,
+          "entry_price": 0.057308971447979695,
+          "exit_price": 0.06113041721377351,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.10666814578806846,
+          "net_pnl": 0.460146433018778,
+          "balance": 50.46014643301878,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "D5Kuz7bmfJV82DRD9Z2wRyXjj9vXqFaz5X2bffeZxnoV",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 51.0698,
+      "net_pnl": 1.0698,
+      "max_drawdown_pct": 1.16,
+      "trade_details": [
+        {
+          "entry_time": 1793696400,
+          "exit_time": 1793781900,
+          "entry_price": 0.00019928453465602823,
+          "exit_price": 0.00022484578549918156,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.11282651003866051,
+          "net_pnl": 1.0698244938273895,
+          "balance": 51.06982449382739,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "D5ogM8ySLvAkipgSAsUqXTvmdmY6c2PzEA1DgcudFsEF",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 3.54,
+      "trade_details": [
+        {
+          "entry_time": 1793673000,
+          "exit_time": 1793673900,
+          "entry_price": 3.16490427597018e-05,
+          "exit_price": 2.6632669482289063e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "DG6d7DYCxX4ynjYeLLsTHcFV6dDfAh73smd5WAesBjLb",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 53.6795,
+      "net_pnl": 3.6795,
+      "max_drawdown_pct": 0.52,
+      "trade_details": [
+        {
+          "entry_time": 1793541600,
+          "exit_time": 1793627100,
+          "entry_price": 0.034675704501160955,
+          "exit_price": 0.04826404610219783,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.13918692293787985,
+          "net_pnl": 3.679505370850104,
+          "balance": 53.6795053708501,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "DH8qk6757izqBDn354JxdrVgFACKEC2iT7fHJynqyh6f",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 3.54,
+      "trade_details": [
+        {
+          "entry_time": 1793667600,
+          "exit_time": 1793668500,
+          "entry_price": 0.00013204729478272684,
+          "exit_price": 0.00011111779855966463,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "DLMqEHLDG2WTUJsiPnrhm9rVmkmTfmqckwKGZA53ds6V",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.87,
+      "trade_details": [
+        {
+          "entry_time": 1793494800,
+          "exit_time": 1793529900,
+          "entry_price": 0.19964520945789793,
+          "exit_price": 0.2964731360449784,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.601499999999998,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "DP2CQC5djxP72CJe8qywdq5NFMipyv2ZvchFU7vveBdJ",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.31,
+      "trade_details": [
+        {
+          "entry_time": 1793628900,
+          "exit_time": 1793707200,
+          "entry_price": 0.0005998419552965597,
+          "exit_price": 0.0008907653036153911,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "DdYnRoKNkFY2E7b5KfEvcszFarofSUdseZ1k9xR6TBap",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 49.1535,
+      "net_pnl": -0.8465,
+      "max_drawdown_pct": 1.74,
+      "trade_details": [
+        {
+          "entry_time": 1793745900,
+          "exit_time": 1793831400,
+          "entry_price": 518.084394616997,
+          "exit_price": 484.2520302236832,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.09346971946176359,
+          "net_pnl": -0.8464977732854051,
+          "balance": 49.15350222671459,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "DfCRXVe7MejYf8r6DR91kLHvEAoYvE6LaCgfP8airKXV",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 52.4609,
+      "net_pnl": 2.4609,
+      "max_drawdown_pct": 0.7,
+      "trade_details": [
+        {
+          "entry_time": 1793572200,
+          "exit_time": 1793657700,
+          "entry_price": 0.01289393264336488,
+          "exit_price": 0.01635955325098449,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.12687791772669907,
+          "net_pnl": 2.4609138549432084,
+          "balance": 52.46091385494321,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "DhahvSeXkdWUNzhuJ7VeTZ6EDP4pvQMKAhWMK7YMPXtf",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 52.5658,
+      "net_pnl": 2.5658,
+      "max_drawdown_pct": 0.49,
+      "trade_details": [
+        {
+          "entry_time": 1793590200,
+          "exit_time": 1793675700,
+          "entry_price": 0.16303003561879645,
+          "exit_price": 0.20857657278346656,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.12793751285877708,
+          "net_pnl": 2.5658137730189305,
+          "balance": 52.56581377301893,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "Dmz6gRu3SuhkXA4TcmuBTD5mX3fj6M9xSCkk7XrUiYcf",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 3.54,
+      "trade_details": [
+        {
+          "entry_time": 1793670300,
+          "exit_time": 1793671200,
+          "entry_price": 0.32888710302748086,
+          "exit_price": 0.27675849719762513,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "Dq9JgfQkFe9fX2vPM5tPbtWdB9HnYGoqFkfUKdHgM9U4",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 1.11,
+      "trade_details": [
+        {
+          "entry_time": 1793708100,
+          "exit_time": 1793709000,
+          "entry_price": 3.589785345412255e-05,
+          "exit_price": 5.330831237937199e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "DxrA9BF8Y8XZeY9Wu9QCwf7W8ef6xnVNUHb6atDW9rZ7",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 1.33,
+      "trade_details": [
+        {
+          "entry_time": 1793677500,
+          "exit_time": 1793750400,
+          "entry_price": 0.002497065816525081,
+          "exit_price": 0.003708142737539745,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.601499999999998,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "E6LgzbMXjGh9SFcZ79JMmAMGnryvVzguE4k1JafDZfAp",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.41,
+      "trade_details": [
+        {
+          "entry_time": 1793700900,
+          "exit_time": 1793757600,
+          "entry_price": 0.004984967681222973,
+          "exit_price": 0.007402677006616115,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.14850000000000002,
+          "net_pnl": 4.6015000000000015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "E6RfkJwDBJRyPe4xWNDYu4QyYH1nYwzhxZunUfeifyLX",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2309,
+      "net_pnl": -1.7691,
+      "max_drawdown_pct": 10.52,
+      "trade_details": [
+        {
+          "entry_time": 1793578500,
+          "exit_time": 1793579400,
+          "entry_price": 6.743936637176622e-05,
+          "exit_price": 5.6750226801841275e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08415000000000002,
+          "net_pnl": -1.7691499999999991,
+          "balance": 48.230850000000004,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "EK5D8jj4qu1ZoeHKweAikUrjTB4jKq8UawWKjmtmTxJm",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 50.3378,
+      "net_pnl": 0.3378,
+      "max_drawdown_pct": 1.06,
+      "trade_details": [
+        {
+          "entry_time": 1793736900,
+          "exit_time": 1793738700,
+          "entry_price": 1.1646116358725847e-05,
+          "exit_price": 1.2278775929899427e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.10543236519098971,
+          "net_pnl": 0.33780415390798063,
+          "balance": 50.33780415390798,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "ELKfdNpt77MCkP25QNe2RWatdgKs6eQ1s6CCsy56GnhL",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.66,
+      "trade_details": [
+        {
+          "entry_time": 1793543400,
+          "exit_time": 1793609100,
+          "entry_price": 0.02337106934656342,
+          "exit_price": 0.03470603797964668,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "EPFW3pRFt9UvCSm5uzeeit9dkPUZ4qBBrL8XyXPqj52Y",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 12.97,
+      "trade_details": [
+        {
+          "entry_time": 1793723400,
+          "exit_time": 1793725200,
+          "entry_price": 0.1397622141189012,
+          "exit_price": 0.20754688796656826,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "ETTUbzdvpgVrudLKUeMzs8XNpPbF71Wd2KYAhiqzMHtD",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 11.67,
+      "trade_details": [
+        {
+          "entry_time": 1793620800,
+          "exit_time": 1793621700,
+          "entry_price": 4.208453098487598e-05,
+          "exit_price": 6.249552851254084e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.14850000000000002,
+          "net_pnl": 4.6015000000000015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "EXvdjB61eHr8pzpka3kXxyo3iW7LVVdvK2PPnzfzh2Q",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.86,
+      "trade_details": [
+        {
+          "entry_time": 1793546100,
+          "exit_time": 1793627100,
+          "entry_price": 0.03908736233990412,
+          "exit_price": 0.05804473307475762,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "EaSNuMuAptBfbfTpr1J7F19tSWHE9gMCFDnNBjYDgd5M",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 90.79,
+      "trade_details": [
+        {
+          "entry_time": 1793674800,
+          "exit_time": 1793675700,
+          "entry_price": 0.0013494583862906074,
+          "exit_price": 0.0020039457036415517,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "EkHWcjpNiu8N368E9f4Hkzab3nVdAAg6BLWtVmZGL2t8",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2309,
+      "net_pnl": -1.7691,
+      "max_drawdown_pct": 7.61,
+      "trade_details": [
+        {
+          "entry_time": 1793659500,
+          "exit_time": 1793660400,
+          "entry_price": 0.00022542365761296868,
+          "exit_price": 0.00018969400788131316,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08415000000000002,
+          "net_pnl": -1.7691499999999991,
+          "balance": 48.230850000000004,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "EtR5gPMdFNeAddDo3zkKEwJyJwB5BhLp7dq72PTKWgQQ",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.85,
+      "trade_details": [
+        {
+          "entry_time": 1793720700,
+          "exit_time": 1793754000,
+          "entry_price": 0.13744358187128633,
+          "exit_price": 0.20410371907886019,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.601499999999998,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "EwzmNVgYh8yoB3sChwy9xXGTpSctR1A6y8SzwfcAEP3x",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.49,
+      "trade_details": [
+        {
+          "entry_time": 1793682900,
+          "exit_time": 1793716200,
+          "entry_price": 0.38813737257025077,
+          "exit_price": 0.5763839982668224,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "F6KbJYYxzdT27XZD3mznj9PCqUG5kojHQFZzQFE13rPp",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 50.623,
+      "net_pnl": 0.623,
+      "max_drawdown_pct": 0.5,
+      "trade_details": [
+        {
+          "entry_time": 1793704500,
+          "exit_time": 1793790000,
+          "entry_price": 0.015480211283664747,
+          "exit_price": 0.016767082003333968,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1083130048814461,
+          "net_pnl": 0.6229874832631637,
+          "balance": 50.62298748326317,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "FCvbYgWDrwSL8NEY1MLp3xawPcuzQk6cjHEBsrgNJqBG",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 4.16,
+      "trade_details": [
+        {
+          "entry_time": 1793607300,
+          "exit_time": 1793608200,
+          "entry_price": 4.262342630133553e-05,
+          "exit_price": 6.329578805748327e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.14850000000000002,
+          "net_pnl": 4.6015000000000015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "FHs2rSarxtAYDQ7ZeFnxaSfZnKgjJV337rPkXgSEqtq4",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 7.5,
+      "trade_details": [
+        {
+          "entry_time": 1793643300,
+          "exit_time": 1793644200,
+          "entry_price": 6.443753141784726e-05,
+          "exit_price": 5.4224182688118466e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "Fby8NV8FRJZnZriiHUdVANBadTLJfBNT9MVkkN61FoLY",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 52.1307,
+      "net_pnl": 2.1307,
+      "max_drawdown_pct": 3.9,
+      "trade_details": [
+        {
+          "entry_time": 1793637000,
+          "exit_time": 1793638800,
+          "entry_price": 4.260636363555817e-05,
+          "exit_price": 5.2637069961580614e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.12354274214016958,
+          "net_pnl": 2.1307314718767874,
+          "balance": 52.130731471876786,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "FkCmPdj3ioqPJbCMF66WQFL6uuF6cRFGLv6DdL8NjFRS",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 52.2602,
+      "net_pnl": 2.2602,
+      "max_drawdown_pct": 0.48,
+      "trade_details": [
+        {
+          "entry_time": 1793540700,
+          "exit_time": 1793626200,
+          "entry_price": 0.13941730208846972,
+          "exit_price": 0.17406362512845655,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1248508058332684,
+          "net_pnl": 2.2602297774935707,
+          "balance": 52.26022977749357,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "FkrquuXKw6TCTEkouFp95hjBpUzwrpG4RkiAVgThZz42",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 50.1962,
+      "net_pnl": 0.1962,
+      "max_drawdown_pct": 1.89,
+      "trade_details": [
+        {
+          "entry_time": 1793556900,
+          "exit_time": 1793558700,
+          "entry_price": 0.002225343795622526,
+          "exit_price": 0.0023143971254802496,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.10400177851318526,
+          "net_pnl": 0.19617607280534088,
+          "balance": 50.19617607280534,
+          "exit_reason": "GAP_STOP"
+        }
+      ]
+    },
+    {
+      "pool": "FqVhbysCvxKvTP3C9YXdy63K7AQcVXis7HibJDn8F88r",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 50.8469,
+      "net_pnl": 0.8469,
+      "max_drawdown_pct": 0.44,
+      "trade_details": [
+        {
+          "entry_time": 1793681100,
+          "exit_time": 1793766600,
+          "entry_price": 0.025653271904396934,
+          "exit_price": 0.02836597291985107,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1105744835417629,
+          "net_pnl": 0.8468738706345262,
+          "balance": 50.846873870634525,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "FuEywnbx7JQSzxMxrMrQoxWkJETJAx5bp446qx3SoXM",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 4.96,
+      "trade_details": [
+        {
+          "entry_time": 1793731500,
+          "exit_time": 1793732400,
+          "entry_price": 0.0012349671243259844,
+          "exit_price": 0.0010392248351203158,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "G5KxPoKiLGtSfZTLiXyAk1o6HByEf4a2zC4ug7Kc5sU8",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 4.94,
+      "trade_details": [
+        {
+          "entry_time": 1793575800,
+          "exit_time": 1793576700,
+          "entry_price": 2.588292970267074e-05,
+          "exit_price": 3.843615060846604e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.601499999999998,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "G7rqBQRsLXJrLvA1dTw5jdYHxtzD8C498quhfHUmYqMr",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 5.63,
+      "trade_details": [
+        {
+          "entry_time": 1793720700,
+          "exit_time": 1793721600,
+          "entry_price": 3.78231175076076e-05,
+          "exit_price": 5.6167329498797285e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "G8we6pD1uBveWBHvtyML4X399VW7Pvus4P6iLybYFv9K",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.8617,
+      "net_pnl": -1.1383,
+      "max_drawdown_pct": 2.28,
+      "trade_details": [
+        {
+          "entry_time": 1793715300,
+          "exit_time": 1793718000,
+          "entry_price": 0.0020728751300161273,
+          "exit_price": 0.001876412795594254,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.09052223013451155,
+          "net_pnl": -1.138299216683357,
+          "balance": 48.86170078331664,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "GF1rpvLKMHHy59co8RGczFJ7Qk7DadW88gXUDFrR5mwD",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 3.73,
+      "trade_details": [
+        {
+          "entry_time": 1793740500,
+          "exit_time": 1793743200,
+          "entry_price": 7.844091253830794e-06,
+          "exit_price": 1.164847551193873e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.14850000000000002,
+          "net_pnl": 4.6015000000000015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "Gd72NAkJ9Eau9CcDVehMDXTzKCLd7gzH5ouN3XvXdTuD",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.41,
+      "trade_details": [
+        {
+          "entry_time": 1793549700,
+          "exit_time": 1793632500,
+          "entry_price": 0.0445108572009508,
+          "exit_price": 0.06609862294341194,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.14850000000000002,
+          "net_pnl": 4.6015000000000015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "GfxLazsYEmc6VSepjLiYZywhcntjBvpjSRfzvzZr1nJc",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.8573,
+      "net_pnl": -1.1427,
+      "max_drawdown_pct": 2.29,
+      "trade_details": [
+        {
+          "entry_time": 1793635200,
+          "exit_time": 1793637000,
+          "entry_price": 0.0014498359067968312,
+          "exit_price": 0.0013117843145648528,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.09047812296655142,
+          "net_pnl": -1.1426658263114098,
+          "balance": 48.85733417368859,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "Gp9ZKciaHn5f5Vr29q3NAxkpkWCUXJPeZMBUTEyiGBzp",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 11.37,
+      "trade_details": [
+        {
+          "entry_time": 1793492100,
+          "exit_time": 1793493000,
+          "entry_price": 0.0001054705668620827,
+          "exit_price": 8.875348201444258e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "Gz15vwSPY9KFYNkrMPkoKp2h9yygVBovoXJsGwSJcvFk",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 49.7145,
+      "net_pnl": -0.2855,
+      "max_drawdown_pct": 3.7,
+      "trade_details": [
+        {
+          "entry_time": 1793718000,
+          "exit_time": 1793726100,
+          "entry_price": 0.0006391793455042937,
+          "exit_price": 0.00063366062417189,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.09913659266820496,
+          "net_pnl": -0.28547732584770946,
+          "balance": 49.71452267415229,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "H4uMXAizXqda7TCrQAh9CjPydKeaCdEqZwGZkSPKVRsK",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.48,
+      "trade_details": [
+        {
+          "entry_time": 1793694600,
+          "exit_time": 1793738700,
+          "entry_price": 0.0048284068545518125,
+          "exit_price": 0.007170184179009442,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.14850000000000002,
+          "net_pnl": 4.6015000000000015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "HHfxdvtWPbmX2LEwmpS6JVjuf5sD5QL6sjy8rn7psSqZ",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 51.6437,
+      "net_pnl": 1.6437,
+      "max_drawdown_pct": 0.46,
+      "trade_details": [
+        {
+          "entry_time": 1793639700,
+          "exit_time": 1793725200,
+          "entry_price": 0.012788051631344366,
+          "exit_price": 0.015169648669631369,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.11862361137524305,
+          "net_pnl": 1.6437375261490617,
+          "balance": 51.64373752614906,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "HJALy31R5f75J9zDeAeRwnmkhb3cMAWsZYtVTXxro7A9",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 50.1398,
+      "net_pnl": 0.1398,
+      "max_drawdown_pct": 4.52,
+      "trade_details": [
+        {
+          "entry_time": 1793728800,
+          "exit_time": 1793730600,
+          "entry_price": 6.357267248636638e-05,
+          "exit_price": 6.575489210820231e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1034326378559969,
+          "net_pnl": 0.1398311477436936,
+          "balance": 50.13983114774369,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "HKAZEGyomwYTv7ZEBMoVcz64GadQZsy4AxeiWLfK9hUU",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 53.2061,
+      "net_pnl": 3.2061,
+      "max_drawdown_pct": 0.64,
+      "trade_details": [
+        {
+          "entry_time": 1793709000,
+          "exit_time": 1793794500,
+          "entry_price": 0.0018668094798086929,
+          "exit_price": 0.002509081089566227,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.13440477545803728,
+          "net_pnl": 3.2060727703456897,
+          "balance": 53.20607277034569,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "HLafyHXrz75f4LALxqUw12vMJHqRQCLAkXmcqJTiCnSe",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 6.55,
+      "trade_details": [
+        {
+          "entry_time": 1793579400,
+          "exit_time": 1793580300,
+          "entry_price": 5.567469314373113e-05,
+          "exit_price": 4.6850254280449744e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "HPeXruE5Msv7paz5WPViwScLeSYWgZr8vhDakuiEp5ku",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.9851,
+      "net_pnl": -1.0149,
+      "max_drawdown_pct": 14.06,
+      "trade_details": [
+        {
+          "entry_time": 1793619900,
+          "exit_time": 1793621700,
+          "entry_price": 0.00021617170185964657,
+          "exit_price": 0.0001983786389947434,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.09176901383861258,
+          "net_pnl": -1.0148676299773542,
+          "balance": 48.98513237002265,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "Hc4R8zmxKkPvDrsAcUH1YxaSVHmykUd85CkavcTB2GJo",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 23.11,
+      "trade_details": [
+        {
+          "entry_time": 1793632500,
+          "exit_time": 1793633400,
+          "entry_price": 0.00015989535324361658,
+          "exit_price": 0.00023744459956677062,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "HcGPz2eXV8SFcMVQ9fJPBd71bRLJVzUtd2avvv86GwbK",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 37.4,
+      "trade_details": [
+        {
+          "entry_time": 1793572200,
+          "exit_time": 1793573100,
+          "entry_price": 0.00042862067978453134,
+          "exit_price": 0.0003606843020386831,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "HmcVp73ePenjn2JDHQBws6sYN56aBCmPuGDGouqzNUok",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 14.58,
+      "trade_details": [
+        {
+          "entry_time": 1793673000,
+          "exit_time": 1793673900,
+          "entry_price": 0.0005456823869834369,
+          "exit_price": 0.0008103383446704037,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.14850000000000002,
+          "net_pnl": 4.6015000000000015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "HpyMxw5BZvks2LPhUzLjXwemyrPU7uU3vFqQ3o5ABZdJ",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.82,
+      "trade_details": [
+        {
+          "entry_time": 1793628900,
+          "exit_time": 1793629800,
+          "entry_price": 0.00015642229696178424,
+          "exit_price": 0.0002322871109882496,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "J1y8kug8C3RChxTos8RA85iMDSrRZHx4kZGP3f4xU5YS",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2309,
+      "net_pnl": -1.7691,
+      "max_drawdown_pct": 4.55,
+      "trade_details": [
+        {
+          "entry_time": 1793565900,
+          "exit_time": 1793566800,
+          "entry_price": 4.890948525577092e-05,
+          "exit_price": 4.115733184273123e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08415000000000002,
+          "net_pnl": -1.7691499999999991,
+          "balance": 48.230850000000004,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "J24Gw7DqmAYxQq93m85uAtTntYenEkpShhcoxNPhpFrR",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2308,
+      "net_pnl": -1.7692,
+      "max_drawdown_pct": 6.79,
+      "trade_details": [
+        {
+          "entry_time": 1793528100,
+          "exit_time": 1793529000,
+          "entry_price": 3.552009535778049e-05,
+          "exit_price": 2.989016024357228e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08414999999999999,
+          "net_pnl": -1.7691500000000009,
+          "balance": 48.23085,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "J6eGsWYyapkEgU4EcKz23bqqyJ1C9mgC4Ty7NXiRiz1j",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.54,
+      "trade_details": [
+        {
+          "entry_time": 1793633400,
+          "exit_time": 1793714400,
+          "entry_price": 0.272868813786686,
+          "exit_price": 0.4052101884732287,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "J7Uxr75SmPVim5ACPRCZ5fF6NM82o4Wm1SfVWsHwrLPP",
+      "candles": 96,
+      "trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate_pct": 0,
+      "starting_balance": 50.0,
+      "final_balance": 48.2309,
+      "net_pnl": -1.7691,
+      "max_drawdown_pct": 3.54,
+      "trade_details": [
+        {
+          "entry_time": 1793631600,
+          "exit_time": 1793632500,
+          "entry_price": 5.343144328840665e-05,
+          "exit_price": 4.49625595271942e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.08415000000000002,
+          "net_pnl": -1.7691499999999991,
+          "balance": 48.230850000000004,
+          "exit_reason": "STOP_OR_TRAILING"
+        }
+      ]
+    },
+    {
+      "pool": "JAsNf69VCnQWcM5Msh9eJqhx4hJBBVep7UBH6isN6gBD",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 52.3373,
+      "net_pnl": 2.3373,
+      "max_drawdown_pct": 0.56,
+      "trade_details": [
+        {
+          "entry_time": 1793713500,
+          "exit_time": 1793799000,
+          "entry_price": 0.009374764456052597,
+          "exit_price": 0.01177746002113466,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1256293966247954,
+          "net_pnl": 2.3373102658547444,
+          "balance": 52.33731026585475,
+          "exit_reason": "END_OF_DATA"
+        }
+      ]
+    },
+    {
+      "pool": "fMKswmDKwstG3jm6V5PKeXE5LkcW3ny84QrhDCKtc7A",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.0,
+      "trade_details": [
+        {
+          "entry_time": 1793619900,
+          "exit_time": 1793620800,
+          "entry_price": 0.00021636461437093382,
+          "exit_price": 0.00032130145234083674,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "g2DMiPuBKEQRwrZ3N2zUpMWKBoPtyovvGfDERRprjPe",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 0.65,
+      "trade_details": [
+        {
+          "entry_time": 1793717100,
+          "exit_time": 1793770200,
+          "entry_price": 0.0047196474904198015,
+          "exit_price": 0.007008676523273405,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.601499999999998,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "ishEsmyWEtrSksuaFP9xC16zy1w3ujV3idWACsNyriC",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 9.5,
+      "trade_details": [
+        {
+          "entry_time": 1793651400,
+          "exit_time": 1793652300,
+          "entry_price": 0.0001464033336914659,
+          "exit_price": 0.00021740895053182688,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.14850000000000002,
+          "net_pnl": 4.6015000000000015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    },
+    {
+      "pool": "yNHRvhs3iS9bns66BxadJ1RcDy4pSyusVx8akmPKsJK",
+      "candles": 96,
+      "trades": 1,
+      "wins": 1,
+      "losses": 0,
+      "win_rate_pct": 100,
+      "starting_balance": 50.0,
+      "final_balance": 54.6015,
+      "net_pnl": 4.6015,
+      "max_drawdown_pct": 40.18,
+      "trade_details": [
+        {
+          "entry_time": 1793645100,
+          "exit_time": 1793646000,
+          "entry_price": 2.3833800548722674e-05,
+          "exit_price": 3.539319381485317e-05,
+          "allocation": 10.0,
+          "entry_fee": 0.1,
+          "exit_fee": 0.1485,
+          "net_pnl": 4.6015,
+          "balance": 54.6015,
+          "exit_reason": "TAKE_PROFIT"
+        }
+      ]
+    }
+  ]
+}

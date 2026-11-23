@@ -7,13 +7,14 @@ from datetime import datetime, timezone
 import coingecko_collector as cg
 
 DATA = cg.DATA_DIR
-OUT = DATA / "coingecko"
+SOURCE_BATCH_DIR = DATA / "coingecko" / "source_batches"
+OUT = DATA / "coingecko" / "1m_5m"
 BATCH_OUT = OUT / "batches"
 WRAPPED_SOL = "So11111111111111111111111111111111111111112"
 
 
 def load_batch(number):
-    path = DATA / "batches" / f"batch_{number:02d}.jsonl"
+    path = SOURCE_BATCH_DIR / f"batch_{number:02d}.jsonl"
     if not path.exists():
         raise FileNotFoundError(path)
 
@@ -24,16 +25,24 @@ def load_batch(number):
         for line in f:
             if not line.strip():
                 continue
+
             r = json.loads(line)
             address = r.get("id")
-            created = r.get("created_at")
+            if not address or address in seen:
+                raise ValueError(f"Missing or duplicate pool: {address}")
+            seen.add(address)
+
             tokens = [
                 t.get("id") for t in r.get("tokens", [])
                 if t.get("id") and t.get("id") != WRAPPED_SOL
             ]
-            if not address or not created or not tokens:
-                continue
-            if address in seen:
+            created = r.get("created_at")
+
+            if not created or not tokens:
+                pools.append({
+                    "pool_address": address,
+                    "source_metadata_unavailable": True
+                })
                 continue
 
             dt = datetime.fromisoformat(created.replace("Z", "+00:00"))
@@ -43,7 +52,6 @@ def load_batch(number):
                 "created_at": created,
                 "launch_timestamp": int(dt.timestamp())
             })
-            seen.add(address)
 
     return pools
 
@@ -57,7 +65,9 @@ def completed_ids(path):
         for line in f:
             try:
                 r = json.loads(line)
-                if r.get("status") == "unavailable":
+                if r.get("status") in (
+                    "unavailable", "source_metadata_unavailable"
+                ):
                     done.add(r["pool_address"])
                 elif (
                     r.get("status") in ("ok", "no_candles")
@@ -75,12 +85,31 @@ def collect_batch(number, limit, delay):
     errors = OUT / "errors.jsonl"
 
     done = completed_ids(output)
-    pending = [p for p in pools if p["pool_address"] not in done]
+
+    for pool in pools:
+        if pool.get("source_metadata_unavailable"):
+            address = pool["pool_address"]
+            if address not in done:
+                record = {
+                    "pool_address": address,
+                    "batch": number,
+                    "status": "source_metadata_unavailable",
+                    "error": "Token address or launch timestamp unavailable"
+                }
+                with output.open("a") as f:
+                    f.write(json.dumps(record) + "\n")
+                done.add(address)
+
+    eligible = [p for p in pools if not p.get(
+        "source_metadata_unavailable"
+    )]
+    pending = [p for p in eligible if p["pool_address"] not in done]
     if limit:
         pending = pending[:limit]
 
     print(f"Batch {number:02d}: source={len(pools)}, "
-          f"completed={len(done)}, pending={len(pending)}")
+          f"queryable={len(eligible)}, completed={len(done)}, "
+          f"pending={len(pending)}")
 
     for i, pool in enumerate(pending, 1):
         address = pool["pool_address"]
@@ -147,14 +176,14 @@ def write_manifest():
         "interval": "15m",
         "window_hours": 24,
         "source_batches": 24,
-        "totals": {"ok": 0, "no_candles": 0, "invalid": 0, "unavailable": 0},
+        "totals": {"ok": 0, "no_candles": 0, "invalid": 0, "unavailable": 0, "source_metadata_unavailable": 0},
         "batches": {},
         "updated_at": datetime.now(timezone.utc).isoformat()
     }
 
     for n in range(1, 25):
         path = BATCH_OUT / f"batch_{n:02d}.jsonl"
-        counts = {"ok": 0, "no_candles": 0, "invalid": 0, "unavailable": 0}
+        counts = {"ok": 0, "no_candles": 0, "invalid": 0, "unavailable": 0, "source_metadata_unavailable": 0}
 
         if path.exists():
             with path.open() as f:
