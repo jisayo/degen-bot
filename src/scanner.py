@@ -10,9 +10,9 @@ PAIR_URL = "https://api.dexscreener.com/token-pairs/v1/solana/{}"
 TIMEOUT = 15
 MAX_TOKENS = 10
 
-MIN_LIQUIDITY_USD = 1000.0
+MIN_LIQUIDITY_USD = 10000.0
 MIN_LIQUIDITY_TO_MC_RATIO = 0.15
-MIN_TOKEN_AGE_MINUTES = 1
+MIN_TOKEN_AGE_MINUTES = 3
 MAX_TOKEN_AGE_MINUTES = 120
 
 
@@ -170,6 +170,14 @@ def scan_tokens():
                 sells_h1 = to_int(h1.get("sells"))
                 volume_1h = to_float(volume_h1)
 
+                price_change = pair.get("priceChange") or {}
+                price_change_h1 = to_float(price_change.get("h1")) if price_change.get("h1") is not None else None
+                price_change_m5 = to_float(price_change.get("m5")) if price_change.get("m5") is not None else None
+
+                m5 = transactions.get("m5") or {}
+                buys_m5 = to_int(m5.get("buys")) if isinstance(m5, dict) else None
+                sells_m5 = to_int(m5.get("sells")) if isinstance(m5, dict) else None
+
                 liquidity_mc_ratio = (
                     liquidity / market_cap if market_cap > 0 else None
                 )
@@ -185,6 +193,12 @@ def scan_tokens():
                     "volume_1h": volume_1h,
                     "buys_1h": buys_h1,
                     "sells_1h": sells_h1,
+
+                    # Momentum and short-term flow indicators
+                    "price_change_1h": price_change_h1,
+                    "price_change_m5": price_change_m5,
+                    "buys_5m": buys_m5,
+                    "sells_5m": sells_m5,
                 }
 
                 risk = check_rug_risk(market_data)
@@ -216,9 +230,14 @@ def scan_tokens():
                     "volume_1h": volume_1h,
                     "buys_1h": buys_h1,
                     "sells_1h": sells_h1,
+                    "buys_5m": buys_m5,
+                    "sells_5m": sells_m5,
+                    "price_change_1h": price_change_h1,
+                    "price_change_m5": price_change_m5,
                     "token_age_minutes": age_minutes,
                     "pair_url": pair.get("url", "N/A"),
                     "risk": risk,
+                    "rugcheck_report": risk.get("report"),
                     "opportunity": opportunity,
                     "paper_eligible": paper_eligible,
                 })

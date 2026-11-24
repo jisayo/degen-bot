@@ -1,7 +1,7 @@
 import math
 
 MIN_OPPORTUNITY_SCORE = 50
-MIN_LIQUIDITY_USD = 1000.0
+MIN_LIQUIDITY_USD = 10000.0
 MIN_LIQUIDITY_MC_RATIO = 0.15
 MIN_TRADES = 20
 MAX_VOLUME_LIQUIDITY_RATIO = 10.0
@@ -149,6 +149,23 @@ def score_opportunity(token: dict) -> dict:
     elif liquidity_mc_ratio < MIN_LIQUIDITY_MC_RATIO:
         reasons.append(f"Liquidity below {int(MIN_LIQUIDITY_MC_RATIO * 100)}% of market cap")
 
+    # Optional 1-hour price trajectory check: reject assets in active down-trend
+    raw_pc_1h = token.get("price_change_1h")
+    price_change_1h = None
+    if raw_pc_1h is not None:
+        try:
+            val = float(raw_pc_1h)
+            if math.isfinite(val):
+                price_change_1h = val
+        except (ValueError, TypeError):
+            pass
+
+    is_down_trending = price_change_1h is not None and price_change_1h < 0.0
+    if is_down_trending:
+        reasons.append(
+            f"Negative 1-hour price change ({price_change_1h:+.1f}%) indicates down-trending asset"
+        )
+
     # Paper-trading entry requirements
     eligible = (
         score >= MIN_OPPORTUNITY_SCORE
@@ -160,6 +177,7 @@ def score_opportunity(token: dict) -> dict:
         and not extreme_volume_ratio
         and buy_ratio is not None
         and buy_ratio >= MIN_BUY_RATIO
+        and not is_down_trending
     )
 
     if buy_ratio is not None and buy_ratio < MIN_BUY_RATIO:

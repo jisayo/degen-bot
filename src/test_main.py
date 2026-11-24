@@ -90,6 +90,54 @@ class TestMainPaperEntries(unittest.TestCase):
 
         self.assertEqual(mock_open.call_count, 3)
 
+    @patch("main.get_cooldown_tokens")
+    @patch("main.open_position")
+    @patch("main.load_positions")
+    @patch("main.scan_tokens")
+    @patch("main.fetch_position_prices")
+    @patch("main.monitor_positions")
+    def test_cooldown_token_is_not_reopened(
+        self, mock_monitor, mock_prices, mock_scan,
+        mock_positions, mock_open, mock_cooldown
+    ):
+        mock_positions.side_effect = [[], []]
+        mock_cooldown.return_value = {"TOKEN_COOLDOWN"}
+        mock_scan.return_value = [{
+            "address": "TOKEN_COOLDOWN",
+            "price_usd": 0.01,
+            "paper_eligible": True,
+        }]
+
+        main.run_cycle()
+
+        mock_open.assert_not_called()
+
+    @patch("main.observer.observe_candidate")
+    @patch("main.open_position")
+    @patch("main.load_positions")
+    @patch("main.scan_tokens")
+    @patch("main.fetch_position_prices")
+    @patch("main.monitor_positions")
+    def test_high_dump_risk_token_is_blocked_by_gating(
+        self, mock_monitor, mock_prices, mock_scan,
+        mock_positions, mock_open, mock_observe
+    ):
+        mock_positions.side_effect = [[], []]
+        mock_scan.return_value = [{
+            "address": "TOKEN_DUMP_RISK",
+            "price_usd": 0.01,
+            "paper_eligible": True,
+        }]
+        mock_observe.return_value = {
+            "risk_score": 65.0,
+            "risk_tier": "VERY_HIGH",
+            "warning_signals": ["Severe dump risk detected"],
+        }
+
+        main.run_cycle()
+
+        mock_open.assert_not_called()
+
     @patch.object(main.trailing_strategy, "execute_exits")
     @patch.object(main.trailing_strategy, "evaluate_and_update_positions")
     @patch("main.load_positions")

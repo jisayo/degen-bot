@@ -1,0 +1,1095 @@
+{
+  "dataset_pools_analyzed": 162,
+  "indicator_efficacy_ranking": {
+    "liquidity_risk": 6.05,
+    "trading_anomalies_risk": 3.79,
+    "whale_distribution_risk": 3.75,
+    "buy_sell_pressure_risk": 2.27,
+    "developer_activity_risk": 0.57,
+    "price_momentum_risk": 0.0,
+    "token_safety_risk": 0.0
+  },
+  "single_entry_overlap": {
+    "overlap_evaluated": true,
+    "total_trades": 29,
+    "stop_losses_total": 16,
+    "take_profits_total": 5,
+    "stop_losses_flagged_at_45": 0,
+    "stop_losses_prevented_pct_at_45": 0.0,
+    "stop_losses_flagged_at_35": 0,
+    "take_profits_wrongly_blocked_at_45": 0
+  },
+  "performance_matrix": {
+    "5m": {
+      "dump_20pct": {
+        "score_25": {
+          "tp": 2,
+          "fp": 15,
+          "fn": 33,
+          "tn": 112,
+          "precision_pct": 11.76,
+          "recall_pct": 5.71,
+          "f1_score": 7.69,
+          "false_alarm_rate_pct": 11.81,
+          "missed_dumps": 33,
+          "avg_lead_time_min": 22.5
+        },
+        "score_35": {
+          "tp": 1,
+          "fp": 12,
+          "fn": 34,
+          "tn": 115,
+          "precision_pct": 7.69,
+          "recall_pct": 2.86,
+          "f1_score": 4.17,
+          "false_alarm_rate_pct": 9.45,
+          "missed_dumps": 34,
+          "avg_lead_time_min": 40.0
+        },
+        "score_45": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 35,
+          "tn": 125,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 1.57,
+          "missed_dumps": 35,
+          "avg_lead_time_min": 0.0
+        },
+        "score_55": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 35,
+          "tn": 127,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 35,
+          "avg_lead_time_min": 0.0
+        },
+        "score_65": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 35,
+          "tn": 127,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 35,
+          "avg_lead_time_min": 0.0
+        }
+      },
+      "dump_35pct": {
+        "score_25": {
+          "tp": 1,
+          "fp": 16,
+          "fn": 18,
+          "tn": 127,
+          "precision_pct": 5.88,
+          "recall_pct": 5.26,
+          "f1_score": 5.56,
+          "false_alarm_rate_pct": 11.19,
+          "missed_dumps": 18,
+          "avg_lead_time_min": 5.0
+        },
+        "score_35": {
+          "tp": 0,
+          "fp": 13,
+          "fn": 19,
+          "tn": 130,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 9.09,
+          "missed_dumps": 19,
+          "avg_lead_time_min": 0.0
+        },
+        "score_45": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 19,
+          "tn": 141,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 1.4,
+          "missed_dumps": 19,
+          "avg_lead_time_min": 0.0
+        },
+        "score_55": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 19,
+          "tn": 143,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 19,
+          "avg_lead_time_min": 0.0
+        },
+        "score_65": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 19,
+          "tn": 143,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 19,
+          "avg_lead_time_min": 0.0
+        }
+      },
+      "dump_50pct": {
+        "score_25": {
+          "tp": 1,
+          "fp": 16,
+          "fn": 4,
+          "tn": 141,
+          "precision_pct": 5.88,
+          "recall_pct": 20.0,
+          "f1_score": 9.09,
+          "false_alarm_rate_pct": 10.19,
+          "missed_dumps": 4,
+          "avg_lead_time_min": 5.0
+        },
+        "score_35": {
+          "tp": 0,
+          "fp": 13,
+          "fn": 5,
+          "tn": 144,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 8.28,
+          "missed_dumps": 5,
+          "avg_lead_time_min": 0.0
+        },
+        "score_45": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 5,
+          "tn": 155,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 1.27,
+          "missed_dumps": 5,
+          "avg_lead_time_min": 0.0
+        },
+        "score_55": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 5,
+          "tn": 157,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 5,
+          "avg_lead_time_min": 0.0
+        },
+        "score_65": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 5,
+          "tn": 157,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 5,
+          "avg_lead_time_min": 0.0
+        }
+      }
+    },
+    "15m": {
+      "dump_20pct": {
+        "score_25": {
+          "tp": 3,
+          "fp": 14,
+          "fn": 45,
+          "tn": 100,
+          "precision_pct": 17.65,
+          "recall_pct": 6.25,
+          "f1_score": 9.23,
+          "false_alarm_rate_pct": 12.28,
+          "missed_dumps": 45,
+          "avg_lead_time_min": 23.3
+        },
+        "score_35": {
+          "tp": 2,
+          "fp": 11,
+          "fn": 46,
+          "tn": 103,
+          "precision_pct": 15.38,
+          "recall_pct": 4.17,
+          "f1_score": 6.56,
+          "false_alarm_rate_pct": 9.65,
+          "missed_dumps": 46,
+          "avg_lead_time_min": 32.5
+        },
+        "score_45": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 48,
+          "tn": 112,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 1.75,
+          "missed_dumps": 48,
+          "avg_lead_time_min": 0.0
+        },
+        "score_55": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 48,
+          "tn": 114,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 48,
+          "avg_lead_time_min": 0.0
+        },
+        "score_65": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 48,
+          "tn": 114,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 48,
+          "avg_lead_time_min": 0.0
+        }
+      },
+      "dump_35pct": {
+        "score_25": {
+          "tp": 1,
+          "fp": 16,
+          "fn": 22,
+          "tn": 123,
+          "precision_pct": 5.88,
+          "recall_pct": 4.35,
+          "f1_score": 5.0,
+          "false_alarm_rate_pct": 11.51,
+          "missed_dumps": 22,
+          "avg_lead_time_min": 5.0
+        },
+        "score_35": {
+          "tp": 0,
+          "fp": 13,
+          "fn": 23,
+          "tn": 126,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 9.35,
+          "missed_dumps": 23,
+          "avg_lead_time_min": 0.0
+        },
+        "score_45": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 23,
+          "tn": 137,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 1.44,
+          "missed_dumps": 23,
+          "avg_lead_time_min": 0.0
+        },
+        "score_55": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 23,
+          "tn": 139,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 23,
+          "avg_lead_time_min": 0.0
+        },
+        "score_65": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 23,
+          "tn": 139,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 23,
+          "avg_lead_time_min": 0.0
+        }
+      },
+      "dump_50pct": {
+        "score_25": {
+          "tp": 1,
+          "fp": 16,
+          "fn": 8,
+          "tn": 137,
+          "precision_pct": 5.88,
+          "recall_pct": 11.11,
+          "f1_score": 7.69,
+          "false_alarm_rate_pct": 10.46,
+          "missed_dumps": 8,
+          "avg_lead_time_min": 5.0
+        },
+        "score_35": {
+          "tp": 0,
+          "fp": 13,
+          "fn": 9,
+          "tn": 140,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 8.5,
+          "missed_dumps": 9,
+          "avg_lead_time_min": 0.0
+        },
+        "score_45": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 9,
+          "tn": 151,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 1.31,
+          "missed_dumps": 9,
+          "avg_lead_time_min": 0.0
+        },
+        "score_55": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 9,
+          "tn": 153,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 9,
+          "avg_lead_time_min": 0.0
+        },
+        "score_65": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 9,
+          "tn": 153,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 9,
+          "avg_lead_time_min": 0.0
+        }
+      }
+    },
+    "30m": {
+      "dump_20pct": {
+        "score_25": {
+          "tp": 3,
+          "fp": 14,
+          "fn": 52,
+          "tn": 93,
+          "precision_pct": 17.65,
+          "recall_pct": 5.45,
+          "f1_score": 8.33,
+          "false_alarm_rate_pct": 13.08,
+          "missed_dumps": 52,
+          "avg_lead_time_min": 23.3
+        },
+        "score_35": {
+          "tp": 2,
+          "fp": 11,
+          "fn": 53,
+          "tn": 96,
+          "precision_pct": 15.38,
+          "recall_pct": 3.64,
+          "f1_score": 5.88,
+          "false_alarm_rate_pct": 10.28,
+          "missed_dumps": 53,
+          "avg_lead_time_min": 32.5
+        },
+        "score_45": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 55,
+          "tn": 105,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 1.87,
+          "missed_dumps": 55,
+          "avg_lead_time_min": 0.0
+        },
+        "score_55": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 55,
+          "tn": 107,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 55,
+          "avg_lead_time_min": 0.0
+        },
+        "score_65": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 55,
+          "tn": 107,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 55,
+          "avg_lead_time_min": 0.0
+        }
+      },
+      "dump_35pct": {
+        "score_25": {
+          "tp": 2,
+          "fp": 15,
+          "fn": 26,
+          "tn": 119,
+          "precision_pct": 11.76,
+          "recall_pct": 7.14,
+          "f1_score": 8.89,
+          "false_alarm_rate_pct": 11.19,
+          "missed_dumps": 26,
+          "avg_lead_time_min": 15.0
+        },
+        "score_35": {
+          "tp": 1,
+          "fp": 12,
+          "fn": 27,
+          "tn": 122,
+          "precision_pct": 7.69,
+          "recall_pct": 3.57,
+          "f1_score": 4.88,
+          "false_alarm_rate_pct": 8.96,
+          "missed_dumps": 27,
+          "avg_lead_time_min": 25.0
+        },
+        "score_45": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 28,
+          "tn": 132,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 1.49,
+          "missed_dumps": 28,
+          "avg_lead_time_min": 0.0
+        },
+        "score_55": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 28,
+          "tn": 134,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 28,
+          "avg_lead_time_min": 0.0
+        },
+        "score_65": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 28,
+          "tn": 134,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 28,
+          "avg_lead_time_min": 0.0
+        }
+      },
+      "dump_50pct": {
+        "score_25": {
+          "tp": 1,
+          "fp": 16,
+          "fn": 11,
+          "tn": 134,
+          "precision_pct": 5.88,
+          "recall_pct": 8.33,
+          "f1_score": 6.9,
+          "false_alarm_rate_pct": 10.67,
+          "missed_dumps": 11,
+          "avg_lead_time_min": 5.0
+        },
+        "score_35": {
+          "tp": 0,
+          "fp": 13,
+          "fn": 12,
+          "tn": 137,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 8.67,
+          "missed_dumps": 12,
+          "avg_lead_time_min": 0.0
+        },
+        "score_45": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 12,
+          "tn": 148,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 1.33,
+          "missed_dumps": 12,
+          "avg_lead_time_min": 0.0
+        },
+        "score_55": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 12,
+          "tn": 150,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 12,
+          "avg_lead_time_min": 0.0
+        },
+        "score_65": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 12,
+          "tn": 150,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 12,
+          "avg_lead_time_min": 0.0
+        }
+      }
+    },
+    "60m": {
+      "dump_20pct": {
+        "score_25": {
+          "tp": 3,
+          "fp": 14,
+          "fn": 58,
+          "tn": 87,
+          "precision_pct": 17.65,
+          "recall_pct": 4.92,
+          "f1_score": 7.69,
+          "false_alarm_rate_pct": 13.86,
+          "missed_dumps": 58,
+          "avg_lead_time_min": 23.3
+        },
+        "score_35": {
+          "tp": 2,
+          "fp": 11,
+          "fn": 59,
+          "tn": 90,
+          "precision_pct": 15.38,
+          "recall_pct": 3.28,
+          "f1_score": 5.41,
+          "false_alarm_rate_pct": 10.89,
+          "missed_dumps": 59,
+          "avg_lead_time_min": 32.5
+        },
+        "score_45": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 61,
+          "tn": 99,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 1.98,
+          "missed_dumps": 61,
+          "avg_lead_time_min": 0.0
+        },
+        "score_55": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 61,
+          "tn": 101,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 61,
+          "avg_lead_time_min": 0.0
+        },
+        "score_65": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 61,
+          "tn": 101,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 61,
+          "avg_lead_time_min": 0.0
+        }
+      },
+      "dump_35pct": {
+        "score_25": {
+          "tp": 3,
+          "fp": 14,
+          "fn": 34,
+          "tn": 111,
+          "precision_pct": 17.65,
+          "recall_pct": 8.11,
+          "f1_score": 11.11,
+          "false_alarm_rate_pct": 11.2,
+          "missed_dumps": 34,
+          "avg_lead_time_min": 23.3
+        },
+        "score_35": {
+          "tp": 2,
+          "fp": 11,
+          "fn": 35,
+          "tn": 114,
+          "precision_pct": 15.38,
+          "recall_pct": 5.41,
+          "f1_score": 8.0,
+          "false_alarm_rate_pct": 8.8,
+          "missed_dumps": 35,
+          "avg_lead_time_min": 32.5
+        },
+        "score_45": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 37,
+          "tn": 123,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 1.6,
+          "missed_dumps": 37,
+          "avg_lead_time_min": 0.0
+        },
+        "score_55": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 37,
+          "tn": 125,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 37,
+          "avg_lead_time_min": 0.0
+        },
+        "score_65": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 37,
+          "tn": 125,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 37,
+          "avg_lead_time_min": 0.0
+        }
+      },
+      "dump_50pct": {
+        "score_25": {
+          "tp": 1,
+          "fp": 16,
+          "fn": 15,
+          "tn": 130,
+          "precision_pct": 5.88,
+          "recall_pct": 6.25,
+          "f1_score": 6.06,
+          "false_alarm_rate_pct": 10.96,
+          "missed_dumps": 15,
+          "avg_lead_time_min": 5.0
+        },
+        "score_35": {
+          "tp": 0,
+          "fp": 13,
+          "fn": 16,
+          "tn": 133,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 8.9,
+          "missed_dumps": 16,
+          "avg_lead_time_min": 0.0
+        },
+        "score_45": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 16,
+          "tn": 144,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 1.37,
+          "missed_dumps": 16,
+          "avg_lead_time_min": 0.0
+        },
+        "score_55": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 16,
+          "tn": 146,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 16,
+          "avg_lead_time_min": 0.0
+        },
+        "score_65": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 16,
+          "tn": 146,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 16,
+          "avg_lead_time_min": 0.0
+        }
+      }
+    },
+    "full": {
+      "dump_20pct": {
+        "score_25": {
+          "tp": 6,
+          "fp": 11,
+          "fn": 81,
+          "tn": 64,
+          "precision_pct": 35.29,
+          "recall_pct": 6.9,
+          "f1_score": 11.54,
+          "false_alarm_rate_pct": 14.67,
+          "missed_dumps": 81,
+          "avg_lead_time_min": 286.0
+        },
+        "score_35": {
+          "tp": 5,
+          "fp": 8,
+          "fn": 82,
+          "tn": 67,
+          "precision_pct": 38.46,
+          "recall_pct": 5.75,
+          "f1_score": 10.0,
+          "false_alarm_rate_pct": 10.67,
+          "missed_dumps": 82,
+          "avg_lead_time_min": 356.2
+        },
+        "score_45": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 85,
+          "tn": 75,
+          "precision_pct": 100.0,
+          "recall_pct": 2.3,
+          "f1_score": 4.49,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 85,
+          "avg_lead_time_min": 680.0
+        },
+        "score_55": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 87,
+          "tn": 75,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 87,
+          "avg_lead_time_min": 0.0
+        },
+        "score_65": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 87,
+          "tn": 75,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 87,
+          "avg_lead_time_min": 0.0
+        }
+      },
+      "dump_35pct": {
+        "score_25": {
+          "tp": 5,
+          "fp": 12,
+          "fn": 70,
+          "tn": 75,
+          "precision_pct": 29.41,
+          "recall_pct": 6.67,
+          "f1_score": 10.87,
+          "false_alarm_rate_pct": 13.79,
+          "missed_dumps": 70,
+          "avg_lead_time_min": 286.0
+        },
+        "score_35": {
+          "tp": 4,
+          "fp": 9,
+          "fn": 71,
+          "tn": 78,
+          "precision_pct": 30.77,
+          "recall_pct": 5.33,
+          "f1_score": 9.09,
+          "false_alarm_rate_pct": 10.34,
+          "missed_dumps": 71,
+          "avg_lead_time_min": 356.2
+        },
+        "score_45": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 73,
+          "tn": 87,
+          "precision_pct": 100.0,
+          "recall_pct": 2.67,
+          "f1_score": 5.19,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 73,
+          "avg_lead_time_min": 680.0
+        },
+        "score_55": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 75,
+          "tn": 87,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 75,
+          "avg_lead_time_min": 0.0
+        },
+        "score_65": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 75,
+          "tn": 87,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 75,
+          "avg_lead_time_min": 0.0
+        }
+      },
+      "dump_50pct": {
+        "score_25": {
+          "tp": 2,
+          "fp": 15,
+          "fn": 55,
+          "tn": 90,
+          "precision_pct": 11.76,
+          "recall_pct": 3.51,
+          "f1_score": 5.41,
+          "false_alarm_rate_pct": 14.29,
+          "missed_dumps": 55,
+          "avg_lead_time_min": 577.5
+        },
+        "score_35": {
+          "tp": 1,
+          "fp": 12,
+          "fn": 56,
+          "tn": 93,
+          "precision_pct": 7.69,
+          "recall_pct": 1.75,
+          "f1_score": 2.86,
+          "false_alarm_rate_pct": 11.43,
+          "missed_dumps": 56,
+          "avg_lead_time_min": 1150.0
+        },
+        "score_45": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 56,
+          "tn": 104,
+          "precision_pct": 50.0,
+          "recall_pct": 1.75,
+          "f1_score": 3.39,
+          "false_alarm_rate_pct": 0.95,
+          "missed_dumps": 56,
+          "avg_lead_time_min": 1150.0
+        },
+        "score_55": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 57,
+          "tn": 105,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 57,
+          "avg_lead_time_min": 0.0
+        },
+        "score_65": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 57,
+          "tn": 105,
+          "precision_pct": 0.0,
+          "recall_pct": 0.0,
+          "f1_score": 0.0,
+          "false_alarm_rate_pct": 0.0,
+          "missed_dumps": 57,
+          "avg_lead_time_min": 0.0
+        }
+      }
+    }
+  },
+  "sample_evaluations": [
+    {
+      "pool": "12LQmZeUTxPNFqMHMV9mJ5cXLoCmTvoq6gfChCQFpdmK",
+      "token": "DDmGnuvroxVrb7CSyjYcezFU8gnAfhKasg4ZZezmpump",
+      "risk_score": 9.0,
+      "risk_tier": "LOW",
+      "warnings": [
+        "Fragile liquidity ratio (8.6% < 15% of MC)",
+        "Bearish order asymmetry: average sell ($2873) exceeds average buy ($1149)"
+      ],
+      "breakdown": {
+        "liquidity_risk": 5.0,
+        "whale_distribution_risk": 4.0,
+        "developer_activity_risk": 0.0,
+        "buy_sell_pressure_risk": 0.0,
+        "price_momentum_risk": 0.0,
+        "trading_anomalies_risk": 0.0,
+        "token_safety_risk": 0.0
+      },
+      "drop_5m": 3.9514534766176004,
+      "drop_15m": 3.9514534766176004,
+      "drop_30m": 3.9514534766176004,
+      "drop_60m": 3.9514534766176004,
+      "drop_full": 3.9514534766176004,
+      "lead_time_min": null
+    },
+    {
+      "pool": "12Y1mRKWEWEwoYqhSwybEsJzM8gAGnig1XqGQLC5uW3V",
+      "token": "F2xQeTCTqnczXxXQaBWAfDpUnpxn4wQHRPSqvUYJpump",
+      "risk_score": 10.0,
+      "risk_tier": "LOW",
+      "warnings": [
+        "Bearish order asymmetry: average sell ($9236) exceeds average buy ($3695)",
+        "Extreme volume/liquidity ratio (17.2x > 15x): suspected circular wash trading"
+      ],
+      "breakdown": {
+        "liquidity_risk": 0.0,
+        "whale_distribution_risk": 4.0,
+        "developer_activity_risk": 0.0,
+        "buy_sell_pressure_risk": 0.0,
+        "price_momentum_risk": 0.0,
+        "trading_anomalies_risk": 6.0,
+        "token_safety_risk": 0.0
+      },
+      "drop_5m": 69.0515161119816,
+      "drop_15m": 83.49685083081306,
+      "drop_30m": 90.84156195156953,
+      "drop_60m": 90.84156195156953,
+      "drop_full": 90.84156195156953,
+      "lead_time_min": 5.0
+    },
+    {
+      "pool": "28VHD9TLfeVKz6mxchTTgGsFH3K8PpWTzjnxayLij7v1",
+      "token": "5DnWmSL9t3YqK5MeYq8ozJpna46VcdePWzHvyN8avg2g",
+      "risk_score": 15.0,
+      "risk_tier": "LOW",
+      "warnings": [
+        "RugCheck flags low liquidity depth",
+        "Sellers dominate order flow: only 28.6% buys (< 45%)"
+      ],
+      "breakdown": {
+        "liquidity_risk": 5.0,
+        "whale_distribution_risk": 0.0,
+        "developer_activity_risk": 0.0,
+        "buy_sell_pressure_risk": 10.0,
+        "price_momentum_risk": 0.0,
+        "trading_anomalies_risk": 0.0,
+        "token_safety_risk": 0.0
+      },
+      "drop_5m": 37.55966771790538,
+      "drop_15m": 37.55966771790538,
+      "drop_30m": 37.55966771790538,
+      "drop_60m": 37.55966771790538,
+      "drop_full": 37.55966771790538,
+      "lead_time_min": 5.0
+    },
+    {
+      "pool": "2CdTUDz6BZSn99JSofW5q5m8PV8MFqTaYQMTU62tshkk",
+      "token": "2D1qiezMVyF1trPzGAjnaoDHyHVptFg4qzqkb8Xspump",
+      "risk_score": 23.0,
+      "risk_tier": "LOW",
+      "warnings": [
+        "Severely thin liquidity ratio (1.2% < 8% of MC)",
+        "RugCheck flags low liquidity depth",
+        "Bearish order asymmetry: average sell ($15694) exceeds average buy ($6278)",
+        "Extreme volume/liquidity ratio (29.3x > 15x): suspected circular wash trading"
+      ],
+      "breakdown": {
+        "liquidity_risk": 13.0,
+        "whale_distribution_risk": 4.0,
+        "developer_activity_risk": 0.0,
+        "buy_sell_pressure_risk": 0.0,
+        "price_momentum_risk": 0.0,
+        "trading_anomalies_risk": 6.0,
+        "token_safety_risk": 0.0
+      },
+      "drop_5m": 0.5969728194826459,
+      "drop_15m": 0.5969728194826459,
+      "drop_30m": 0.5969728194826459,
+      "drop_60m": 0.5969728194826459,
+      "drop_full": 0.5969728194826459,
+      "lead_time_min": null
+    },
+    {
+      "pool": "2FPU2G4geNB6H439texTqWdYuX2GTU4nUwdWiNRxViJf",
+      "token": "3LMuXH9zD1Qtkv7QKNeJTiB5PYPE3DA2ZcZUB72Wpump",
+      "risk_score": 23.0,
+      "risk_tier": "LOW",
+      "warnings": [
+        "Severely thin liquidity ratio (0.0% < 8% of MC)",
+        "RugCheck flags low liquidity depth",
+        "Bearish order asymmetry: average sell ($172079) exceeds average buy ($68832)",
+        "Extreme volume/liquidity ratio (321.2x > 15x): suspected circular wash trading"
+      ],
+      "breakdown": {
+        "liquidity_risk": 13.0,
+        "whale_distribution_risk": 4.0,
+        "developer_activity_risk": 0.0,
+        "buy_sell_pressure_risk": 0.0,
+        "price_momentum_risk": 0.0,
+        "trading_anomalies_risk": 6.0,
+        "token_safety_risk": 0.0
+      },
+      "drop_5m": 0.3790213054875429,
+      "drop_15m": 0.3790213054875429,
+      "drop_30m": 0.3790213054875429,
+      "drop_60m": 0.3790213054875429,
+      "drop_full": 82.5180968527958,
+      "lead_time_min": 1345.0
+    }
+  ]
+}

@@ -12,7 +12,7 @@ POSITIONS_FILE = DATA_DIR / "open_positions.json"
 STARTING_BALANCE = 50.00
 MIN_TRADE_SIZE = 1.00
 
-TRADE_SIZE_PCT = 0.20
+TRADE_SIZE_PCT = round(0.25 / 3, 4)  # ~8.33% per slot ($4.17 on $50 base), 25% total risk across 3 slots
 FEE_RATE = 0.01
 SLIPPAGE_RATE = 0.01
 
@@ -407,6 +407,31 @@ def monitor_positions(price_map):
             print(f"Paper exit skipped for {token}: {error}")
 
     return closed
+
+
+def get_cooldown_tokens(cooldown_seconds=86400) -> set[str]:
+    """Return set of token addresses closed within cooldown_seconds to prevent re-entry loops."""
+    if not TRADE_LOG.exists():
+        return set()
+    cooldown_tokens = set()
+    current_time = datetime.now(timezone.utc)
+    try:
+        with TRADE_LOG.open("r", newline="") as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                token = row.get("token")
+                ts_str = row.get("timestamp")
+                if not token or not ts_str:
+                    continue
+                try:
+                    ts = datetime.fromisoformat(ts_str)
+                    if (current_time - ts).total_seconds() < cooldown_seconds:
+                        cooldown_tokens.add(token)
+                except Exception:
+                    continue
+    except Exception:
+        pass
+    return cooldown_tokens
 
 
 def main():

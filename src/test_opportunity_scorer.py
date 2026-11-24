@@ -28,17 +28,17 @@ class TestOpportunityScorer(unittest.TestCase):
         result = score_opportunity(token)
         self.assertFalse(result["eligible_for_paper_trading"])
 
-    def test_liquidity_below_1k_is_ineligible(self):
+    def test_liquidity_below_10k_is_ineligible(self):
         token = {
-            "liquidity_usd": 999.0,
-            "market_cap_usd": 1500,
+            "liquidity_usd": 9999.0,
+            "market_cap_usd": 15000,
             "volume_1h": 10000,
             "buys_1h": 50,
             "sells_1h": 30,
         }
         result = score_opportunity(token)
         self.assertFalse(result["eligible_for_paper_trading"])
-        self.assertTrue(any("below minimum of $1,000.00" in r for r in result["reasons"]))
+        self.assertTrue(any("below minimum of $10,000.00" in r for r in result["reasons"]))
 
     def test_buy_ratio_below_60_40_is_ineligible(self):
         # 55% buys (55 buys, 45 sells) is below 60:40 requirement
@@ -186,6 +186,31 @@ class TestOpportunityScorer(unittest.TestCase):
         self.assertGreaterEqual(
             result["opportunity_score"], MIN_OPPORTUNITY_SCORE
         )
+        self.assertTrue(result["eligible_for_paper_trading"])
+
+    def test_negative_1h_price_change_is_ineligible(self):
+        token = {
+            "liquidity_usd": 25000,
+            "market_cap_usd": 50000,
+            "volume_1h": 50000,
+            "buys_1h": 40,
+            "sells_1h": 20,
+            "price_change_1h": -12.5,
+        }
+        result = score_opportunity(token)
+        self.assertFalse(result["eligible_for_paper_trading"])
+        self.assertTrue(any("down-trending" in r for r in result["reasons"]))
+
+    def test_positive_1h_price_change_can_qualify(self):
+        token = {
+            "liquidity_usd": 25000,
+            "market_cap_usd": 50000,
+            "volume_1h": 50000,
+            "buys_1h": 40,
+            "sells_1h": 20,
+            "price_change_1h": 15.0,
+        }
+        result = score_opportunity(token)
         self.assertTrue(result["eligible_for_paper_trading"])
 
 

@@ -1,20 +1,25 @@
 'use client';
 
 import { DollarSign, TrendingUp, ShieldCheck, Activity } from 'lucide-react';
-import { BotStatus } from '@/lib/types';
+import { BotStatus, PaperTrade } from '@/lib/types';
 import { formatCurrency, formatPercent } from '@/lib/formatters';
 
 interface StatCardsProps {
   status: BotStatus | null;
-  winRate?: number;
-  totalTrades?: number;
+  liveTrades?: PaperTrade[];
 }
 
-export default function StatCards({ status, winRate = 54.94, totalTrades = 162 }: StatCardsProps) {
+export default function StatCards({ status, liveTrades = [] }: StatCardsProps) {
   const balance = status?.balanceUsd ?? 50.0;
   const initial = status?.initialBalanceUsd ?? 50.0;
   const pnl = balance - initial;
-  const pnlPct = (pnl / initial) * 100;
+  const pnlPct = initial > 0 ? (pnl / initial) * 100 : 0.0;
+
+  // Calculate stats strictly from THIS live 7-day trial run
+  const totalClosed = liveTrades.length;
+  const wins = liveTrades.filter((t) => Number(t.pnl) > 0).length;
+  const losses = liveTrades.filter((t) => Number(t.pnl) <= 0).length;
+  const winRate = totalClosed > 0 ? (wins / totalClosed) * 100 : 0;
 
   const stats = [
     {
@@ -24,30 +29,33 @@ export default function StatCards({ status, winRate = 54.94, totalTrades = 162 }
       subtextColor: pnl >= 0 ? 'text-emerald-400' : 'text-rose-400',
       icon: DollarSign,
       glow: 'glow-purple',
-      badge: '1 Wallet Model',
+      badge: 'Active Balance',
     },
     {
       title: 'Current Return',
       value: formatPercent(pnlPct),
-      subtext: 'From $50.00 base capital',
-      subtextColor: 'text-zinc-400',
+      subtext: `From $${initial.toFixed(2)} base capital`,
+      subtextColor: pnlPct >= 0 ? 'text-emerald-400' : 'text-rose-400',
       icon: TrendingUp,
       glow: pnlPct >= 0 ? 'glow-green' : 'glow-red',
       badge: 'Compounded',
     },
     {
-      title: 'Backtest Win Rate',
-      value: `${winRate.toFixed(1)}%`,
-      subtext: `${totalTrades} single-entry trades executed`,
+      title: 'Live Test Win Rate',
+      value: totalClosed > 0 ? `${winRate.toFixed(1)}%` : 'Fresh Trial',
+      subtext:
+        totalClosed > 0
+          ? `${wins}W / ${losses}L (${totalClosed} closed)`
+          : `0 closed • ${status?.openPositionsCount ?? 0} active`,
       subtextColor: 'text-zinc-400',
       icon: ShieldCheck,
       glow: 'glow-purple',
-      badge: 'Audited Cohort',
+      badge: '7-Day Run',
     },
     {
       title: 'Active Open Positions',
-      value: `${status?.openPositionsCount ?? 0} / ${status?.maxOpenPositions ?? 1}`,
-      subtext: 'Risk guard: 20% max size',
+      value: `${status?.openPositionsCount ?? 0} / ${status?.maxOpenPositions ?? 3}`,
+      subtext: '$4.17 / slot • 15% dynamic stop',
       subtextColor: 'text-zinc-400',
       icon: Activity,
       glow: 'glow-purple',
@@ -62,21 +70,28 @@ export default function StatCards({ status, winRate = 54.94, totalTrades = 162 }
         return (
           <div
             key={i}
-            className="terminal-card rounded-xl p-5 relative overflow-hidden transition-all duration-300 hover:border-purple-600/60"
+            className={`terminal-card rounded-xl p-5 relative overflow-hidden transition-all duration-300 hover:border-purple-600/40`}
           >
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-xs font-medium text-zinc-400 uppercase tracking-wider">{stat.title}</span>
-              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-purple-950/60 text-purple-300 border border-purple-800/40">
-                {stat.badge}
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider font-mono">
+                {stat.title}
               </span>
-            </div>
-            <div className="flex items-baseline justify-between">
-              <div>
-                <div className="text-2xl font-bold font-mono tracking-tight text-white mb-1">{stat.value}</div>
-                <div className={`text-xs font-mono font-medium ${stat.subtextColor}`}>{stat.subtext}</div>
+              <div className="flex items-center space-x-1.5">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#1e1a3f] text-purple-300 border border-[#2e265c]">
+                  {stat.badge}
+                </span>
+                <div className="p-2 rounded-lg bg-purple-950/40 border border-purple-800/30 text-purple-400">
+                  <Icon className="w-4 h-4" />
+                </div>
               </div>
-              <div className="w-10 h-10 rounded-lg bg-purple-900/20 border border-purple-700/30 flex items-center justify-center">
-                <Icon className="w-5 h-5 text-purple-400" />
+            </div>
+
+            <div className="mt-4">
+              <div className="text-2xl font-bold font-mono tracking-tight text-white">
+                {stat.value}
+              </div>
+              <div className={`text-xs mt-1 font-mono ${stat.subtextColor}`}>
+                {stat.subtext}
               </div>
             </div>
           </div>

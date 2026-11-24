@@ -3,25 +3,25 @@
 import { useEffect, useState } from 'react';
 import StatCards from '@/components/dashboard/StatCards';
 import PositionsTable from '@/components/dashboard/PositionsTable';
-import BacktestWidget from '@/components/dashboard/BacktestWidget';
-import { BotStatus, Position, BacktestAggregate, BacktestTrade } from '@/lib/types';
-import { Radio, RefreshCw, Zap, Shield, Flame, RotateCcw, Timer } from 'lucide-react';
+import StrategyConditionsCard from '@/components/dashboard/StrategyConditionsCard';
+import LiveTradesTable from '@/components/dashboard/LiveTradesTable';
+import { BotStatus, Position, PaperTrade } from '@/lib/types';
+import { RefreshCw, RotateCcw, Timer, Activity, ShieldCheck } from 'lucide-react';
 
 export default function DashboardPage() {
   const [status, setStatus] = useState<BotStatus | null>(null);
   const [positions, setPositions] = useState<Position[]>([]);
-  const [backtestAggregate, setBacktestAggregate] = useState<BacktestAggregate | null>(null);
-  const [backtestTrades, setBacktestTrades] = useState<BacktestTrade[]>([]);
+  const [liveTrades, setLiveTrades] = useState<PaperTrade[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [resetting, setResetting] = useState(false);
 
   async function loadData() {
     try {
-      const [statusRes, positionsRes, backtestRes] = await Promise.all([
+      const [statusRes, positionsRes, tradesRes] = await Promise.all([
         fetch('/api/bot/status'),
         fetch('/api/bot/positions'),
-        fetch('/api/backtest'),
+        fetch('/api/bot/trades'),
       ]);
 
       if (statusRes.ok) {
@@ -31,10 +31,9 @@ export default function DashboardPage() {
         const data = await positionsRes.json();
         setPositions(data.positions || []);
       }
-      if (backtestRes.ok) {
-        const data = await backtestRes.json();
-        setBacktestAggregate(data.aggregate || null);
-        setBacktestTrades(data.trades || []);
+      if (tradesRes.ok) {
+        const data = await tradesRes.json();
+        setLiveTrades(data.trades || []);
       }
     } catch (err) {
       console.error('Failed to load dashboard data:', err);
@@ -56,7 +55,11 @@ export default function DashboardPage() {
   };
 
   const handleResetData = async () => {
-    if (!window.confirm("Are you sure you want to clear all previous trades and restart the 7-day paper trading test with $50.00?")) {
+    if (
+      !window.confirm(
+        'Are you sure you want to clear all previous trades and restart the 7-day paper trading trial with $50.00?'
+      )
+    ) {
       return;
     }
     setResetting(true);
@@ -84,13 +87,13 @@ export default function DashboardPage() {
           <div className="w-3 h-3 rounded-full bg-emerald-400 animate-ping" />
           <div>
             <h1 className="text-base font-bold text-white tracking-wide flex items-center space-x-2">
-              <span>SOLANA LIVE TRADING TERMINAL</span>
+              <span>SOLANA LIVE TRADING TRIAL</span>
               <span className="text-xs px-2 py-0.5 rounded bg-purple-900/60 text-purple-300 font-mono border border-purple-700">
-                PAPER EXECUTION
+                7-DAY TEST RUN
               </span>
             </h1>
             <p className="text-xs text-zinc-400">
-              Autonomous token discovery, RugCheck risk evaluation, and staged trade execution.
+              Live automated paper execution on Solana &bull; Base capital: $50.00 &bull; 15% Dynamic Trailing Stop
             </p>
           </div>
         </div>
@@ -122,7 +125,9 @@ export default function DashboardPage() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-4 py-3 rounded-xl bg-purple-950/20 border border-purple-800/40 text-xs font-mono">
           <div className="flex items-center space-x-2 text-purple-200">
             <Timer className="w-4 h-4 text-purple-400" />
-            <span><b>7-Day Live Test Active:</b> Starting Capital $50.00</span>
+            <span>
+              <b>7-Day Live Test Active:</b> Base Capital $50.00
+            </span>
           </div>
           <div className="flex flex-wrap items-center gap-3 text-zinc-300">
             <span>Started: {new Date(status.testStartedAt).toLocaleDateString()}</span>
@@ -134,73 +139,17 @@ export default function DashboardPage() {
         </div>
       )}
 
-      {/* KPI Metric Cards */}
-      <StatCards
-        status={status}
-        winRate={backtestAggregate?.win_rate_pct ?? 54.94}
-        totalTrades={backtestAggregate?.trades_executed ?? 162}
-      />
+      {/* KPI Metric Cards (Strictly for this Current 7-Day Run) */}
+      <StatCards status={status} liveTrades={liveTrades} />
 
-      {/* Grid: Active Positions & Quick Status */}
-      <div className="space-y-6">
-        <PositionsTable positions={positions} loading={loading} />
+      {/* 1. Active Open Positions Table */}
+      <PositionsTable positions={positions} loading={loading} />
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2">
-            <BacktestWidget
-              aggregate={backtestAggregate}
-              trades={backtestTrades}
-              loading={loading}
-            />
-          </div>
+      {/* 2. Strategy & Entry Conditions Card */}
+      <StrategyConditionsCard />
 
-          {/* Strategy Engine Parameters Box */}
-          <div className="terminal-card rounded-xl p-5 space-y-4">
-            <div className="border-b border-[#231f4b] pb-3">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-100 flex items-center space-x-2">
-                <Shield className="w-4 h-4 text-purple-400" />
-                <span>Live Guardrails & Strategy</span>
-              </h3>
-              <p className="text-xs text-zinc-400 mt-0.5">Verified parameters currently enforced</p>
-            </div>
-
-            <div className="space-y-3 font-mono text-xs">
-              <div className="flex justify-between py-1.5 border-b border-[#1b1739]">
-                <span className="text-zinc-400">Max Open Positions</span>
-                <span className="text-purple-300 font-semibold">1 (Conservative)</span>
-              </div>
-              <div className="flex justify-between py-1.5 border-b border-[#1b1739]">
-                <span className="text-zinc-400">Position Allocation</span>
-                <span className="text-zinc-200">20% of cash</span>
-              </div>
-              <div className="flex justify-between py-1.5 border-b border-[#1b1739]">
-                <span className="text-zinc-400">Hard Stop Loss</span>
-                <span className="text-rose-400 font-semibold">-15.0%</span>
-              </div>
-              <div className="flex justify-between py-1.5 border-b border-[#1b1739]">
-                <span className="text-zinc-400">Take Profit 1</span>
-                <span className="text-emerald-400 font-semibold">+50.0% (Sell 50%)</span>
-              </div>
-              <div className="flex justify-between py-1.5 border-b border-[#1b1739]">
-                <span className="text-zinc-400">Take Profit 2</span>
-                <span className="text-emerald-400 font-semibold">+100.0% (Sell 25%)</span>
-              </div>
-              <div className="flex justify-between py-1.5 border-b border-[#1b1739]">
-                <span className="text-zinc-400">Trailing Runner</span>
-                <span className="text-purple-300 font-semibold">15.0% Trailing Stop</span>
-              </div>
-              <div className="flex justify-between py-1.5 border-b border-[#1b1739]">
-                <span className="text-zinc-400">RugCheck Requirement</span>
-                <span className="text-emerald-400 font-semibold">LOW Risk Only</span>
-              </div>
-              <div className="flex justify-between py-1.5">
-                <span className="text-zinc-400">Min Liq / MC Ratio</span>
-                <span className="text-zinc-200">&gt;= 0.50 (50%)</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* 3. Live Completed Trades Table (For this 7-Day Test) */}
+      <LiveTradesTable trades={liveTrades} loading={loading} />
     </div>
   );
 }

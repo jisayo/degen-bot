@@ -82,6 +82,32 @@ def check_rug_risk(token: dict) -> dict:
                 risks.append("RugCheck contains an unknown risk level")
                 score += 30
 
+        # Check top holder supply concentration
+        top_holders = report.get("topHolders", [])
+        if isinstance(top_holders, list) and top_holders:
+            non_pool_holders = [
+                h for h in top_holders
+                if isinstance(h, dict) and not h.get("isPool", False)
+            ]
+            percentages = [
+                float(h.get("pct", 0) or 0)
+                for h in non_pool_holders
+                if h.get("pct") is not None
+            ]
+            top1_pct = max(percentages) if percentages else 0.0
+            top10_sum = sum(sorted(percentages, reverse=True)[:10])
+
+            if top1_pct > 15.0:
+                risks.append(f"RugCheck: Single holder owns {top1_pct:.1f}% of supply")
+                score = max(score, 75)
+            elif top1_pct > 10.0:
+                risks.append(f"RugCheck warning: Top holder owns {top1_pct:.1f}% of supply")
+                score = max(score, score + 15)
+
+            if top10_sum > 40.0:
+                risks.append(f"RugCheck: Top 10 holders own {top10_sum:.1f}% of supply")
+                score = max(score, 70)
+
     except Exception as error:
         risks.append(f"RugCheck validation failed: {type(error).__name__}")
         score = 100
@@ -103,4 +129,5 @@ def check_rug_risk(token: dict) -> dict:
             and rugcheck is not None
             and score < 30
         ),
+        "report": report if data_valid else None,
     }

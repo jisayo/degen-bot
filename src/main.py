@@ -6,7 +6,9 @@ from paper_trader import (
     initialise,
     load_positions,
     open_position,
+    get_cooldown_tokens,
 )
+from dump_observer import observer
 from solana_trailing_strategy import SolanaTrailingStopStrategy
 from telegram_notifier import (
     notify_opportunity_found,
@@ -124,6 +126,7 @@ def run_cycle():
     results = scan_tokens()
     positions = load_positions()
     open_tokens = {position["token"] for position in positions}
+    cooldown_tokens = get_cooldown_tokens(cooldown_seconds=86400)
 
     slots = max(0, MAX_OPEN_POSITIONS - len(positions))
     opened = 0
@@ -135,13 +138,28 @@ def run_cycle():
         if not isinstance(item, dict) or item.get("paper_eligible") is not True:
             continue
 
-        notify_opportunity_found(item)
-
         token = item.get("address")
         price = item.get("price_usd")
 
-        if not token or token in open_tokens:
+        if not token or token in open_tokens or token in cooldown_tokens:
             continue
+
+        # Predictive Dump Detection Gating: Evaluate candidate risk and actively reject high-risk tokens
+        try:
+            dump_eval = observer.observe_candidate(
+                item,
+                rugcheck_data=item.get("rugcheck_report") or (item.get("risk") or {}).get("report"),
+                context="PRE_ENTRY",
+            )
+            rejected, reject_reason = observer.detector.should_reject(dump_eval, rejection_threshold=45.0)
+            if rejected:
+                print(f"[DumpDetector] BLOCKED entry for {token[:12]} ({item.get('symbol', 'TOKEN')}): {reject_reason}")
+                continue
+            print(f"[DumpDetector] PASSED {token[:12]}... Risk Score: {dump_eval['risk_score']}/100 ({dump_eval['risk_tier']})")
+        except Exception as exc:
+            print(f"[DumpDetector] Gating evaluation error: {exc}")
+
+        notify_opportunity_found(item)
 
         try:
             pos = open_position(token, price)

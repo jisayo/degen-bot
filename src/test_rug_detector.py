@@ -92,6 +92,21 @@ class TestRugDetector(unittest.TestCase):
         result = check_rug_risk(token)
         self.assertFalse(result["trade_allowed"])
 
+    @patch("rug_detector.get_rugcheck_report", return_value={
+        "rugged": False,
+        "topHolders": [
+            {"address": "WHALE_WALLET", "pct": 85.0, "isPool": False},
+        ],
+    })
+    @patch("rug_detector.summarise_risk", return_value={
+        "risk_score": 1, "risks": []
+    })
+    def test_concentrated_top_holder_supply_blocks_trade(self, *_):
+        result = check_rug_risk(TOKEN)
+        self.assertFalse(result["trade_allowed"])
+        self.assertGreaterEqual(result["risk_score"], 60)
+        self.assertTrue(any("Single holder owns" in r for r in result["risks"]))
+
 
 if __name__ == "__main__":
     unittest.main()
