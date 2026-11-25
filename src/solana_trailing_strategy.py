@@ -11,7 +11,12 @@ TIMEOUT = 15
 
 # Strategy Parameters
 MAX_SIMULTANEOUS_TRADES = 3
-TRAILING_STOP_PCT = 0.15          # 15% trailing stop below post-activation peak
+INITIAL_STOP_LOSS_PCT = 0.25      # 25% initial stop buffer to absorb early noise
+TRAILING_STOP_PCT = 0.15          # 15% dynamic trailing stop once in profit
+FIRST_TAKE_PROFIT_PCT = 0.50      # +50% TP1
+FIRST_TAKE_PROFIT_FRACTION = 0.35 # Sell 35% at TP1
+SECOND_TAKE_PROFIT_PCT = 1.00     # +100% TP2
+SECOND_TAKE_PROFIT_FRACTION = 0.35# Sell 35% at TP2
 SLIPPAGE_TOLERANCE_PCT = 0.15     # 15% slippage tolerance for Jito-protected exit
 
 
@@ -19,8 +24,9 @@ class SolanaTrailingStopStrategy:
     """
     Manages active Solana positions using real-time DexScreener price feeds.
     Enforces a strict 3-trade concurrency ceiling.
-    Tracks only post-activation peaks (ignoring historical ATH).
-    Locks the stop trigger at 15% below the post-activation peak.
+    Provides early volatility noise buffer (25% initial stop).
+    Implements staged take-profits (+50% sell 35%, +100% sell 35%).
+    Trails remainder with 15% dynamic trailing stop from post-activation peak.
     Executes automated exits via Jito-protected private bundles (10-15% slippage).
     """
 
@@ -28,11 +34,23 @@ class SolanaTrailingStopStrategy:
         self,
         max_positions: int = MAX_SIMULTANEOUS_TRADES,
         trailing_stop_pct: float = TRAILING_STOP_PCT,
+        initial_stop_pct: Optional[float] = None,
+        enable_staged_tp: bool = True,
+        tp1_pct: float = FIRST_TAKE_PROFIT_PCT,
+        tp1_fraction: float = FIRST_TAKE_PROFIT_FRACTION,
+        tp2_pct: float = SECOND_TAKE_PROFIT_PCT,
+        tp2_fraction: float = SECOND_TAKE_PROFIT_FRACTION,
         slippage_tolerance: float = SLIPPAGE_TOLERANCE_PCT,
         jito_executor: Optional[JitoBundleExecutor] = None,
     ):
         self.max_positions = max_positions
         self.trailing_stop_pct = trailing_stop_pct
+        self.initial_stop_pct = initial_stop_pct
+        self.enable_staged_tp = enable_staged_tp
+        self.tp1_pct = tp1_pct
+        self.tp1_fraction = tp1_fraction
+        self.tp2_pct = tp2_pct
+        self.tp2_fraction = tp2_fraction
         self.jito_executor = jito_executor or JitoBundleExecutor(
             slippage_tolerance=slippage_tolerance
         )
@@ -83,11 +101,10 @@ class SolanaTrailingStopStrategy:
         live_prices: Dict[str, float],
     ) -> List[Dict[str, Any]]:
         """
-        Evaluates active positions against their dynamic trailing stop trigger:
-        1. Ignores historical ATH: tracks only post-activation peak.
-        2. Raises stop trigger automatically as price achieves new highs.
-        3. Ignores minor pullbacks (< 15%).
-        4. When price falls >= 15% from post-activation peak, executes Jito-protected exit.
+        Evaluates active positions against:
+        1. Staged Take-Profits: +50% (sell 35%), +100% (sell 35%).
+        2. Initial Stop Buffer (25% buffer against entry whipsaw).
+        3. Dynamic Trailing Stop (15% from peak once in profit, locked at break-even post-TP1).
         """
         exits_to_execute = []
 
@@ -99,29 +116,86 @@ class SolanaTrailingStopStrategy:
             current_price = live_prices[token]
             entry_price = float(position["actual_entry_price"])
 
-            # 1. Post-activation peak tracking (strictly ignores pre-activation ATH)
+            # 1. Post-activation peak tracking
             current_peak = float(position.get("highest_price", entry_price))
             new_peak = max(current_peak, current_price)
             position["highest_price"] = new_peak
 
-            # 2. Dynamic stop trigger locked at 15% below post-activation peak
-            stop_trigger_price = new_peak * (1.0 - self.trailing_stop_pct)
+            original_quantity = float(position.get("original_quantity", position["quantity"]))
+            position.setdefault("original_quantity", original_quantity)
+            if "first_take_profit_done" not in position:
+                position["first_take_profit_done"] = current_peak >= entry_price * (1.0 + self.tp1_pct)
+            if "second_take_profit_done" not in position:
+                position["second_take_profit_done"] = current_peak >= entry_price * (1.0 + self.tp2_pct)
+            position.setdefault("trailing_stop_active", False)
+
+            # 2. Check Staged Take-Profits if enabled
+            if self.enable_staged_tp:
+                # TP1: +50% target -> sell 35% of original size
+                if not position["first_take_profit_done"] and current_price >= entry_price * (1.0 + self.tp1_pct):
+                    qty_to_sell = min(float(position["quantity"]), original_quantity * self.tp1_fraction)
+                    if qty_to_sell > 0:
+                        exits_to_execute.append({
+                            "token": token,
+                            "current_price": current_price,
+                            "post_activation_peak": new_peak,
+                            "quantity": qty_to_sell,
+                            "is_partial": True,
+                            "action_flag": "first_take_profit_done",
+                            "reason": f"Take Profit 1 (+50%): price ${current_price:.6f} exceeded target ${entry_price * (1.0 + self.tp1_pct):.6f}",
+                        })
+                        position["first_take_profit_done"] = True
+
+                # TP2: +100% target -> sell another 35% of original size
+                if not position["second_take_profit_done"] and current_price >= entry_price * (1.0 + self.tp2_pct):
+                    qty_to_sell = min(float(position["quantity"]), original_quantity * self.tp2_fraction)
+                    if qty_to_sell > 0:
+                        exits_to_execute.append({
+                            "token": token,
+                            "current_price": current_price,
+                            "post_activation_peak": new_peak,
+                            "quantity": qty_to_sell,
+                            "is_partial": True,
+                            "action_flag": "second_take_profit_done",
+                            "reason": f"Take Profit 2 (+100%): price ${current_price:.6f} exceeded target ${entry_price * (1.0 + self.tp2_pct):.6f}",
+                        })
+                        position["second_take_profit_done"] = True
+                        position["trailing_stop_active"] = True
+
+            # 3. Dynamic Stop Trigger
+            # If initial_stop_pct is defined (e.g. 0.25):
+            # Before token achieves >= +15% gain, use initial_stop_pct to absorb 1-minute noise.
+            # Once token achieves >= +15% gain, ratchet the stop to trail 15% from post-activation peak.
+            if self.initial_stop_pct is not None and new_peak < entry_price * 1.15:
+                stop_trigger_price = entry_price * (1.0 - self.initial_stop_pct)
+            else:
+                stop_trigger_price = new_peak * (1.0 - self.trailing_stop_pct)
+
+            # If TP1 was already taken, lock stop at least at break-even (entry_price)
+            if position.get("first_take_profit_done"):
+                stop_trigger_price = max(stop_trigger_price, entry_price)
+
             position["stop_trigger_price"] = stop_trigger_price
 
-            # 3. Pullback evaluation
+            # 4. Pullback evaluation
             drop_from_peak_pct = ((new_peak - current_price) / new_peak) * 100
             position["drop_from_peak_pct"] = round(drop_from_peak_pct, 2)
 
             if current_price <= stop_trigger_price:
-                # 4. Trigger automated sell via Jito-protected bundle
+                reason = (
+                    f"Trailing stop triggered: price ${current_price:.6f} dropped {drop_from_peak_pct:.1f}% from post-activation peak ${new_peak:.6f}"
+                    if new_peak >= entry_price * 1.15
+                    else f"Initial stop loss triggered: price ${current_price:.6f} dropped {((entry_price - current_price)/entry_price)*100:.1f}% from entry"
+                )
                 exits_to_execute.append({
                     "token": token,
                     "current_price": current_price,
                     "post_activation_peak": new_peak,
                     "stop_trigger_price": stop_trigger_price,
                     "quantity": float(position["quantity"]),
+                    "is_partial": False,
                     "drop_from_peak_pct": drop_from_peak_pct,
-                    "reason": f"Trailing stop triggered: price ${current_price:.6f} dropped {drop_from_peak_pct:.1f}% from post-activation peak ${new_peak:.6f}",
+                    "reason": reason,
                 })
 
         return exits_to_execute
@@ -129,6 +203,7 @@ class SolanaTrailingStopStrategy:
     def execute_exits(self, exits: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """
         Dispatches exits through Jito-protected bundles with 10-15% slippage protection.
+        Handles both partial take-profits and full trailing stop closes.
         """
         results = []
         for exit_req in exits:
@@ -137,6 +212,8 @@ class SolanaTrailingStopStrategy:
             curr_price = exit_req["current_price"]
             peak = exit_req["post_activation_peak"]
             reason = exit_req["reason"]
+            is_partial = exit_req.get("is_partial", False)
+            action_flag = exit_req.get("action_flag")
 
             # Dispatch via Jito bundle executor
             jito_res = self.jito_executor.execute_trailing_stop_sell(
@@ -149,7 +226,16 @@ class SolanaTrailingStopStrategy:
 
             # Close simulated position in paper trader
             try:
-                pt_trade = pt.close_position(token, curr_price, reason=reason)
+                if is_partial:
+                    pt_trade = pt._close_quantity(token, curr_price, qty, reason=reason)
+                    if action_flag:
+                        saved_positions = pt.load_positions()
+                        for p in saved_positions:
+                            if p["token"] == token:
+                                p[action_flag] = True
+                        pt.save_positions(saved_positions)
+                else:
+                    pt_trade = pt.close_position(token, curr_price, reason=reason)
                 jito_res["paper_trade"] = pt_trade
             except Exception as exc:
                 jito_res["paper_trade_error"] = str(exc)

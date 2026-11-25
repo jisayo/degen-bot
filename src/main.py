@@ -28,7 +28,11 @@ TIMEOUT = 15
 SCAN_INTERVAL = 60
 MAX_OPEN_POSITIONS = 3
 
-trailing_strategy = SolanaTrailingStopStrategy(max_positions=MAX_OPEN_POSITIONS)
+trailing_strategy = SolanaTrailingStopStrategy(
+    max_positions=MAX_OPEN_POSITIONS,
+    initial_stop_pct=0.25,
+    enable_staged_tp=True,
+)
 
 
 def monitor_positions(prices):

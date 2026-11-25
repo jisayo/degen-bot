@@ -27,7 +27,7 @@ DEFAULT_EXIT_SLIPPAGE = 0.01       # 1% realized price impact under Jito MEV pro
 # PRE-TRADE GATE FILTERS
 # ============================================================
 ENABLE_PRE_TRADE_FILTERS = True
-MIN_LIQUIDITY_USD = 10000.0   # Reject if liquidity below $10,000 USD
+MIN_LIQUIDITY_USD = 20000.0   # Reject if liquidity below $20,000 USD
 MAX_RUGCHECK_SCORE = 35.0   # Reject if RugCheck risk score > 35 or rugged
 ALLOW_RUGCHECK_ERROR = False # Reject unverified tokens if lookup failed/timed out
 MIN_BAR0_VOLUME = 1000.0    # Reject if launch candle volume < $1,000 USD

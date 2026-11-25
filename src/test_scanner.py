@@ -126,8 +126,8 @@ class TestScanner(unittest.TestCase):
             Mock(json=Mock(return_value=[
                 make_pair(
                     address="RATIO_15",
-                    liquidity=15000,
-                    market_cap=100000,
+                    liquidity=30000,
+                    market_cap=200000,
                 )
             ])),
         ]

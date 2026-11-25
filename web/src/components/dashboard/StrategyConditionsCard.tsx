@@ -14,8 +14,8 @@ export default function StrategyConditionsCard() {
     },
     {
       title: 'Minimum Pool Liquidity',
-      value: '≥ $10,000 USD',
-      description: 'Depth floor to avoid low-liquidity honeypots and bad slippage.',
+      value: '≥ $20,000 USD',
+      description: 'Depth floor to filter out shallow sniper-dumped pools and reduce slippage.',
       icon: Droplets,
       color: 'text-blue-400',
       badge: 'Depth Floor',
@@ -46,8 +46,8 @@ export default function StrategyConditionsCard() {
     },
     {
       title: 'Solana Trailing Ratchet',
-      value: '15% Dynamic Stop',
-      description: 'Trails post-activation peak. Pullbacks <15% absorbed; exits on ≥15% drop.',
+      value: 'TP (+50%/+100%) & 15% Trail',
+      description: 'Staged profit banking (+50%/+100% sell 35% each). 25% noise buffer, trailing 30% moonbag.',
       icon: Target,
       color: 'text-amber-400',
       badge: 'Dynamic Exit',

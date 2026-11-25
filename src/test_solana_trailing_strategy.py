@@ -159,6 +159,57 @@ class TestSolanaTrailingStopStrategy(unittest.TestCase):
         self.assertEqual(price, 0.80)
         self.assertEqual(reason, "GAP_STOP_LOSS")
 
+    def test_staged_take_profit_tp1_and_tp2(self):
+        strategy = SolanaTrailingStopStrategy(enable_staged_tp=True)
+        position = {
+            "token": "RUNNER_TOKEN",
+            "entry_price": 1.00,
+            "actual_entry_price": 1.00,
+            "highest_price": 1.00,
+            "quantity": 100.0,
+            "original_quantity": 100.0,
+            "first_take_profit_done": False,
+            "second_take_profit_done": False,
+        }
+
+        # Price reaches +50% ($1.50)
+        exits_tp1 = strategy.evaluate_and_update_positions([position], {"RUNNER_TOKEN": 1.50})
+        self.assertEqual(len(exits_tp1), 1)
+        self.assertTrue(exits_tp1[0]["is_partial"])
+        self.assertEqual(exits_tp1[0]["quantity"], 35.0)
+        self.assertIn("Take Profit 1 (+50%)", exits_tp1[0]["reason"])
+        self.assertTrue(position["first_take_profit_done"])
+
+        # Price reaches +100% ($2.00)
+        exits_tp2 = strategy.evaluate_and_update_positions([position], {"RUNNER_TOKEN": 2.00})
+        self.assertEqual(len(exits_tp2), 1)
+        self.assertTrue(exits_tp2[0]["is_partial"])
+        self.assertEqual(exits_tp2[0]["quantity"], 35.0)
+        self.assertIn("Take Profit 2 (+100%)", exits_tp2[0]["reason"])
+        self.assertTrue(position["second_take_profit_done"])
+
+    def test_initial_stop_buffer_absorbs_entry_noise(self):
+        strategy = SolanaTrailingStopStrategy(initial_stop_pct=0.25)
+        position = {
+            "token": "VOLATILE_TOKEN",
+            "entry_price": 1.00,
+            "actual_entry_price": 1.00,
+            "highest_price": 1.00,
+            "quantity": 100.0,
+            "original_quantity": 100.0,
+            "first_take_profit_done": False,
+            "second_take_profit_done": False,
+        }
+
+        # -18% drop from entry ($0.82) is absorbed by 25% buffer (no exit!)
+        exits_18 = strategy.evaluate_and_update_positions([position], {"VOLATILE_TOKEN": 0.82})
+        self.assertEqual(len(exits_18), 0)
+
+        # -26% drop from entry ($0.74) triggers initial stop loss
+        exits_26 = strategy.evaluate_and_update_positions([position], {"VOLATILE_TOKEN": 0.74})
+        self.assertEqual(len(exits_26), 1)
+        self.assertIn("Initial stop loss triggered", exits_26[0]["reason"])
+
 
 if __name__ == "__main__":
     unittest.main()
