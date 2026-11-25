@@ -29,6 +29,17 @@ def to_float(value):
         return 0.0
 
 
+def to_signed_float(value):
+    """Convert a value to a finite float, preserving negative values."""
+    try:
+        number = float(value)
+        if number != number or number == float("inf") or number == float("-inf"):
+            return None
+        return number
+    except (TypeError, ValueError, OverflowError):
+        return None
+
+
 def to_int(value):
     """Convert a value to a non-negative integer."""
     try:
@@ -169,10 +180,15 @@ def scan_tokens():
                 buys_h1 = to_int(h1.get("buys"))
                 sells_h1 = to_int(h1.get("sells"))
                 volume_1h = to_float(volume_h1)
+                volume_5m = (
+                    to_float(volume_data.get("m5"))
+                    if volume_data.get("m5") is not None
+                    else None
+                )
 
                 price_change = pair.get("priceChange") or {}
-                price_change_h1 = to_float(price_change.get("h1")) if price_change.get("h1") is not None else None
-                price_change_m5 = to_float(price_change.get("m5")) if price_change.get("m5") is not None else None
+                price_change_h1 = to_signed_float(price_change.get("h1")) if price_change.get("h1") is not None else None
+                price_change_m5 = to_signed_float(price_change.get("m5")) if price_change.get("m5") is not None else None
 
                 m5 = transactions.get("m5") or {}
                 buys_m5 = to_int(m5.get("buys")) if isinstance(m5, dict) else None
@@ -191,10 +207,12 @@ def scan_tokens():
                     # The scorer currently uses these field names,
                     # but their values here represent the 1-hour window.
                     "volume_1h": volume_1h,
+                    "volume_5m": volume_5m,
                     "buys_1h": buys_h1,
                     "sells_1h": sells_h1,
 
                     # Momentum and short-term flow indicators
+                    "volume_5m": volume_5m,
                     "price_change_1h": price_change_h1,
                     "price_change_m5": price_change_m5,
                     "buys_5m": buys_m5,
@@ -228,6 +246,7 @@ def scan_tokens():
                     "market_cap_usd": market_cap,
                     "liquidity_mc_ratio": liquidity_mc_ratio,
                     "volume_1h": volume_1h,
+                    "volume_5m": volume_5m,
                     "buys_1h": buys_h1,
                     "sells_1h": sells_h1,
                     "buys_5m": buys_m5,

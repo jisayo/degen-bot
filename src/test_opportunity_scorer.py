@@ -213,6 +213,117 @@ class TestOpportunityScorer(unittest.TestCase):
         result = score_opportunity(token)
         self.assertTrue(result["eligible_for_paper_trading"])
 
+    def test_extended_1h_pump_above_400_pct_is_rejected(self):
+        token = {
+            "liquidity_usd": 25000,
+            "market_cap_usd": 50000,
+            "volume_1h": 50000,
+            "buys_1h": 40,
+            "sells_1h": 20,
+            "price_change_1h": 450.0,
+        }
+        result = score_opportunity(token)
+        self.assertFalse(result["eligible_for_paper_trading"])
+        self.assertTrue(any("buying the top" in r for r in result["reasons"]))
+
+    def test_red_5m_candle_is_rejected(self):
+        token = {
+            "liquidity_usd": 25000,
+            "market_cap_usd": 50000,
+            "volume_1h": 50000,
+            "buys_1h": 40,
+            "sells_1h": 20,
+            "price_change_1h": 25.0,
+            "price_change_m5": -5.2,
+        }
+        result = score_opportunity(token)
+        self.assertFalse(result["eligible_for_paper_trading"])
+        self.assertTrue(any("5-minute candle is red" in r for r in result["reasons"]))
+
+    def test_sell_dominated_5m_flow_is_rejected(self):
+        token = {
+            "liquidity_usd": 25000,
+            "market_cap_usd": 50000,
+            "volume_1h": 50000,
+            "buys_1h": 80,
+            "sells_1h": 40,
+            "price_change_1h": 25.0,
+            "price_change_m5": 3.0,
+            "buys_5m": 5,
+            "sells_5m": 8,
+            "volume_5m": 4000,
+        }
+        result = score_opportunity(token)
+        self.assertFalse(result["eligible_for_paper_trading"])
+        self.assertTrue(any("sell-dominated" in r for r in result["reasons"]))
+
+    def test_inactive_5m_buys_is_rejected(self):
+        token = {
+            "liquidity_usd": 25000,
+            "market_cap_usd": 50000,
+            "volume_1h": 50000,
+            "buys_1h": 30,
+            "sells_1h": 10,
+            "price_change_1h": 25.0,
+            "price_change_m5": 1.0,
+            "buys_5m": 2,
+            "sells_5m": 0,
+            "volume_5m": 1000,
+        }
+        result = score_opportunity(token)
+        self.assertFalse(result["eligible_for_paper_trading"])
+        self.assertTrue(any("buys in the last 5 minutes" in r for r in result["reasons"]))
+
+    def test_low_5m_volume_usd_is_rejected(self):
+        token = {
+            "liquidity_usd": 25000,
+            "market_cap_usd": 50000,
+            "volume_1h": 50000,
+            "buys_1h": 40,
+            "sells_1h": 20,
+            "price_change_1h": 25.0,
+            "price_change_m5": 3.0,
+            "buys_5m": 6,
+            "sells_5m": 2,
+            "volume_5m": 250.0,
+        }
+        result = score_opportunity(token)
+        self.assertFalse(result["eligible_for_paper_trading"])
+        self.assertTrue(any("5-min USD volume" in r for r in result["reasons"]))
+
+    def test_decelerating_5m_volume_is_rejected(self):
+        token = {
+            "liquidity_usd": 25000,
+            "market_cap_usd": 50000,
+            "volume_1h": 50000,
+            "buys_1h": 200,
+            "sells_1h": 40,
+            "price_change_1h": 25.0,
+            "price_change_m5": 2.0,
+            "buys_5m": 4,
+            "sells_5m": 1,
+            "volume_5m": 1500.0,
+        }
+        result = score_opportunity(token)
+        self.assertFalse(result["eligible_for_paper_trading"])
+        self.assertTrue(any("5-min volume fading" in r for r in result["reasons"]))
+
+    def test_healthy_5m_chart_gates_qualify(self):
+        token = {
+            "liquidity_usd": 25000,
+            "market_cap_usd": 50000,
+            "volume_1h": 50000,
+            "buys_1h": 160,
+            "sells_1h": 80,
+            "price_change_1h": 45.0,
+            "price_change_m5": 8.5,
+            "buys_5m": 15,
+            "sells_5m": 5,
+            "volume_5m": 5000.0,
+        }
+        result = score_opportunity(token)
+        self.assertTrue(result["eligible_for_paper_trading"])
+
 
 if __name__ == "__main__":
     unittest.main()

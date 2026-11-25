@@ -7,6 +7,36 @@ MIN_TRADES = 20
 MAX_VOLUME_LIQUIDITY_RATIO = 10.0
 MIN_BUY_RATIO = 0.60  # Minimum 60:40 buy-to-sell ratio (60% buys)
 
+# --- Momentum / chart-based entry gates ---
+# Applied on top of the structural filters (liquidity, risk, etc.)
+# All use data DexScreener already returns — no extra API calls.
+
+# Reject if the last 5-minute candle is red (price_change_m5 < 0).
+# A red 5-min bar means we'd be entering an active dump.
+REQUIRE_GREEN_5M = True
+
+# Reject if net 5-minute order flow is sell-dominated.
+# Requires buys_5m > sells_5m at time of entry.
+REQUIRE_5M_BUY_DOMINANCE = True
+
+# Minimum number of 5-minute buys to confirm active accumulation
+# (guards against tokens that look bullish but are actually dead).
+MIN_5M_BUYS = 3
+
+# Minimum 5-minute USD volume to ensure active dollar flow right now.
+MIN_VOLUME_5M_USD = 500.0
+
+# Reject if price already pumped more than this % in the last hour.
+# Entering after a 400%+ 1h move almost always means buying the top.
+MAX_PUMP_1H_PCT = 400.0
+
+# Volume acceleration: buys+sells in the last 5 min should represent
+# at least this fraction of what we'd expect from a steady h1 pace.
+# Computed as: (buys_5m + sells_5m) / ((buys_1h + sells_1h) / 12)
+# A value >= 0.5 means activity is at least half the hourly average pace.
+# Keeps out tokens whose 5-min flow is drying up after the initial pump.
+MIN_5M_ACCELERATION = 0.5
+
 
 def _to_number(value):
     """Return a valid non-negative finite number, or None."""
@@ -149,7 +179,11 @@ def score_opportunity(token: dict) -> dict:
     elif liquidity_mc_ratio < MIN_LIQUIDITY_MC_RATIO:
         reasons.append(f"Liquidity below {int(MIN_LIQUIDITY_MC_RATIO * 100)}% of market cap")
 
-    # Optional 1-hour price trajectory check: reject assets in active down-trend
+    # ------------------------------------------------------------------ #
+    # CHART-BASED ENTRY GATES (use data already returned by DexScreener) #
+    # ------------------------------------------------------------------ #
+
+    # --- 1-hour trajectory ---
     raw_pc_1h = token.get("price_change_1h")
     price_change_1h = None
     if raw_pc_1h is not None:
@@ -166,6 +200,106 @@ def score_opportunity(token: dict) -> dict:
             f"Negative 1-hour price change ({price_change_1h:+.1f}%) indicates down-trending asset"
         )
 
+    # Anti-top cap: reject if already up >400% in the last hour.
+    # Entering after a vertical parabolic move almost always means buying the top.
+    is_extended_pump = (
+        price_change_1h is not None and price_change_1h > MAX_PUMP_1H_PCT
+    )
+    if is_extended_pump:
+        reasons.append(
+            f"Token already up {price_change_1h:+.0f}% in the last hour — likely buying the top (cap: {MAX_PUMP_1H_PCT:.0f}%)"
+        )
+
+    # --- 5-minute momentum (most recent candle) ---
+    raw_pc_m5 = token.get("price_change_m5")
+    price_change_m5 = None
+    if raw_pc_m5 is not None:
+        try:
+            val = float(raw_pc_m5)
+            if math.isfinite(val):
+                price_change_m5 = val
+        except (ValueError, TypeError):
+            pass
+
+    # Require the last 5-min candle to be green (not dumping right now).
+    is_5m_red = (
+        REQUIRE_GREEN_5M
+        and price_change_m5 is not None
+        and price_change_m5 < 0.0
+    )
+    if is_5m_red:
+        reasons.append(
+            f"Last 5-minute candle is red ({price_change_m5:+.1f}%) — active dump in progress"
+        )
+
+    # --- 5-minute order flow ---
+    buys_5m = token.get("buys_5m")
+    sells_5m = token.get("sells_5m")
+
+    buys_5m_int = None
+    sells_5m_int = None
+    if buys_5m is not None:
+        try:
+            buys_5m_int = int(buys_5m)
+        except (ValueError, TypeError):
+            pass
+    if sells_5m is not None:
+        try:
+            sells_5m_int = int(sells_5m)
+        except (ValueError, TypeError):
+            pass
+
+    # Require net buy dominance in the last 5 minutes.
+    is_5m_sell_dominated = (
+        REQUIRE_5M_BUY_DOMINANCE
+        and buys_5m_int is not None
+        and sells_5m_int is not None
+        and buys_5m_int <= sells_5m_int
+    )
+    if is_5m_sell_dominated:
+        reasons.append(
+            f"5-min order flow is sell-dominated ({buys_5m_int}B / {sells_5m_int}S) — no active accumulation"
+        )
+
+    # Require minimum buy count in the last 5 minutes (not a dead token).
+    is_5m_inactive = (
+        buys_5m_int is not None
+        and buys_5m_int < MIN_5M_BUYS
+    )
+    if is_5m_inactive:
+        reasons.append(
+            f"Only {buys_5m_int} buys in the last 5 minutes (minimum: {MIN_5M_BUYS}) — inactive"
+        )
+
+    # --- 5-minute USD volume check ---
+    volume_5m = _to_number(token.get("volume_5m"))
+    is_5m_low_volume = (
+        volume_5m is not None
+        and volume_5m < MIN_VOLUME_5M_USD
+    )
+    if is_5m_low_volume:
+        reasons.append(
+            f"5-min USD volume (${volume_5m:,.2f}) below minimum of ${MIN_VOLUME_5M_USD:,.2f}"
+        )
+
+    # --- Volume acceleration: is 5-min activity >= half the expected hourly pace? ---
+    # Expected pace per 5 min = (buys_1h + sells_1h) / 12
+    # We want: (buys_5m + sells_5m) / expected_pace >= MIN_5M_ACCELERATION
+    is_volume_decelerating = False
+    if (
+        buys_5m_int is not None and sells_5m_int is not None
+        and trades > 0
+    ):
+        expected_5m_pace = trades / 12.0
+        actual_5m_trades = buys_5m_int + sells_5m_int
+        acceleration_ratio = actual_5m_trades / expected_5m_pace if expected_5m_pace > 0 else 1.0
+        if acceleration_ratio < MIN_5M_ACCELERATION:
+            is_volume_decelerating = True
+            reasons.append(
+                f"5-min volume fading: {actual_5m_trades} trades vs expected pace of "
+                f"{expected_5m_pace:.0f}/5min (ratio: {acceleration_ratio:.2f}x, min: {MIN_5M_ACCELERATION}x)"
+            )
+
     # Paper-trading entry requirements
     eligible = (
         score >= MIN_OPPORTUNITY_SCORE
@@ -178,6 +312,12 @@ def score_opportunity(token: dict) -> dict:
         and buy_ratio is not None
         and buy_ratio >= MIN_BUY_RATIO
         and not is_down_trending
+        and not is_extended_pump
+        and not is_5m_red
+        and not is_5m_sell_dominated
+        and not is_5m_inactive
+        and not is_5m_low_volume
+        and not is_volume_decelerating
     )
 
     if buy_ratio is not None and buy_ratio < MIN_BUY_RATIO:
