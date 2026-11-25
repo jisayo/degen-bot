@@ -1,5 +1,7 @@
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, MagicMock
+import threading
+import time
 
 import main
 
@@ -154,6 +156,71 @@ class TestMainPaperEntries(unittest.TestCase):
         mock_eval.assert_called_once_with(positions, {"SOL_TOKEN": 0.84})
         mock_exec.assert_called_once_with([{"token": "SOL_TOKEN", "reason": "Trailing stop"}])
         self.assertEqual(len(res), 1)
+
+
+class TestFastPoller(unittest.TestCase):
+
+    @patch("main.fetch_position_prices")
+    @patch("main.monitor_positions")
+    @patch("main.load_positions")
+    def test_position_watcher_calls_monitor_when_positions_exist(
+        self, mock_load, mock_monitor, mock_prices
+    ):
+        """
+        position_watcher should call monitor_positions when there are open
+        positions and prices are available.  We run it in a thread and kill
+        it after one iteration via a stop event simulated by a side_effect.
+        """
+        mock_load.return_value = [{"token": "FAST_TOKEN"}]
+        mock_prices.return_value = {"FAST_TOKEN": 0.50}
+        mock_monitor.return_value = []
+
+        # Run watcher long enough for one iteration (interval is 15 s but we
+        # patch sleep so it returns immediately).
+        stop_event = threading.Event()
+
+        original_sleep = time.sleep
+
+        call_count = [0]
+
+        def fake_sleep(secs):
+            call_count[0] += 1
+            if call_count[0] >= 2:
+                stop_event.set()
+            original_sleep(0)
+
+        with patch("main.time.sleep", side_effect=fake_sleep):
+            t = threading.Thread(target=main.position_watcher, daemon=True)
+            t.start()
+            stop_event.wait(timeout=5)
+
+        mock_monitor.assert_called()
+
+    @patch("main.fetch_position_prices")
+    @patch("main.monitor_positions")
+    @patch("main.load_positions")
+    def test_position_watcher_skips_monitor_with_no_positions(
+        self, mock_load, mock_monitor, mock_prices
+    ):
+        """position_watcher must NOT call monitor_positions when no open positions."""
+        mock_load.return_value = []
+        mock_prices.return_value = {}
+        mock_monitor.return_value = []
+
+        stop_event = threading.Event()
+        call_count = [0]
+
+        def fake_sleep(secs):
+            call_count[0] += 1
+            if call_count[0] >= 2:
+                stop_event.set()
+
+        with patch("main.time.sleep", side_effect=fake_sleep):
+            t = threading.Thread(target=main.position_watcher, daemon=True)
+            t.start()
+            stop_event.wait(timeout=5)
+
+        mock_monitor.assert_not_called()
 
 
 if __name__ == "__main__":

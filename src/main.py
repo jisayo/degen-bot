@@ -1,4 +1,5 @@
 import time
+import threading
 import requests
 
 from scanner import scan_tokens
@@ -26,7 +27,12 @@ def to_float(value):
         return 0.0
 TIMEOUT = 15
 SCAN_INTERVAL = 60
+POSITION_POLL_INTERVAL = 15   # Fast loop: re-check open positions every 15 s
 MAX_OPEN_POSITIONS = 3
+
+# Lock so the fast position loop and the main scan cycle never call
+# paper_trader concurrently (both write to open_positions.json).
+_position_lock = threading.Lock()
 
 trailing_strategy = SolanaTrailingStopStrategy(
     max_positions=MAX_OPEN_POSITIONS,
@@ -42,12 +48,15 @@ def monitor_positions(prices):
     - Locks stop trigger at 15% below post-activation peak.
     - Ignores pullbacks < 15%.
     - Executes automated sell via Jito-protected private bundle on >= 15% drop.
+
+    Thread-safe: acquires _position_lock before reading/writing positions.
     """
-    positions = load_positions()
-    if not positions or not prices:
-        return []
-    exits = trailing_strategy.evaluate_and_update_positions(positions, prices)
-    return trailing_strategy.execute_exits(exits)
+    with _position_lock:
+        positions = load_positions()
+        if not positions or not prices:
+            return []
+        exits = trailing_strategy.evaluate_and_update_positions(positions, prices)
+        return trailing_strategy.execute_exits(exits)
 
 
 def fetch_position_prices(positions):
@@ -100,28 +109,67 @@ def fetch_position_prices(positions):
     return prices
 
 
+def _notify_closed_positions(closed):
+    """Send Telegram notifications for a list of exit results."""
+    for exit_item in closed:
+        paper_trade = exit_item.get("paper_trade") or {}
+        trade_data = {
+            "token": exit_item.get("token_mint", paper_trade.get("token", "")),
+            "symbol": exit_item.get("symbol", paper_trade.get("symbol", "")),
+            "reason": exit_item.get("reason", paper_trade.get("reason", "EXIT")),
+            "entry_price": paper_trade.get("entry_price", 0.0),
+            "exit_price": exit_item.get("current_price_usd", paper_trade.get("exit_price", 0.0)),
+            "pnl": paper_trade.get("pnl", 0.0),
+            "peak_gain_pct": exit_item.get("peak_gain_pct"),
+            "balance": paper_trade.get("balance"),
+        }
+        notify_position_closed(trade_data)
+
+
+def position_watcher():
+    """
+    Fast position-monitoring loop — runs in its own daemon thread.
+
+    Polls open positions every POSITION_POLL_INTERVAL seconds (15 s default)
+    instead of waiting for the full 60-second scan cycle.  This dramatically
+    shrinks the gap-through window on rapid dumps: at worst the bot is 15 s
+    late instead of 60 s late when a price blows through a stop level.
+
+    Uses _position_lock to avoid concurrent writes with the main scan thread.
+    """
+    print(f"[FastPoller] Position watcher started (interval={POSITION_POLL_INTERVAL}s).")
+    while True:
+        try:
+            with _position_lock:
+                positions = load_positions()
+            if positions:
+                prices = fetch_position_prices(positions)
+                if prices:
+                    with _position_lock:
+                        closed = monitor_positions(prices)
+                    if closed:
+                        print(f"[FastPoller] {len(closed)} position(s) exited.")
+                        _notify_closed_positions(closed)
+        except Exception as exc:
+            print(f"[FastPoller] Error: {exc}")
+        time.sleep(POSITION_POLL_INTERVAL)
+
+
 def run_cycle():
     print("\n=== PAPER BOT CYCLE ===")
 
-    # Monitor existing positions independently of new token discovery.
-    positions = load_positions()
+    # The fast poller already monitors open positions every 15 s.
+    # The main cycle still checks once per 60 s for any exits it may have
+    # missed and to log the cycle boundary.
+    with _position_lock:
+        positions = load_positions()
 
     if positions:
         prices = fetch_position_prices(positions)
-        closed = monitor_positions(prices)
-        for exit_item in closed:
-            paper_trade = exit_item.get("paper_trade") or {}
-            trade_data = {
-                "token": exit_item.get("token_mint", paper_trade.get("token", "")),
-                "symbol": exit_item.get("symbol", paper_trade.get("symbol", "")),
-                "reason": exit_item.get("reason", paper_trade.get("reason", "EXIT")),
-                "entry_price": paper_trade.get("entry_price", 0.0),
-                "exit_price": exit_item.get("current_price_usd", paper_trade.get("exit_price", 0.0)),
-                "pnl": paper_trade.get("pnl", 0.0),
-                "peak_gain_pct": exit_item.get("peak_gain_pct"),
-                "balance": paper_trade.get("balance"),
-            }
-            notify_position_closed(trade_data)
+        with _position_lock:
+            closed = monitor_positions(prices)
+        if closed:
+            _notify_closed_positions(closed)
         print(f"Positions closed this cycle: {len(closed)}")
     else:
         print("No open paper positions.")
@@ -188,6 +236,11 @@ def run_cycle():
 def main():
     initialise()
     print("Paper bot started. Live trading is disabled.")
+
+    # Launch the fast position watcher as a background daemon thread.
+    # It will be killed automatically when the main process exits.
+    watcher = threading.Thread(target=position_watcher, daemon=True, name="FastPoller")
+    watcher.start()
 
     while True:
         try:
