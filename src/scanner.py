@@ -7,6 +7,7 @@ from opportunity_scorer import score_opportunity
 API_URL = "https://api.dexscreener.com/token-profiles/latest/v1"
 BOOSTS_TOP_URL = "https://api.dexscreener.com/token-boosts/top/v1"
 GECKOTERMINAL_TRENDING_URL = "https://api.geckoterminal.com/api/v2/networks/solana/trending_pools"
+GECKOTERMINAL_NEW_POOLS_URL = "https://api.geckoterminal.com/api/v2/networks/solana/new_pools"
 PAIR_URL = "https://api.dexscreener.com/token-pairs/v1/solana/{}"
 
 TIMEOUT = 15
@@ -23,7 +24,7 @@ MIN_LIQUIDITY_USD = 20000.0
 MIN_MARKET_CAP_USD = 75000.0
 MIN_LIQUIDITY_TO_MC_RATIO = 0.15
 MIN_TOKEN_AGE_MINUTES = 3
-MAX_TOKEN_AGE_MINUTES = 120
+MAX_TOKEN_AGE_MINUTES = 1440  # 24 hours so trending multi-DEX pools are evaluated
 
 
 def to_float(value):
@@ -83,23 +84,27 @@ def get_token_age_minutes(pair, now_ms=None):
 
 
 def fetch_extra_discovery_tokens():
-    """Fetch additional Solana token dicts from GeckoTerminal trending pools and DexScreener top boosts."""
+    """Fetch additional Solana token dicts from GeckoTerminal (trending + new pools) and DexScreener top boosts."""
     extra_tokens = []
 
-    # 1. GeckoTerminal Trending Solana Pools (covers Raydium, PumpSwap, Meteora, Orca)
-    try:
-        resp = requests.get(GECKOTERMINAL_TRENDING_URL, timeout=TIMEOUT)
-        resp.raise_for_status()
-        payload = resp.json()
-        for pool in (payload.get("data") or []) if isinstance(payload, dict) else []:
-            rels = pool.get("relationships") or {}
-            base_id = ((rels.get("base_token") or {}).get("data") or {}).get("id", "")
-            if isinstance(base_id, str) and base_id.startswith("solana_"):
-                addr = base_id[len("solana_"):]
-                if addr and addr not in IGNORED_SOLANA_MINTS:
-                    extra_tokens.append({"chainId": "solana", "tokenAddress": addr, "source": "geckoterminal"})
-    except (requests.RequestException, ValueError, TypeError) as error:
-        print(f"GeckoTerminal discovery warning: {error}")
+    # 1. GeckoTerminal Trending & New Solana Pools (covers Raydium, PumpSwap, Meteora, Orca)
+    for url, source_name in (
+        (GECKOTERMINAL_TRENDING_URL, "geckoterminal_trending"),
+        (GECKOTERMINAL_NEW_POOLS_URL, "geckoterminal_new_pools"),
+    ):
+        try:
+            resp = requests.get(url, timeout=TIMEOUT)
+            resp.raise_for_status()
+            payload = resp.json()
+            for pool in (payload.get("data") or []) if isinstance(payload, dict) else []:
+                rels = pool.get("relationships") or {}
+                base_id = ((rels.get("base_token") or {}).get("data") or {}).get("id", "")
+                if isinstance(base_id, str) and base_id.startswith("solana_"):
+                    addr = base_id[len("solana_"):]
+                    if addr and addr not in IGNORED_SOLANA_MINTS:
+                        extra_tokens.append({"chainId": "solana", "tokenAddress": addr, "source": source_name})
+        except (requests.RequestException, ValueError, TypeError) as error:
+            print(f"GeckoTerminal discovery warning ({source_name}): {error}")
 
     # 2. DexScreener Top Boosted Tokens
     try:
@@ -211,7 +216,7 @@ def scan_tokens():
                 ):
                     print(
                         f"{address}: Age {age_minutes:.1f} minutes "
-                        "outside the 1–5 minute window; skipped."
+                        f"outside the {MIN_TOKEN_AGE_MINUTES}–{MAX_TOKEN_AGE_MINUTES} minute window; skipped."
                     )
                     continue
 

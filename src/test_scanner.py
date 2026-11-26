@@ -334,11 +334,11 @@ class TestMultiDexDiscovery(unittest.TestCase):
     @patch("scanner.requests.get")
     def test_fetch_extra_discovery_tokens_parses_gecko_and_boosts(self, mock_get):
         from scanner import fetch_extra_discovery_tokens
-        gecko_payload = {
+        gecko_trending_payload = {
             "data": [
                 {
                     "relationships": {
-                        "base_token": {"data": {"id": "solana_GECKO_MINT_1"}}
+                        "base_token": {"data": {"id": "solana_GECKO_TREND_1"}}
                     }
                 },
                 {
@@ -348,18 +348,28 @@ class TestMultiDexDiscovery(unittest.TestCase):
                 },
             ]
         }
+        gecko_new_payload = {
+            "data": [
+                {
+                    "relationships": {
+                        "base_token": {"data": {"id": "solana_GECKO_NEW_1"}}
+                    }
+                },
+            ]
+        }
         boosts_payload = [
             {"chainId": "solana", "tokenAddress": "BOOST_MINT_1"},
             {"chainId": "ethereum", "tokenAddress": "ETH_IGNORED"},
         ]
         mock_get.side_effect = [
-            Mock(json=Mock(return_value=gecko_payload)),
+            Mock(json=Mock(return_value=gecko_trending_payload)),
+            Mock(json=Mock(return_value=gecko_new_payload)),
             Mock(json=Mock(return_value=boosts_payload)),
         ]
 
         tokens = fetch_extra_discovery_tokens()
         addresses = [t["tokenAddress"] for t in tokens]
-        self.assertEqual(addresses, ["GECKO_MINT_1", "BOOST_MINT_1"])
+        self.assertEqual(addresses, ["GECKO_TREND_1", "GECKO_NEW_1", "BOOST_MINT_1"])
 
 
 if __name__ == "__main__":
