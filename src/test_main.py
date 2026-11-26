@@ -222,6 +222,18 @@ class TestFastPoller(unittest.TestCase):
 
         mock_monitor.assert_not_called()
 
+    @patch.object(main.trailing_strategy, "execute_exits", return_value=[])
+    @patch.object(main.trailing_strategy, "evaluate_and_update_positions", return_value=[])
+    @patch("main.scan_tokens", return_value=[])
+    @patch("main.fetch_position_prices", return_value={"LIVE_TOK": 1.0})
+    @patch("main.load_positions", return_value=[{"token": "LIVE_TOK", "actual_entry_price": 1.0, "quantity": 10.0}])
+    def test_run_cycle_with_open_position_does_not_deadlock(
+        self, mock_load, mock_prices, mock_scan, mock_eval, mock_exec
+    ):
+        """Regression test: run_cycle calling real monitor_positions must not deadlock on _position_lock."""
+        main.run_cycle()
+        mock_eval.assert_called_once()
+
 
 if __name__ == "__main__":
     unittest.main()

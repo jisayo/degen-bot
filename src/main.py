@@ -30,9 +30,9 @@ SCAN_INTERVAL = 60
 POSITION_POLL_INTERVAL = 15   # Fast loop: re-check open positions every 15 s
 MAX_OPEN_POSITIONS = 3
 
-# Lock so the fast position loop and the main scan cycle never call
-# paper_trader concurrently (both write to open_positions.json).
-_position_lock = threading.Lock()
+# Re-entrant lock so the fast position loop and the main scan cycle never
+# race on open_positions.json.
+_position_lock = threading.RLock()
 
 trailing_strategy = SolanaTrailingStopStrategy(
     max_positions=MAX_OPEN_POSITIONS,
@@ -145,8 +145,7 @@ def position_watcher():
             if positions:
                 prices = fetch_position_prices(positions)
                 if prices:
-                    with _position_lock:
-                        closed = monitor_positions(prices)
+                    closed = monitor_positions(prices)
                     if closed:
                         print(f"[FastPoller] {len(closed)} position(s) exited.")
                         _notify_closed_positions(closed)
@@ -166,8 +165,7 @@ def run_cycle():
 
     if positions:
         prices = fetch_position_prices(positions)
-        with _position_lock:
-            closed = monitor_positions(prices)
+        closed = monitor_positions(prices)
         if closed:
             _notify_closed_positions(closed)
         print(f"Positions closed this cycle: {len(closed)}")
@@ -214,7 +212,8 @@ def run_cycle():
         notify_opportunity_found(item)
 
         try:
-            pos = open_position(token, price)
+            with _position_lock:
+                pos = open_position(token, price)
             open_tokens.add(token)
             opened += 1
             slots -= 1
