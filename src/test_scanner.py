@@ -69,6 +69,13 @@ def make_opportunity(score=80, eligible=True):
 
 class TestScanner(unittest.TestCase):
 
+    def setUp(self):
+        self._extra_patch = patch("scanner.fetch_extra_discovery_tokens", return_value=[])
+        self._extra_patch.start()
+
+    def tearDown(self):
+        self._extra_patch.stop()
+
     @patch("scanner.check_rug_risk")
     @patch("scanner.score_opportunity")
     @patch("scanner.requests.get")
@@ -293,11 +300,12 @@ class TestTokenAge(unittest.TestCase):
 
         self.assertIsNone(get_token_age_minutes(pair, now))
 
+    @patch("scanner.fetch_extra_discovery_tokens", return_value=[])
     @patch("scanner.check_rug_risk")
     @patch("scanner.score_opportunity")
     @patch("scanner.requests.get")
     def test_scanner_preserves_negative_price_change_and_extracts_volume_5m(
-        self, mock_get, mock_score, mock_risk
+        self, mock_get, mock_score, mock_risk, _mock_extra
     ):
         pair = make_pair(address="NEG_M5", liquidity=30000, market_cap=100000)
         pair["volume"]["m5"] = 2500.0
@@ -315,6 +323,43 @@ class TestTokenAge(unittest.TestCase):
         self.assertEqual(results[0]["price_change_1h"], -10.5)
         self.assertEqual(results[0]["price_change_m5"], -4.2)
         self.assertEqual(results[0]["volume_5m"], 2500.0)
+
+
+class TestMultiDexDiscovery(unittest.TestCase):
+
+    def test_max_tokens_is_50(self):
+        from scanner import MAX_TOKENS
+        self.assertEqual(MAX_TOKENS, 50)
+
+    @patch("scanner.requests.get")
+    def test_fetch_extra_discovery_tokens_parses_gecko_and_boosts(self, mock_get):
+        from scanner import fetch_extra_discovery_tokens
+        gecko_payload = {
+            "data": [
+                {
+                    "relationships": {
+                        "base_token": {"data": {"id": "solana_GECKO_MINT_1"}}
+                    }
+                },
+                {
+                    "relationships": {
+                        "base_token": {"data": {"id": "solana_So11111111111111111111111111111111111111112"}}
+                    }
+                },
+            ]
+        }
+        boosts_payload = [
+            {"chainId": "solana", "tokenAddress": "BOOST_MINT_1"},
+            {"chainId": "ethereum", "tokenAddress": "ETH_IGNORED"},
+        ]
+        mock_get.side_effect = [
+            Mock(json=Mock(return_value=gecko_payload)),
+            Mock(json=Mock(return_value=boosts_payload)),
+        ]
+
+        tokens = fetch_extra_discovery_tokens()
+        addresses = [t["tokenAddress"] for t in tokens]
+        self.assertEqual(addresses, ["GECKO_MINT_1", "BOOST_MINT_1"])
 
 
 if __name__ == "__main__":

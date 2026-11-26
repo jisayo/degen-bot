@@ -5,10 +5,19 @@ from rug_detector import check_rug_risk
 from opportunity_scorer import score_opportunity
 
 API_URL = "https://api.dexscreener.com/token-profiles/latest/v1"
+BOOSTS_TOP_URL = "https://api.dexscreener.com/token-boosts/top/v1"
+GECKOTERMINAL_TRENDING_URL = "https://api.geckoterminal.com/api/v2/networks/solana/trending_pools"
 PAIR_URL = "https://api.dexscreener.com/token-pairs/v1/solana/{}"
 
 TIMEOUT = 15
-MAX_TOKENS = 10
+MAX_TOKENS = 50
+
+# Base/quote infrastructure mints to ignore if returned as a pool base token
+IGNORED_SOLANA_MINTS = {
+    "So11111111111111111111111111111111111111112",  # wSOL
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",  # USDC
+    "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",  # USDT
+}
 
 MIN_LIQUIDITY_USD = 20000.0
 MIN_MARKET_CAP_USD = 75000.0
@@ -73,6 +82,45 @@ def get_token_age_minutes(pair, now_ms=None):
         return None
 
 
+def fetch_extra_discovery_tokens():
+    """Fetch additional Solana token dicts from GeckoTerminal trending pools and DexScreener top boosts."""
+    extra_tokens = []
+
+    # 1. GeckoTerminal Trending Solana Pools (covers Raydium, PumpSwap, Meteora, Orca)
+    try:
+        resp = requests.get(GECKOTERMINAL_TRENDING_URL, timeout=TIMEOUT)
+        resp.raise_for_status()
+        payload = resp.json()
+        for pool in (payload.get("data") or []) if isinstance(payload, dict) else []:
+            rels = pool.get("relationships") or {}
+            base_id = ((rels.get("base_token") or {}).get("data") or {}).get("id", "")
+            if isinstance(base_id, str) and base_id.startswith("solana_"):
+                addr = base_id[len("solana_"):]
+                if addr and addr not in IGNORED_SOLANA_MINTS:
+                    extra_tokens.append({"chainId": "solana", "tokenAddress": addr, "source": "geckoterminal"})
+    except (requests.RequestException, ValueError, TypeError) as error:
+        print(f"GeckoTerminal discovery warning: {error}")
+
+    # 2. DexScreener Top Boosted Tokens
+    try:
+        resp = requests.get(BOOSTS_TOP_URL, timeout=TIMEOUT)
+        resp.raise_for_status()
+        boosts = resp.json()
+        if isinstance(boosts, list):
+            for item in boosts:
+                if (
+                    isinstance(item, dict)
+                    and item.get("chainId") == "solana"
+                    and item.get("tokenAddress")
+                    and item["tokenAddress"] not in IGNORED_SOLANA_MINTS
+                ):
+                    extra_tokens.append({"chainId": "solana", "tokenAddress": item["tokenAddress"], "source": "dexscreener_boosts"})
+    except (requests.RequestException, ValueError, TypeError) as error:
+        print(f"DexScreener boosts discovery warning: {error}")
+
+    return extra_tokens
+
+
 def scan_tokens():
     results = []
 
@@ -91,9 +139,21 @@ def scan_tokens():
             if isinstance(token, dict)
             and token.get("chainId") == "solana"
             and token.get("tokenAddress")
+            and token["tokenAddress"] not in IGNORED_SOLANA_MINTS
         ]
 
-        print(f"\nFound {len(tokens)} recent Solana profiles.\n")
+        # Merge multi-DEX trending/boosted feeds and deduplicate preserving order
+        extra_tokens = fetch_extra_discovery_tokens()
+        deduped = []
+        seen_discovery = set()
+        for token in tokens + extra_tokens:
+            addr = token["tokenAddress"]
+            if addr not in seen_discovery:
+                seen_discovery.add(addr)
+                deduped.append(token)
+        tokens = deduped
+
+        print(f"\nFound {len(tokens)} unique Solana candidates across discovery feeds (scanning up to {MAX_TOKENS}).\n")
 
         seen = set()
 
