@@ -107,6 +107,35 @@ class TestRugDetector(unittest.TestCase):
         self.assertGreaterEqual(result["risk_score"], 60)
         self.assertTrue(any("Single holder owns" in r for r in result["risks"]))
 
+    @patch("rug_detector.get_rugcheck_report", return_value={
+        "rugged": False,
+        "topHolders": [
+            {"address": "WHALE_11", "pct": 11.0, "isPool": False},
+        ],
+    })
+    @patch("rug_detector.summarise_risk", return_value={
+        "risk_score": 1, "risks": []
+    })
+    def test_single_holder_11_percent_blocks_trade(self, *_):
+        result = check_rug_risk(TOKEN)
+        self.assertFalse(result["trade_allowed"])
+        self.assertGreaterEqual(result["risk_score"], 75)
+        self.assertTrue(any("Single holder owns 11.0%" in r for r in result["risks"]))
+
+    @patch("rug_detector.get_rugcheck_report", return_value={
+        "rugged": False,
+        "topHolders": [
+            {"address": "HOLDER_10_5", "pct": 10.5, "isPool": False},
+        ],
+    })
+    @patch("rug_detector.summarise_risk", return_value={
+        "risk_score": 1, "risks": []
+    })
+    def test_single_holder_below_11_percent_can_pass(self, *_):
+        result = check_rug_risk(TOKEN)
+        self.assertTrue(result["trade_allowed"])
+        self.assertLess(result["risk_score"], 30)
+
 
 if __name__ == "__main__":
     unittest.main()

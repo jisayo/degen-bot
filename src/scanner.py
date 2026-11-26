@@ -11,6 +11,7 @@ TIMEOUT = 15
 MAX_TOKENS = 10
 
 MIN_LIQUIDITY_USD = 20000.0
+MIN_MARKET_CAP_USD = 75000.0
 MIN_LIQUIDITY_TO_MC_RATIO = 0.15
 MIN_TOKEN_AGE_MINUTES = 3
 MAX_TOKEN_AGE_MINUTES = 120
@@ -229,6 +230,7 @@ def scan_tokens():
                         "eligible_for_paper_trading"
                     ) is True
                     and liquidity >= MIN_LIQUIDITY_USD
+                    and market_cap >= MIN_MARKET_CAP_USD
                     and liquidity_mc_ratio is not None
                     and liquidity_mc_ratio >= MIN_LIQUIDITY_TO_MC_RATIO
                 )

@@ -97,10 +97,10 @@ def check_rug_risk(token: dict) -> dict:
             top1_pct = max(percentages) if percentages else 0.0
             top10_sum = sum(sorted(percentages, reverse=True)[:10])
 
-            if top1_pct > 15.0:
+            if top1_pct >= 11.0:
                 risks.append(f"RugCheck: Single holder owns {top1_pct:.1f}% of supply")
                 score = max(score, 75)
-            elif top1_pct > 10.0:
+            elif top1_pct >= 8.0:
                 risks.append(f"RugCheck warning: Top holder owns {top1_pct:.1f}% of supply")
                 score = max(score, score + 15)
 

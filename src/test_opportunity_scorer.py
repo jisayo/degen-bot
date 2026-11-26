@@ -7,7 +7,7 @@ class TestOpportunityScorer(unittest.TestCase):
     def test_strong_token_scores_well(self):
         token = {
             "liquidity_usd": 25000,
-            "market_cap_usd": 37500,
+            "market_cap_usd": 100000,
             "volume_1h": 80000,
             "buys_1h": 160,
             "sells_1h": 80,
@@ -176,7 +176,7 @@ class TestOpportunityScorer(unittest.TestCase):
     def test_score_at_minimum_can_qualify(self):
         token = {
             "liquidity_usd": 25000,
-            "market_cap_usd": 50000,
+            "market_cap_usd": 100000,
             "volume_1h": 50000,
             "buys_1h": 40,
             "sells_1h": 20,
@@ -187,6 +187,18 @@ class TestOpportunityScorer(unittest.TestCase):
             result["opportunity_score"], MIN_OPPORTUNITY_SCORE
         )
         self.assertTrue(result["eligible_for_paper_trading"])
+
+    def test_market_cap_below_75k_is_ineligible(self):
+        token = {
+            "liquidity_usd": 25000,
+            "market_cap_usd": 74999.0,
+            "volume_1h": 50000,
+            "buys_1h": 40,
+            "sells_1h": 20,
+        }
+        result = score_opportunity(token)
+        self.assertFalse(result["eligible_for_paper_trading"])
+        self.assertTrue(any("below minimum of $75,000.00" in r for r in result["reasons"]))
 
     def test_negative_1h_price_change_is_ineligible(self):
         token = {
@@ -204,7 +216,7 @@ class TestOpportunityScorer(unittest.TestCase):
     def test_positive_1h_price_change_can_qualify(self):
         token = {
             "liquidity_usd": 25000,
-            "market_cap_usd": 50000,
+            "market_cap_usd": 100000,
             "volume_1h": 50000,
             "buys_1h": 40,
             "sells_1h": 20,
@@ -311,7 +323,7 @@ class TestOpportunityScorer(unittest.TestCase):
     def test_healthy_5m_chart_gates_qualify(self):
         token = {
             "liquidity_usd": 25000,
-            "market_cap_usd": 50000,
+            "market_cap_usd": 100000,
             "volume_1h": 50000,
             "buys_1h": 160,
             "sells_1h": 80,

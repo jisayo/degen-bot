@@ -2,6 +2,7 @@ import math
 
 MIN_OPPORTUNITY_SCORE = 50
 MIN_LIQUIDITY_USD = 20000.0
+MIN_MARKET_CAP_USD = 75000.0
 MIN_LIQUIDITY_MC_RATIO = 0.15
 MIN_TRADES = 20
 MAX_VOLUME_LIQUIDITY_RATIO = 10.0
@@ -176,8 +177,13 @@ def score_opportunity(token: dict) -> dict:
 
     if market_cap <= 0:
         reasons.append("Missing or invalid market cap")
-    elif liquidity_mc_ratio < MIN_LIQUIDITY_MC_RATIO:
-        reasons.append(f"Liquidity below {int(MIN_LIQUIDITY_MC_RATIO * 100)}% of market cap")
+    else:
+        if market_cap < MIN_MARKET_CAP_USD:
+            reasons.append(
+                f"Market cap (${market_cap:,.2f}) below minimum of ${MIN_MARKET_CAP_USD:,.2f}"
+            )
+        if liquidity_mc_ratio < MIN_LIQUIDITY_MC_RATIO:
+            reasons.append(f"Liquidity below {int(MIN_LIQUIDITY_MC_RATIO * 100)}% of market cap")
 
     # ------------------------------------------------------------------ #
     # CHART-BASED ENTRY GATES (use data already returned by DexScreener) #
@@ -304,6 +310,7 @@ def score_opportunity(token: dict) -> dict:
     eligible = (
         score >= MIN_OPPORTUNITY_SCORE
         and liquidity >= MIN_LIQUIDITY_USD
+        and market_cap >= MIN_MARKET_CAP_USD
         and liquidity_mc_ratio is not None
         and liquidity_mc_ratio >= MIN_LIQUIDITY_MC_RATIO
         and volume > 0

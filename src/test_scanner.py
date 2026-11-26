@@ -10,7 +10,7 @@ from scanner import scan_tokens, get_token_age_minutes
 def make_pair(
     address="TEST_MINT",
     liquidity=20000,
-    market_cap=30000,
+    market_cap=100000,
     price="0.01",
     age_minutes=3,
     buys=100,
