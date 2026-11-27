@@ -4,9 +4,14 @@ MIN_OPPORTUNITY_SCORE = 50
 MIN_LIQUIDITY_USD = 20000.0
 MIN_MARKET_CAP_USD = 75000.0
 MIN_LIQUIDITY_MC_RATIO = 0.15
+MIN_LIQUIDITY_MC_RATIO_MIDCAP = 0.08  # Adaptive floor for >= $200k MC tokens
+MIDCAP_THRESHOLD_USD = 200000.0
 MIN_TRADES = 20
 MAX_VOLUME_LIQUIDITY_RATIO = 10.0
-MIN_BUY_RATIO = 0.60  # Minimum 60:40 buy-to-sell ratio (60% buys)
+MAX_VOLUME_LIQUIDITY_RATIO_DEEP = 20.0  # Allowed turnover for >= $20k liquidity pools
+MIN_BUY_RATIO = 0.60  # Baseline 60:40 buy-to-sell ratio
+MIN_BUY_RATIO_WITH_5M_MOMENTUM = 0.55  # Adaptive 55% floor when 5m flow is green + buy-led
+MULTI_SOURCE_BONUS = 5  # Score bonus when discovered on >= 2 independent feeds
 
 # --- Momentum / chart-based entry gates ---
 # Applied on top of the structural filters (liquidity, risk, etc.)
@@ -122,14 +127,22 @@ def score_opportunity(token: dict) -> dict:
         score += 5
         reasons.append("Low liquidity")
 
+    # Adaptive volume/liquidity ceiling: deeper ($20k+) pools tolerate up to 20x
+    # hourly turnover; shallow pools (<$20k) stay strictly capped at 10x.
+    max_vol_liq_ratio = (
+        MAX_VOLUME_LIQUIDITY_RATIO_DEEP
+        if liquidity >= MIN_LIQUIDITY_USD
+        else MAX_VOLUME_LIQUIDITY_RATIO
+    )
+
     # Volume relative to liquidity
     if liquidity > 0:
         ratio = volume / liquidity
 
-        if 1 <= ratio <= 10:
+        if 1 <= ratio <= max_vol_liq_ratio:
             score += 20
             reasons.append("Healthy volume/liquidity ratio")
-        elif ratio > 10:
+        elif ratio > max_vol_liq_ratio:
             reasons.append(
                 "Very high volume; investigate wash trading"
             )
@@ -139,12 +152,12 @@ def score_opportunity(token: dict) -> dict:
     volume_liquidity_ratio = volume / liquidity if liquidity > 0 else None
     extreme_volume_ratio = (
         volume_liquidity_ratio is not None
-        and volume_liquidity_ratio > MAX_VOLUME_LIQUIDITY_RATIO
+        and volume_liquidity_ratio > max_vol_liq_ratio
     )
     if extreme_volume_ratio:
         reasons.append(
             "Volume/liquidity ratio exceeds "
-            f"{MAX_VOLUME_LIQUIDITY_RATIO:g}x; blocked for review"
+            f"{max_vol_liq_ratio:g}x; blocked for review"
         )
 
     # Trading activity
@@ -170,6 +183,19 @@ def score_opportunity(token: dict) -> dict:
                 "Extreme buy imbalance; investigate"
             )
 
+    # Multi-source confirmation bonus
+    source_count = int(token.get("source_count") or 1)
+    if source_count >= 2:
+        score += MULTI_SOURCE_BONUS
+        reasons.append(f"Multi-feed confirmation ({source_count} sources)")
+
+    # Adaptive liquidity/MC ratio: >= 15% for < $200k MC, >= 8% for >= $200k MC
+    required_liq_mc_ratio = (
+        MIN_LIQUIDITY_MC_RATIO_MIDCAP
+        if market_cap >= MIDCAP_THRESHOLD_USD
+        else MIN_LIQUIDITY_MC_RATIO
+    )
+
     # Liquidity compared with market capitalisation
     liquidity_mc_ratio = (
         liquidity / market_cap if market_cap > 0 else None
@@ -182,8 +208,8 @@ def score_opportunity(token: dict) -> dict:
             reasons.append(
                 f"Market cap (${market_cap:,.2f}) below minimum of ${MIN_MARKET_CAP_USD:,.2f}"
             )
-        if liquidity_mc_ratio < MIN_LIQUIDITY_MC_RATIO:
-            reasons.append(f"Liquidity below {int(MIN_LIQUIDITY_MC_RATIO * 100)}% of market cap")
+        if liquidity_mc_ratio < required_liq_mc_ratio:
+            reasons.append(f"Liquidity below {int(required_liq_mc_ratio * 100)}% of market cap")
 
     # ------------------------------------------------------------------ #
     # CHART-BASED ENTRY GATES (use data already returned by DexScreener) #
@@ -306,18 +332,34 @@ def score_opportunity(token: dict) -> dict:
                 f"{expected_5m_pace:.0f}/5min (ratio: {acceleration_ratio:.2f}x, min: {MIN_5M_ACCELERATION}x)"
             )
 
+    # Adaptive 1h buy/sell ratio:
+    # Require >= 55% when 5m momentum is explicitly confirmed green + buy-led;
+    # otherwise enforce the stricter 60% (60:40) baseline.
+    has_confirmed_5m_momentum = (
+        price_change_m5 is not None
+        and price_change_m5 >= 0.0
+        and buys_5m_int is not None
+        and sells_5m_int is not None
+        and buys_5m_int > sells_5m_int
+    )
+    required_buy_ratio = (
+        MIN_BUY_RATIO_WITH_5M_MOMENTUM
+        if has_confirmed_5m_momentum
+        else MIN_BUY_RATIO
+    )
+
     # Paper-trading entry requirements
     eligible = (
         score >= MIN_OPPORTUNITY_SCORE
         and liquidity >= MIN_LIQUIDITY_USD
         and market_cap >= MIN_MARKET_CAP_USD
         and liquidity_mc_ratio is not None
-        and liquidity_mc_ratio >= MIN_LIQUIDITY_MC_RATIO
+        and liquidity_mc_ratio >= required_liq_mc_ratio
         and volume > 0
         and trades >= MIN_TRADES
         and not extreme_volume_ratio
         and buy_ratio is not None
-        and buy_ratio >= MIN_BUY_RATIO
+        and buy_ratio >= required_buy_ratio
         and not is_down_trending
         and not is_extended_pump
         and not is_5m_red
@@ -327,9 +369,10 @@ def score_opportunity(token: dict) -> dict:
         and not is_volume_decelerating
     )
 
-    if buy_ratio is not None and buy_ratio < MIN_BUY_RATIO:
+    if buy_ratio is not None and buy_ratio < required_buy_ratio:
+        ratio_label = "60:40" if required_buy_ratio == MIN_BUY_RATIO else f"{int(required_buy_ratio*100)}%"
         reasons.append(
-            f"Buy/sell ratio ({buy_ratio*100:.1f}%) below minimum 60:40 requirement ({MIN_BUY_RATIO*100:.0f}%)"
+            f"Buy/sell ratio ({buy_ratio*100:.1f}%) below minimum {ratio_label} requirement ({required_buy_ratio*100:.0f}%)"
         )
 
     if liquidity < MIN_LIQUIDITY_USD:

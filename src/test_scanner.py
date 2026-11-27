@@ -327,9 +327,63 @@ class TestTokenAge(unittest.TestCase):
 
 class TestMultiDexDiscovery(unittest.TestCase):
 
-    def test_max_tokens_is_50(self):
+    def test_max_tokens_is_at_least_50(self):
         from scanner import MAX_TOKENS
-        self.assertEqual(MAX_TOKENS, 50)
+        self.assertGreaterEqual(MAX_TOKENS, 50)
+
+    def test_select_balanced_candidates_fair_round_robin_and_dedup(self):
+        from scanner import select_balanced_candidates
+        ds_profiles = [{"chainId": "solana", "tokenAddress": f"PROF_{i}"} for i in range(20)]
+        extra_tokens = (
+            [{"chainId": "solana", "tokenAddress": f"NEW_{i}", "source": "gecko_new_pools"} for i in range(20)]
+            + [{"chainId": "solana", "tokenAddress": f"BOOST_{i}", "source": "ds_boosts"} for i in range(20)]
+            + [{"chainId": "solana", "tokenAddress": f"TREND_{i}", "source": "gecko_trending"} for i in range(20)]
+        )
+        # Overlap token appearing in both ds_profiles and gecko_new_pools
+        extra_tokens.append({"chainId": "solana", "tokenAddress": "PROF_0", "source": "gecko_new_pools"})
+
+        selected, stats = select_balanced_candidates(ds_profiles, extra_tokens, max_tokens=16)
+
+        self.assertEqual(len(selected), 16)
+        self.assertEqual(stats["unique_candidates"], 80)
+        self.assertEqual(stats["feed_overlap"], 1)
+        # Overlap token should be prioritized first with both sources preserved
+        self.assertEqual(selected[0]["tokenAddress"], "PROF_0")
+        self.assertEqual(selected[0]["source_count"], 2)
+        self.assertIn("ds_profiles", selected[0]["sources"])
+        self.assertIn("gecko_new_pools", selected[0]["sources"])
+        # Every single feed must be represented fairly (no feed starved out)
+        selected_sources = {s for tok in selected for s in tok["sources"]}
+        self.assertEqual(
+            selected_sources,
+            {"ds_profiles", "gecko_new_pools", "ds_boosts", "gecko_trending"},
+        )
+
+    @patch("scanner.fetch_extra_discovery_tokens", return_value=[])
+    @patch("scanner.check_rug_risk")
+    @patch("scanner.score_opportunity")
+    @patch("scanner.requests.get")
+    def test_scan_metrics_tracks_funnel_and_rejections(
+        self, mock_get, mock_score, mock_risk, _mock_extra
+    ):
+        from scanner import get_last_scan_metrics
+        mock_get.side_effect = [
+            Mock(json=Mock(return_value=[make_profile("TOK_1"), make_profile("TOK_2")])),
+            Mock(json=Mock(return_value=[make_pair(address="TOK_1", age_minutes=5000)])),  # age skip
+            Mock(json=Mock(return_value=[make_pair(address="TOK_2", liquidity=5000, market_cap=100000)])),
+        ]
+        mock_risk.return_value = make_risk("HIGH", False)
+        mock_score.return_value = make_opportunity(20, False)
+
+        scan_tokens()
+        metrics = get_last_scan_metrics()
+        self.assertEqual(metrics["unique_candidates"], 2)
+        self.assertEqual(metrics["selected_for_scan"], 2)
+        self.assertEqual(metrics["tokens_evaluated"], 1)
+        self.assertEqual(metrics["eligible_opportunities"], 0)
+        self.assertEqual(metrics["rejection_counts"].get("age_window"), 1)
+        self.assertEqual(metrics["rejection_counts"].get("rug_risk"), 1)
+        self.assertIn("scan_duration_sec", metrics)
 
     @patch("scanner.requests.get")
     def test_fetch_extra_discovery_tokens_parses_gecko_and_boosts(self, mock_get):

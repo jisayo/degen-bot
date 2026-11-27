@@ -1,8 +1,16 @@
+import json
+import os
 import time
+from collections import Counter
+from datetime import datetime, timezone
 import requests
 
 from rug_detector import check_rug_risk
-from opportunity_scorer import score_opportunity
+from opportunity_scorer import (
+    score_opportunity,
+    MIN_LIQUIDITY_MC_RATIO_MIDCAP,
+    MIDCAP_THRESHOLD_USD,
+)
 
 API_URL = "https://api.dexscreener.com/token-profiles/latest/v1"
 BOOSTS_TOP_URL = "https://api.dexscreener.com/token-boosts/top/v1"
@@ -11,7 +19,24 @@ GECKOTERMINAL_NEW_POOLS_URL = "https://api.geckoterminal.com/api/v2/networks/sol
 PAIR_URL = "https://api.dexscreener.com/token-pairs/v1/solana/{}"
 
 TIMEOUT = 15
-MAX_TOKENS = 50
+MAX_TOKENS = int(os.getenv("SCAN_MAX_TOKENS", "60"))
+
+# Priority order for round-robin candidate selection:
+# genuinely new pools and fresh profiles first, then active boosts and trending pools.
+FEED_PRIORITY_ORDER = (
+    "gecko_new_pools",
+    "ds_profiles",
+    "ds_boosts",
+    "gecko_trending",
+)
+
+SCAN_ANALYTICS_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "data",
+    "scan_analytics.jsonl",
+)
+
+LAST_SCAN_METRICS = {}
 
 # Base/quote infrastructure mints to ignore if returned as a pool base token
 IGNORED_SOLANA_MINTS = {
@@ -126,8 +151,140 @@ def fetch_extra_discovery_tokens():
     return extra_tokens
 
 
-def scan_tokens():
+def get_last_scan_metrics():
+    """Return a copy of the most recent scan cycle's discovery and rejection metrics."""
+    return dict(LAST_SCAN_METRICS)
+
+
+def _record_scan_analytics(metrics):
+    """Append compact scan cycle metrics to data/scan_analytics.jsonl."""
+    try:
+        os.makedirs(os.path.dirname(SCAN_ANALYTICS_PATH), exist_ok=True)
+        with open(SCAN_ANALYTICS_PATH, "a", encoding="utf-8") as fh:
+            fh.write(json.dumps(metrics) + "\n")
+    except OSError:
+        pass
+
+
+def select_balanced_candidates(ds_profiles, extra_tokens, max_tokens=MAX_TOKENS):
+    """
+    Deduplicate candidates across all discovery feeds while preserving source metadata,
+    then select up to `max_tokens` fairly using multi-source priority + round-robin.
+
+    Returns (selected_tokens, discovery_stats).
+    """
+    feed_buckets = {name: [] for name in FEED_PRIORITY_ORDER}
+    sources_by_addr = {}
+    token_obj_by_addr = {}
+    raw_counts = Counter()
+
+    tagged_profiles = [
+        {**t, "source": t.get("source") or "ds_profiles"}
+        for t in (ds_profiles or [])
+        if isinstance(t, dict) and t.get("tokenAddress")
+    ]
+    all_tagged = tagged_profiles + [
+        t for t in (extra_tokens or [])
+        if isinstance(t, dict) and t.get("tokenAddress")
+    ]
+
+    for item in all_tagged:
+        addr = item["tokenAddress"]
+        if addr in IGNORED_SOLANA_MINTS:
+            continue
+        source = item.get("source") or "unknown"
+        raw_counts[source] += 1
+
+        if addr not in sources_by_addr:
+            sources_by_addr[addr] = []
+            token_obj_by_addr[addr] = dict(item)
+        if source not in sources_by_addr[addr]:
+            sources_by_addr[addr].append(source)
+            if source in feed_buckets:
+                feed_buckets[source].append(addr)
+            else:
+                feed_buckets.setdefault(source, []).append(addr)
+
+    unique_count = len(sources_by_addr)
+    overlap_addrs = [
+        addr for addr, srcs in sources_by_addr.items()
+        if len(srcs) >= 2
+    ]
+    # Sort multi-source tokens by number of feeds desc, then highest-priority feed
+    def _first_feed_rank(addr):
+        for idx, feed_name in enumerate(FEED_PRIORITY_ORDER):
+            if feed_name in sources_by_addr[addr]:
+                return idx
+        return len(FEED_PRIORITY_ORDER)
+
+    overlap_addrs.sort(key=lambda a: (-len(sources_by_addr[a]), _first_feed_rank(a)))
+
+    selected_addrs = []
+    selected_set = set()
+
+    # 1. Prioritize tokens appearing across >= 2 independent discovery feeds
+    for addr in overlap_addrs:
+        if len(selected_addrs) >= max_tokens:
+            break
+        selected_addrs.append(addr)
+        selected_set.add(addr)
+
+    # 2. Fair round-robin across feeds so no single feed crowds out the others
+    feed_iters = {
+        feed_name: iter(addrs)
+        for feed_name, addrs in feed_buckets.items()
+    }
+    active_feeds = [f for f in FEED_PRIORITY_ORDER if f in feed_iters] + [
+        f for f in feed_buckets if f not in FEED_PRIORITY_ORDER
+    ]
+
+    while len(selected_addrs) < max_tokens and active_feeds:
+        next_active = []
+        for feed_name in active_feeds:
+            if len(selected_addrs) >= max_tokens:
+                break
+            it = feed_iters[feed_name]
+            picked = False
+            for addr in it:
+                if addr not in selected_set:
+                    selected_set.add(addr)
+                    selected_addrs.append(addr)
+                    picked = True
+                    next_active.append(feed_name)
+                    break
+            if not picked:
+                continue
+        active_feeds = next_active
+
+    selected_tokens = []
+    selected_per_feed = Counter()
+    for addr in selected_addrs:
+        tok = dict(token_obj_by_addr[addr])
+        srcs = list(sources_by_addr[addr])
+        tok["sources"] = srcs
+        tok["source_count"] = len(srcs)
+        tok["primary_source"] = srcs[0]
+        selected_per_feed[srcs[0]] += 1
+        selected_tokens.append(tok)
+
+    stats = {
+        "candidates_per_feed": dict(raw_counts),
+        "unique_candidates": unique_count,
+        "feed_overlap": len(overlap_addrs),
+        "selected_for_scan": len(selected_tokens),
+        "selected_per_feed": dict(selected_per_feed),
+    }
+    return selected_tokens, stats
+
+
+def scan_tokens(max_tokens=None):
+    global LAST_SCAN_METRICS
+    scan_start = time.time()
+    limit = MAX_TOKENS if max_tokens is None else max_tokens
     results = []
+    rejection_counts = Counter()
+    api_failures = 0
+    tokens_evaluated = 0
 
     try:
         response = requests.get(API_URL, timeout=TIMEOUT)
@@ -138,8 +295,8 @@ def scan_tokens():
             print("Scanner error: unexpected profiles response.")
             return results
 
-        tokens = [
-            token
+        ds_profiles = [
+            {**token, "source": "ds_profiles"}
             for token in profiles
             if isinstance(token, dict)
             and token.get("chainId") == "solana"
@@ -147,22 +304,20 @@ def scan_tokens():
             and token["tokenAddress"] not in IGNORED_SOLANA_MINTS
         ]
 
-        # Merge multi-DEX trending/boosted feeds and deduplicate preserving order
         extra_tokens = fetch_extra_discovery_tokens()
-        deduped = []
-        seen_discovery = set()
-        for token in tokens + extra_tokens:
-            addr = token["tokenAddress"]
-            if addr not in seen_discovery:
-                seen_discovery.add(addr)
-                deduped.append(token)
-        tokens = deduped
+        tokens, discovery_stats = select_balanced_candidates(
+            ds_profiles, extra_tokens, max_tokens=limit
+        )
 
-        print(f"\nFound {len(tokens)} unique Solana candidates across discovery feeds (scanning up to {MAX_TOKENS}).\n")
+        print(
+            f"\nFound {discovery_stats['unique_candidates']} unique Solana candidates "
+            f"(overlap={discovery_stats['feed_overlap']}, feeds={discovery_stats['candidates_per_feed']}); "
+            f"scanning {len(tokens)} (cap={limit}).\n"
+        )
 
         seen = set()
 
-        for token in tokens[:MAX_TOKENS]:
+        for token in tokens:
             address = token["tokenAddress"]
 
             if address in seen:
@@ -180,6 +335,7 @@ def scan_tokens():
 
                 if not isinstance(pairs, list) or not pairs:
                     print(f"{address}: No pair data; skipped.")
+                    rejection_counts["no_pair_data"] += 1
                     continue
 
                 valid_pairs = [
@@ -191,6 +347,7 @@ def scan_tokens():
 
                 if not valid_pairs:
                     print(f"{address}: No valid Solana pair; skipped.")
+                    rejection_counts["no_valid_solana_pair"] += 1
                     continue
 
                 # Select the pair with the highest reported USD liquidity.
@@ -207,6 +364,7 @@ def scan_tokens():
                     print(
                         f"{address}: Missing or invalid creation time; skipped."
                     )
+                    rejection_counts["missing_creation_time"] += 1
                     continue
 
                 if not (
@@ -218,6 +376,7 @@ def scan_tokens():
                         f"{address}: Age {age_minutes:.1f} minutes "
                         f"outside the {MIN_TOKEN_AGE_MINUTES}–{MAX_TOKEN_AGE_MINUTES} minute window; skipped."
                     )
+                    rejection_counts["age_window"] += 1
                     continue
 
                 price = to_float(pair.get("priceUsd"))
@@ -228,6 +387,7 @@ def scan_tokens():
 
                 if price <= 0:
                     print(f"{address}: Missing or invalid price; skipped.")
+                    rejection_counts["invalid_price"] += 1
                     continue
 
                 # Use one-hour activity for newly launched tokens.
@@ -241,6 +401,7 @@ def scan_tokens():
                     print(
                         f"{address}: Missing one-hour activity data; skipped."
                     )
+                    rejection_counts["missing_h1_activity"] += 1
                     continue
 
                 buys_h1 = to_int(h1.get("buys"))
@@ -278,15 +439,25 @@ def scan_tokens():
                     "sells_1h": sells_h1,
 
                     # Momentum and short-term flow indicators
-                    "volume_5m": volume_5m,
                     "price_change_1h": price_change_h1,
                     "price_change_m5": price_change_m5,
                     "buys_5m": buys_m5,
                     "sells_5m": sells_m5,
+
+                    # Multi-source discovery metadata
+                    "sources": token.get("sources", []),
+                    "source_count": token.get("source_count", 1),
                 }
 
+                tokens_evaluated += 1
                 risk = check_rug_risk(market_data)
                 opportunity = score_opportunity(market_data)
+
+                required_liq_mc = (
+                    MIN_LIQUIDITY_MC_RATIO_MIDCAP
+                    if market_cap >= MIDCAP_THRESHOLD_USD
+                    else MIN_LIQUIDITY_TO_MC_RATIO
+                )
 
                 paper_eligible = (
                     risk.get("risk_level") == "LOW"
@@ -297,8 +468,40 @@ def scan_tokens():
                     and liquidity >= MIN_LIQUIDITY_USD
                     and market_cap >= MIN_MARKET_CAP_USD
                     and liquidity_mc_ratio is not None
-                    and liquidity_mc_ratio >= MIN_LIQUIDITY_TO_MC_RATIO
+                    and liquidity_mc_ratio >= required_liq_mc
                 )
+
+                if not paper_eligible:
+                    if risk.get("risk_level") != "LOW" or risk.get("trade_allowed") is not True:
+                        rejection_counts["rug_risk"] += 1
+                    for reason in opportunity.get("reasons", []):
+                        low = reason.lower()
+                        if "below minimum of $20,000" in low:
+                            rejection_counts["low_liquidity"] += 1
+                        elif "market cap" in low and "below minimum" in low:
+                            rejection_counts["low_market_cap"] += 1
+                        elif "market cap" in low and "of market cap" in low:
+                            rejection_counts["low_liq_mc_ratio"] += 1
+                        elif "buy/sell ratio" in low:
+                            rejection_counts["low_buy_ratio"] += 1
+                        elif "down-trending" in low:
+                            rejection_counts["negative_1h"] += 1
+                        elif "buying the top" in low:
+                            rejection_counts["extended_pump_1h"] += 1
+                        elif "5-minute candle is red" in low:
+                            rejection_counts["red_5m"] += 1
+                        elif "sell-dominated" in low:
+                            rejection_counts["sell_dominated_5m"] += 1
+                        elif "buys in the last 5 minutes" in low:
+                            rejection_counts["low_buys_5m"] += 1
+                        elif "5-min usd volume" in low:
+                            rejection_counts["low_vol_5m"] += 1
+                        elif "5-min volume fading" in low:
+                            rejection_counts["fading_pace_5m"] += 1
+                        elif "volume/liquidity ratio exceeds" in low:
+                            rejection_counts["extreme_vol_liq"] += 1
+                        elif "opportunity score below" in low:
+                            rejection_counts["low_opp_score"] += 1
 
                 base_token = pair.get("baseToken", {}) if isinstance(pair.get("baseToken"), dict) else {}
                 token_symbol = base_token.get("symbol", "UNKNOWN")
@@ -308,6 +511,8 @@ def scan_tokens():
                     "address": address,
                     "symbol": token_symbol,
                     "name": token_name,
+                    "sources": token.get("sources", []),
+                    "source_count": token.get("source_count", 1),
                     "price_usd": price,
                     "liquidity_usd": liquidity,
                     "market_cap_usd": market_cap,
@@ -334,16 +539,37 @@ def scan_tokens():
                 TypeError,
                 KeyError,
             ) as error:
+                api_failures += 1
+                rejection_counts["api_error"] += 1
                 print(f"Could not analyse {address}: {error}")
 
     except (requests.RequestException, ValueError) as error:
+        api_failures += 1
         print(f"Scanner failed: {error}")
+        LAST_SCAN_METRICS = {
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "api_failures": api_failures,
+            "scan_duration_sec": round(time.time() - scan_start, 2),
+        }
         return results
 
     results.sort(
         key=lambda item: item["opportunity"]["opportunity_score"],
         reverse=True,
     )
+
+    eligible_count = sum(1 for item in results if item.get("paper_eligible"))
+    scan_duration = round(time.time() - scan_start, 2)
+    LAST_SCAN_METRICS = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        **discovery_stats,
+        "tokens_evaluated": tokens_evaluated,
+        "eligible_opportunities": eligible_count,
+        "rejection_counts": dict(rejection_counts),
+        "api_failures": api_failures,
+        "scan_duration_sec": scan_duration,
+    }
+    _record_scan_analytics(LAST_SCAN_METRICS)
 
     print("\n===== RANKED TOKEN RESULTS =====")
 
@@ -381,6 +607,15 @@ def scan_tokens():
         print(f"Paper-trading eligible: {item['paper_eligible']}")
         print(f"Pair: {item['pair_url']}")
         print("-" * 45)
+
+    print(
+        f"[ScanMetrics] unique={discovery_stats['unique_candidates']} "
+        f"overlap={discovery_stats['feed_overlap']} "
+        f"selected={discovery_stats['selected_for_scan']} "
+        f"evaluated={tokens_evaluated} eligible={eligible_count} "
+        f"api_failures={api_failures} duration={scan_duration}s "
+        f"selected_per_feed={discovery_stats['selected_per_feed']}"
+    )
 
     return results
 

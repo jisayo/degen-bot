@@ -336,6 +336,69 @@ class TestOpportunityScorer(unittest.TestCase):
         result = score_opportunity(token)
         self.assertTrue(result["eligible_for_paper_trading"])
 
+    def test_adaptive_midcap_allows_10_pct_liq_mc_ratio(self):
+        # $25k liquidity / $250k MC = 10% (>= 8% adaptive floor for >= $200k MC)
+        token = {
+            "liquidity_usd": 25000,
+            "market_cap_usd": 250000,
+            "volume_1h": 80000,
+            "buys_1h": 140,
+            "sells_1h": 70,
+            "price_change_1h": 25.0,
+            "price_change_m5": 4.0,
+            "buys_5m": 12,
+            "sells_5m": 4,
+            "volume_5m": 4000.0,
+        }
+        result = score_opportunity(token)
+        self.assertTrue(result["eligible_for_paper_trading"])
+
+    def test_adaptive_buy_ratio_57_pct_qualifies_with_confirmed_5m_momentum(self):
+        # 57% 1h buys qualifies when 5m candle is green and 5m flow is buy-dominated
+        token = {
+            "liquidity_usd": 26000,
+            "market_cap_usd": 140000,
+            "volume_1h": 80000,
+            "buys_1h": 114,
+            "sells_1h": 86,
+            "price_change_1h": 20.0,
+            "price_change_m5": 3.5,
+            "buys_5m": 15,
+            "sells_5m": 5,
+            "volume_5m": 3000.0,
+        }
+        result = score_opportunity(token)
+        self.assertTrue(result["eligible_for_paper_trading"])
+
+    def test_deep_pool_allows_15x_volume_liquidity_ratio(self):
+        # $25k liquidity * 15 = $375k 1h volume (allowed up to 20x for >= $20k pools)
+        token = {
+            "liquidity_usd": 25000,
+            "market_cap_usd": 150000,
+            "volume_1h": 375000,
+            "buys_1h": 300,
+            "sells_1h": 150,
+            "price_change_1h": 50.0,
+            "price_change_m5": 5.0,
+            "buys_5m": 30,
+            "sells_5m": 10,
+            "volume_5m": 20000.0,
+        }
+        result = score_opportunity(token)
+        self.assertTrue(result["eligible_for_paper_trading"])
+
+    def test_multi_source_bonus_adds_5_points(self):
+        base = {
+            "liquidity_usd": 25000,
+            "market_cap_usd": 100000,
+            "volume_1h": 50000,
+            "buys_1h": 40,
+            "sells_1h": 20,
+        }
+        s1 = score_opportunity({**base, "source_count": 1})
+        s2 = score_opportunity({**base, "source_count": 2})
+        self.assertEqual(s2["opportunity_score"], s1["opportunity_score"] + 5)
+
 
 if __name__ == "__main__":
     unittest.main()
