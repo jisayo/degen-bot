@@ -172,14 +172,14 @@ class TestSolanaTrailingStopStrategy(unittest.TestCase):
             "second_take_profit_done": False,
         }
 
-        # Price reaches +50% ($1.50) -> sells 50%, locks stop >= +10% ($1.10)
+        # Price reaches +50% ($1.50) -> sells 50%, locks fixed break-even floor ($1.00)
         exits_tp1 = strategy.evaluate_and_update_positions([position], {"RUNNER_TOKEN": 1.50})
         self.assertEqual(len(exits_tp1), 1)
         self.assertTrue(exits_tp1[0]["is_partial"])
         self.assertEqual(exits_tp1[0]["quantity"], 50.0)
         self.assertIn("Take Profit 1 (+50%)", exits_tp1[0]["reason"])
         self.assertTrue(position["first_take_profit_done"])
-        self.assertGreaterEqual(position["stop_trigger_price"], 1.10)
+        self.assertGreaterEqual(position["stop_trigger_price"], 1.00)
 
         # Price reaches +100% ($2.00) -> sells 25%, leaving 25% moonbag
         exits_tp2 = strategy.evaluate_and_update_positions([position], {"RUNNER_TOKEN": 2.00})

@@ -18,7 +18,7 @@ FIRST_TAKE_PROFIT_PCT = 0.50      # +50% TP1
 FIRST_TAKE_PROFIT_FRACTION = 0.50 # Sell 50% at TP1
 SECOND_TAKE_PROFIT_PCT = 1.00     # +100% TP2
 SECOND_TAKE_PROFIT_FRACTION = 0.25# Sell 25% at TP2 (leaving 25% moonbag)
-TP1_PROFIT_LOCK_PCT = 0.10        # Lock stop at +10% profit once TP1 hits
+TP1_PROFIT_LOCK_PCT = 0.00        # Fixed break-even stop floor once TP1 hits
 SLIPPAGE_TOLERANCE_PCT = 0.15     # 15% slippage tolerance for Jito-protected exit
 
 
@@ -27,7 +27,7 @@ class SolanaTrailingStopStrategy:
     Manages active Solana positions using real-time DexScreener price feeds.
     Enforces a strict 3-trade concurrency ceiling.
     Enforces a fixed 30% hard stop loss floor alongside a 20% initial noise buffer.
-    Implements staged take-profits (+50% sell 50% + lock +10% stop, +100% sell 25%).
+    Implements staged take-profits (+50% sell 50% + break-even lock, +100% sell 25%).
     Trails remaining 25% moonbag with 15% dynamic trailing stop from post-activation peak.
     Executes automated exits via Jito-protected private bundles (10-15% slippage).
     """
@@ -181,7 +181,7 @@ class SolanaTrailingStopStrategy:
                 hard_stop_price = entry_price * (1.0 - self.hard_stop_pct)
                 stop_trigger_price = max(stop_trigger_price, hard_stop_price)
 
-            # If TP1 was already taken, lock stop at least at +10% profit above entry
+            # If TP1 was already taken, lock fixed break-even stop floor (entry_price)
             if position.get("first_take_profit_done"):
                 stop_trigger_price = max(
                     stop_trigger_price,

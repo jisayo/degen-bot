@@ -47,7 +47,7 @@ export default function StrategyConditionsCard() {
     {
       title: 'Staged TP & 30% Hard Stop',
       value: 'TP (+50%/+100%) + 15s Poll',
-      description: '+50% sells 50% (+10% lock), +100% sells 25%, 25% moonbag. 20% buffer, 30% hard floor.',
+      description: '+50% sells 50% (break-even lock), +100% sells 25%, 25% moonbag. 20% buffer, 30% hard floor.',
       icon: Target,
       color: 'text-amber-400',
       badge: 'Dynamic Exit',
