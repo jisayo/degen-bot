@@ -172,21 +172,48 @@ class TestSolanaTrailingStopStrategy(unittest.TestCase):
             "second_take_profit_done": False,
         }
 
-        # Price reaches +50% ($1.50)
+        # Price reaches +50% ($1.50) -> sells 50%, locks stop >= +10% ($1.10)
         exits_tp1 = strategy.evaluate_and_update_positions([position], {"RUNNER_TOKEN": 1.50})
         self.assertEqual(len(exits_tp1), 1)
         self.assertTrue(exits_tp1[0]["is_partial"])
-        self.assertEqual(exits_tp1[0]["quantity"], 35.0)
+        self.assertEqual(exits_tp1[0]["quantity"], 50.0)
         self.assertIn("Take Profit 1 (+50%)", exits_tp1[0]["reason"])
         self.assertTrue(position["first_take_profit_done"])
+        self.assertGreaterEqual(position["stop_trigger_price"], 1.10)
 
-        # Price reaches +100% ($2.00)
+        # Price reaches +100% ($2.00) -> sells 25%, leaving 25% moonbag
         exits_tp2 = strategy.evaluate_and_update_positions([position], {"RUNNER_TOKEN": 2.00})
         self.assertEqual(len(exits_tp2), 1)
         self.assertTrue(exits_tp2[0]["is_partial"])
-        self.assertEqual(exits_tp2[0]["quantity"], 35.0)
+        self.assertEqual(exits_tp2[0]["quantity"], 25.0)
         self.assertIn("Take Profit 2 (+100%)", exits_tp2[0]["reason"])
         self.assertTrue(position["second_take_profit_done"])
+
+    def test_fixed_30_percent_hard_stop_floor(self):
+        strategy = SolanaTrailingStopStrategy(
+            initial_stop_pct=0.40,
+            hard_stop_pct=0.30,
+        )
+        position = {
+            "token": "HARD_STOP_TOKEN",
+            "entry_price": 1.00,
+            "actual_entry_price": 1.00,
+            "highest_price": 1.00,
+            "quantity": 100.0,
+            "original_quantity": 100.0,
+            "first_take_profit_done": False,
+            "second_take_profit_done": False,
+        }
+
+        # -25% drop ($0.75) is above the 30% hard floor -> still open
+        exits_25 = strategy.evaluate_and_update_positions([position], {"HARD_STOP_TOKEN": 0.75})
+        self.assertEqual(len(exits_25), 0)
+        self.assertAlmostEqual(position["stop_trigger_price"], 0.70, places=4)
+
+        # -31% drop ($0.69) breaches the 30% hard stop floor -> exit triggered
+        exits_31 = strategy.evaluate_and_update_positions([position], {"HARD_STOP_TOKEN": 0.69})
+        self.assertEqual(len(exits_31), 1)
+        self.assertFalse(exits_31[0]["is_partial"])
 
     def test_initial_stop_buffer_absorbs_entry_noise(self):
         strategy = SolanaTrailingStopStrategy(initial_stop_pct=0.25)

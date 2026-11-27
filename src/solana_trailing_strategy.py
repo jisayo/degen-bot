@@ -11,12 +11,14 @@ TIMEOUT = 15
 
 # Strategy Parameters
 MAX_SIMULTANEOUS_TRADES = 3
-INITIAL_STOP_LOSS_PCT = 0.25      # 25% initial stop buffer to absorb early noise
+HARD_STOP_LOSS_PCT = 0.30         # Fixed 30% hard stop floor from entry
+INITIAL_STOP_LOSS_PCT = 0.20      # 20% initial stop buffer to absorb early noise
 TRAILING_STOP_PCT = 0.15          # 15% dynamic trailing stop once in profit
 FIRST_TAKE_PROFIT_PCT = 0.50      # +50% TP1
-FIRST_TAKE_PROFIT_FRACTION = 0.35 # Sell 35% at TP1
+FIRST_TAKE_PROFIT_FRACTION = 0.50 # Sell 50% at TP1
 SECOND_TAKE_PROFIT_PCT = 1.00     # +100% TP2
-SECOND_TAKE_PROFIT_FRACTION = 0.35# Sell 35% at TP2
+SECOND_TAKE_PROFIT_FRACTION = 0.25# Sell 25% at TP2 (leaving 25% moonbag)
+TP1_PROFIT_LOCK_PCT = 0.10        # Lock stop at +10% profit once TP1 hits
 SLIPPAGE_TOLERANCE_PCT = 0.15     # 15% slippage tolerance for Jito-protected exit
 
 
@@ -24,9 +26,9 @@ class SolanaTrailingStopStrategy:
     """
     Manages active Solana positions using real-time DexScreener price feeds.
     Enforces a strict 3-trade concurrency ceiling.
-    Provides early volatility noise buffer (25% initial stop).
-    Implements staged take-profits (+50% sell 35%, +100% sell 35%).
-    Trails remainder with 15% dynamic trailing stop from post-activation peak.
+    Enforces a fixed 30% hard stop loss floor alongside a 20% initial noise buffer.
+    Implements staged take-profits (+50% sell 50% + lock +10% stop, +100% sell 25%).
+    Trails remaining 25% moonbag with 15% dynamic trailing stop from post-activation peak.
     Executes automated exits via Jito-protected private bundles (10-15% slippage).
     """
 
@@ -35,22 +37,26 @@ class SolanaTrailingStopStrategy:
         max_positions: int = MAX_SIMULTANEOUS_TRADES,
         trailing_stop_pct: float = TRAILING_STOP_PCT,
         initial_stop_pct: Optional[float] = None,
+        hard_stop_pct: Optional[float] = HARD_STOP_LOSS_PCT,
         enable_staged_tp: bool = True,
         tp1_pct: float = FIRST_TAKE_PROFIT_PCT,
         tp1_fraction: float = FIRST_TAKE_PROFIT_FRACTION,
         tp2_pct: float = SECOND_TAKE_PROFIT_PCT,
         tp2_fraction: float = SECOND_TAKE_PROFIT_FRACTION,
+        tp1_profit_lock_pct: float = TP1_PROFIT_LOCK_PCT,
         slippage_tolerance: float = SLIPPAGE_TOLERANCE_PCT,
         jito_executor: Optional[JitoBundleExecutor] = None,
     ):
         self.max_positions = max_positions
         self.trailing_stop_pct = trailing_stop_pct
         self.initial_stop_pct = initial_stop_pct
+        self.hard_stop_pct = hard_stop_pct
         self.enable_staged_tp = enable_staged_tp
         self.tp1_pct = tp1_pct
         self.tp1_fraction = tp1_fraction
         self.tp2_pct = tp2_pct
         self.tp2_fraction = tp2_fraction
+        self.tp1_profit_lock_pct = tp1_profit_lock_pct
         self.jito_executor = jito_executor or JitoBundleExecutor(
             slippage_tolerance=slippage_tolerance
         )
@@ -162,18 +168,25 @@ class SolanaTrailingStopStrategy:
                         position["second_take_profit_done"] = True
                         position["trailing_stop_active"] = True
 
-            # 3. Dynamic Stop Trigger
-            # If initial_stop_pct is defined (e.g. 0.25):
-            # Before token achieves >= +15% gain, use initial_stop_pct to absorb 1-minute noise.
+            # 3. Dynamic Stop Trigger + Fixed 30% Hard Stop Floor
+            # Before token achieves >= +15% gain, use initial_stop_pct (e.g. 20%) to absorb early noise.
             # Once token achieves >= +15% gain, ratchet the stop to trail 15% from post-activation peak.
             if self.initial_stop_pct is not None and new_peak < entry_price * 1.15:
                 stop_trigger_price = entry_price * (1.0 - self.initial_stop_pct)
             else:
                 stop_trigger_price = new_peak * (1.0 - self.trailing_stop_pct)
 
-            # If TP1 was already taken, lock stop at least at break-even (entry_price)
+            # Enforce fixed hard stop loss floor (e.g. -30% max from entry)
+            if self.hard_stop_pct is not None:
+                hard_stop_price = entry_price * (1.0 - self.hard_stop_pct)
+                stop_trigger_price = max(stop_trigger_price, hard_stop_price)
+
+            # If TP1 was already taken, lock stop at least at +10% profit above entry
             if position.get("first_take_profit_done"):
-                stop_trigger_price = max(stop_trigger_price, entry_price)
+                stop_trigger_price = max(
+                    stop_trigger_price,
+                    entry_price * (1.0 + self.tp1_profit_lock_pct),
+                )
 
             position["stop_trigger_price"] = stop_trigger_price
 

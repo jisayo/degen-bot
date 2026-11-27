@@ -36,7 +36,8 @@ _position_lock = threading.RLock()
 
 trailing_strategy = SolanaTrailingStopStrategy(
     max_positions=MAX_OPEN_POSITIONS,
-    initial_stop_pct=0.25,
+    initial_stop_pct=0.20,
+    hard_stop_pct=0.30,
     enable_staged_tp=True,
 )
 
