@@ -40,18 +40,18 @@ class TestOpportunityScorer(unittest.TestCase):
         self.assertFalse(result["eligible_for_paper_trading"])
         self.assertTrue(any("below minimum of $20,000.00" in r for r in result["reasons"]))
 
-    def test_buy_ratio_below_60_40_is_ineligible(self):
-        # 55% buys (55 buys, 45 sells) is below 60:40 requirement
+    def test_buy_ratio_below_55_pct_is_ineligible(self):
+        # 50% buys (50 buys, 50 sells) is below 55% requirement
         token = {
             "liquidity_usd": 25000,
-            "market_cap_usd": 35000,
+            "market_cap_usd": 100000,
             "volume_1h": 30000,
-            "buys_1h": 55,
-            "sells_1h": 45,
+            "buys_1h": 50,
+            "sells_1h": 50,
         }
         result = score_opportunity(token)
         self.assertFalse(result["eligible_for_paper_trading"])
-        self.assertTrue(any("60:40" in r for r in result["reasons"]))
+        self.assertTrue(any("below minimum requirement" in r for r in result["reasons"]))
 
     def test_no_volume_is_ineligible(self):
         token = {
@@ -398,6 +398,59 @@ class TestOpportunityScorer(unittest.TestCase):
         s1 = score_opportunity({**base, "source_count": 1})
         s2 = score_opportunity({**base, "source_count": 2})
         self.assertEqual(s2["opportunity_score"], s1["opportunity_score"] + 5)
+
+    def test_low_1h_volume_below_25k_is_rejected(self):
+        token = {
+            "liquidity_usd": 25000,
+            "market_cap_usd": 100000,
+            "volume_1h": 15000,
+            "buys_1h": 40,
+            "sells_1h": 20,
+        }
+        result = score_opportunity(token)
+        self.assertFalse(result["eligible_for_paper_trading"])
+        self.assertTrue(any("1h volume" in r for r in result["reasons"]))
+
+    def test_trades_below_50_is_rejected(self):
+        token = {
+            "liquidity_usd": 25000,
+            "market_cap_usd": 100000,
+            "volume_1h": 50000,
+            "buys_1h": 30,
+            "sells_1h": 15,
+        }
+        result = score_opportunity(token)
+        self.assertFalse(result["eligible_for_paper_trading"])
+        self.assertTrue(any("fewer than 50 trades" in r for r in result["reasons"]))
+
+    def test_extreme_buy_imbalance_above_90_pct_is_rejected(self):
+        token = {
+            "liquidity_usd": 25000,
+            "market_cap_usd": 100000,
+            "volume_1h": 50000,
+            "buys_1h": 95,
+            "sells_1h": 5,
+        }
+        result = score_opportunity(token)
+        self.assertFalse(result["eligible_for_paper_trading"])
+        self.assertTrue(any("Extreme buy imbalance" in r for r in result["reasons"]))
+
+    def test_5m_fomo_spike_above_150_pct_is_rejected(self):
+        token = {
+            "liquidity_usd": 25000,
+            "market_cap_usd": 100000,
+            "volume_1h": 50000,
+            "buys_1h": 120,
+            "sells_1h": 60,
+            "price_change_1h": 180.0,
+            "price_change_m5": 165.0,
+            "buys_5m": 25,
+            "sells_5m": 5,
+            "volume_5m": 5000.0,
+        }
+        result = score_opportunity(token)
+        self.assertFalse(result["eligible_for_paper_trading"])
+        self.assertTrue(any("anti-FOMO cap" in r for r in result["reasons"]))
 
 
 if __name__ == "__main__":

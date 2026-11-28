@@ -30,8 +30,8 @@ export default function StrategyConditionsCard() {
     },
     {
       title: '5m Chart & Order Flow',
-      value: 'Green 5m + ≥60% Buys',
-      description: 'Requires green 5m candle, ≥$500 5m vol, 5m buy dominance, ≥60% 1h buys, ≤400% 1h cap.',
+      value: 'Green 5m + 55–90% Buys',
+      description: '≥$25k 1h vol, ≥50 trades, green 5m candle (≤150% spike), ≥$500 5m vol, ≤400% 1h cap.',
       icon: TrendingUp,
       color: 'text-emerald-400',
       badge: 'Momentum Gate',

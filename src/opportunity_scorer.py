@@ -6,11 +6,13 @@ MIN_MARKET_CAP_USD = 75000.0
 MIN_LIQUIDITY_MC_RATIO = 0.15
 MIN_LIQUIDITY_MC_RATIO_MIDCAP = 0.08  # Adaptive floor for >= $200k MC tokens
 MIDCAP_THRESHOLD_USD = 200000.0
-MIN_TRADES = 20
+MIN_TRADES = 50
+MIN_VOLUME_1H_USD = 25000.0
 MAX_VOLUME_LIQUIDITY_RATIO = 10.0
 MAX_VOLUME_LIQUIDITY_RATIO_DEEP = 20.0  # Allowed turnover for >= $20k liquidity pools
-MIN_BUY_RATIO = 0.60  # Baseline 60:40 buy-to-sell ratio
-MIN_BUY_RATIO_WITH_5M_MOMENTUM = 0.55  # Adaptive 55% floor when 5m flow is green + buy-led
+MIN_BUY_RATIO = 0.55  # Minimum 55% buy-to-sell ratio
+MAX_BUY_RATIO = 0.90  # Reject > 90% buy-only imbalance (honeypot/spoof guard)
+MIN_BUY_RATIO_WITH_5M_MOMENTUM = 0.55
 MULTI_SOURCE_BONUS = 5  # Score bonus when discovered on >= 2 independent feeds
 
 # --- Momentum / chart-based entry gates ---
@@ -35,6 +37,9 @@ MIN_VOLUME_5M_USD = 500.0
 # Reject if price already pumped more than this % in the last hour.
 # Entering after a 400%+ 1h move almost always means buying the top.
 MAX_PUMP_1H_PCT = 400.0
+
+# Anti-FOMO 5-minute spike cap: avoid buying after a vertical +150% 5m candle.
+MAX_PUMP_5M_PCT = 150.0
 
 # Volume acceleration: buys+sells in the last 5 min should represent
 # at least this fraction of what we'd expect from a steady h1 pace.
@@ -175,12 +180,12 @@ def score_opportunity(token: dict) -> dict:
     if trades > 0:
         buy_ratio = buys / trades
 
-        if 0.60 <= buy_ratio <= 0.75:
+        if 0.55 <= buy_ratio <= 0.75:
             score += 15
-            reasons.append("Positive buying pressure (>= 60:40)")
-        elif buy_ratio > 0.90:
+            reasons.append("Positive buying pressure (55–75% buys)")
+        elif buy_ratio > MAX_BUY_RATIO:
             reasons.append(
-                "Extreme buy imbalance; investigate"
+                f"Extreme buy imbalance ({buy_ratio*100:.1f}% > {MAX_BUY_RATIO*100:.0f}%); blocked for honeypot/spoof risk"
             )
 
     # Multi-source confirmation bonus
@@ -262,6 +267,16 @@ def score_opportunity(token: dict) -> dict:
     if is_5m_red:
         reasons.append(
             f"Last 5-minute candle is red ({price_change_m5:+.1f}%) — active dump in progress"
+        )
+
+    # Anti-FOMO 5m spike cap: reject single-candle vertical pumps (> +150% in 5 min).
+    is_5m_fomo_spike = (
+        price_change_m5 is not None
+        and price_change_m5 > MAX_PUMP_5M_PCT
+    )
+    if is_5m_fomo_spike:
+        reasons.append(
+            f"5-minute candle already spiked {price_change_m5:+.0f}% — anti-FOMO cap ({MAX_PUMP_5M_PCT:.0f}%)"
         )
 
     # --- 5-minute order flow ---
@@ -355,14 +370,15 @@ def score_opportunity(token: dict) -> dict:
         and market_cap >= MIN_MARKET_CAP_USD
         and liquidity_mc_ratio is not None
         and liquidity_mc_ratio >= required_liq_mc_ratio
-        and volume > 0
+        and volume >= MIN_VOLUME_1H_USD
         and trades >= MIN_TRADES
         and not extreme_volume_ratio
         and buy_ratio is not None
-        and buy_ratio >= required_buy_ratio
+        and required_buy_ratio <= buy_ratio <= MAX_BUY_RATIO
         and not is_down_trending
         and not is_extended_pump
         and not is_5m_red
+        and not is_5m_fomo_spike
         and not is_5m_sell_dominated
         and not is_5m_inactive
         and not is_5m_low_volume
@@ -370,9 +386,8 @@ def score_opportunity(token: dict) -> dict:
     )
 
     if buy_ratio is not None and buy_ratio < required_buy_ratio:
-        ratio_label = "60:40" if required_buy_ratio == MIN_BUY_RATIO else f"{int(required_buy_ratio*100)}%"
         reasons.append(
-            f"Buy/sell ratio ({buy_ratio*100:.1f}%) below minimum {ratio_label} requirement ({required_buy_ratio*100:.0f}%)"
+            f"Buy/sell ratio ({buy_ratio*100:.1f}%) below minimum requirement ({required_buy_ratio*100:.0f}%)"
         )
 
     if liquidity < MIN_LIQUIDITY_USD:
@@ -392,6 +407,10 @@ def score_opportunity(token: dict) -> dict:
 
     if volume <= 0:
         reasons.append("No trading volume")
+    elif volume < MIN_VOLUME_1H_USD:
+        reasons.append(
+            f"1h volume (${volume:,.2f}) below minimum of ${MIN_VOLUME_1H_USD:,.2f}"
+        )
 
     return {
         "opportunity_score": min(score, 100),
