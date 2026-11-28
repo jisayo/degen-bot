@@ -48,8 +48,8 @@ IGNORED_SOLANA_MINTS = {
 MIN_LIQUIDITY_USD = 20000.0
 MIN_MARKET_CAP_USD = 75000.0
 MIN_LIQUIDITY_TO_MC_RATIO = 0.15
-MIN_TOKEN_AGE_MINUTES = 3
-MAX_TOKEN_AGE_MINUTES = 1440  # 24 hours so trending multi-DEX pools are evaluated
+MIN_TOKEN_AGE_MINUTES = 30
+MAX_TOKEN_AGE_MINUTES = 360  # 6 hours: Early Breakout (post-migration) window
 
 
 def to_float(value):

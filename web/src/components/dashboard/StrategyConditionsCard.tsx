@@ -6,8 +6,8 @@ export default function StrategyConditionsCard() {
   const conditions = [
     {
       title: 'Multi-DEX Discovery & Age',
-      value: '3 – 1,440 Min (Top 50)',
-      description: 'Scans 50 tokens across DexScreener & GeckoTerminal (Raydium, PumpSwap, Meteora, Orca).',
+      value: '30 – 360 Min (6h, Top 60)',
+      description: 'Scans 60 tokens across DexScreener & GeckoTerminal (Raydium, PumpSwap, Meteora, Orca).',
       icon: Clock,
       color: 'text-purple-400',
       badge: 'Active Gate',

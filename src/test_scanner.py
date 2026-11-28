@@ -12,7 +12,7 @@ def make_pair(
     liquidity=20000,
     market_cap=100000,
     price="0.01",
-    age_minutes=3,
+    age_minutes=45,
     buys=100,
     sells=80,
     volume=50000,
@@ -384,6 +384,29 @@ class TestMultiDexDiscovery(unittest.TestCase):
         self.assertEqual(metrics["rejection_counts"].get("age_window"), 1)
         self.assertEqual(metrics["rejection_counts"].get("rug_risk"), 1)
         self.assertIn("scan_duration_sec", metrics)
+
+    @patch("scanner.fetch_extra_discovery_tokens", return_value=[])
+    @patch("scanner.check_rug_risk")
+    @patch("scanner.score_opportunity")
+    @patch("scanner.requests.get")
+    def test_age_window_30_to_360_minutes_enforced(
+        self, mock_get, mock_score, mock_risk, _mock_extra
+    ):
+        mock_get.side_effect = [
+            Mock(json=Mock(return_value=[
+                make_profile("TOO_YOUNG"),
+                make_profile("IN_WINDOW"),
+                make_profile("TOO_OLD"),
+            ])),
+            Mock(json=Mock(return_value=[make_pair(address="TOO_YOUNG", age_minutes=15)])),
+            Mock(json=Mock(return_value=[make_pair(address="IN_WINDOW", age_minutes=60)])),
+            Mock(json=Mock(return_value=[make_pair(address="TOO_OLD", age_minutes=400)])),
+        ]
+        mock_risk.return_value = make_risk()
+        mock_score.return_value = make_opportunity()
+
+        results = scan_tokens()
+        self.assertEqual([r["address"] for r in results], ["IN_WINDOW"])
 
     @patch("scanner.requests.get")
     def test_fetch_extra_discovery_tokens_parses_gecko_and_boosts(self, mock_get):
